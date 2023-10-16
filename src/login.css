@@ -1,0 +1,300 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap');
+html {
+    scroll-behavior: smooth;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 360;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#hostelCards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:0px;
+    padding: 30px;
+    background-color: rgba(185, 194, 255, 0.225);
+    margin: 0; 
+    color: black;
+}
+.hostelCard {
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1;
+    width: 30vw;
+    height: 40vw;
+    border-radius: 5px;
+    box-shadow: 2px 2px 1px #0404045b;
+    transition: 0.28s ease-in;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    margin: 40px 20px;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #0072cfe4;
+    transform-style: preserve-3d;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* backface-visibility: hidden; */
+}
+
+.houseCardBackface {
+    transform: scale(-1, 1);
+            color: black;
+            -moz-transform: scale(-1, 1);
+            -webkit-transform: scale(-1, 1);
+            -o-transform: scale(-1, 1);
+            -ms-transform: scale(-1, 1);
+            transform: scale(-1, 1);
+
+}
+li.houseCardBackface {
+    margin: 0px;
+}
+
+
+  .hostelCard:hover {
+    cursor: pointer;
+  }
+  
+  .hostelCard.rotate {
+   transform: rotateY(180deg);   
+   display:block;
+   padding: 0px;
+   /* background-image: url('../public/1547015099phpOoPsAO.jpeg'); */
+   position: relative;
+   background-size: cover;
+   background-repeat: no-repeat;
+   display: grid;
+   grid-template-rows: repeat(4, 1fr);
+  }
+
+  .hostelCard.rotate::before {
+    content:"";
+    position: absolute;
+    top : 0;
+    left : 0;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(to bottom, #0072cf01,rgba(0, 0, 0, 0)); */
+    box-shadow: 2px 2px 1px #faf9f95b;
+  }
+
+
+.backgroundImage {
+    background-image: url("/1547015099phpOoPsAO.jpeg");
+    position: relative; 
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-rows: repeat(4,1fr);
+}
+
+.backgroundImage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #0072cfaf,rgba(240, 248, 255, 0.489));
+    backdrop-filter: blur(5px); 
+    z-index: 1; 
+}
+.description {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: xx-large;
+    padding-top: 0 px; 
+    grid-row: 2;
+}
+#Welcome {
+    font-size: 100px;
+    text-align: center;
+    margin: 0px 30px ;
+    font-weight:bolder;
+}
+nav {
+    background-color: #ffffff; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+    margin: 0px 30px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    padding: 5px 30px 5px 60px;
+  }
+
+.stickyNav {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 4;
+    margin: 0px;
+}
+.navOptions {
+    display: flex;
+}
+#logoCollege {
+    width: 45px; 
+    height: auto;
+    display: block; 
+}
+.navBarElements {
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    transition: 0.1s ease-in;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.navSVGContact {
+    width: 20px;
+    height: auto;
+    display: block;
+    margin-right: 5px;
+}
+
+.navBarElements:hover {
+    background-color: #3131311a;
+    cursor: pointer;
+}
+.navSVGHome {
+    width: 15px;
+    height: auto;
+    display: block;
+    margin-right: 5px;
+}
+  
+.navSVGAbout {
+    width: 4.5px;
+    height: auto;
+    display: block;
+    margin-right: 5px;
+}
+
+.navSVGAvailability {
+    width: 13px;
+    height: auto;
+    display: block;
+    margin-right: 5px;
+}
+.navSVGGuidelines {
+    width: 15px;
+    height: auto;
+    display: block;
+    margin-right: 5px;
+}
+
+.navSVGGallery {
+    width: 15px;
+    height: auto;
+    display: block;
+    margin-right: 5px;
+}
+#BookNow {
+    background-color: #0073cf;
+    border-radius: 7px;
+    padding: 10px 8px;
+    transition: background-color 0.3s ease; 
+    font-weight: 380;
+    color: aliceblue;
+}
+
+#BookNow:hover {
+    background-color: #2a52be; 
+    cursor: pointer;
+}
+
+
+.guestHouseSVG {
+    width: 60px;
+    height: auto;
+    display: block;
+    z-index: 2;
+    padding-bottom: 5px;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.houseName {
+    font-size: 39px;
+    margin: 0px;
+    z-index: 2;
+    font-weight: 1000;
+}
+
+.roomCount {
+    font-size: 20px;
+    margin: 0px;
+    z-index: 2;
+    font-weight: 100;
+}
+
+
+.guidelinesDiv {
+    padding: 30px 150px;
+    word-spacing: 3px;
+    font-size: 18px;
+    background-color: rgba(185, 194, 255, 0.225);
+}
+#guidelinesHeader {
+    font-size: 50px;
+    text-align: center;
+    color:#0073cf;
+}
+li {
+    padding: 10px;
+}
+.aboutSection {
+    padding: 30px 150px;
+    word-spacing: 3px;
+    font-size: 18px;
+    
+}
+.aboutUs {
+    font-size: 50px;
+    text-align: center;
+    color:#0072cf;
+}
+
+.flag {
+    width: 5%;
+    height: auto;
+    display: block;
+}
+.facilitiesHolder {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    
+}
+
+.contactUsDiv {
+    padding: 30px 150px;
+    word-spacing: 7px;
+    
+}
+#contactHeader {
+    font-size: 50px;
+    text-align: center;
+    color:#0072cf;
+}

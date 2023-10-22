@@ -8,6 +8,7 @@ import contactSVG from "/contactSVG.svg";
 import houseSVG from "/guestHouse.svg";
 import guidelinesSVG from "/list-check-solid.svg";
 import { Link } from "react-scroll";
+import { NavLink } from "react-router-dom";
 
 function Login() {
   const houses = [
@@ -143,9 +144,11 @@ function Login() {
             Availability
           </Link>
 
+          <NavLink to ="/Dashboard">
           <span className="navBarElements" id="BookNow">
             Book Now
           </span>
+          </NavLink>
         </div>
       </nav>
       <div className="backgroundImage" id="Home">

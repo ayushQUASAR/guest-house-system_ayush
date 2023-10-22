@@ -1,0 +1,81 @@
+.dash-menu{
+    background-color: #ddd4d4;
+}
+.dash-menu{
+    width: 100vw;
+    height: 100vh;
+}
+.dash-sidebar{
+    height: 100%;
+    width: 400px;
+    background-color: rgb(5, 46, 118);
+}
+.dash-wrapper{
+    padding-top: 40px;
+    padding-left: 30px;
+}
+
+.dash-sidebar li{
+    list-style: none;
+    padding: 20px;
+}
+
+.dash-optn{
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0;
+    color: white;
+    background-color: #032c61;
+}
+
+.dash-optn:hover{
+   background-color: rgb(0, 98, 255);
+}
+.side-title{
+    background-color: #b9b9b900;
+    /* margin: 20px 0; */
+    padding-left: 10px;
+    padding-top: 10px;
+    text-align:left;
+    color: #c7c7c7;
+    font-size: 25px;
+    width: 50%;
+}
+
+.admin-header{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: white;
+    font-weight: 700;
+    background-color: #468de9;
+}
+.admin-title{
+    width: fit-content;
+    padding: 10px;
+    font-size: 40px;
+    
+    
+    text-align: center;
+}
+.admin-title span{
+    display: flex;
+    align-items: center;
+
+}
+.admin-title span svg{
+   font-size: 50px; 
+}
+.admin-home{
+    margin: 0 20px;
+    color: rgb(220, 219, 219);
+}
+.dash-optn span{
+    display: flex;
+    align-items: center;
+}
+.dash-optn span svg{
+    margin: 0 5px;
+}

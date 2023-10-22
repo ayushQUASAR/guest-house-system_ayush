@@ -4,7 +4,9 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import HowToRegRoundedIcon from '@mui/icons-material/HowToRegRounded';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
+import BedroomParentRoundedIcon from '@mui/icons-material/BedroomParentRounded';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
@@ -19,10 +21,7 @@ const Dash = () => {
   return (
     <div className='dash-menu'>
       <div className="admin-header" onClick={ToggleSidestate}>
-        <div className="admin-title">
-          <span>
-            <AdminPanelSettingsIcon />
-            AdminPanel</span></div>
+     
         <NavLink to="/">
           <div className="admin-home"><HomeRoundedIcon color="white" /></div>
 
@@ -31,14 +30,20 @@ const Dash = () => {
       {sideState &&
       
       <div className="dash-sidebar">
+         <div className="admin-title">
+          <span>
+            <AdminPanelSettingsIcon />
+            AdminPanel</span></div>
         <div className="dash-wrapper">
         <div className='side-title'> Administartion</div>
         <li>
           <div className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
-          <div className="dash-optn"><span><ManageAccountsIcon />Manage</span></div>
-          <div className="dash-optn"><span><AssignmentTurnedInIcon />Auth</span></div>
+          <div className="dash-optn"><span><BedroomParentRoundedIcon/>Admin Room Booking</span></div>
+          <div className="dash-optn"><span><AssignmentTurnedInIcon />Approve Bookings</span></div>
+          <div className="dash-optn"><span><TaskAltIcon/>Booked Rooms</span></div>
+          <div className="dash-optn"><span><HowToRegRoundedIcon/>Registered Users</span></div>
         </li>
-        <div className='side-title'>User</div>
+        <div className='side-title'>Admin</div>
         <li>
           <div className="dash-optn"><span><PersonPinIcon />Profile</span></div>
           <div className="dash-optn"><span><SettingsIcon />Settings</span></div>

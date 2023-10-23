@@ -27,7 +27,7 @@ const Header = ({ TogggleSidestate }) => {
 
                             </NavLink>
 
-                            <div className="nav-optn">
+                            {/* <div className="nav-optn">
                                 <ContactlessIcon /> ContactUs
                             </div> <div className="nav-optn">
                                 <LocalDiningRoundedIcon />  Food
@@ -37,7 +37,7 @@ const Header = ({ TogggleSidestate }) => {
                                 <HelpCenterIcon />   About
                             </div> <div className="nav-optn">
                                 <CurrencyRupeeIcon /> Charges
-                            </div>
+                            </div> */}
                         </li>
                     </div>
                 </div>

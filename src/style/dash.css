@@ -4,15 +4,36 @@
 .dash-menu{
     width: 100vw;
     height: 100vh;
+    display: flex;
+
 }
 .dash-sidebar{
     height: 100%;
     width: 400px;
-    background-color: rgb(5, 46, 118);
+    position: sticky;
+    top: 0;
+    background-color: rgb(39, 92, 182);
 }
 .dash-wrapper{
     padding-top: 20px;
     padding-left: 30px;
+}
+.dash-area{
+    width: 50vw;
+    /* display: flex; */
+    height: 70vh;
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin: 50px;
+    padding: 50px;
+   
+}
+.dash-box{
+height: 100%;
+border: 1px solid rgb(39, 121, 243);
+border-top-right-radius: 20px;
+border-top-left-radius: 20px;
+width: 100%;
 }
 
 .dash-sidebar li{
@@ -29,7 +50,7 @@
 }
 
 .dash-optn:hover{
-   background-color: rgb(0, 98, 255);
+   background-color: rgb(1, 31, 78);
 }
 .side-title{
     background-color: #b9b9b900;

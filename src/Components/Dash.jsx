@@ -13,6 +13,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { NavLink } from 'react-router-dom';
 import Header from './Header';
+import Approve from './Approve';
 
 const Dash = () => {
   const [sideState, setSidestate] = useState(true);
@@ -22,15 +23,12 @@ const Dash = () => {
   return (
     // <Header/>
     <>
-          <Header/>
+          <Header Toggle={ToggleSidestate}/>
     <div className='dash-menu'>
 
       {/* <div className="admin-header" onClick={ToggleSidestate}>
      
-        <NavLink to="/">
-          <div className="admin-home"><HomeRoundedIcon color="white" /></div>
-
-        </NavLink>
+       
       </div> */}
       {sideState &&
       
@@ -56,7 +54,9 @@ const Dash = () => {
         </li>
       </div> </div>}
       <div className="dash-area">
-
+  <div className="dash-box">
+    <Approve/>
+  </div>
       </div>
 
      

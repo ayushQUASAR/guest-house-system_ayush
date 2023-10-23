@@ -4,7 +4,7 @@
     display: flex;
     align-items:flex-start;
     width: 100%; 
-    /* position: fixed; */
+    position: relative;
     z-index: 1000;
     color: white;
     font-weight: 700;
@@ -12,11 +12,14 @@
 .colg-name{
     z-index: 10001;
     position: absolute;
+    left: 200px;
+  font-size: 40px;
 }
 
 .bg-nav li{
     list-style: none;
     display: flex;
+    align-items: center;
 
 }
 .bg-nav li div {

@@ -9,6 +9,7 @@ import houseSVG from "/guestHouse.svg";
 import guidelinesSVG from "/list-check-solid.svg";
 import { Link } from "react-scroll";
 import { NavLink } from "react-router-dom";
+import HomeHeader from "./Components/Homeheader";
 
 function Login() {
   const houses = [
@@ -72,7 +73,8 @@ function Login() {
 
   return (
     <>
-      <nav className="stickyNav">
+    <HomeHeader/>
+      {/* <nav className="stickyNav">
         <a href="https://www.nitj.ac.in/" target="_blank">
           <img
             id="logoCollege"
@@ -150,7 +152,7 @@ function Login() {
           </span>
           </NavLink>
         </div>
-      </nav>
+      </nav> */}
       <div className="backgroundImage" id="Home">
         <div className="description">
           <h1 id="Welcome">

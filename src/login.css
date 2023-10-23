@@ -139,6 +139,7 @@ nav {
 .stickyNav {
     position: sticky;
     top: 0;
+    height: 70px;
     background-color: #ffffff;
     z-index: 4;
     margin: 0px;
@@ -205,17 +206,19 @@ nav {
     margin-right: 5px;
 }
 #BookNow {
-    background-color: #0073cf;
+    background-color: #ffffff;
     border-radius: 7px;
     padding: 10px 8px;
+    text-decoration: none;
     transition: background-color 0.3s ease; 
     font-weight: 380;
-    color: aliceblue;
+    color: rgb(101, 171, 233);
 }
 
 #BookNow:hover {
-    background-color: #2a52be; 
+    background-color: #3859ea; 
     cursor: pointer;
+    color: white;
 }
 
 

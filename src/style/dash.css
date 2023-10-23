@@ -11,7 +11,7 @@
     background-color: rgb(5, 46, 118);
 }
 .dash-wrapper{
-    padding-top: 40px;
+    padding-top: 20px;
     padding-left: 30px;
 }
 
@@ -47,7 +47,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 100%; 
     color: white;
     font-weight: 700;
     background-color: #468de9;
@@ -55,7 +55,12 @@
 .admin-title{
     width: fit-content;
     color: white;
-    padding: 10px;
+    width: 90%;
+    padding-top: 30px;
+    margin-left: 25px;
+   
+    
+
     font-size: 40px;
     
     
@@ -69,10 +74,7 @@
 .admin-title span svg{
    font-size: 50px; 
 }
-.admin-home{
-    margin: 0 20px;
-    color: rgb(220, 219, 219);
-}
+
 .dash-optn span{
     display: flex;
     align-items: center;

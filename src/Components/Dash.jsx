@@ -12,6 +12,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { NavLink } from 'react-router-dom';
+import Header from './Header';
 
 const Dash = () => {
   const [sideState, setSidestate] = useState(true);
@@ -19,14 +20,18 @@ const Dash = () => {
     setSidestate(!sideState);
   }
   return (
+    // <Header/>
+    <>
+          <Header/>
     <div className='dash-menu'>
-      <div className="admin-header" onClick={ToggleSidestate}>
+
+      {/* <div className="admin-header" onClick={ToggleSidestate}>
      
         <NavLink to="/">
           <div className="admin-home"><HomeRoundedIcon color="white" /></div>
 
         </NavLink>
-      </div>
+      </div> */}
       {sideState &&
       
       <div className="dash-sidebar">
@@ -56,6 +61,7 @@ const Dash = () => {
 
      
     </div>
+    </>
   )
 }
 

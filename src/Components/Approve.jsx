@@ -11,7 +11,9 @@ const Approve = () => {
     <div className="request-slider">
         <div className="request-carousels">
  <div className="request-card">
-  
+  <div className="requser-name">
+    
+  </div>
  </div>
         </div>
     </div>

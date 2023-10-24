@@ -1,0 +1,9 @@
+.login-box{
+    width: 100vw;
+    height: 100vh;
+
+}
+.left-box, .right-box{
+    width: 50vw;
+    height: 100vh;
+}

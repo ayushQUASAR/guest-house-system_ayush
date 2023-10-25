@@ -1,0 +1,124 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .centered-box {
+    border-radius: 10px;
+    padding: 50px;
+    width:100%;
+    box-shadow:2px 2px 2px 2px rgb(128, 125, 125);
+  }
+
+.Parent {
+    padding: 20px;
+    border-radius: 10px 10px 10px 100px;
+    box-shadow: 2px 4px 2px 2px rgb(145, 141, 141);
+}
+
+.leftSide {
+    background-color: #0275d8;
+    border: 2px solid rgb(12, 12, 12);
+    border-radius: 25px 100px 25px 100px;
+    
+}
+ 
+.LeftContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* Fill the height of the LeftSide */
+    padding: 20px;
+  }
+  
+  .LeftImage {
+    max-width: 100%; 
+    /* Ensures the image is responsive */
+    height: auto;
+  }
+  
+  .lheading {
+    font-size: 24px; /* Adjust font size for responsiveness */
+    color: rgb(245, 247, 248);
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+/* .rightSide {
+    
+} */
+/* Default styles */
+.reference-heading {
+    font-size: 24px;
+    text-align:center;
+  }
+  
+  /* Responsive text sizing for smaller screens */
+  @media (max-width: 768px) {
+    .rheading {
+      font-size: 20px;
+    }
+    .reference-heading {
+      font-size: 18px;
+    }
+  }
+  
+.rheading {
+    font-size: 40px;
+    color: rgb(123, 127, 129);
+    text-align: center;
+}
+
+.lheading {
+    color: rgb(245, 247, 248);
+    margin-top: 20px;
+}
+
+.form-control {
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.input {
+    margin-top: 4rem;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .Parent {
+        padding: 10px;
+    }
+    
+    .leftSide {
+        border-radius: 10px;
+    }
+    
+    .rightSide {
+        margin-left: 0;
+    }
+    
+    .rheading {
+        font-size: 30px;
+    }
+    
+    .lheading {
+        margin-top: 10px;
+    }
+    
+    .form-control {
+        font-size: 16px;
+    }
+    
+    .input {
+        margin-top: 2rem;
+    }
+}
+
+/* Adjust the font size for the heading and label */
+.govt-id-heading,
+.file-input-label {
+  font-size: 18px;
+}

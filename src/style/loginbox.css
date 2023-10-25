@@ -1,9 +1,49 @@
-.login-box{
-    width: 100vw;
-    height: 100vh;
-
+.login-box {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }
-.left-box, .right-box{
-    width: 50vw;
-    height: 100vh;
+.lleft-box,
+.lright-box {
+  position: relative;
+  width: 50vw;
+  height: 100vh;
+}
+.lleft-box {
+  background-color: rgb(50, 115, 214);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.lleft-box :nth-child(1) {
+  color: white;
+  font-size: 50px;
+}
+.lleft-box :nth-child(2) {
+  color: white;
+  font-size: 35px;
+}
+.lright-box {
+  background-color: #c6c6c6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-logo {
+  left: calc(50% - 100px);
+  top: 40%;
+  z-index: 100;
+  width: 200px;
+  height: 200px;
+  background-color: #ffffff;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 50%;
+  justify-content: center;
+}
+.login-logo img {
+  width: 150px;
 }

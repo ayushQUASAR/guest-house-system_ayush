@@ -1,0 +1,116 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
+
+
+.bg-box {
+  width: 50vw;
+  height: 100vh;
+  display: inline-block;
+}
+
+.opright{
+  margin-left: 20px;
+}
+.main-box {
+  display: block;
+  width: 100vw;
+  overflow: hidden;
+  height: 100vh;
+  background-color: rgb(234, 234, 234);
+}
+.auth-box h2 h4 {
+  font-family: 'Poppins';
+}
+.layer-box {
+  clip-path: polygon(0 0, 100% 0%, 70% 100%, 0% 100%);
+  background-color: #4285f4;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.right-box {
+
+  width: 50vw;
+  display: inline-block;
+  position: absolute;
+  overflow: hidden;
+  right: 0;
+  height: 100vh;
+}
+.auth-box h2 {
+  margin: 15px 0;
+  text-align: left;
+}
+.layer-box div{
+  height: fit-content;
+  font-size: 100px;
+
+  position: absolute;
+  top: 40%;
+  color: white;
+  font-family: 'Poppins';
+  left: 30%;
+}
+.auth-box {
+  /* height: 70vh; */
+  padding: 20px 40px;
+  width: 27vw;
+  margin:50px 50px;
+}
+.email h3 {
+  margin: 8px 0;
+  font-weight: 600;
+  /* letter-spacing: 0.3rem; */
+}
+.email
+{ padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  width: 90%;
+
+}
+
+
+.email input{
+    border: none;
+    border-radius: 9px;
+    height: 30px;
+    width: 300px;
+    background-color: rgb(235, 235, 235);
+    outline: none;
+}
+.inputf
+{
+    display: inline-block;
+    border-radius: 9px;
+    padding:5px 10px;
+    background-color: rgb(235, 235, 235);
+}
+.inputf:hover
+{
+    background-color:  rgb(218, 218, 218);
+}
+.inputf:hover input
+{
+    background-color:  rgb(218, 218, 218);
+}
+.sign-btn{
+    width: 320px;
+    height: 38px;
+    outline: none;
+    margin: 20px 0;
+    border: none;
+    background-color: #346BD4;
+    border-radius: 9px;
+    color: white;
+    padding: 5px 0;
+}
+.details {
+    background-color: #fff;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 150px;
+    justify-content: center;
+    border-radius: 17px;
+ 
+}

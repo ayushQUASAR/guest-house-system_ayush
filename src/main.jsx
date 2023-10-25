@@ -6,6 +6,6 @@ import Registration from "./Components/Registration.jsx"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-   <Registration/>
+   <App/>
   </React.StrictMode>
 );

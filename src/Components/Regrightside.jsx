@@ -23,25 +23,104 @@ export default function Regrightside() {
   const [Email, setEmail] = useState("")
   const [Password, setPassword] = useState("")
   const [contentType, setContentType] = useState('')
-  const [next,setNext]=useState(true);
-  // const[Reference,setRefrence]=useState("")
   const [selectedOption, setSelectedOption] = useState(null);
   const [data, setData] = useState([]);
+  const [reffirstName, setReffirstName] = useState('');
+  const [reflastName, setReflastName] = useState('');
+  const [refphoneNumber, setRefphoneNumber] = useState('');
+  const [idProof, setIdProof] = useState(null);
+  // Alumni
+
+  const [branch, setBranch] = useState('');
+  const [batch, setBatch] = useState('');
+
+  const [jobProfile, setJobProfile] = useState('');
+
+  // student
+
+ 
+  const [studrollNumber, setSrollNumber] = useState('');
+  const [studbranch, setSbranch] = useState('');
+
+  // faculty
+  
+  const [facultyemail, setFacultyemail] = useState('');
+  const [department, setDepartment] = useState('');
+
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-  const contentComponents = {
-    student: <Student/>,
-    faculty : <Faculty/>,
-    alumni : <Alumni/>,
-  };
+  const handleFileChange = (e) => {
+    let file = e.target.files[0];
 
-  const selectedContent = contentComponents[contentType];
+    if(!file) {
+      window.alert("File not uploaded.");
+    }
+
+    if(file.size<= 1000000) {
+      console.log(file.type);
+      if(file.type.startsWith("image/") || file.type === "application/pdf") {
+        setIdProof(file);
+      }
+      else {
+        window.alert("ONLY IMAGES AND PDF ALLOWED");
+      }
+    }
+    else {
+      window.alert("file size can be max. 1MB");
+    }
+  
+  }
   const setSubmit = (e) => {
     e.preventDefault();
-    const newEntry = { Email: Email, Firstname: Firstname, Lastname: Lastname, Address: Address, Phnnumber: Phnnumber, Password: Password, selectedOption: selectedOption }
+    const newEntry = { Email: Email,
+       Firstname: Firstname, 
+       Lastname: Lastname, 
+       Address: Address,
+        Phnnumber: Phnnumber,
+         Password: Password,
+          selectedOption:selectedOption,
+          idProof: idProof,
+
+        }
    setData([...data,newEntry]);
+   const formData = new FormData();
+formData.append("Firstname", Firstname);
+formData.append("Lastname", Lastname);
+formData.append("Phnnumber", Phnnumber);
+formData.append("Email", Email);
+formData.append("Password", Password);
+formData.append("Address", Address);
+formData.append("selectedOption", selectedOption);
+formData.append("idProof", idProof);
+// Alumni
+formData.append("RefFirstName", reffirstName);
+formData.append("RefLastName", reflastName);
+formData.append("RefPhoneNumber", refphoneNumber);
+formData.append("AlumniBatch", batch);
+formData.append("AlumniBranch", branch);
+formData.append("ALumniJobProfile", jobProfile);
+
+// Student
+formData.append("StudentRollNumber", studrollNumber);
+formData.append("StudentBranch", studbranch);
+
+// Faculty
+formData.append("FacultyEmail", facultyemail);
+formData.append("Department", department);
+
+
+
+
+
+   fetch("http://localhost:4000/register", {
+    method: "POST",
+    body: formData,
+    mode: "cors",
+   }).then((res)=> res.json())
+   .then((data) => console.log(data))
+   .catch((err) => console.log(err));
 
     console.log("hi")
   }
@@ -49,8 +128,8 @@ export default function Regrightside() {
 
   return (
     <>
-    <div> <form action="" onSubmit={setSubmit}>
-    {  next ?
+    <div className="reg-rightside"> <form action="" onSubmit={setSubmit}>
+    
     
     <div>
       <div className="r">
@@ -170,14 +249,17 @@ export default function Regrightside() {
               Already have an account? Login
            
           </NavLink> 
-          <div className="col-md-6 col-sm-12">
+          {/* <div className="col-md-6 col-sm-12">
             <button disabled={selectedOption === null}  onClick={()=>setNext(false)} className="form-control btn btn-success rounded" style={buttonStyle}>
               Next
             </button>
-          </div>
+          </div> */}
         </div>
         
-    </div> : selectedContent   }
+    </div> 
+    { contentType=='student'&& <Student prop={{reffirstName,reflastName, refphoneNumber,studbranch,studrollNumber,setReffirstName,setReflastName,setRefphoneNumber,setSbranch,setSrollNumber}}/>   }
+    { contentType=='faculty'&& <Faculty prop={{reffirstName,reflastName, refphoneNumber,department,facultyemail,setReffirstName,setReflastName,setRefphoneNumber,setFacultyemail,setDepartment}}/>   }
+    { contentType=='alumni'&& <Alumni prop={{reffirstName,reflastName, refphoneNumber,batch,branch,jobProfile,setReffirstName,setReflastName,setRefphoneNumber,setBatch,setBranch,setJobProfile}}/>   }
     </form>
     </div>
     </>

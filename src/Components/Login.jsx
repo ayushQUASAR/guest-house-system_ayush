@@ -46,8 +46,18 @@ const Login = () => {
                             <div className="inputf">
                             <input  required onChange={(e) => setPassword(e.target.value)} type="password" value={Password} name="password" id="" />
                             </div>
+                            <div className="reg-optn">
+                              <div>
                             <NavLink to ="/Register">
                             <p>Dont have Account? Register here</p></NavLink>
+                            </div>
+                            <div>
+                          <NavLink to ="/AdminRegistration">
+                              Admin Registration
+                              </NavLink>
+                            </div>
+
+                            </div>
                             <h3 style={{color:' #346BD4'}}>Forgot password?</h3>
                             <button type="submit"className="sign-btn">Sign In</button>
                         </div>

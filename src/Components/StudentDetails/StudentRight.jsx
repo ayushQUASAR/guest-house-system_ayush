@@ -73,7 +73,7 @@ export default function StudentRight({prop}) {
         <div className="row input">
           <div className="col-12">
             <input
-              type="email"
+              type="text"
               className="form-control"
               placeholder="Branch"
               value={studbranch}

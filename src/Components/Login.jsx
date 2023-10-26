@@ -13,6 +13,17 @@ const Login = () => {
     const newEntry = { Email: Email, Password: Password }
    setData([...data,newEntry]);
 
+   fetch("http://localhost:4000/login", {
+       method: "POST",
+      body : JSON.stringify(newEntry),
+      mode: "cors",
+      "headers" : {
+        "Content-Type": "application/json",
+      }
+   }).then((res) => res.json())
+   .then((data) => console.log(data))
+   .catch((err) => console.log(err));
+
 
     console.log("hi")
   }

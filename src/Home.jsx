@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import "./login.css";
+import "./home.css";
 import houseSolid from "/houseSolid.svg";
 import infoSolid from "/infoSolid.svg";
 import gallery from "/gallerySolid.svg";

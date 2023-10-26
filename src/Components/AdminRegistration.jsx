@@ -1,10 +1,9 @@
-
+import React from 'react'
 import { useState } from "react";
 import "../style/regform.css"
 import { NavLink } from "react-router-dom";
-import Alumni from './AlumniDetails/AlumniRight'
-import Faculty from './FacultyDetails/FacultyRight'
-import Student from './StudentDetails/StudentRight'
+import Regleftside from "./Regleftside"
+
 const buttonStyle = {
   backgroundColor: "#007BFF", // Change to the desired background color
   color: "white", // Text color
@@ -15,37 +14,18 @@ const buttonStyle = {
   margin: "5px",
 };
 
-export default function Regrightside() {
+const AdminRegistration = () => {
+  
+
   const [Firstname, setFirstname] = useState("")
   const [Lastname, setLastname] = useState("")
   const [Phnnumber, setPhnnumber] = useState("")
   const [Address, setAddress] = useState("")
   const [Email, setEmail] = useState("")
   const [Password, setPassword] = useState("")
-  const [contentType, setContentType] = useState('')
-  const [selectedOption, setSelectedOption] = useState(null);
   const [data, setData] = useState([]);
-  const [reffirstName, setReffirstName] = useState('');
-  const [reflastName, setReflastName] = useState('');
-  const [refphoneNumber, setRefphoneNumber] = useState('');
   const [idProof, setIdProof] = useState(null);
-  // Alumni
 
-  const [branch, setBranch] = useState('');
-  const [batch, setBatch] = useState('');
-
-  const [jobProfile, setJobProfile] = useState('');
-
-  // student
-
- 
-  const [studrollNumber, setSrollNumber] = useState('');
-  const [studbranch, setSbranch] = useState('');
-
-  // faculty
-  
-  const [facultyemail, setFacultyemail] = useState('');
-  const [department, setDepartment] = useState('');
 
 
   const handleOptionChange = (event) => {
@@ -80,7 +60,6 @@ export default function Regrightside() {
        Address: Address,
         Phnnumber: Phnnumber,
          Password: Password,
-          selectedOption:selectedOption,
           idProof: idProof,
 
         }
@@ -92,23 +71,8 @@ formData.append("Phnnumber", Phnnumber);
 formData.append("Email", Email);
 formData.append("Password", Password);
 formData.append("Address", Address);
-formData.append("selectedOption", selectedOption);
 formData.append("idProof", idProof);
-// Alumni
-formData.append("RefFirstName", reffirstName);
-formData.append("RefLastName", reflastName);
-formData.append("RefPhoneNumber", refphoneNumber);
-formData.append("AlumniBatch", batch);
-formData.append("AlumniBranch", branch);
-formData.append("ALumniJobProfile", jobProfile);
 
-// Student
-formData.append("StudentRollNumber", studrollNumber);
-formData.append("StudentBranch", studbranch);
-
-// Faculty
-formData.append("FacultyEmail", facultyemail);
-formData.append("Department", department);
 
 
 
@@ -125,9 +89,13 @@ formData.append("Department", department);
     console.log("hi")
   }
 
+    
+
+
 
   return (
     <>
+    
     <div className="reg-rightside"> <form action="" onSubmit={setSubmit}>
     
     
@@ -190,59 +158,7 @@ formData.append("Department", department);
           </div>
         </div>
 
-        <div className="row input align-items-center">
-          <div className="col-md-3 col-sm-6 col-12">
-            <h2 className="reference-heading">Reference</h2>
-          </div>
-          <div className="col-md-3 col-sm-6 col-12">
-            <label>
-              <input  required
-                type="radio"
-                value="student"
-                onClick={()=>setContentType('student')}
-                checked={selectedOption === 'student'}
-                onChange={handleOptionChange}
-              />
-              <button type="button" onClick={()=>setContentType('student')} className={`form-control btn ${selectedOption === 'student' ? 'btn-primary' : 'btn-secondary'} rounded`} style={buttonStyle}>
-                <img src="student-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
-                Student
-              </button>
-            </label>
-          </div>
-
-          <div className="col-md-3 col-sm-6 col-12">
-            <label>
-              <input  required
-              onClick={()=>setContentType('faculty')}
-                type="radio"
-                value="faculty"
-                checked={selectedOption === 'faculty'}
-                onChange={handleOptionChange}
-              />
-              <button type="button" onClick={()=>setContentType('faculty')} className={`form-control btn ${selectedOption === 'faculty' ? 'btn-primary' : 'btn-secondary'} rounded`} style={buttonStyle}>
-                <img src="faculty-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
-                Faculty
-              </button>
-            </label>
-          </div>
-
-          <div className="col-md-3 col-sm-6 col-12">
-            <label>
-              <input
-                type="radio"  required
-                onClick={()=>setContentType('alumni')}
-                value="alumni"
-                checked={selectedOption === 'alumni'}
-                onChange={handleOptionChange}
-              />
-              <button type="button"onClick={()=>setContentType('alumni')} className={`form-control btn ${selectedOption === 'alumni' ? 'btn-primary' : 'btn-secondary'} rounded`} style={buttonStyle}>
-                <img src="alumni-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
-                Alumni
-              </button>
-            </label>
-          </div>
-         
-        </div>
+       
         <div className="row input">
         <NavLink to ="/" >
          
@@ -257,11 +173,13 @@ formData.append("Department", department);
         </div>
         
     </div> 
-    { contentType=='student'&& <Student prop={{reffirstName,reflastName, refphoneNumber,studbranch,studrollNumber,setReffirstName,setReflastName,setRefphoneNumber,setSbranch,setSrollNumber}}/>   }
-    { contentType=='faculty'&& <Faculty prop={{reffirstName,reflastName, refphoneNumber,department,facultyemail,setReffirstName,setReflastName,setRefphoneNumber,setFacultyemail,setDepartment}}/>   }
-    { contentType=='alumni'&& <Alumni prop={{reffirstName,reflastName, refphoneNumber,batch,branch,jobProfile,setReffirstName,setReflastName,setRefphoneNumber,setBatch,setBranch,setJobProfile}}/>   }
+
     </form>
     </div>
     </>
-  );
+ 
+
+  )
 }
+
+export default AdminRegistration

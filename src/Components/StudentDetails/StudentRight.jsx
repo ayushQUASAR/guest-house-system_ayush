@@ -1,10 +1,19 @@
 import { useState } from 'react';
 import '../../style/facultyalumni.css'
+import Popup from '../PopUp/Popup';
 export default function StudentRight({prop}) {
   const { reffirstName,reflastName, refphoneNumber,studbranch,studrollNumber,setReffirstName, setReflastName, setRefphoneNumber, setSbranch, setSrollNumber } = prop;
 
   // Define state variables to store the input values
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
 
   // Event handler to update the state when input values change
   const handleInputChange = (e, stateUpdater) => {
@@ -73,7 +82,7 @@ export default function StudentRight({prop}) {
         <div className="row input">
           <div className="col-12">
             <input
-              type="email"
+              type="text"
               className="form-control"
               placeholder="Branch"
               value={studbranch}
@@ -83,11 +92,12 @@ export default function StudentRight({prop}) {
         </div>
 
         <div className="mt-auto justify-content-end d-flex">
-          <button type="submit" className="btn btn-primary btn-lg rounded register-btn">
+          <button type="submit" onClick={openPopup}className="btn btn-primary btn-lg rounded register-btn">
             Register
           </button>
         </div>
       {/* </form> */}
+      <Popup isOpen={isPopupOpen} onClose={closePopup} />
     </div>
   );
 }

@@ -23,7 +23,7 @@ import RegisteredUsers from './RegisteredUsers'
 import { Settings } from '@mui/icons-material';
 
 
-const Dash = () => {
+const Dash = ({admin}) => {
   const [sideState, setSidestate] = useState(true);
   const [contentType, setContentType] = useState('dashboard')
   const ToggleSidestate = () => {

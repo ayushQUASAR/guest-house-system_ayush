@@ -6,7 +6,7 @@ import Table from "./Table";
 
 import "../style/approve.css"
 
-const userDetail = () => {
+const userDetail = ({userID}) => {
   return (
    
     

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../../style/facultyalumni.css'
 import '../../style/MainContainer.css'
+import Popup from '../PopUp/Popup';
 export default function FacultyRight({prop}) {
   const {reffirstName,reflastName, refphoneNumber,department,facultyemail, setReffirstName, setReflastName, setRefphoneNumber, setFacultyemail, setDepartment } = prop;
 
@@ -9,6 +10,15 @@ export default function FacultyRight({prop}) {
   // Event handler to update the state when input values change
   const handleInputChange = (e, stateUpdater) => {
     stateUpdater(e.target.value);
+  };
+  const [isPopupOpen, setPopupOpen] = useState(false);
+
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
   };
 
   // Event handler for form submission (you can add your logic here)
@@ -87,11 +97,12 @@ export default function FacultyRight({prop}) {
           </div>
         </div>
         <div className="mt-auto justify-content-end d-flex">
-          <button type="submit" className="btn btn-primary btn-lg rounded register-btn">
+          <button type="submit" onClick={openPopup} className="btn btn-primary btn-lg rounded register-btn">
             Register
           </button>
         </div>
       {/* </form> */}
+      <Popup isOpen={isPopupOpen} onClose={closePopup} />
     </div>
   );
 }

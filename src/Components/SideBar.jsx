@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "./p.jpg"
+// import Image from "./p.jpg"
 const  SideBar = () => {
   return (
     

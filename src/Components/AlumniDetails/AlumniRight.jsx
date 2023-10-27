@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import '../../style/facultyalumni.css'
 import '../../style/MainContainer.css'
+import Popup from '../PopUp/Popup';
 export default function AlumniRight({prop}) {
   const {reffirstName,reflastName, refphoneNumber,batch,branch,jobProfile, setReffirstName, setReflastName, setRefphoneNumber, setBatch, setBranch, setJobProfile } = prop;
 
@@ -10,7 +11,15 @@ export default function AlumniRight({prop}) {
   const handleInputChange = (e, stateUpdater) => {
     stateUpdater(e.target.value);
   };
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
   // Event handler for form submission (you can add your logic here)
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission action
@@ -97,10 +106,11 @@ export default function AlumniRight({prop}) {
           </div>
         </div>
         <div className="mt-auto justify-content-end d-flex">
-          <button type="submit" className="btn btn-primary btn-lg rounded register-btn">
+          <button type="submit" onClick={openPopup} className="btn btn-primary btn-lg rounded register-btn">
             Register
           </button>
         </div>
+        <Popup isOpen={isPopupOpen} onClose={closePopup} />
       {/* </form> */}
     </div>
   );

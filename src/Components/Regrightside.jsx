@@ -114,15 +114,17 @@ formData.append("Department", department);
 
 
 
-   fetch("http://localhost:4000/register", {
+   fetch("https://guest-house-back.onrender.com/register", {
     method: "POST",
     body: formData,
     mode: "cors",
-   }).then((res)=> res.json())
-   .then((data) => console.log(data))
-   .catch((err) => console.log(err));
+   }).then((res)=> res.json() )
+   .then((data) =>{console.log("data:",data) 
+  })
+   .catch((err) => console.log("error",err));
 
-    console.log("hi")
+    console.log("registered")
+ 
   }
 
 
@@ -185,7 +187,7 @@ formData.append("Department", department);
         <div className="row input">
           <div className="col-12">
             <div className="input-group">
-              <input  required type="file" className="form-control" id="fileInput" />
+              <input  required type="file" onChange={handleFileChange} className="form-control" id="fileInput" />
             </div>
           </div>
         </div>

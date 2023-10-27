@@ -6,7 +6,7 @@ import  "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 const Approve = () => {
   return (
     <>
-      <div className="container">
+      <div className="Approve-container">
         <div className="topbar">
           <h1>APPROVAL REGISTRATION</h1>
         </div>

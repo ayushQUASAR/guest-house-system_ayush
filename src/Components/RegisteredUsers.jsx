@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 export default function RegisteredUsers() {
@@ -20,7 +20,19 @@ export default function RegisteredUsers() {
     setUsers([...users, newUser]);
     setNewUser({ name: '', contactNumber: '', email: '' });
   };
+useEffect(()=>{
 
+  fetch("https://guest-house-back.onrender.com/users/approved/registered", {
+    method: "GET",
+   mode: "cors",
+   "headers" : {
+     "Content-Type": "application/json",
+   }
+}).then((res) => res.json())
+.then((data) => console.log(data))
+.catch((err) => console.log(err));
+    console.log("hi")
+},[])
   return (
     <div className='container my-5'>
 

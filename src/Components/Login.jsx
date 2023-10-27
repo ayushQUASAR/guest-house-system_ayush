@@ -21,7 +21,9 @@ const Login = () => {
    setData([...data,newEntry]);
 
 
-   fetch("https://guest-house-back.onrender.com/login", {
+
+    fetch("https://guest-house-back.onrender.com/login", {
+
 
        method: "POST",
       body : JSON.stringify(newEntry),

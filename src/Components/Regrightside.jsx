@@ -188,9 +188,13 @@ formData.append("Department", department);
         <div className="row input">
           <div className="col-12">
             <div className="input-group">
+<<<<<<< HEAD
 
               <input  required type="file" onChange={handleFileChange} className="form-control" id="fileInput" />
 
+=======
+<input  required type="file" onChange={handleFileChange} className="form-control" id="fileInput" />
+>>>>>>> e5f8e285261bc85ade45e38023cd3e2f19bfb167
             </div>
           </div>
         </div>

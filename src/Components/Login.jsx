@@ -20,7 +20,9 @@ const Login = () => {
     const newEntry = { Email: Email, Password: Password }
    setData([...data,newEntry]);
 
+
    fetch("https://guest-house-back.onrender.com/login", {
+
        method: "POST",
       body : JSON.stringify(newEntry),
       mode: "cors",
@@ -28,6 +30,7 @@ const Login = () => {
         "Content-Type": "application/json",
       }
    }).then((res) => res.json())
+
    .then((data) => {
     console.log(data);
 
@@ -43,6 +46,8 @@ const Login = () => {
 
    }
    )
+
+
    .catch((err) => console.log(err));
 
 

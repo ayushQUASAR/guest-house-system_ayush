@@ -74,7 +74,8 @@ export default function Regrightside() {
   }
   const setSubmit = (e) => {
     e.preventDefault();
-    const newEntry = { Email: Email,
+    const newEntry = {
+       Email: Email,
        Firstname: Firstname, 
        Lastname: Lastname, 
        Address: Address,
@@ -187,7 +188,9 @@ formData.append("Department", department);
         <div className="row input">
           <div className="col-12">
             <div className="input-group">
+
               <input  required type="file" onChange={handleFileChange} className="form-control" id="fileInput" />
+
             </div>
           </div>
         </div>

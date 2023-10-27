@@ -13,7 +13,8 @@ const Login = () => {
     const newEntry = { Email: Email, Password: Password }
    setData([...data,newEntry]);
 
-   fetch("http://localhost:4000/login", {
+    fetch("https://guest-house-back.onrender.com/login", {
+
        method: "POST",
       body : JSON.stringify(newEntry),
       mode: "cors",
@@ -21,7 +22,24 @@ const Login = () => {
         "Content-Type": "application/json",
       }
    }).then((res) => res.json())
-   .then((data) => console.log(data))
+
+   .then((data) => {
+    console.log(data);
+
+    setLoginData(data);
+    if(data.id !== null) {
+         setIsLogged(true);
+    }
+    if(data.isAdmin) {
+        setIsAdmin(true);
+    }
+
+    window.alert(data.message);
+
+   }
+   )
+
+
    .catch((err) => console.log(err));
 
 

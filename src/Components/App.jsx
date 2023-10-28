@@ -13,7 +13,6 @@ import AdminRegistrationMain from './AdminRegistrationMain';
 import UserDetail from './UserDetail';
 
 
-
 function App() {
   return (
     <>
@@ -35,7 +34,7 @@ function App() {
         </Routes>
         </UserContextProvider>
       </Router>
-     
+      
     </>
   );
 }

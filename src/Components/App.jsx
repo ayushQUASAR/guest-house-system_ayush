@@ -8,7 +8,9 @@ import Alumni from './AlumniDetails/AlumniMain'
 import Student from './StudentDetails/StudentMain'
 import Faculty from './FacultyDetails/FacultyMain'
 import AdminRegistration from './AdminRegistration';
+import { UserContextProvider } from '../Components/ContextHooks/UserContext';
 import AdminRegistrationMain from './AdminRegistrationMain';
+import UserDetail from './UserDetail';
 
 
 
@@ -17,7 +19,9 @@ function App() {
     <>
    
       <Router>
+      <UserContextProvider>
         <Routes>
+        
           <Route path="/Home" element={<Home/>} />
           
           <Route path="/Register" element={<Registration/>} />
@@ -26,8 +30,10 @@ function App() {
           <Route path="/Student" element={<Student/>} />
           <Route path="/Alumni" element={<Alumni/>} />
           <Route path="/Dashboard" element={<Dash/>} />
+          <Route path="/UserDetails" element={<UserDetail/>} />
           <Route path="/" element={<Login/>} />
         </Routes>
+        </UserContextProvider>
       </Router>
      
     </>

@@ -1,35 +1,59 @@
-import React, { useEffect, useState } from "react";
+import React, {useState, useEffect} from "react";
 import  "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle';
-const Approvaltable = () => {
-  const [loginData, setLoginData] = useState([]);
-  useEffect(()=>{
 
-    fetch("guest-house-back.onrender.com/users/approved/pending").then((res) => res.json())
-  .then((data) =>{
-    setLoginData(data); })
-  .catch((err) => console.log(err));
-      console.log("hi")
-  },[])
 
-  const handleAccept = (userId) => {
-    // fetch(`https://your-api-url-for-accept/${userId}`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-       
-    //     console.log("User accepted:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error accepting user:", error);
-    //   });
-    console.log("hello")
-  };
-  
+
+const Approvaltable = () => { 
+const [pendingUsers, setPendingUsers] = useState(null);
+
+useEffect(()=> {
+  fetch("http://localhost:4000/users/approved/pending")
+  .then((res) => res.json())
+  .then((data) =>{ setPendingUsers(data); console.log(data)})
+  .then((err) => console.log(err));
+}, []);
+
+
+const handleApproval = (id, status) => {
+      fetch("http://localhost:4000/admin/approveRegistration", {
+        method: "POST",
+        mode:"cors",
+        body : JSON.stringify({
+           user: id,
+          status: `${status}`,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.json())
+      .then((data)=> {
+        console.log(data);
+        window.alert(data.message);
+
+        setPendingUsers((prev) => {
+                const selectedUsers  = prev.filter((user) => user.user._id !== id);
+                return selectedUsers;
+        })
+      
+      })
+      .catch((err) => console.log(err));
+}
+
+
+
+// pendingUsers.map((user, index) => {
+// return  <tr key={user._id}>
+//                <td scope="row">{index+1}</td>
+//             <td>{user.name}</td> 
+//             <td>{user.email}</td>
+//             <td>{user.phone}</td>
+//             <td>{user.refInfo}</td> 
+//             <td><button type="button" class="btn btn-success btn-sm">Accept</button> <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
+//   </tr>
+// })
+
   return (
     <>
       <table class="table">
@@ -43,33 +67,23 @@ const Approvaltable = () => {
             <td scope="col">Approval</td>
           </tr>
         </thead>
+
         <tbody>
-    {loginData.map((indx,val)=>(    
-    <tr>
-      <td scope="row">{indx}</td>
-      <td>{val.name}</td> 
-      <td>{val.email}</td>
-      <td>{val.phnnumber}</td>
-      <td>{val.ref}</td> 
-      <td><button type="button"  onClick={() => handleAccept(user.id)} class="btn btn-success btn-sm">Accept</button> <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
-    </tr>
-    ))}
-          <tr>
-            <td scope="row">1</td>
-            <td>John</td> 
-            <td>user@gmail.com</td>
-            <td>8989898989</td>
-            <td>Student</td> 
-            <td><button type="button" class="btn btn-success btn-sm">Accept</button> <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
-          </tr>
-          <tr>
-            <td scope="row">2</td>
-            <td>Mark</td> 
-            <td>user@gmail.com</td>
-            <td>8989898989</td>
-            <td>Student</td> 
-            <td><button type="button" class="btn btn-success btn-sm">Accept</button> <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
-          </tr>
+          {
+           pendingUsers && pendingUsers.length > 0 &&  pendingUsers.map((user, index) => {
+              return  <tr key={user._id}>
+                             <td scope="row">{index+1}</td>
+                          <td>{user.user.name}</td> 
+                          <td>{user.user.email}</td>
+                          <td>{user.user.phone}</td>
+                          <td>{user.user.refInfo}</td> 
+                          <td><button type="button" class="btn btn-success btn-sm" onClick={()=> {handleApproval(user.user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user._id, 'reject')}>Reject</button></td>
+                </tr>
+              })
+          }
+
+
+         
         </tbody>
       </table>
     </>

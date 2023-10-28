@@ -1,6 +1,7 @@
 import React from "react";
 // import Image from "./p.jpg"
-const  SideBar = () => {
+const  SideBar = ({user}) => {
+  const {userDetails, referenceDetails} = user;
   return (
     
     <div className="tables-container">
@@ -10,19 +11,19 @@ const  SideBar = () => {
         <tbody>
           <tr>
             <th scope="row">Name:</th>
-            <td>John</td>
+            <td>{userDetails.name}</td>
           </tr>
           <tr>
             <th scope="row">Address:</th>
-            <td>Chandigarh Sector 22A</td>
+            <td>{userDetails.address}</td>
           </tr>
           <tr>
             <th scope="row">Contact Number:</th>
-            <td>8812313212</td>
+            <td>{userDetails.phone}</td>
           </tr>
           <tr>
             <th scope="row">ID:</th>
-            <td>1234-2131-1231</td>
+            <td>{userDetails._id}</td>
           </tr>
         </tbody>
       </table> 
@@ -30,20 +31,17 @@ const  SideBar = () => {
          <h4>Reference:</h4>
         <tbody>
           <tr>
-            <th scope="row"> Student Name</th>
-            <td>John</td>
+            <th scope="row"> Reference Name</th>
+            <td>{referenceDetails.refTo.phone}</td>
           </tr>
+          
           <tr>
-            <th scope="row">Roll Number</th>
-            <td>21103136</td>
-          </tr>
-          <tr>
-            <th scope="row">Branch</th>
-            <td>CSE</td>
+            <th scope="row"> Reference Email</th>
+            <td>{referenceDetails.refTo.email}</td>
           </tr>
           <tr>
             <th scope="row">Contact</th>
-            <td>8767654657</td>
+            <td>{referenceDetails.refTo.phone}</td>
           </tr>
         </tbody>
       </table>

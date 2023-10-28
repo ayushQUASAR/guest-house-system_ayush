@@ -6,6 +6,7 @@
 .lleft-box,
 .lright-box {
   position: relative;
+  
   width: 50vw;
   height: 100vh;
 }

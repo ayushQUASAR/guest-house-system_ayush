@@ -1,0 +1,14 @@
+.registered-container{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-height: 100%;
+
+}
+.profile-popup{
+    width: 60vw;
+    height: 60vh;
+    position:absolute;
+    z-index: 200;
+}

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import  "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle';
+import "../style/Approvaltable.css"
 
 
 
@@ -56,36 +57,36 @@ const handleApproval = (id, status) => {
 
   return (
     <>
-      <table class="table">
-        <thead>
-          <tr>
-            <td scope="col">S.No</td>
-            <td scope="col">Name</td> 
-            <td scope="col">Email id</td>
-            <td scope="col">Contact Number</td>
-            <td scope="col">Reference</td> 
-            <td scope="col">Approval</td>
-          </tr>
-        </thead>
+      <div class="approval-table">
+        <div className="grid-table">
+        
+            <div>S.No</div>
+            <div>Name</div> 
+            <div>Email id</div>
+            <div>Contact Number</div>
+            <div>Reference</div> 
+            <div>Approval</div>
+        
+        </div>
 
-        <tbody>
+        <div className="table-content">
           {
            pendingUsers && pendingUsers.length > 0 &&  pendingUsers.map((user, index) => {
-              return  <tr key={user._id}>
-                             <td scope="row">{index+1}</td>
-                          <td>{user.user.name}</td> 
-                          <td>{user.user.email}</td>
-                          <td>{user.user.phone}</td>
-                          <td>{user.user.refInfo}</td> 
-                          <td><button type="button" class="btn btn-success btn-sm" onClick={()=> {handleApproval(user.user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user._id, 'reject')}>Reject</button></td>
-                </tr>
+              return  <div className="grid-table-content" key={user._id}>
+                             <div>{index+1}</div>
+                          <div>{user.user.name}</div> 
+                          <div>{user.user.email}</div>
+                          <div>{user.user.phone}</div>
+                          <div>{user.user.refInfo}</div> 
+                          <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {handleApproval(user.user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user._id, 'reject')}>Reject</button></div>
+                </div>
               })
           }
 
 
          
-        </tbody>
-      </table>
+        </div>
+      </div>
     </>
   );
 };

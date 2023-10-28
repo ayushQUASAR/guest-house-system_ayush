@@ -7,12 +7,14 @@ import userDetail from './UserDetail'
 import Dash from './Dash'
 import Home from '../../src/Home'
 import { useUserContext } from './ContextHooks/UserContext'
+import { useLoginContext } from './ContextHooks/LoginContext'
 
 const Login = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [loginData, setLoginData] = useState(null);
-  const [isLogged, setIsLogged] = useState(false);
+  // const [isLogged, setIsLogged] = useState(false);
+  const {isLogged,setIsLogged}=useLoginContext();
   const [isAdmin, setIsAdmin] = useState(false);
 
   const [data, setData] = useState([]);
@@ -41,7 +43,7 @@ const Login = () => {
 
         setLoginData(data);
         setUserId(data.id)
-        if (data.id !== null) {
+        if (data.id !== undefined) {
           setIsLogged(true);
           console.log("islog ID NULL", isLogged)
         }

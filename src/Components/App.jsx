@@ -11,6 +11,7 @@ import AdminRegistration from './AdminRegistration';
 import { UserContextProvider } from '../Components/ContextHooks/UserContext';
 import AdminRegistrationMain from './AdminRegistrationMain';
 import UserDetail from './UserDetail';
+import { LoginContextProvider } from './ContextHooks/LoginContext';
 
 
 
@@ -19,6 +20,7 @@ function App() {
     <>
    
       <Router>
+        <LoginContextProvider>
       <UserContextProvider>
         <Routes>
         
@@ -34,6 +36,7 @@ function App() {
           <Route path="/" element={<Login/>} />
         </Routes>
         </UserContextProvider>
+        </LoginContextProvider>
       </Router>
      
     </>

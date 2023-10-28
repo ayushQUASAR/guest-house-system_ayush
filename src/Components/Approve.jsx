@@ -7,9 +7,9 @@ const Approve = () => {
   return (
     <>
       <div className="Approve-container">
-        <div className="topbar">
+        <div className="approve-topbar">
           <h1>APPROVAL REGISTRATION</h1>
-        </div>
+      
         <div className="d-flex flex-row bd-highlight mb-3 searchflex">
           <div className="p-2 bd-highlight">
             <input
@@ -49,8 +49,8 @@ const Approve = () => {
             </div>
           </div>
         </div>
-
-        <div>
+        </div>
+        <div className="approve-table-wrapper">
           <Table />
         </div>
         <div className="footbutton">

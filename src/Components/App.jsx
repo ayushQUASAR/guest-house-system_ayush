@@ -14,7 +14,6 @@ import UserDetail from './UserDetail';
 import { LoginContextProvider } from './ContextHooks/LoginContext';
 
 
-
 function App() {
   return (
     <>
@@ -38,7 +37,7 @@ function App() {
         </UserContextProvider>
         </LoginContextProvider>
       </Router>
-     
+      
     </>
   );
 }

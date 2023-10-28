@@ -12,6 +12,7 @@ import { UserContextProvider } from '../Components/ContextHooks/UserContext';
 import AdminRegistrationMain from './AdminRegistrationMain';
 import UserDetail from './UserDetail';
 import { LoginContextProvider } from './ContextHooks/LoginContext';
+import  Container  from './BookingForm/Container';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Routes>
         
           <Route path="/Home" element={<Home/>} />
+          <Route path="/Booking" element={<Container/>} />
           
           <Route path="/Register" element={<Registration/>} />
           <Route path="/AdminRegistration" element={<AdminRegistrationMain/>} />

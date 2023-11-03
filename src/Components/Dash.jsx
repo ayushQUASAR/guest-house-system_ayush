@@ -18,9 +18,12 @@ import DashboardContent from './DashboardContent';
 import AdminUserProfile from './AdminUserProfile'
 import AdminRoomBooking from './AdminRoomBooking'
 import BookedRooms from './BookedRooms'
+import ApproveBooking from './BookingApproval/ApproveBooking';
 import DashboardSettings from './DashboardSettings'
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import RegisteredUsers from './RegisteredUsers'
 import { Settings } from '@mui/icons-material';
+import { useLoginContext } from './ContextHooks/LoginContext';
 
 
 const Dash = ({admin}) => {
@@ -32,8 +35,9 @@ const Dash = ({admin}) => {
   const selectContent = (content) => {
     setContentType(content);
     console.log(contentType)
+   
   }
-
+ const {isLogged,setIsLogged}=useLoginContext();
   
   const contentComponents = {
     dashboard: <DashboardContent />,
@@ -43,6 +47,7 @@ const Dash = ({admin}) => {
     adminuserProfile: <AdminUserProfile />,
     settings: <DashboardSettings />,
     approve: <Approve />,
+    approvebooking :<ApproveBooking/>,
   };
 
   const selectedContent = contentComponents[contentType];
@@ -68,7 +73,8 @@ const Dash = ({admin}) => {
         <li>
           <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
           <div onClick={() => selectContent('adminRoomBooking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Admin Room Booking</span></div>
-          <div  onClick={() => selectContent('approve')} className="dash-optn"><span><AssignmentTurnedInIcon />Approve Bookings</span></div>
+          <div  onClick={() => selectContent('approvebooking')} className="dash-optn"><span><AssignmentTurnedInIcon />Approve Bookings</span></div>
+          <div  onClick={() => selectContent('approve')} className="dash-optn"><span><PersonAddIcon />Approve Registrations</span></div>
           <div onClick={() => selectContent('bookedRooms')} className="dash-optn"><span><TaskAltIcon/>Booked Rooms</span></div>
           <div onClick={() => selectContent('registeredUsers')} className="dash-optn"><span><HowToRegRoundedIcon/>Registered Users</span></div>
         </li>
@@ -76,7 +82,7 @@ const Dash = ({admin}) => {
         <li>
           <div  onClick={() => selectContent('adminuserProfile')} className="dash-optn"><span><PersonPinIcon />Profile</span></div>
           <div onClick={() => selectContent('settings')} className="dash-optn"><span><SettingsIcon />Settings</span></div>
-          <div onClick={() => selectContent('approve')} className="dash-optn"><span><LogoutIcon />Logout</span></div>
+          <div onClick={() =>setIsLogged(false)} className="dash-optn"><span><LogoutIcon />Logout</span></div>
         </li>
       </div> </div>}
       <div className="dash-area">
@@ -86,7 +92,7 @@ const Dash = ({admin}) => {
   </div>
       </div>
 
-     
+    
     </div>
     </>
   )

@@ -95,9 +95,11 @@ const HomeHeader = () => {
 
                                 <div className="nav-optn">Profile</div>
                             </NavLink>
-                            <span className="navBarElements" id="BookNow">
+                            <NavLink to="/Booking">
+                            <div className="nav-optn" id="BookNow">
                                 Book Now
-                            </span>
+                            </div>
+                            </NavLink>
                         </li>
                     </div>
                 </div>

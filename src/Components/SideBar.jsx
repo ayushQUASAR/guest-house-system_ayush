@@ -1,7 +1,7 @@
 import React from "react";
 // import Image from "./p.jpg"
 const  SideBar = ({user}) => {
-  const {userDetails, referenceDetails} = user;
+  
   return (
     
     <div className="tables-container">
@@ -11,40 +11,40 @@ const  SideBar = ({user}) => {
         <tbody>
           <tr>
             <th scope="row">Name:</th>
-            <td>{userDetails.name}</td>
+            <td>{user.name}</td>
           </tr>
           <tr>
             <th scope="row">Address:</th>
-            <td>{userDetails.address}</td>
+            <td>{user.address}</td>
           </tr>
           <tr>
             <th scope="row">Contact Number:</th>
-            <td>{userDetails.phone}</td>
+            <td>{user.phone}</td>
           </tr>
           <tr>
             <th scope="row">ID:</th>
-            <td>{userDetails._id}</td>
+            <td>{user._id}</td>
           </tr>
         </tbody>
       </table> 
-      <table className="table">
+      {/* <table className="table">
          <h4>Reference:</h4>
         <tbody>
           <tr>
             <th scope="row"> Reference Name</th>
-            <td>{referenceDetails.refTo.phone}</td>
+            <td>{user.refTo.phone}</td>
           </tr>
           
           <tr>
             <th scope="row"> Reference Email</th>
-            <td>{referenceDetails.refTo.email}</td>
+            <td>{user.refTo.email}</td>
           </tr>
           <tr>
             <th scope="row">Contact</th>
-            <td>{referenceDetails.refTo.phone}</td>
+            <td>{user.refTo.phone}</td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
       
  
     </div>

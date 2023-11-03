@@ -1,8 +1,6 @@
 .Approve-container {
-    /* margin-top: 20px; */
-    /* margin-bottom: 20px; */
-    /* border: 1px solid #0275d8; */
-    /* border-radius: 20px; */
+  
+  border-radius: 10px;
     width: 100%;
     display: flex;
     height: 100%;
@@ -17,13 +15,12 @@
     text-align: center;
   }
   
-  .topbar {
+  .approve-topbar {
 
-    margin-top:20px;
+    /* margin-top:20px; */
     margin-bottom:20px;
-    background-color: #0275d8;
-    border:1px solid #0275d8;
-    border-radius:20px;
+    background-color: rgb(76, 116, 185);
+    border-radius:10px;
      
   }
    .search-input{
@@ -41,4 +38,10 @@
   
   .searchflex{
     justify-content: center;
+  }
+  .approve-table-wrapper{
+    background-color: #ddd;
+  border-radius: 10px;
+  padding: 10px;
+
   }

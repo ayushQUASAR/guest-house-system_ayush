@@ -64,11 +64,11 @@ export default function Regrightside() {
         setIdProof(file);
       }
       else {
-        window.alert("ONLY IMAGES AND PDF ALLOWED");
+        window.alert("ONLY IMAGES AND PDF ARE ALLOWED. Please Upload again");
       }
     }
     else {
-      window.alert("file size can be max. 1MB");
+      window.alert(" file size can be maximum upto. 1MB. Please Upload file within the limit ");
     }
   
   }

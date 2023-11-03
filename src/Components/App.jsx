@@ -10,18 +10,30 @@ import AdminRegistration from './AdminRegistration';
 import { UserContextProvider } from '../Components/ContextHooks/UserContext';
 import AdminRegistrationMain from './AdminRegistrationMain';
 import UserDetail from './UserDetail';
+<<<<<<< HEAD
 // import { Container } from '@mui/material';
 import Container from '../Components/BookingForm/Container'
+=======
+import { LoginContextProvider } from './ContextHooks/LoginContext';
+import  Container  from './BookingForm/Container';
+>>>>>>> 4be65ea9fa28b747bda0225ea625b33ec393c10f
 
 
 function App() {
   return (
     <>
+<<<<<<< HEAD
       {/* <Router>
+=======
+   
+      <Router>
+        <LoginContextProvider>
+>>>>>>> 4be65ea9fa28b747bda0225ea625b33ec393c10f
       <UserContextProvider>
         <Routes>
         
           <Route path="/Home" element={<Home/>} />
+          <Route path="/Booking" element={<Container/>} />
           
           <Route path="/Register" element={<Registration/>} />
           <Route path="/AdminRegistration" element={<AdminRegistrationMain/>} />
@@ -33,8 +45,13 @@ function App() {
           <Route path="/" element={<Login/>} />
         </Routes>
         </UserContextProvider>
+<<<<<<< HEAD
       </Router> */}
       <Container/>
+=======
+        </LoginContextProvider>
+      </Router>
+>>>>>>> 4be65ea9fa28b747bda0225ea625b33ec393c10f
       
     </>
   );

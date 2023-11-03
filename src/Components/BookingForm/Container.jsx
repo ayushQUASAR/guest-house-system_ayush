@@ -3,9 +3,12 @@ import BookingDetails from "./BookingDetails";
 import BookingForm from "./BookingForm";
 import PersonDetails from "./PersonDetails";
 import "./Container.css";
+import HomeHeader from "../Homeheader";
 
 const Container = () => {
   return (
+    <>
+    <HomeHeader/>
     <div className="MainContainer">
       <div className="heading">
         <h1><b>REQUIRED DETAILS</b></h1>
@@ -28,6 +31,7 @@ const Container = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

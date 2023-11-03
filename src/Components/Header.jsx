@@ -8,7 +8,7 @@ import ContactlessIcon from '@mui/icons-material/Contactless';
 import AlignHorizontalLeftOutlinedIcon from '@mui/icons-material/AlignHorizontalLeftOutlined';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import HelpCenterIcon from '@mui/icons-material/HelpCenter';
-const Header = ({ TogggleSidestate }) => {
+const Header = () => {
     return (
         <div>
 
@@ -22,8 +22,8 @@ const Header = ({ TogggleSidestate }) => {
                     </div>
                     <div className="bg-nav">
                         <li>
-                            <NavLink className="nav-underline" to="/">
-                                <div onClick={TogggleSidestate} className="nav-optn"><HomeRoundedIcon color="white" /><div className='optn-name'>Home</div></div>
+                            <NavLink className="nav-underline" to="/Home">
+                                <div  className="nav-optn"><HomeRoundedIcon color="white" /><div className='optn-name'>Home</div></div>
 
                             </NavLink>
 

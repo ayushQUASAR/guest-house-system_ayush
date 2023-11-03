@@ -14,14 +14,45 @@ import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { NavLink } from 'react-router-dom';
 import Header from './Header';
 import Approve from './Approve';
+import DashboardContent from './DashboardContent';
+import AdminUserProfile from './AdminUserProfile'
+import AdminRoomBooking from './AdminRoomBooking'
+import BookedRooms from './BookedRooms'
+import ApproveBooking from './BookingApproval/ApproveBooking';
+import DashboardSettings from './DashboardSettings'
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import RegisteredUsers from './RegisteredUsers'
+import { Settings } from '@mui/icons-material';
+import { useLoginContext } from './ContextHooks/LoginContext';
 
-const Dash = () => {
+
+const Dash = ({admin}) => {
   const [sideState, setSidestate] = useState(true);
+  const [contentType, setContentType] = useState('dashboard')
   const ToggleSidestate = () => {
     setSidestate(!sideState);
   }
+  const selectContent = (content) => {
+    setContentType(content);
+    console.log(contentType)
+   
+  }
+ const {isLogged,setIsLogged}=useLoginContext();
+  
+  const contentComponents = {
+    dashboard: <DashboardContent />,
+    adminRoomBooking: <AdminRoomBooking />,
+    bookedRooms: <BookedRooms />,
+    registeredUsers: <RegisteredUsers />,
+    adminuserProfile: <AdminUserProfile />,
+    settings: <DashboardSettings />,
+    approve: <Approve />,
+    approvebooking :<ApproveBooking/>,
+  };
+
+  const selectedContent = contentComponents[contentType];
   return (
-    // <Header/>
+  
     <>
           <Header Toggle={ToggleSidestate}/>
     <div className='dash-menu'>
@@ -40,26 +71,28 @@ const Dash = () => {
         <div className="dash-wrapper">
         <div className='side-title'> Administartion</div>
         <li>
-          <div className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
-          <div className="dash-optn"><span><BedroomParentRoundedIcon/>Admin Room Booking</span></div>
-          <div className="dash-optn"><span><AssignmentTurnedInIcon />Approve Bookings</span></div>
-          <div className="dash-optn"><span><TaskAltIcon/>Booked Rooms</span></div>
-          <div className="dash-optn"><span><HowToRegRoundedIcon/>Registered Users</span></div>
+          <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
+          <div onClick={() => selectContent('adminRoomBooking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Admin Room Booking</span></div>
+          <div  onClick={() => selectContent('approvebooking')} className="dash-optn"><span><AssignmentTurnedInIcon />Approve Bookings</span></div>
+          <div  onClick={() => selectContent('approve')} className="dash-optn"><span><PersonAddIcon />Approve Registrations</span></div>
+          <div onClick={() => selectContent('bookedRooms')} className="dash-optn"><span><TaskAltIcon/>Booked Rooms</span></div>
+          <div onClick={() => selectContent('registeredUsers')} className="dash-optn"><span><HowToRegRoundedIcon/>Registered Users</span></div>
         </li>
         <div className='side-title'>Admin</div>
         <li>
-          <div className="dash-optn"><span><PersonPinIcon />Profile</span></div>
-          <div className="dash-optn"><span><SettingsIcon />Settings</span></div>
-          <div className="dash-optn"><span><LogoutIcon />Logout</span></div>
+          <div  onClick={() => selectContent('adminuserProfile')} className="dash-optn"><span><PersonPinIcon />Profile</span></div>
+          <div onClick={() => selectContent('settings')} className="dash-optn"><span><SettingsIcon />Settings</span></div>
+          <div onClick={() =>setIsLogged(false)} className="dash-optn"><span><LogoutIcon />Logout</span></div>
         </li>
       </div> </div>}
       <div className="dash-area">
   <div className="dash-box">
-    <Approve/>
+    {selectedContent}
+    
   </div>
       </div>
 
-     
+    
     </div>
     </>
   )

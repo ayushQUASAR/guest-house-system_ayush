@@ -4,20 +4,12 @@
     align-items: center;
     min-height: 100vh;
   }
-  
   .centered-box {
-    
     border-radius: 10px;
     padding: 50px;
     width:100%;
     box-shadow:2px 2px 2px 2px rgb(128, 125, 125);
   }
-  
-  .reg-rightside{
-    overflow-y: scroll;
-    max-height: 80vh;
-  }
-
 
 .Parent {
     padding: 20px;
@@ -26,7 +18,7 @@
 }
 
 .leftSide {
-    background-color: rgb(51, 40, 209);
+    background-color: #0275d8;
     border: 2px solid rgb(12, 12, 12);
     border-radius: 25px 100px 25px 100px;
     
@@ -42,7 +34,8 @@
   }
   
   .LeftImage {
-    max-width: 100%; /* Ensures the image is responsive */
+    max-width: 100%; 
+    /* Ensures the image is responsive */
     height: auto;
   }
   

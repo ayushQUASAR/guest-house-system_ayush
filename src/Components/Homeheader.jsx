@@ -28,7 +28,7 @@ const HomeHeader = () => {
                                 to="Home"
                                 smooth={true}
                                 duration={50}
-                                
+
                             >
 
                                 <div className="nav-optn"><HomeRoundedIcon color="white" /><div className='optn-name'>Home</div>       </div>
@@ -39,7 +39,7 @@ const HomeHeader = () => {
                                 to="contactHeader"
                                 smooth={true}
                                 duration={100}
-                                
+
                             >
                                 <div className="nav-optn">
                                     <ContactlessIcon /> ContactUs
@@ -52,7 +52,7 @@ const HomeHeader = () => {
                                 to="guidelinesHeader"
                                 smooth={true}
                                 duration={50}
-                                
+
                             >
                                 <div className="nav-optn">
                                     <AlignHorizontalLeftOutlinedIcon />   Guidelines
@@ -63,7 +63,7 @@ const HomeHeader = () => {
                                 to="AboutUs"
                                 smooth={true}
                                 duration={50}
-                          
+
                             >
 
                                 <div className="nav-optn">
@@ -73,15 +73,15 @@ const HomeHeader = () => {
                             <div className="nav-optn">
                                 <CurrencyRupeeIcon /> Charges
                             </div>
-                            <Link
+                            {/* <Link
                                 to="Facility"
                                 smooth={true}
                                 duration={50}
                                 className="nav-optn"
                             >
-
-                                Facility
-                            </Link>
+                                <div className="nav-optn">
+                                    Facility</div>
+                            </Link> */}
                             {/* <Link
                                 to="Availability"
                                 smooth={true}
@@ -91,10 +91,14 @@ const HomeHeader = () => {
 
                                 Availability
                             </Link> */}
-                            <NavLink to="/Dashboard">
-                                <span className="navBarElements" id="BookNow">
-                                    Book Now
-                                </span>
+                            <NavLink to="/UserDetails">
+
+                                <div className="nav-optn">Profile</div>
+                            </NavLink>
+                            <NavLink to="/Booking">
+                            <div className="nav-optn" id="BookNow">
+                                Book Now
+                            </div>
                             </NavLink>
                         </li>
                     </div>

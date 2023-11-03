@@ -33,6 +33,7 @@
 .nav-optn{
     align-items: center;
     display: flex;
+    text-decoration: none;
     color: white;
 }
 .nav-optn:hover{

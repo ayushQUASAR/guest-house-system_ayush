@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from '../Home';
 import Login from "./Login"
@@ -11,13 +10,14 @@ import AdminRegistration from './AdminRegistration';
 import { UserContextProvider } from '../Components/ContextHooks/UserContext';
 import AdminRegistrationMain from './AdminRegistrationMain';
 import UserDetail from './UserDetail';
+// import { Container } from '@mui/material';
+import Container from '../Components/BookingForm/Container'
 
 
 function App() {
   return (
     <>
-   
-      <Router>
+      {/* <Router>
       <UserContextProvider>
         <Routes>
         
@@ -33,7 +33,8 @@ function App() {
           <Route path="/" element={<Login/>} />
         </Routes>
         </UserContextProvider>
-      </Router>
+      </Router> */}
+      <Container/>
       
     </>
   );

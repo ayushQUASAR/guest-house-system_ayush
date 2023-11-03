@@ -5,5 +5,4 @@ const BookedRooms = () => {
     <div>BookedRooms</div>
   )
 }
-
 export default BookedRooms

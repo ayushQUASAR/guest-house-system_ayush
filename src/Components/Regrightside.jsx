@@ -248,7 +248,7 @@ formData.append("Department", department);
         </div>
         <div className="row input">
         <NavLink to ="/" >
-         
+
               Already have an account? Login
            
           </NavLink> 

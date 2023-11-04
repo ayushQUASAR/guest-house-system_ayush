@@ -53,7 +53,7 @@ const BookingForm = ({startDate, endDate}) => {
   return (
     <>
       <div className="form-container center-horizontal">
-        <form className="row g-3">
+        <form className="row g-3 book-form">
           <h1 className="visitor-heading">ENTER DETAILS OF VISITOR</h1>
           <div className="col-md-6">
             <label htmlFor="firstName" className="form-label">

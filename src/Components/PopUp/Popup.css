@@ -22,11 +22,11 @@
   }
   
   
-  h2 {
+  .popup-heading {
     color: #333;
   }
   
-  p {
+  .popup-para {
     color: #666;
     font-size: medium;
   }

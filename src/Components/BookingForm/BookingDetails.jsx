@@ -27,8 +27,8 @@ const BookingDetails = ({ bookingDetails }) => {
   };
   return (
     <div className="navbar">
-      <div className="form-group">
-        <label htmlFor="checkin">CHECK IN</label>
+      <div className="form-group ">
+        <label className="booking-label" htmlFor="checkin">CHECK IN</label>
         <input
           type="text"
           className="form-control inputs"
@@ -40,7 +40,7 @@ const BookingDetails = ({ bookingDetails }) => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="checkout">CHECK OUT</label>
+        <label className="booking-label" htmlFor="checkout">CHECK OUT</label>
         <input
           type="text"
           className="form-control inputs"
@@ -52,7 +52,7 @@ const BookingDetails = ({ bookingDetails }) => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="stayduration">DURATION OF STAY</label>
+        <label className="booking-label" htmlFor="stayduration">DURATION OF STAY</label>
         <input
           type="text"
           className="form-control inputs"
@@ -64,7 +64,7 @@ const BookingDetails = ({ bookingDetails }) => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="roomselected">ROOMS SELECTED</label>
+        <label className="booking-label" htmlFor="roomselected">ROOMS SELECTED</label>
         <input
           type="text"
           className="form-control inputs"

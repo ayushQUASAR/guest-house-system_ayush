@@ -27,7 +27,7 @@ const Login = () => {
 
 
 
-    fetch("http://localhost:4000/login", {
+    fetch(import.meta.env.VITE_API_URL + "/login", {
 
 
       method: "POST",

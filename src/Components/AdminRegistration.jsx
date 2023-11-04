@@ -78,7 +78,7 @@ formData.append("idProof", idProof);
 
 
 
-   fetch("http://localhost:4000/register", {
+   fetch(import.meta.env.VITE_API_URL + "/register", {
     method: "POST",
     body: formData,
     mode: "cors",

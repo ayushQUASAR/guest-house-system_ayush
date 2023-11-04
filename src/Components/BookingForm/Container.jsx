@@ -1,11 +1,24 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { createContext, useContext, useState }  from "react";
 import BookingDetails from "./BookingDetails";
 import BookingForm from "./BookingForm";
 import PersonDetails from "./PersonDetails";
 import "./Container.css";
 import HomeHeader from "../Homeheader";
+import { FormProvider, FormContext } from '../ContextHooks/FormContext';
+
+
 
 const Container = () => {
+
+  const { formData } = useContext(FormContext);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData);
+    // Perform submission with formData
+  };
+
   return (
     <>
     <HomeHeader/>
@@ -30,6 +43,7 @@ const Container = () => {
           {/* </div> */}
         </div>
       </div>
+      <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
     </div>
     </>
   );

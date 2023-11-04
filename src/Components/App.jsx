@@ -12,6 +12,7 @@ import AdminRegistrationMain from "./AdminRegistrationMain";
 import UserDetail from "./UserDetail";
 import { LoginContextProvider } from "./ContextHooks/LoginContext";
 import Container from "./BookingForm/Container";
+import { FormProvider } from "./ContextHooks/FormContext";
 
 function App() {
   return (
@@ -19,21 +20,24 @@ function App() {
       <Router>
         <LoginContextProvider>
           <UserContextProvider>
-            <Routes>
-              <Route path="/Home" element={<Home />} />
-              <Route path="/Booking" element={<Container />} />
-              <Route path="/Register" element={<Registration />} />
-              <Route
-                path="/AdminRegistration"
-                element={<AdminRegistrationMain />}
-              />
-              <Route path="/Faculty" element={<Faculty />} />
-              <Route path="/Student" element={<Student />} />
-              <Route path="/Alumni" element={<Alumni />} />
-              <Route path="/Dashboard" element={<Dash />} />
-              <Route path="/UserDetails" element={<UserDetail />} />
-              <Route path="/" element={<Login />} />
-            </Routes>
+            <FormProvider>
+              <Routes>
+                <Route path="/Home" element={<Home />} />
+                <Route path="/Booking" element={<Container />} />
+
+                <Route path="/Register" element={<Registration />} />
+                <Route
+                  path="/AdminRegistration"
+                  element={<AdminRegistrationMain />}
+                />
+                <Route path="/Faculty" element={<Faculty />} />
+                <Route path="/Student" element={<Student />} />
+                <Route path="/Alumni" element={<Alumni />} />
+                <Route path="/Dashboard" element={<Dash />} />
+                <Route path="/UserDetails" element={<UserDetail />} />
+                <Route path="/" element={<Login />} />
+              </Routes>
+            </FormProvider>
           </UserContextProvider>
         </LoginContextProvider>
       </Router>

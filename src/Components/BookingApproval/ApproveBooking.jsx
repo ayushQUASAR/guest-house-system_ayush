@@ -39,7 +39,7 @@ const BookingApproval = () => {
   const abortController = new AbortController();
 
   useEffect(()=> {
-fetch("http://localhost:4000/booking/approved/pending")
+fetch(import.meta.env.VITE_API_URL + "/booking/approved/pending")
 .then((res) => res.json())
 .then((data) => setRequests(() => {
   const dataSet = data.map((eachData) => {
@@ -83,7 +83,7 @@ fetch("http://localhost:4000/booking/approved/pending")
           // Replace the following with your actual API request code
           // For example, using the fetch API:
 
-          fetch("http://localhost:4000/admin/bookingApproval", {
+          fetch(import.meta.env.VITE_API_URL + "/admin/bookingApproval", {
             method: "POST", // or "PUT" or "GET" depending on your API
             body: JSON.stringify({
               booking: request._id,
@@ -119,7 +119,7 @@ fetch("http://localhost:4000/booking/approved/pending")
   };
 
   const handleRejectClick = (id) => {
-      fetch("http://localhost:4000/admin/bookingApproval", {
+      fetch(import.meta.env.VITE_API_URL + "/admin/bookingApproval", {
         method: "POST",
         mode : "cors",
         headers : {

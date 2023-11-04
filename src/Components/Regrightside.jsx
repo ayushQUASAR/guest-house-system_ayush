@@ -5,17 +5,11 @@ import { NavLink } from "react-router-dom";
 import Alumni from './AlumniDetails/AlumniRight'
 import Faculty from './FacultyDetails/FacultyRight'
 import Student from './StudentDetails/StudentRight'
-const buttonStyle = {
-  backgroundColor: "#007BFF", // Change to the desired background color
-  color: "white", // Text color
-  border: "none",
-  cursor: "pointer",
-  padding: "10px",
-  borderRadius: "5px",
-  margin: "5px",
-};
 
 export default function Regrightside() {
+  const defaultButtonClass = "btnDefault";
+const clickedButtonClass = "btnClicked";
+
   const [Firstname, setFirstname] = useState("")
   const [Lastname, setLastname] = useState("")
   const [Phnnumber, setPhnnumber] = useState("")
@@ -30,6 +24,7 @@ export default function Regrightside() {
   const [refphoneNumber, setRefphoneNumber] = useState('');
   const [idProof, setIdProof] = useState(null);
   // Alumni
+  console.log(contentType==='student')
 
   const [branch, setBranch] = useState('');
   const [batch, setBatch] = useState('');
@@ -199,14 +194,20 @@ formData.append("Department", department);
           </div>
           <div className="col-md-3 col-sm-6 col-12">
             <label>
-              <input  required
+              {/* <input  required
                 type="radio"
                 value="student"
                 onClick={()=>setContentType('student')}
                 checked={selectedOption === 'student'}
                 onChange={handleOptionChange}
-              />
-              <button type="button" onClick={()=>setContentType('student')} className={`form-control btn ${selectedOption === 'student' ? 'btn-primary' : 'btn-secondary'} rounded`} style={buttonStyle}>
+              /> */}
+              <button type="button" onClick={()=>setContentType('student')}  className={` ${
+                    contentType === 'student'
+                      ?clickedButtonClass : defaultButtonClass
+                      
+                      
+                  } `}
+                 >
                 <img src="student-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
                 Student
               </button>
@@ -215,14 +216,18 @@ formData.append("Department", department);
 
           <div className="col-md-3 col-sm-6 col-12">
             <label>
-              <input  required
+              {/* <input  required
               onClick={()=>setContentType('faculty')}
                 type="radio"
                 value="faculty"
                 checked={selectedOption === 'faculty'}
                 onChange={handleOptionChange}
-              />
-              <button type="button" onClick={()=>setContentType('faculty')} className={`form-control btn ${selectedOption === 'faculty' ? 'btn-primary' : 'btn-secondary'} rounded`} style={buttonStyle}>
+              /> */}
+              <button type="button" onClick={()=>setContentType('faculty')}  className={` ${
+                    contentType === 'faculty'
+                      ?  clickedButtonClass : defaultButtonClass
+                  } `}
+                 >
                 <img src="faculty-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
                 Faculty
               </button>
@@ -231,14 +236,18 @@ formData.append("Department", department);
 
           <div className="col-md-3 col-sm-6 col-12">
             <label>
-              <input
+              {/* <input
                 type="radio"  required
                 onClick={()=>setContentType('alumni')}
                 value="alumni"
                 checked={selectedOption === 'alumni'}
                 onChange={handleOptionChange}
-              />
-              <button type="button"onClick={()=>setContentType('alumni')} className={`form-control btn ${selectedOption === 'alumni' ? 'btn-primary' : 'btn-secondary'} rounded`} style={buttonStyle}>
+              /> */}
+              <button type="button"onClick={()=>setContentType('alumni')}  className={` ${
+                    contentType === 'alumni'
+                      ? clickedButtonClass : defaultButtonClass
+                  } `}
+                 >
                 <img src="alumni-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
                 Alumni
               </button>

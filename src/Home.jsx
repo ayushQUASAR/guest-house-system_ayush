@@ -5,6 +5,7 @@ import infoSolid from "/infoSolid.svg";
 import gallery from "/gallerySolid.svg";
 import availability from "/calendarSolid.svg";
 import contactSVG from "/contactSVG.svg";
+import Footer from "./Components/Footer/Footer"
 import houseSVG from "/guestHouse.svg";
 import guidelinesSVG from "/list-check-solid.svg";
 import { Link } from "react-scroll";
@@ -279,6 +280,7 @@ function Login() {
       <div className="contactUsDiv">
         <h1 id="contactHeader">Contact</h1>
       </div>
+      <Footer/>
     </>
   );
 }

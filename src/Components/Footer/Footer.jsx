@@ -1,11 +1,12 @@
 import React from 'react';
-import './Footer.css'; // Import your CSS file
-import logo from '../src/logo_250.png'
+import './Footer.css'
+import logo from '../../images/logo_250.png.png'
 
 
 const Footer = () => {
   return (
-    <> <div className="flex-container167">
+    <>
+     <div className="flex-container167">
       <div className="div1">
         <div>
           <img
@@ -79,10 +80,7 @@ const Footer = () => {
           <i className="fa fa-youtube-play"></i>
         </div>
       </div>
-      
-      {/* </div><div className="button1"> */}
-        {/* <button>Sign In</button> */}
-        {/* <button>Sign Up</button> */}
+
       </div>
       
    </>

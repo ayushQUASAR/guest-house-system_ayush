@@ -12,12 +12,50 @@
     width:100%;
     box-shadow:2px 2px 2px 2px rgb(128, 125, 125);
   }
+  .btnDefault {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  
+  .btnClicked {
+    background-color: #FF0000; /* Red background color when clicked */
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+  }
   
   .reg-rightside{
     overflow-y: scroll;
     max-height: 80vh;
   }
 
+  .btnDefault {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+  }
+  
+  .btnClicked {
+    background-color: #FF0000; /* Red background color when clicked */
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+  }
 
 .Parent {
     padding: 20px;

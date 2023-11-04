@@ -1,8 +1,12 @@
 import React from 'react'
-
+import Calendar from './Calendar/Calendar'
 const DashboardContent = () => {
   return (
-    <div>DashboardContent</div>
+    <div>
+
+
+      <Calendar/>
+    </div>
   )
 }
 

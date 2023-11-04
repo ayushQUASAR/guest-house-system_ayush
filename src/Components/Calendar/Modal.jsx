@@ -1,6 +1,6 @@
 const RoomDetailsModal = ({ isOpen, onClose, roomDetails }) => {
   if (!isOpen) return null;
-
+  console.log("hiiobb", isOpen);
   return (
     <div className="modal-overlay">
       <div className="modal">

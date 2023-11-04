@@ -26,7 +26,7 @@ export default function RegisteredUsers() {
 
 
   useEffect(() => {
-    fetch("http://localhost:4000/users/approved/registered")
+    fetch(import.meta.env.VITE_API_URL + "/users/approved/registered")
       .then((res) => res.json())
       .then((data) => { setUsers(data); console.log(data) })
       .catch((err) => console.error(err));

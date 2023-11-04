@@ -1,4 +1,6 @@
-.main1 {
+
+
+.main12 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,89 +13,105 @@
     border-radius: 10px;
   }
   
-  .main1 > p {
+  .main12 > p {
     text-align: center;
     margin-top: 10px;
   }
   
-  .head1 {
+  .head12 {
     width: 100%;
     background-color: rgb(80, 221, 228);
-    height: 30px;
+    height: 40px;
     text-align: center;
     padding-top: 20px;
   }
   
-  .form {
-    margin-top: 10px;
+  .form34 {
+    margin-top: 30px;
   }
   
-  .form1 {
+  .form134 {
     margin-left: 3px;
-    margin-top: 10px;
+    margin-top: 30px;
   }
   
-  .flex-container {
+  .flex-container56 {
     display: flex;
     justify-content: space-around;
   }
   
-  .flex-container > div {
-    background-color: #aee3f2;
+  .flex-container56 > div {
+    background-color: rgb(74, 170, 162);
     border-radius: 5px;
     width: auto;
     padding-left: 5px;
     padding-right: 5px;
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
     text-align: center;
     line-height: 30px;
-    font-size: 15px;
+    cursor: pointer;
+    /* font-size: 15px; */
   }
   
-  .book {
+  .book24 {
     width: 20%;
+    height: 30px;
     margin-left: auto;
     margin-right: auto;
     border: 1px solid black;
     border-radius: 5px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-top: 10px;
     background-color: aqua;
+    cursor: pointer;
+  }
+  .book24:hover{
+
+    background-color: rgb(167, 237, 237);
+  }
+
+  
+  .inputboc56 {
+    width: 180px;
+    margin-left: 10px;
+    height: 30px;
+    cursor: auto;
   }
   
-  .inputboc {
-    width: 155px;
-  }
-  
-  .para {
+  .para64 {
     text-align: center;
   }
+  .breakk{
+    display: none;
+  }
   
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1200px) {
     body {
-      font-size: 30px;
+      font-size: 20px;
     }
   
-    .main1 {
+    .main12 {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100%;
-      margin-left: 5px;
-      margin-right: 5px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
       margin-top: 10%;
       overflow: hidden;
       border: 1px solid black;
       border-radius: 10px;
     }
   
-    .main1 > p {
-      font-size: 50px;
+    .main12 > p {
+      /* font-size: 50px; */
       margin-top: 50px;
     }
   
-    .head1 {
+    .head12 {
       width: 100%;
       background-color: rgb(80, 221, 228);
       height: 60px;
@@ -101,44 +119,65 @@
       padding-top: 20px;
     }
   
-    .form {
+    .form34 {
       width: 100%;
       margin-top: 35px;
-      font-size: 50px;
+      /* font-size: 50px; */
     }
   
-    .form1 {
-      margin-left: 3px;
+    .form134 {
+      width: 100%;
+      /* margin-left: 3px; */
       margin-top: 35px;
-      font-size: 50px;
+      /* font-size: 50px; */
     }
   
-    .flex-container {
+    .flex-container56 {
       display: flex;
       justify-content: center;
     }
   
-    .flex-container > div {
+    .flex-container56 > div {
       background-color: #aee3f2;
       border-radius: 5px;
       width: auto;
+      height: 80px;
       padding-left: 5px;
       padding-right: 5px;
       margin-right: 5px;
       margin-left: 5px;
       text-align: center;
-      line-height: 60px;
-      font-size: 50px;
+      /* line-height: 20px; */
+      /* font-size: 50px; */
     }
   
-    .para {
-      font-size: 50px;
-    }
+    
   
-    .inputboc {
-      width: 300px;
-      height: 60px;
-      font-size: 40px;
+    .inputboc56 {
+      display: block;
+      width: 90%;
+      height: 40px;
+      margin-left: 10px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      float: left;
+      /* font-size: 40px; */
+    }
+    .breakk{
+      display: block;
+    }
+    .book24 {
+      width: 50%;
+      height:40px ;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid black;
+      border-radius: 5px;
+      text-align: center;
+      /* align-items: center; */
+      margin-bottom: 20px;
+      padding-top: 10px;
+      background-color: aqua;
     }
   }
   

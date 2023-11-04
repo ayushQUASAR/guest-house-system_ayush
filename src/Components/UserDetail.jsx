@@ -16,7 +16,7 @@ const UserDetail = () => {
 
  useEffect(()=> {
     console.log(userId);
-       fetch(`http://localhost:4000/users/${userId}`)
+       fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
        .then((res) => res.json())
        .then((data) =>{setUser(data); setIsAvailable(true);console.log(data)})
        .catch((err) => console.log(err));

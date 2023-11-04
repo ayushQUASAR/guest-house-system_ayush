@@ -3,7 +3,7 @@ import React, {useContext, useState } from "react";
 import "./BookingForm.css";
 import { FormContext } from "../ContextHooks/FormContext";
 
-const BookingForm = () => {
+const BookingForm = ({startDate, endDate}) => {
   // const [firstName, setFirstName] = useState("");
   // const [lastName, setLastName] = useState("");
   // const [email, setEmail] = useState("");
@@ -126,7 +126,7 @@ const BookingForm = () => {
               className="form-control"
               placeholder="Date of Arrival"
               name="arrivalDate"
-              onChange={handleInputChange}
+              value={startDate}
             />
           </div>
           <div className="col-md-4">
@@ -145,7 +145,7 @@ const BookingForm = () => {
               className="form-control"
               placeholder="Date of Departure"
               name="departureDate"
-              onChange={handleInputChange}
+              value={endDate}
             />
           </div>
           <div className="col-md-4">
@@ -194,7 +194,7 @@ const BookingForm = () => {
               </label>
             </div>
           </div>
-          <h6>Who are you booking for ?</h6>
+          {/* <h6>Who are you booking for ?</h6>
           <div className="temp">
             <div className="form-check form-check-inline">
               <input
@@ -222,7 +222,7 @@ const BookingForm = () => {
                 I&apos;m the booking for someone else
               </label>
             </div>
-          </div>
+          </div> */}
         </form>
       </div>
     </>

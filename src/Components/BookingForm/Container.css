@@ -1,5 +1,20 @@
 .heading h1{
-    text-align: left;
-    background-color: #0275d8;
-    font-size: 25px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin-top: 2%;
+    font-weight: 600;
+}
+.bookingForm{
+  display: flex;
+  justify-content: center;
+  /* margin-top: -60px; */
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    margin-bottom: 10%;
 }

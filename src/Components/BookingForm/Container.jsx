@@ -8,6 +8,7 @@ import HomeHeader from "../Homeheader";
 import { FormProvider, FormContext } from '../ContextHooks/FormContext';
 import BookingComponent1 from "../BOOKING1/BookingComponent1";
 import { useUserContext } from "../ContextHooks/UserContext";
+import Booking from "./BookingDetails";
 
 
 
@@ -58,27 +59,23 @@ headers: {
   }
   return (
     <>
-    <HomeHeader/>
+    {/* <HomeHeader/> */}
     {isFirstPage ? <BookingComponent1 onBookNowClick={handleBookNowClick}/> :
      <div className="MainContainer">
-
-      <div className="heading">
-        <h1><b>REQUIRED DETAILS</b></h1>
-      </div>
-      <div className="row">
-        <div className="col-md-3">
-          {/* <div className="bookingDetails"> */}
-            <BookingDetails bookingDetails={bookingDetailsData} />
-            {/* <BookingComponent1/> */}
-          {/* </div> */}
+      <div >
+        <div >
+            <Booking bookingDetails={bookingDetailsData} />
         </div>
-        <div className="col-md-5">
-          {/* <div className="bookingForm"> */}
+        <div className="heading">
+          <h1>REQUIRED DETAILS</h1>
+        </div>
+        <div className="bookingForm">
             <BookingForm startDate={bookingDetailsData.startDate} endDate={bookingDetailsData.endDate} />
-          {/* </div> */}
         </div>
       </div>
-      <button style={{position:"absolute", right: "25%", top: "80%"}} type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+      <div className="button-container">
+            <button type="submit" className="btn btn-primary btn-lg " onClick={handleSubmit}>Submit</button>
+      </div>
     </div>}
     </>
   );

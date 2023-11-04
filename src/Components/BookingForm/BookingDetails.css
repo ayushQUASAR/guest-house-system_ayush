@@ -8,30 +8,15 @@
     padding: 10px;
   }
   
-  .form-group {
-    margin-right: 20px;
-  }
-  
   .booking-label {
     font-size: 24px;
     display: block;
     margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: bolder;
   }
   
-  .form-control {
-    padding: 5px;  
-    background-color: transparent;
-    color: #fff;
-  }
-  
-  .form-control[readonly] {
-    background-color: transparent;
-    color: #fff;
-    border: none;
-  }
   .inputs{
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .changeSelection{

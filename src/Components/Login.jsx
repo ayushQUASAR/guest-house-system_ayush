@@ -102,6 +102,7 @@ const Login = () => {
                 </div>
               </div>
             </div>
+            {console.log("isadmindiv",isAdmin)}
           </div> : isAdmin ? <Dash admin={loginData.id} /> :  <Home/>
       
       }

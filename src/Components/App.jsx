@@ -26,7 +26,7 @@ function App() {
           <UserContextProvider>
             <FormProvider>
               <Routes>
-                <Route path="/Home" element={<Home />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/Booking" element={<Container />} />
 
                 <Route path="/Register" element={<Registration />} />
@@ -39,7 +39,7 @@ function App() {
                 <Route path="/Alumni" element={<Alumni />} />
                 <Route path="/Dashboard" element={<Dash />} />
                 <Route path="/UserDetails" element={<UserDetail />} />
-                <Route path="/" element={<Login />} />
+                <Route path="/Login" element={<Login />} />
               </Routes>
             </FormProvider>
           </UserContextProvider>

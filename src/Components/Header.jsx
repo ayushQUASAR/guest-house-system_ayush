@@ -22,7 +22,7 @@ const Header = () => {
                     </div>
                     <div className="bg-nav">
                         <li>
-                            <NavLink className="nav-underline" to="/Home">
+                            <NavLink className="nav-underline" to="/">
                                 <div  className="nav-optn"><HomeRoundedIcon color="white" /><div className='optn-name'>Home</div></div>
 
                             </NavLink>

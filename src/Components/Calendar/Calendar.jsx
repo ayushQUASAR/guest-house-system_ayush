@@ -12,14 +12,14 @@ const Calendar = () => {
     {
       guestHouseName: "Main Guest House",
       acCount: 15,
-      nonACCount: 8,
+      nonACCount: 9,
       location: "Near Girls Hostel",
       numOfBeds: 1,
     },
     {
       guestHouseName: "MBH Guest House",
       acCount: 20,
-      nonACCount: 8,
+      nonACCount: 9,
       location: "Near Girls Hostel",
       numOfBeds: 1,
     },
@@ -32,20 +32,14 @@ const Calendar = () => {
     },
   ];
 
-  const calculateRoomCounts = (guestHouseName) => {
-    const acSum = roomDetails.reduce((sum, room) => {
-      if (room.guestHouseName === guestHouseName) {
-        return sum + room.acCount;
-      }
-      return sum;
-    }, 0);
+  const calculateRoomCounts = (roomDetails) => {
+    let acSum = 0;
+    let nonACSum = 0;
 
-    const nonACSum = roomDetails.reduce((sum, room) => {
-      if (room.guestHouseName === guestHouseName) {
-        return sum + room.nonACCount;
-      }
-      return sum;
-    }, 0);
+    for (const room of roomDetails) {
+      acSum += room.acCount;
+      nonACSum += room.nonACCount;
+    }
 
     return { acCount: acSum, nonACCount: nonACSum };
   };
@@ -111,12 +105,12 @@ const Calendar = () => {
             if (day === null || (isCurrentMonth() && day < today)) {
               return (
                 <td key={index} className="calendar-cell empty-cell">
-                  {/* Empty cell */}
+                  {}
                 </td>
               );
             }
 
-            const roomCounts = calculateRoomCounts("Main Guest House"); // Replace with the guest house name you want
+            const roomCounts = calculateRoomCounts(roomDetails);
 
             return (
               <td

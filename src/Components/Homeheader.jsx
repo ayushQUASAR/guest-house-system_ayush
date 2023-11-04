@@ -95,7 +95,7 @@ const HomeHeader = () => {
 
                                 <div className="nav-optn">Profile</div>
                             </NavLink> 
-                            <NavLink to="/Login">
+                            <NavLink to="/login">
 
                                 <div className="nav-optn">Login</div>
                             </NavLink>

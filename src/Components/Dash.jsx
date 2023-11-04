@@ -27,6 +27,7 @@ import { useLoginContext } from './ContextHooks/LoginContext';
 
 
 const Dash = ({admin}) => {
+  console.log(admin);
   const [sideState, setSidestate] = useState(true);
   const [contentType, setContentType] = useState('dashboard')
   const ToggleSidestate = () => {

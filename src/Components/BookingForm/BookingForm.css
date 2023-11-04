@@ -1,40 +1,26 @@
-/* BookingForm.css */
-.form-container {
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 100px 0  30px 30px;
-    margin-top: 10%;
-    height: 100%; /* Make the container full-height of the viewport */
-  }
-  
-  form {
-    width: 100%;
-    max-width: 800px; /* Adjust the max-width as needed */
-    padding: 20px;
-    /* border: 1px solid black; */
-    background-color: white; 
-    border-radius: 10px; /* Rounded corners for the form */
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Additional styling for form elements can be added here as needed */
-  
-  /* Center the form in the horizontal direction */
-  .center-horizontal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .temp{
-    display: flex;
-  }
 
-  .visitor-heading{
-    color: black;
-    text-align: left;
-    font-size: 30px;
-  }
+.form-container {
+  /* width: 100%; */
+  display: flex;
+  /* background-color: blue; */
+  margin-top: 3%;
+}
+
+ 
+ form {
+  /* width: 100%; */
+  max-width: 800px;
+  padding: 20px;
+  background-color: white; 
+  border-radius: 10px; 
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.visitor-heading{
+  color: black;
+  text-align: left;
+  font-size: 30px;
+}
+
+h6{
+  font-size: 22px;
+}

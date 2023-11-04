@@ -9,7 +9,7 @@ const Approvaltable = () => {
 const [pendingUsers, setPendingUsers] = useState(null);
 
 useEffect(()=> {
-  fetch("http://localhost:4000/users/approved/pending")
+  fetch(import.meta.env.VITE_API_URL + "/users/approved/pending")
   .then((res) => res.json())
   .then((data) =>{ setPendingUsers(data); console.log(data)})
   .then((err) => console.log(err));
@@ -17,7 +17,7 @@ useEffect(()=> {
 
 
 const handleApproval = (id, status) => {
-      fetch("http://localhost:4000/admin/approveRegistration", {
+      fetch(import.meta.env.VITE_API_URL + "/admin/approveRegistration", {
         method: "POST",
         mode:"cors",
         body : JSON.stringify({

@@ -1,0 +1,186 @@
+body{
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.main12 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+  
+  .main12 > p {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .head12 {
+    width: 100%;
+    background-color: rgb(80, 221, 228);
+    height: 40px;
+    text-align: center;
+    padding-top: 20px;
+  }
+  
+  .form34 {
+    margin-top: 30px;
+  }
+  
+  .form134 {
+    margin-left: 3px;
+    margin-top: 30px;
+  }
+  
+  .flex-container56 {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .flex-container56 > div {
+    background-color: rgb(74, 170, 162);
+    border-radius: 5px;
+    width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    /* font-size: 15px; */
+  }
+  
+  .book24 {
+    width: 20%;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    background-color: aqua;
+    cursor: pointer;
+  }
+  .book24:hover{
+
+    background-color: rgb(167, 237, 237);
+  }
+
+  
+  .inputboc56 {
+    width: 180px;
+    margin-left: 10px;
+    height: 30px;
+    cursor: auto;
+  }
+  
+  .para64 {
+    text-align: center;
+  }
+  .breakk{
+    display: none;
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    body {
+      font-size: 20px;
+    }
+  
+    .main12 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10%;
+      overflow: hidden;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+  
+    .main12 > p {
+      /* font-size: 50px; */
+      margin-top: 50px;
+    }
+  
+    .head12 {
+      width: 100%;
+      background-color: rgb(80, 221, 228);
+      height: 60px;
+      text-align: center;
+      padding-top: 20px;
+    }
+  
+    .form34 {
+      width: 100%;
+      margin-top: 35px;
+      /* font-size: 50px; */
+    }
+  
+    .form134 {
+      width: 100%;
+      /* margin-left: 3px; */
+      margin-top: 35px;
+      /* font-size: 50px; */
+    }
+  
+    .flex-container56 {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .flex-container56 > div {
+      background-color: #aee3f2;
+      border-radius: 5px;
+      width: auto;
+      height: 80px;
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-right: 5px;
+      margin-left: 5px;
+      text-align: center;
+      /* line-height: 20px; */
+      /* font-size: 50px; */
+    }
+  
+    
+  
+    .inputboc56 {
+      display: block;
+      width: 90%;
+      height: 40px;
+      margin-left: 10px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      float: left;
+      /* font-size: 40px; */
+    }
+    .breakk{
+      display: block;
+    }
+    .book24 {
+      width: 50%;
+      height:40px ;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid black;
+      border-radius: 5px;
+      text-align: center;
+      /* align-items: center; */
+      margin-bottom: 20px;
+      padding-top: 10px;
+      background-color: aqua;
+    }
+  }
+  

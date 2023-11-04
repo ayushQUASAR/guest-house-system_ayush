@@ -16,10 +16,11 @@ const Login = () => {
   // const [isLogged, setIsLogged] = useState(false);
   const {isLogged,setIsLogged}=useLoginContext();
   const [isAdmin, setIsAdmin] = useState(false);
+// console.log(loginData);
 
   const [data, setData] = useState([]);
 
-  const { setUserId } = useUserContext();
+  const { userId,setUserId, updateUserId } = useUserContext();
   const setSubmit = (e) => {
     e.preventDefault();
     const newEntry = { Email: Email, Password: Password }
@@ -27,22 +28,18 @@ const Login = () => {
 
 
 
-    fetch("http://localhost:4000/login", {
-
-
-      method: "POST",
+    fetch(`${import.meta.env.VITE_API_URL}/login`, {
+    method: "POST",
       body: JSON.stringify(newEntry),
       mode: "cors",
-      "headers": {
+      headers: {
         "Content-Type": "application/json",
       }
     }).then((res) => res.json())
-
       .then((data) => {
-        console.log(data);
-
         setLoginData(data);
-        setUserId(data.id)
+        // setUserId(data.id);
+        updateUserId(data.id);
         if (data.id !== undefined) {
           setIsLogged(true);
           console.log("islog ID NULL", isLogged)

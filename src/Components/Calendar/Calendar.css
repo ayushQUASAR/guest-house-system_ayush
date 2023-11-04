@@ -1,0 +1,144 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+#calendar-root {
+  font-family: 'Poppins';
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #0072cfe4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #2284b2;
+}
+
+.month-year {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.calendar-table {
+  width: 100%;
+}
+
+th {
+  text-align: center;
+  background-color: #0072cfe4;
+  color: #fff;
+  padding: 10px;
+  border: 1px solid #0072cfe4;
+  font-weight: bolder;
+  height: 4px;
+}
+
+.curdate-calendar {
+  color: #0072cfe4;
+  margin: 4px;
+}
+
+.div-td {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.acCount {
+  color: #6c12f3;
+  background-color: #6c12f325;
+  border: 1px solid #6c12f3;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.nonCount {
+  color: #f31212c9;
+  background-color: #f3121216;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid #f31212c9;
+}
+.nonCount, .acCount {
+    margin: 3px;
+}
+td {
+  border: 1px solid #ccc;
+  height: 40px;
+  padding: 2px;
+}
+
+.empty-cell {
+  background-color: #eee;
+}
+
+td.today {
+  background-color: #0072cfe4;
+  color: #fff;
+}
+
+td:hover {
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+  #calendar-root {
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    margin: 5px;
+  }
+
+  .month-year {
+    font-size: 1.2rem;
+  }
+
+  .calendar-table {
+    font-size: 0.8rem;
+  }
+
+  th {
+    font-size: 0.9rem;
+    padding: 5px;
+    height: 3px;
+  }
+
+  .curdate-calendar {
+    font-size: 0.9rem;
+  }
+
+  .acCount,
+  .nonCount {
+    font-size: 0.8rem;
+    padding: 2px;
+  }
+
+  td {
+    height: 30px;
+  }
+}

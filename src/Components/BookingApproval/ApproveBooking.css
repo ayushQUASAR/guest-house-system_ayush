@@ -1,0 +1,75 @@
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #0275d8;
+  border-radius: 20px;
+  overflow: auto;
+  width: 100%;
+  height: auto; /* Changed height to auto for responsiveness */
+}
+
+h1 {
+  font-size: 22px;
+  color: aliceblue;
+  padding: 20px;
+  margin: 0;
+  text-align: center;
+}
+
+.topbar {
+  margin-left: -12px;
+  margin-right: -12px;
+  background-color: #0275d8;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 20px; /* Add border-radius back */
+  width:100%;
+}
+
+.search-input {
+  padding: 10px !important; /* Fixed typo and adjusted padding */
+}
+
+.Email {
+  padding: 10px !important;
+}
+
+.footbutton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.searchflex {
+  justify-content: center;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  .container {
+      margin: 10px;
+      border-radius: 10px;
+  }
+
+  h1 {
+      font-size: 18px;
+  }
+
+
+
+  .search-input,
+  .Email {
+      padding: 5px !important;
+  }
+
+  .footbutton {
+      margin: 10px;
+  }
+  .topbar {
+    margin: 0;
+    border-radius: 10px;
+}
+}
+
+
+

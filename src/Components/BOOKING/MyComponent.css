@@ -1,0 +1,29 @@
+
+
+.divtt {
+    background-color: rgb(173, 226, 240);
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    justify-content: center;
+    cursor: pointer;
+    /* pointer-events: none;  */
+  }
+  
+  .divtt:hover {
+    background-color: rgb(139, 232, 204);
+  }
+  
+  .highlightedyy {
+    background-color:rgb(75, 228, 197);
+    /* transition: background-color 0.3s; */
+  }
+  .roombookingu{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  

@@ -2,7 +2,7 @@ import "../../style/popup_booking.css"
 
 const RoomDetailsModal = ({ isOpen, onClose, roomDetails }) => {
   if (!isOpen) return null;
-console.log('hiiobb',isOpen)
+  console.log("hiiobb", isOpen);
   return (
     
      <div className="popup-roombooking"> 

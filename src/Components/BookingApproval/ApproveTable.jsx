@@ -64,7 +64,7 @@ const handleApproval = (id, status) => {
   return (
     <>
       <div class="approval-table">
-        <div className="d-flex flex-row justify-content-evenly">
+        <div className="d-flex flex-row justify-content-between">
         
             <div>S.No</div>
             <div>Name</div>
@@ -81,7 +81,7 @@ const handleApproval = (id, status) => {
         <div className="table-content">
           {
            pendingUsers && pendingUsers.length > 0 &&  pendingUsers.map((user, index) => {
-              return  <div className="d-felx flex-row justify-content-evenly" key={user._id}>
+              return  <div className="d-felx flex-row justify-content-between" key={user._id}>
                              <div>{index+1}</div>
                           <div>{user.user.name}</div> 
                           <div>{user.user.guestHouse}</div>

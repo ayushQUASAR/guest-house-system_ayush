@@ -13,6 +13,7 @@ import UserDetail from "./UserDetail";
 import { LoginContextProvider } from "./ContextHooks/LoginContext";
 import Container from "./BookingForm/Container";
 import { FormProvider } from "./ContextHooks/FormContext";
+import BookingComponent from "./BOOKING/BookingComponent";
 
 function App() {
   return (

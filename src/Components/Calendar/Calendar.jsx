@@ -7,7 +7,7 @@ const Calendar = () => {
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  console.log("ismodal",isModalOpen)
   const roomDetails = [
     {
       guestHouseName: "Main Guest House",
@@ -76,6 +76,7 @@ const Calendar = () => {
     if (day !== null) {
       setSelectedDate(day);
       setIsModalOpen(true);
+      console.log("ismodal",isModalOpen)
     }
   };
 

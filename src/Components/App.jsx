@@ -34,7 +34,7 @@ function App() {
                 <Route path="/Alumni" element={<Alumni />} />
                 <Route path="/Dashboard" element={<Dash />} />
                 <Route path="/UserDetails" element={<UserDetail />} />
-                <Route path="/Login" element={<Login />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
             </FormProvider>
           </UserContextProvider>

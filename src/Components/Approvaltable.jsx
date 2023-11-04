@@ -11,7 +11,7 @@ const [pendingUsers, setPendingUsers] = useState(null);
 useEffect(()=> {
   fetch(import.meta.env.VITE_API_URL + "/users/approved/pending")
   .then((res) => res.json())
-  .then((data) =>{ setPendingUsers(data); console.log(data)})
+  .then((data) =>{ setPendingUsers(data); console.log("pendinguserdata",data)})
   .then((err) => console.log(err));
 }, []);
 

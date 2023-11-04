@@ -3,8 +3,6 @@ import  "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import "../style/Approvaltable.css"
 
-
-
 const Approvaltable = () => { 
 const [pendingUsers, setPendingUsers] = useState(null);
 
@@ -14,7 +12,6 @@ useEffect(()=> {
   .then((data) =>{ setPendingUsers(data); console.log("pendinguserdata",data)})
   .then((err) => console.log(err));
 }, []);
-
 
 const handleApproval = (id, status) => {
       fetch(import.meta.env.VITE_API_URL + "/admin/approveRegistration", {

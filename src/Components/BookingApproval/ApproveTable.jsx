@@ -90,7 +90,7 @@ const handleApproval = (id, status) => {
                           <div>{user.user.phone}</div>
                           <div>{user.user.refInfo}</div> 
                           <div>{user.user.reason}</div>
-                          <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {handleApproval(user.user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user._id, 'reject')}>Reject</button></div>
+                          <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {handleApproval(user.user._id, 'accept')}}><a href="/Booking">Accept</a></button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user._id, 'reject')}>Reject</button></div>
                 </div>
               })
           }

@@ -52,7 +52,7 @@ const BookingForm = ({startDate, endDate}) => {
 
   return (
     <>
-      <div className="form-container center-horizontal">
+      <div className="form-container formWrapper">
         <form className="row g-3 book-form">
           <h1 className="visitor-heading">ENTER DETAILS OF VISITOR</h1>
           <div className="col-md-6">
@@ -91,7 +91,7 @@ const BookingForm = ({startDate, endDate}) => {
             </label>
             <input type="text" className="form-control" id="designation" name="designation" onChange={handleInputChange} />
           </div>
-          <h6>Name of companions (if any)</h6>
+          <h6 className="head-six">Name of companions (if any)</h6>
           <div className="col-md-4">
             <input
               type="text"
@@ -119,7 +119,7 @@ const BookingForm = ({startDate, endDate}) => {
               onChange={handleInputChange}
             />
           </div>
-          <h6>Arrival Details</h6>
+          <h6 className="head-six">Arrival Details</h6>
           <div className="col-md-6">
             <input
               type="date"
@@ -138,7 +138,7 @@ const BookingForm = ({startDate, endDate}) => {
               onChange={handleInputChange}
             />
           </div>
-          <h6>Departure Details</h6>
+          <h6 className="head-six">Departure Details</h6>
           <div className="col-md-6">
             <input
               type="date"
@@ -163,7 +163,7 @@ const BookingForm = ({startDate, endDate}) => {
             </label>
             <input type="text" className="form-control" id="purpose" name="purpose" onChange={handleInputChange} />
           </div>
-          <h6>Kind of visit</h6>
+          <h6 className="head-six">Kind of visit</h6>
           <div className="temp">
             <div className="form-check form-check-inline">
               <input

@@ -1,5 +1,5 @@
 
-.form-container {
+.formWrapper {
   /* width: 100%; */
   display: flex;
   /* background-color: blue; */
@@ -21,6 +21,6 @@
   font-size: 30px;
 }
 
-h6{
-  font-size: 22px;
+.head-six{
+  font-size: 16px;
 }

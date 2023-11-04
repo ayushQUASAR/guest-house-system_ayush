@@ -13,13 +13,13 @@ import AdminRegistrationMain from './AdminRegistrationMain';
 import UserDetail from './UserDetail';
 import { LoginContextProvider } from './ContextHooks/LoginContext';
 import  Container  from './BookingForm/Container';
-
+import Calendar from "./Calendar/Calendar"
 
 function App() {
   return (
     <>
-   
-      <Router>
+
+     <Router>
         <LoginContextProvider>
       <UserContextProvider>
         <Routes>
@@ -40,7 +40,7 @@ function App() {
         </LoginContextProvider>
       </Router>
       
-    </>
+    </> 
   );
 }
 

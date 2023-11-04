@@ -1,0 +1,50 @@
+
+  h1 {
+    font-size: 25px;
+    color: aliceblue;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+  }
+  br{
+   padding: 5px;
+  }
+  .row2{
+    border-spacing: 10px; 
+    padding: 10px; 
+  }
+  .double-border{
+    width: 10rem;
+    height: auto;
+    padding-left : 0px;
+    padding-right: 0px;
+    border : 2px solid black;
+    box-shadow: 0 0 0 5px #0275d8;
+    outline : 1px solid transparent;
+  }
+  .background-container { 
+    width: 100%;
+    height: 100%;
+    position: relative; /* Make sure the container is positioned relatively */
+    border: 2px solid #000000;
+    box-shadow: 0 0 0 2px #0275d8; 
+  }
+  .admin-info-container{
+    width : 100%;
+    height : 100%;
+    position :relative;
+  }
+  .first-background {
+    background: rgb(114, 200, 215);
+    width: 1000px;
+    height: 50%;
+  }
+  
+  .second-background {
+    background: rgb(255, 255, 255);
+    width: 100%;
+    height: 50%;
+  }
+  .dual-background {
+    background: linear-gradient(to bottom, #0275d8, #fff); /* Gradient from red to green */
+  }

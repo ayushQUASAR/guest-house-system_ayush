@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import SideBar from "./SideBar"
-
-import Table from "./Table";
-
-
-import "../style/approve.css"
+import '../style/userprofile.css';
+import PersonalDetail from "./UserProfile/PersonalDetail";
+import BookingDetail from "./UserProfile/BookingDetail";
+import CancelledBooking from "./UserProfile/CancelledBooking";
 import { useUserContext } from './ContextHooks/UserContext';
 import HomeHeader from './Homeheader';
 
@@ -25,44 +23,51 @@ const UserDetail = () => {
 
   return (
    <>
-   <HomeHeader/>
+   <HomeHeader/> 
+   <div className="container-fluid top-container">
+      <div className="topbar">
+        <div className = 'row row2' style = {{color : 'white'}}>
+          <div className = 'col-8 mx-4'>
+            <h3>User Profile</h3></div>
+          <div className = 'col-2'><h6>{user}</h6></div>
+          <div className = "col-1"><button onClick={{/* */}}  style = {{backgroundColor : '#0275d8', color: 'white', border : '0px'}}><strong>Logout</strong></button></div>
+        </div>
         
-          <div className="container rounded-4" >
-            <div className="card rounded-4 w-100" >
-                <div className="card-header rounded-4" style = {{backgroundColor : '#0275d8', color : 'white', border : '5px solid #0275d8'}}>   
-                    <h1>USER PROFILE</h1>
-                </div>
-            
-            <div className = "card-body">
-    
-            <div class="d-flex flex-row bd-highlight mb-2">
-             <div class="p-2 bd-highlight">
-              {isAvailable ?  <SideBar user={user}/> : <>user not found</>}
-             </div>
-             <div class="p-2 bd-highlight" className="table2">
-                <h1 className="bookingTable">BOOKINGS HISTORY</h1>
-                <div className="t">
-                <Table/>
-                </div>
-             </div>
-             
-            </div>
-                {/* <div>
-                 <SideBar/>
-                 </div>
-                 
-                 <div>
-                 <Table/>
-                </div> */}
-             
-            </div>
-            
-                </div>
+        
+      </div> 
+      <div className = 'container-fluid'>
+        <div className="user-content" >
+          <div className="d-inline mx-4" style = {{backgroundColor : '#f5f9fe'}}>
+            <label>
+            <input type="radio" 
+            value = "PersonalDetails"
+            checked= {selectedOption === 'PersonalDetails'} onChange={handleOptionChange} />
+              <span>Personal Details</span>
+            </label>
           </div>
-        
-   
-  
-          </>
+          <div className="d-inline mx-4" style = {{backgroundColor : '#f5f9fe'}}>
+            <label>
+            <input type="radio" 
+            value = "BookingDetails"
+            checked= {selectedOption === 'BookingDetails'} onChange={handleOptionChange}/>
+              <span>Booking Details </span>
+            </label>
+          </div>
+          <div className="d-inline mx-4" style = {{backgroundColor : '#f5f9fe'}}>
+            <label>
+            <input type="radio" 
+            value = "CancelledBooking"
+            checked= {selectedOption === 'CancelledBooking'} onChange={handleOptionChange}/>
+              <span>Cancelled Bookings</span>
+            </label>
+          </div>
+          {selectedOption === "PersonalDetails" && <PersonalDetail user = {user}/>}
+          {selectedOption === "BookingDetails" && <BookingDetail />}
+          {selectedOption === "CancelledBooking" && <CancelledBooking/>}
+        </div>
+      </div>
+    </div>
+    </>
   )
 }
 

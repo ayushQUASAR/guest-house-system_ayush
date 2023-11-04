@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../Home";
 import Login from "./Login";
@@ -16,20 +15,16 @@ import Container from "./BookingForm/Container";
 import { FormProvider } from "./ContextHooks/FormContext";
 import BookingComponent from "./BOOKING/BookingComponent";
 
-
 function App() {
   return (
     <>
-
       <Router>
-
         <LoginContextProvider>
           <UserContextProvider>
             <FormProvider>
               <Routes>
-                <Route path="/Home" element={<Home />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/Booking" element={<Container />} />
-                 <Route path="/AdminBooking" element={<BookingComponent/>}/>
                 <Route path="/Register" element={<Registration />} />
                 <Route
                   path="/AdminRegistration"
@@ -40,15 +35,13 @@ function App() {
                 <Route path="/Alumni" element={<Alumni />} />
                 <Route path="/Dashboard" element={<Dash />} />
                 <Route path="/UserDetails" element={<UserDetail />} />
-                <Route path="/" element={<Login />} />
+                <Route path="/Login" element={<Login />} />
               </Routes>
             </FormProvider>
           </UserContextProvider>
         </LoginContextProvider>
       </Router>
-
     </>
-
   );
 }
 

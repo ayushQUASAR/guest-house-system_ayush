@@ -92,11 +92,7 @@ const Login = () => {
                           <NavLink to="/Register">
                             <p>Dont have Account? Register here</p></NavLink>
                         </div>
-                        {/* <div>
-                          <NavLink to ="/AdminRegistration">
-                              Admin Registration
-                              </NavLink>
-                            </div> */}
+                      
 
                       </div>
                       <h3 style={{ color: ' #346BD4' }}>Forgot password?</h3>
@@ -107,8 +103,7 @@ const Login = () => {
               </div>
             </div>
           </div> : isAdmin ? <Dash admin={loginData.id} /> :  <Home/>
-        // <userDetail userId={loginData.id} 
-        // console.log("hd", isLogged)
+      
       }
 
     </>

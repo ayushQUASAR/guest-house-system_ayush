@@ -7,7 +7,7 @@ const Calendar = () => {
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log("ismodal",isModalOpen)
+  console.log("ismodal", isModalOpen);
   const roomDetails = [
     {
       guestHouseName: "Main Guest House",
@@ -31,6 +31,24 @@ const Calendar = () => {
       numOfBeds: 1,
     },
   ];
+
+  const calculateRoomCounts = (guestHouseName) => {
+    const acSum = roomDetails.reduce((sum, room) => {
+      if (room.guestHouseName === guestHouseName) {
+        return sum + room.acCount;
+      }
+      return sum;
+    }, 0);
+
+    const nonACSum = roomDetails.reduce((sum, room) => {
+      if (room.guestHouseName === guestHouseName) {
+        return sum + room.nonACCount;
+      }
+      return sum;
+    }, 0);
+
+    return { acCount: acSum, nonACCount: nonACSum };
+  };
 
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -76,7 +94,7 @@ const Calendar = () => {
     if (day !== null) {
       setSelectedDate(day);
       setIsModalOpen(true);
-      console.log("ismodal",isModalOpen)
+      console.log("ismodal", isModalOpen);
     }
   };
 
@@ -97,6 +115,9 @@ const Calendar = () => {
                 </td>
               );
             }
+
+            const roomCounts = calculateRoomCounts("Main Guest House"); // Replace with the guest house name you want
+
             return (
               <td
                 key={index}
@@ -120,8 +141,10 @@ const Calendar = () => {
                   {day !== null && (
                     <>
                       <h3 className="curdate-calendar">{day}</h3>
-                      <span className="acCount">AC : {15}</span>
-                      <span className="nonCount">Non-AC : {8}</span>
+                      <span className="acCount">AC : {roomCounts.acCount}</span>
+                      <span className="nonCount">
+                        Non-AC : {roomCounts.nonACCount}
+                      </span>
                     </>
                   )}
                 </div>

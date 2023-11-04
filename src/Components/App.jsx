@@ -14,6 +14,7 @@ import UserDetail from "./UserDetail";
 import { LoginContextProvider } from "./ContextHooks/LoginContext";
 import Container from "./BookingForm/Container";
 import { FormProvider } from "./ContextHooks/FormContext";
+import BookingComponent from "./BOOKING/BookingComponent";
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
               <Routes>
                 <Route path="/Home" element={<Home />} />
                 <Route path="/Booking" element={<Container />} />
-
+                 <Route path="/AdminBooking" element={<BookingComponent/>}/>
                 <Route path="/Register" element={<Registration />} />
                 <Route
                   path="/AdminRegistration"

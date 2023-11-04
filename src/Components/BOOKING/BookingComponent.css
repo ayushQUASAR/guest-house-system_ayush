@@ -1,145 +1,139 @@
-import React from 'react';
-import './BookingComponent.css';
-import './BookingCompoment.js'
-import MyComponent from './MyComponent';
-import './MyComponent.css';
-// import React, { useState } from 'react';
+.mai {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border: 1px solid black;
+  border-radius: 10px;
+}
 
-const BookingComponent = () => {
+.main1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.main1 > p {
+  text-align: center;
+  margin-top: 10px;
+}
 
+.head1 {
+  width: 100%;
+  background-color: rgb(80, 221, 228);
+  height: 30px;
+  text-align: center;
+  padding-top: 20px;
+}
 
-  const handleDivClick1 = () => {
-    // Find the div element by its id
-    const ghh1 = document.getElementById('gh1');
-    const ghh2 = document.getElementById('gh2');
-    const ghh3 = document.getElementById('gh3');
-    const sacg1 = document.getElementById('sacg1');
-    const sacg2 = document.getElementById('sacg2');
-    const sacg3 = document.getElementById('sacg3');
-    if (ghh1) {
-      // Modify the div's properties or content
-      ghh1.style.backgroundColor = 'rgb(8, 110, 101)';
-      ghh2.style.backgroundColor = 'rgb(74, 170, 162)';
-      ghh3.style.backgroundColor = 'rgb(74, 170, 162)';
-      sacg1.style.pointerEvents = 'auto';
-      sacg3.style.pointerEvents = 'none';
-      sacg2.style.pointerEvents = 'none';
+.form {
+  margin-top: 10px;
+}
 
+.form1 {
+  margin-left: 3px;
+  margin-top: 10px;
+}
 
+.flex-containerTY {
+  display: flex;
+  justify-content: space-around;
+}
 
+.flex-containerTY > div {
+  background-color: #aee3f2;
+  border-radius: 5px;
+  width: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 15px;
+}
 
-    }
-  };
-  const handleDivClick2 = () => {
-    // Find the div element by its id
-    const ghh1 = document.getElementById('gh1');
-    const ghh2 = document.getElementById('gh2');
-    const ghh3 = document.getElementById('gh3');
-    const sacg1 = document.getElementById('sacg1');
-    const sacg2 = document.getElementById('sacg2');
-    const sacg3 = document.getElementById('sacg3');
+.book {
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+  background-color: aqua;
+}
 
-    if (ghh2) {
-      // Modify the div's properties or content
-      ghh2.style.backgroundColor = 'rgb(8, 110, 101)';
-      ghh1.style.backgroundColor = 'rgb(74, 170, 162)';
-      ghh3.style.backgroundColor = 'rgb(74, 170, 162)';
-      sacg1.style.pointerEvents = 'none';
-      sacg3.style.pointerEvents = 'none';
-      sacg2.style.pointerEvents = 'auto';
+.roombooking {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
-    }
-  };
-  const handleDivClick3 = () => {
-    // Find the div element by its id
-    const ghh1 = document.getElementById('gh1');
-    const ghh2 = document.getElementById('gh2');
-    const ghh3 = document.getElementById('gh3');
-    const sacg1 = document.getElementById('sacg1');
-    const sacg2 = document.getElementById('sacg2');
-    const sacg3 = document.getElementById('sacg3');
+.roombooking > div {
+  background-color: #f1f1f1;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
 
-    if (ghh3) {
-      // Modify the div's properties or content
-      ghh3.style.backgroundColor = 'rgb(8, 110, 101)';
-      ghh2.style.backgroundColor = 'rgb(74, 170, 162)';
-      ghh1.style.backgroundColor = 'rgb(74, 170, 162)';
-      sacg3.style.pointerEvents = 'auto';
-      sacg1.style.pointerEvents = 'none';
-      sacg2.style.pointerEvents = 'none';
+.new {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  margin-top: 10px;
+}
 
+.new > div {
+  width: 50%;
+}
 
-    }
-  };
- 
+.para {
+  text-align: center;
+}
 
+@media only screen and (max-width: 1000px) {
+  .mai {
+    width: 100%;
+    margin-left: 2px;
+  }
 
+  .new {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 10px;
+}
 
+.new > div {
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+  
+.roombooking {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.roombooking > div {
+  background-color: #f1f1f1;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  justify-content: center;
+}
+}
 
-  return (
-    <div className="mai">
-
-      <div className="head1">
-        Booking Rooms
-      </div>
-      <div className="main1">
-        <div>
-          {/* <form className="form">
-            <label for="from">From:</label>
-            <input type="date" id="from" name="from" value="01-11-2023" style={{ marginRight: '20px' }}
-              // onChange={handleDateChange}
-              className="inputboc568" />
-            <label for="to">To:</label>
-            <input type="date" id="to" name="to" value="02-11-2023" className="inputboc568" />
-          </form> */}
-          <p className="para">Select Guest House</p>
-        </div>
-
-        <div className="flex-containerTY">
-
-
-          <div id="gh1" onClick={handleDivClick1}>Guest House 1</div>
-          <div id="gh2" onClick={handleDivClick2}>Guest House 2</div>
-          <div id="gh3" onClick={handleDivClick3}>Guest House 3</div>
-
-
-
-        </div>
-
-
-        
-        <div className="new">
-          <div> Select Your Room(s):</div>
-          <div className="roombooking">
-            <div id="available"></div>Available
-            <div id="selected"></div>Selected
-            <div id="booked"></div>Booked
-          </div>
-        </div>
-        <div style={{ marginTop: '20px' }} id="sacg1">
-          SAC Guest House (Non A.C)
-          <MyComponent n={8} />
-        </div>
-
-        {/* <MyComponent n={8}/> */}
-        <div style={{ marginTop: '10px' }} id="sacg2">
-          Guest House 1 (A.C)
-
-          <MyComponent n={10} />
-        </div>
-
-        <div style={{ marginTop: '10px' }} id="sacg3">
-          Mega Guest House (Non A.C)
-
-          <MyComponent n={12} />
-        </div>
-
-        <div className="book">Book Now</div>
-      </div>
-    </div>
-  );
-};
-
-export default BookingComponent;

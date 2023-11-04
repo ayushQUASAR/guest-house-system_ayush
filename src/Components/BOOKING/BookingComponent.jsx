@@ -1,14 +1,11 @@
 import React from 'react';
 import './BookingComponent.css';
-import './BookingCompoment.js'
+
 import MyComponent from './MyComponent';
 import './MyComponent.css';
 // import React, { useState } from 'react';
 
 const BookingComponent = () => {
-
-
-
   const handleDivClick1 = () => {
     // Find the div element by its id
     const ghh1 = document.getElementById('gh1');
@@ -81,9 +78,9 @@ const BookingComponent = () => {
   return (
     <div className="mai">
 
-      <div className="head1">
+      {/* <div className="head1">
         Booking Rooms
-      </div>
+      </div> */}
       <div className="main1">
         <div>
           {/* <form className="form">

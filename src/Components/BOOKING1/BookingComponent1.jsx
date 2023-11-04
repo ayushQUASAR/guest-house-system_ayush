@@ -1,12 +1,30 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
+import { FormContext } from "../ContextHooks/FormContext";
 import './BookingComponent1.css';
 
-const BookingComponent1 = () => {
+const BookingComponent1 = ({onBookNowClick}) => {
+  const [selectedGuestHouse, setSelectedGuestHouse] = useState(-1);
+  const [rooms,setRooms] = useState(1);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const {updateFormData} = useContext(FormContext);
 
-
-
+  const handleClick = () => {
+    updateFormData("guestHouseSelected", selectedGuestHouse);
+    updateFormData("roomsSelected", rooms);
+    updateFormData("arrivalDate", startDate);
+    updateFormData("departureDate", endDate);
+  onBookNowClick({
+    guestHouseSelected: selectedGuestHouse,
+    roomsSelected: rooms,
+    startDate,
+    endDate
+  });
+}
 
   const handleDivClick11 = () => {
+
+    setSelectedGuestHouse(1);
     // Find the div element by its id
     const gh11 = document.getElementById('gh11');
     const gh21 = document.getElementById('gh21');
@@ -21,6 +39,7 @@ const BookingComponent1 = () => {
   };
 
   const handleDivClick21 = () => {
+    setSelectedGuestHouse(2);
     // Find the div element by its id
     const gh11 = document.getElementById('gh11');
     const gh21 = document.getElementById('gh21');
@@ -34,6 +53,8 @@ const BookingComponent1 = () => {
     }
   };
   const handleDivClick31 = () => {
+
+    setSelectedGuestHouse(3);
     // Find the div element by its id
     const gh11 = document.getElementById('gh11');
     const gh21 = document.getElementById('gh21');
@@ -57,10 +78,10 @@ const BookingComponent1 = () => {
       <div>
         <form className="form34">
           <label for="from">From:</label><br className='breakk'></br>
-          <input type="date" id="from" name="from" className="inputboc56" style={{ marginRight: '20px' }} />
+          <input type="date" id="from" name="from" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="inputboc56" style={{ marginRight: '20px' }} />
 
           <label for="to">To:</label>
-          <input type="date" id="to" name="to" className="inputboc56" />
+          <input type="date" id="to" name="to" value={endDate} onChange={(e) => setEndDate(e.target.value)}  className="inputboc56" />
         </form>
         <p className="para64">Select Guest House</p>
       </div>
@@ -72,10 +93,10 @@ const BookingComponent1 = () => {
       <div>
         <form className="form134">
           <label for="noofrooms">Enter the No of Rooms:</label>
-          <input type="number" id="from" name="from" className="inputboc56" />
+          <input type="number" id="from" name="from" value={rooms} onChange={(e) => setRooms(e.target.value)} className="inputboc56" />
         </form>
       </div>
-      <div className="book24">Book Now</div>
+      <div className="book24" onClick={handleClick}>Book Now</div>
     </div>
   );
 };

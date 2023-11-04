@@ -27,17 +27,14 @@ const Login = () => {
 
 
 
-    fetch(import.meta.env.VITE_API_URL + "/login", {
-
-
-      method: "POST",
+    fetch(`${import.meta.env.VITE_API_URL}/login`, {
+    method: "POST",
       body: JSON.stringify(newEntry),
       mode: "cors",
-      "headers": {
+      headers: {
         "Content-Type": "application/json",
       }
     }).then((res) => res.json())
-
       .then((data) => {
         console.log(data);
 

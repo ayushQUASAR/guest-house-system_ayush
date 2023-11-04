@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import { FormContext } from "../ContextHooks/FormContext";
 import './BookingComponent1.css';
+import HomeHeader from '../Homeheader';
 
 const BookingComponent1 = ({onBookNowClick}) => {
   const [selectedGuestHouse, setSelectedGuestHouse] = useState(-1);
@@ -73,6 +74,9 @@ const BookingComponent1 = ({onBookNowClick}) => {
 
 
   return (
+    <>
+    <HomeHeader/>
+
     <div className="main12">
       <div className="head12">Booking Rooms</div>
       <div>
@@ -98,6 +102,7 @@ const BookingComponent1 = ({onBookNowClick}) => {
       </div>
       <div className="book24" onClick={handleClick}>Book Now</div>
     </div>
+    </>
   );
 };
 

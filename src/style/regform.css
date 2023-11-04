@@ -12,6 +12,10 @@
     width:100%;
     box-shadow:2px 2px 2px 2px rgb(128, 125, 125);
   }
+  .nav-tohome{
+    color: #007BFF;
+    text-decoration: none;
+  }
   .btnDefault {
     background-color: #007BFF;
     color: white;
@@ -65,7 +69,7 @@
 
 .leftSide {
     background-color: rgb(51, 40, 209);
-    border: 2px solid rgb(12, 12, 12);
+    /* border: 2px solid rgb(12, 12, 12); */
     border-radius: 25px 100px 25px 100px;
     
 }

@@ -22,10 +22,7 @@
     align-items: center;
 
 }
-.bg-nav li div {
-    padding: 0 10px;
-}
-  
+
 .nav-underline{
     text-decoration: none;
   
@@ -35,6 +32,10 @@
     display: flex;
     text-decoration: none;
     color: white;
+    padding: 0 10px;
+}
+.optn-name{
+    padding-left: 5px;
 }
 .nav-optn:hover{
     color: #aeaeae;
@@ -66,4 +67,11 @@
     width: 100px;
     transform: translateY(3px);
     
+}
+
+@media screen and (max-width:1700px) {
+    .colg-name{
+        font-size: 35px;
+        left: 175px;
+    }
 }

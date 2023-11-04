@@ -3,6 +3,7 @@ import './BookingComponent.css';
 
 import MyComponent from './MyComponent';
 import './MyComponent.css';
+import HomeHeader from '../Homeheader';
 // import React, { useState } from 'react';
 
 const BookingComponent = () => {
@@ -76,6 +77,8 @@ const BookingComponent = () => {
 
 
   return (
+    <>
+    <HomeHeader/>
     <div className="mai">
 
       {/* <div className="head1">
@@ -136,6 +139,7 @@ const BookingComponent = () => {
         <div className="book">Book Now</div>
       </div>
     </div>
+    </>
   );
 };
 

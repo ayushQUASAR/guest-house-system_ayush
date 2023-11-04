@@ -42,7 +42,9 @@ const HomeHeader = () => {
 
                             >
                                 <div className="nav-optn">
-                                    <ContactlessIcon /> ContactUs
+                                    <ContactlessIcon /> 
+                                    
+                                 <div className="optn-name"> ContactUs</div>  
                                 </div>
                             </Link>
                             <div className="nav-optn">
@@ -55,7 +57,8 @@ const HomeHeader = () => {
 
                             >
                                 <div className="nav-optn">
-                                    <AlignHorizontalLeftOutlinedIcon />   Guidelines
+                                    <AlignHorizontalLeftOutlinedIcon />  
+                                    <div className="optn-name"> ContactUs</div> x
                                 </div>
                             </Link>
 
@@ -67,12 +70,12 @@ const HomeHeader = () => {
                             >
 
                                 <div className="nav-optn">
-                                    <HelpCenterIcon />   About
+                                    <HelpCenterIcon />  <div className="optn-name">About</div> 
                                 </div>
                             </Link>
-                            <div className="nav-optn">
+                            {/* <div className="nav-optn">
                                 <CurrencyRupeeIcon /> Charges
-                            </div>
+                            </div> */}
                             {/* <Link
                                 to="Facility"
                                 smooth={true}
@@ -99,11 +102,11 @@ const HomeHeader = () => {
 
                                 <div className="nav-optn">Login</div>
                             </NavLink>
-                            <NavLink to="/Booking">
+                            {/* <NavLink to="/Booking">
                             <div className="nav-optn" id="BookNow">
                                 Book Now
                             </div>
-                            </NavLink>
+                            </NavLink> */}
                         </li>
                     </div>
                 </div>

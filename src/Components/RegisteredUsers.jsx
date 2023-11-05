@@ -21,9 +21,11 @@ export default function RegisteredUsers() {
     setProfileview(user);
   };
 
-  useEffect(() => {
-      fetch(`${import.meta.env.VITE_API_URL}/users/${view._id}`)
-  },[view])
+  // useEffect(() => {
+  //     fetch(`${import.meta.env.VITE_API_URL}/users/${view._id}`)
+  //     .then((res) => res.json())
+  //     .then()
+  // },[view])
 
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + "/users/approved/registered")

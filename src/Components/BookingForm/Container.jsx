@@ -57,7 +57,8 @@ headers: {
 .then((data) => console.log(data))
 .catch((err) => console.log(err.message));
 
-window.alert("Booking done")
+
+  openPopup();
   };
 
   const handleBackPage = () =>  {

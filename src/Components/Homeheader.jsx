@@ -57,7 +57,7 @@ const HomeHeader = () => {
                             >
                                 <div className="nav-optn">
                                     <AlignHorizontalLeftOutlinedIcon />  
-                                    <div className="optn-name"> ContactUs</div> x
+                                    <div className="optn-name"> ContactUs</div> 
                                 </div>
                             </Link>
 

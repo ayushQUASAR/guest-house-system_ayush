@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './MyComponent.css'; // Import the CSS file
 
-function MyComponent({n}) {
+function MyComponent({n, maxRooms}) {
   const [divs, setDivs] = useState(new Array(8).fill(false));
   // const elementRef = useRef(null);
   

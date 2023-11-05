@@ -96,6 +96,7 @@ const Calendar = () => {
     const calendarData = getDaysInMonth();
     const rows = [];
     const today = new Date().getDate();
+    
 
     for (let i = 0; i < calendarData.length; i += 7) {
       const row = calendarData.slice(i, i + 7);
@@ -132,6 +133,7 @@ const Calendar = () => {
                       : ""
                   }
                 >
+                 
                   {day !== null && (
                     <>
                       <h3 className="curdate-calendar">{day}</h3>

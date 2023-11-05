@@ -19,11 +19,11 @@ export default function RegisteredUsers() {
   const [view, setProfileview] = useState(null);
   const viewUserProfile = (user) => {
     setProfileview(user);
-   
-
-
   };
 
+  useEffect(() => {
+      fetch(`${import.meta.env.VITE_API_URL}/users/${view._id}`)
+  },[view])
 
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + "/users/approved/registered")

@@ -29,13 +29,14 @@
    
 }
 .dash-box{
-    box-shadow: 5px 5px 10px rgb(167, 167, 167), -5px -5px 10px rgb(167, 167, 167);
+    box-shadow: 5px 5px 10px rgb(187, 184, 184), -5px -5px 10px rgb(167, 167, 167);
     border-radius: 20px;
     /* background-color: #f9f9f9; */
     padding: 20px;
   
 /* overflow: scroll; */
-width: 60vw;
+width: 77vw;
+height:35vw;
 
 }
 

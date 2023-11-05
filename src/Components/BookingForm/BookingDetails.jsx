@@ -3,13 +3,15 @@
 import React from "react";
 import "./BookingDetails.css";
 import { NavLink } from "react-router-dom";
+import BookingComponent1 from "../BOOKING1/BookingComponent1"
+
 const inputStyle = {
   backgroundColor: "#f8f9fa", // Light gray background
   color: "black", // Text color
   fontWeight: 500, // Bold text
 };
 
-const BookingDetails = ({ bookingDetails }) => {
+const BookingDetails = ({ bookingDetails, onBackPage }) => {
   const startDate = new Date(bookingDetails.startDate);
   const endDate = new Date(bookingDetails.endDate);
   const options = {
@@ -75,11 +77,9 @@ const BookingDetails = ({ bookingDetails }) => {
           readOnly
         />
       </div>
-      <NavLink to="/BookingComponent1" className="nav-link">
-        <button type="button" className="btn btn-warning btn-lg changeSelection">
+        <button type="button" className="btn btn-warning btn-lg changeSelection" onClick={onBackPage}>
           Change Selection
         </button>
-      </NavLink>
     </div>
   );
 };

@@ -10,6 +10,32 @@ const BookingComponent1 = ({onBookNowClick}) => {
   const [endDate, setEndDate] = useState("");
   const {updateFormData} = useContext(FormContext);
 
+  const today = new Date();
+  today.setMinutes(today.getMinutes() + today.getTimezoneOffset() + 330); // Adjust for India's UTC+05:30 timezone
+
+  const handleStartDateChange = (e) => {
+    const selectedDate = new Date(e.target.value);
+    if (selectedDate >= today) {
+      setStartDate(selectedDate.toISOString().split('T')[0]);
+    } else {
+      alert('Start date cannot be earlier than today.');
+    }
+  };
+  const maxRooms = {
+    1: 10, // Max rooms for Guest House 1
+    2: 12, // Max rooms for Guest House 2
+    3: 8,  // Max rooms for Guest House 3
+  };
+  const handleRoomChange = (e) => {
+    
+    const selectedRooms = parseInt(e.target.value, 10);
+    if (selectedRooms >= 1 && selectedRooms <= maxRooms[selectedGuestHouse]) {
+      setRooms(selectedRooms);
+    } else {
+      alert(`Select between 1 and ${maxRooms[selectedGuestHouse]} rooms for Guest House ${selectedGuestHouse}.`);
+    }
+  };
+
   const handleClick = () => {
     updateFormData("guestHouseSelected", selectedGuestHouse);
     updateFormData("roomsSelected", rooms);
@@ -69,10 +95,6 @@ const BookingComponent1 = ({onBookNowClick}) => {
     }
   };
 
-
-
-
-
   return (
     <>
     <HomeHeader/>
@@ -82,7 +104,7 @@ const BookingComponent1 = ({onBookNowClick}) => {
       <div>
         <form className="form34">
           <label for="from">From:</label><br className='breakk'></br>
-          <input type="date" id="from" name="from" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="inputboc56" style={{ marginRight: '20px' }} />
+          <input type="date" id="from" name="from" value={startDate} onChange={handleStartDateChange } className="inputboc56" style={{ marginRight: '20px' }} min={today.toISOString().split('T')[0]}/>
 
           <label for="to">To:</label>
           <input type="date" id="to" name="to" value={endDate} onChange={(e) => setEndDate(e.target.value)}  className="inputboc56" />
@@ -97,7 +119,7 @@ const BookingComponent1 = ({onBookNowClick}) => {
       <div>
         <form className="form134">
           <label for="noofrooms">Enter the No of Rooms:</label>
-          <input type="number" id="from" name="from" value={rooms} onChange={(e) => setRooms(e.target.value)} className="inputboc56" />
+          <input type="number" id="from" name="from" value={rooms} onChange={handleRoomChange} className="inputboc56" min="1" max={maxRooms[selectedGuestHouse]}/>
         </form>
       </div>
       <div className="book24" onClick={handleClick}>Book Now</div>

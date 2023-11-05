@@ -25,10 +25,9 @@ const HomeHeader = () => {
                         <li>
 
                             <Link
-                                to="Home"
+                                to="/"
                                 smooth={true}
                                 duration={50}
-
                             >
 
                                 <div className="nav-optn"><HomeRoundedIcon color="white" /><div className='optn-name'>Home</div>       </div>

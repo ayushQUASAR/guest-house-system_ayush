@@ -7,8 +7,10 @@
   }
   .topbars{
     padding-top: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom : 20px;
+    border-top-right-radius: 1cm;
+    border-top-left-radius: 1cm;
     background-color: #0275d8;
     border:1px solid #0275d8;
   }

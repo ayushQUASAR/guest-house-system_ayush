@@ -28,10 +28,9 @@ const BookingDetail = () => {
                 </div>
             </div>
             <div className='row'>
-                <div className = 'col-4 empty-container'>
-                    
+                <div className = 'col-4 empty-container'>   
                 </div>
-                <div className='col-8 text-center'>
+                <div className='col-7 text-center'>
                     <div className = 'mb-4'>
                         <h5 className = 'd-inline'>Total Cost : </h5>
                         <h5 className = 'd-inline'>Rs. 600</h5>
@@ -72,7 +71,7 @@ const BookingDetail = () => {
                         </div>
                     </div>
                     {/* {bookings.map((booked, index) => ( */}
-                    <div style = {{overflowY : 'auto', width : '100%', height : '300px'}}>
+                    <div style = {{overflowY : 'auto', width : '100%', height : '180px'}}>
                         <div className='row row-underline' >
                            <div className='col-1' style = {{overflow : 'auto'}}>
                             <p>1.</p>

@@ -5,7 +5,7 @@ export default function CancelledBooking(){
             <div classNAme = 'mb-4' style = {{padding : '20px'}}>
                 <h3 style = {{color: '#0275d8'}}><strong>CANCELLED BOOKINGS</strong></h3>
             </div>
-            <div style = {{overflow: 'auto', padding : '20px', overflowY : 'auto', width : '100%', height : '500px'}}>
+            <div style = {{overflow: 'auto', padding : '20px', overflowY : 'auto', width : '100%', height : '400px'}}>
                 <div className = 'mx-3'>
                     <div className = 'row'style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-1'>

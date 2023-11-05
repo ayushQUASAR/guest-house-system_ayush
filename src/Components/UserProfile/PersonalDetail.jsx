@@ -16,7 +16,7 @@ const PersonalDetail = ({user}) => {
         setDialog(!dialog);
       };
   return (
-    <div className="container-fluid">
+    <div className='container-fluid'>
         <div className = 'row'>
             <div className = 'col-4'>
                 <div className = 'row user-image'>
@@ -28,19 +28,19 @@ const PersonalDetail = ({user}) => {
                     <h2>Personal Details</h2>
                     <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> <strong>Name</strong></div>
-                        <div className='col-6'> <strong>{user.name}</strong></div>
+                        <div className='col-6'> <strong>"User Name"</strong></div>
                     </div>
                     <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Email</div>
-                        <div className='col-6'> {user.email}</div>
+                        <div className='col-6'> abc@gmail.com</div>
                     </div>
                     <div className = 'row mx-4' style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Contact Number</div>
-                        <div className='col-6'> {user.phone}</div>
+                        <div className='col-6'> 5435465745</div>
                     </div>
                     <div className = 'row mx-4' style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Address</div>
-                        <div className='col-6'> {user.address}</div>
+                        <div className='col-6'> NIT_JALANDHAR</div>
                     </div>
                     <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Govt approved proof attached</div>

@@ -200,15 +200,15 @@ function Login() {
       <div className="aboutSection" id="AboutUs">
         <h1 className="aboutUs">About Us</h1>
         <p className="aboutUsPara">
-          MNIT Jaipur strongly believes in the old Indian adage "Athithi Devo
+          NIT Jalandhar strongly believes in the old Indian adage "Athithi Devo
           Bhava". We give our visitors the best facilities be it in terms of
           service, ambience or food. It is common practice in Indian institutes
-          to create on-campus guest houses to host official guests. MNIT Jaipur
-          has created a guest house to meet its needs. The campus has two guest
+          to create on-campus guest houses to host official guests. NIT Jalandhar
+          has created a guest house to meet its needs. The campus has three guest
           houses to accommodate the guests and delegates who visit the campus,
-          the INDRADHANUSH (GH- 1) with 15 Delux rooms and the SURYODAYA(GH- 2)
+          the Guest House 1 with 15 Delux rooms, the Guest House 2 with 15 Deluxe Rooms and the Guest House 3
           with 28 Standard rooms, all rooms are air conditioned. The rooms have
-          double beds and other amenities. The Indradhanush Guest house also
+          double beds and other amenities. The Guest House 1 also
           provides a meeting room.
         </p>
         <div className="facilitiesHolder">
@@ -256,7 +256,7 @@ function Login() {
               automatically cancelled for subsequent days.
             </li>
             <li>
-              MNIT Jaipur guests are kindly requested to observe the rules, so
+              NIT Jalandhar guests are kindly requested to observe the rules, so
               that their stay will be comfortable and safe.
             </li>
             <li>Consuming Alcohol is prohibited in the Guest House.</li>
@@ -266,8 +266,7 @@ function Login() {
               purpose.
             </li>
             <li>
-              Alumni can book rooms in MNIT guest house for themselves and their
-              immediate family members i.e. parents and children but not for
+              Alumni can book rooms in NIT guest house for themselves and their immediate family members i.e. parents and children but not for
               their other relatives, friends, or colleagues.
             </li>
             <li>

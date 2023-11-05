@@ -34,7 +34,7 @@ function App() {
                 <Route path="/Student" element={<Student />} />
                 <Route path="/Alumni" element={<Alumni />} />
                 <Route path="/Dashboard" element={<Dash />} />
-                <Route path="/UserDetails" element={<UserDetail />} />
+                <Route path="/UserDetails" element={<UserDetail/>} />
                 <Route path="/login" element={<Login />} />
               </Routes>
             </FormProvider>

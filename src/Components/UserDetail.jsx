@@ -9,9 +9,12 @@ import HomeHeader from './Homeheader';
 const UserDetail = () => {
  const [user, setUser] = useState(null);
  const [isAvailable,setIsAvailable] = useState(false);
-
+ const [selectedOption, setSelectedOption] = useState("PersonalDetails");
+ const handleOptionChange = (event) => {
+  setSelectedOption(event.target.value);
+};
  const {userId}=useUserContext();
-
+const username = "USER";
  useEffect(()=> {
     console.log(userId);
        fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
@@ -19,24 +22,20 @@ const UserDetail = () => {
        .then((data) =>{setUser(data); setIsAvailable(true);console.log(data)})
        .catch((err) => console.log(err));
  }, []);
-
-
   return (
    <>
    <HomeHeader/> 
-   <div className="container-fluid top-container">
-      <div className="topbar">
-        <div className = 'row row2' style = {{color : 'white'}}>
+   <div className="top-container">
+      <div className="topbars">
+         <div className = 'row row2' style = {{color : 'white'}}>
           <div className = 'col-8 mx-4'>
             <h3>User Profile</h3></div>
-          <div className = 'col-2'><h6>{user}</h6></div>
-          <div className = "col-1"><button onClick={{/* */}}  style = {{backgroundColor : '#0275d8', color: 'white', border : '0px'}}><strong>Logout</strong></button></div>
+          <div className = 'col-2'><h6>{username}</h6></div>
+          <div className = "col-1"><button  style = {{backgroundColor : '#0275d8', color: 'white', border : '0px'}}><strong>Logout</strong></button></div>
         </div>
-        
-        
-      </div> 
-      <div className = 'container-fluid'>
-        <div className="user-content" >
+      </div>
+      <div> 
+        <div>
           <div className="d-inline mx-4" style = {{backgroundColor : '#f5f9fe'}}>
             <label>
             <input type="radio" 
@@ -66,7 +65,7 @@ const UserDetail = () => {
           {selectedOption === "CancelledBooking" && <CancelledBooking/>}
         </div>
       </div>
-    </div>
+    </div> 
     </>
   )
 }

@@ -10,22 +10,22 @@ const Footer = () => {
       <div className="div1">
         <div>
           <img
-            style={{ width: '70px', height: '70px', marginRight: '15px', float: 'left' }}
+            style={{ width: '20%', height: 'auto', marginRight: '15px', float: 'left' }}
              src={logo} alt="My Image" />
           
           <h4 style={{ paddingLeft: '10px', paddingRight: '10px' }}>
             Dr B R Ambedkar National Institute of Technology Jalandhar
           </h4>
           <p className="paraty">
-            <i className="material-icons" style={{ fontSize: '36px', paddingRight: '10px', float: 'left' }}>
-              place
+            <i className="material-icons" style={{ fontSize: '18px', paddingRight: '10px', float: 'left' }}>
+              <strong>Place:</strong>
             </i>
             G.T Road, Amritsar Bypass, Jalandhar, Punjab, India-144008
           </p>
           <p className="paraty">
-            <i className="material-icons" style={{ paddingLeft: '10px', paddingRight: '10px', fontSize: '25px', float: 'left' }}>
-              local_phone
-            </i>+91-0181-5037855,2690301,2690453, 3082000
+            <i className="material-icons" style={{ paddingLeft: '10px', paddingRight: '10px', fontSize: '18px', float: 'left' }}>
+              Local Phone
+            </i>+91-0181-5037855, 2690301, 2690453, 3082000
           </p>
         </div>
         <div className="socialflex">

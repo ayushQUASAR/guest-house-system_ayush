@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import "../style/regform.css"
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import { NavLink } from "react-router-dom";
 import Alumni from './AlumniDetails/AlumniRight'
 import Faculty from './FacultyDetails/FacultyRight'
@@ -130,6 +131,10 @@ formData.append("Department", department);
     
     
     <div>
+    <NavLink className="nav-tohome" to="/">
+                                <div  className="nav-tohome"><HomeRoundedIcon color="white" /><div className='optn-name'>Home</div></div>
+
+                            </NavLink>
       <div className="r">
         <h1 className="rheading">Create an Account</h1>
       </div>

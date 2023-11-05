@@ -21,6 +21,36 @@ html, body {
     margin: 0; 
     color: black;
 }
+.book-now{
+    transform: translate(50%,50%);
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    left: 43%;
+    
+    top: 50%;
+    padding: 10px 10px;
+    border: 2px solid white;
+    border-radius: 40px;
+    z-index: 500;
+}
+.book-now:hover{
+    background-color: #fff;
+    border: 2px solid #0072cf;
+}
+.book-now:hover div{
+    background-color: #fff;
+    color: #0072cf;
+    /* border: 2px solid #0072cf; */
+}
+.book-now div{
+    border: 2px solid #ffffff;
+    background-color: #0072cf;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: 600;
+    padding: 5px 30px;
+}
 .hostelCard {
     background-size: contain;
     background-repeat: no-repeat;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "../style/loginbox.css"
 import Logo from "../images/logo_250.png.png"
 import "../style/auth.css"
@@ -8,19 +8,46 @@ import Dash from './Dash'
 import Home from '../../src/Home'
 import { useUserContext } from './ContextHooks/UserContext'
 import { useLoginContext } from './ContextHooks/LoginContext'
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [loginData, setLoginData] = useState(null);
   // const [isLogged, setIsLogged] = useState(false);
-  const {isLogged,setIsLogged}=useLoginContext();
-  const [isAdmin, setIsAdmin] = useState(false);
-// console.log(loginData);
+  const { isLogged, setIsLogged } = useLoginContext();
+  const [isAdmin, setIsAdmin] = useState();
+  // console.log(loginData);
 
   const [data, setData] = useState([]);
 
-  const { userId,setUserId, updateUserId } = useUserContext();
+  const { userId, setUserId, updateUserId } = useUserContext();
+
+  // for session check
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/check-session`, {
+      method: 'GET',
+      credentials: 'include',
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.loggedIn) {
+        setIsLogged(true);
+        updateUserId(data.id);
+        setIsAdmin(data.isAdmin);
+        if (data.isAdmin) {
+          navigate('/Dashboard');
+        } else {
+          navigate('/Booking');
+        }
+      }
+    });
+  }, []);
+
   const setSubmit = (e) => {
     e.preventDefault();
     const newEntry = { Email: Email, Password: Password }
@@ -29,7 +56,8 @@ const Login = () => {
 
 
     fetch(`${import.meta.env.VITE_API_URL}/login`, {
-    method: "POST",
+      method: "POST",
+      credentials: 'include',
       body: JSON.stringify(newEntry),
       mode: "cors",
       headers: {
@@ -60,7 +88,7 @@ const Login = () => {
       {
         !isLogged ?
           <div className="login-box">
-         
+
             <div className="login-logo">
               <img src={Logo} alt="NIT logo" />
             </div>
@@ -92,7 +120,7 @@ const Login = () => {
                           <NavLink to="/Register">
                             <p>Dont have Account? Register here</p></NavLink>
                         </div>
-                      
+
 
                       </div>
                       <h3 style={{ color: ' #346BD4' }}>Forgot password?</h3>
@@ -102,9 +130,9 @@ const Login = () => {
                 </div>
               </div>
             </div>
-            {console.log("isadmindiv",isAdmin)}
-          </div> : isAdmin ? <Dash admin={loginData.id} /> :  <Home/>
-      
+            {console.log("isadmindiv", isAdmin)}
+          </div> : isAdmin ? <Dash admin={loginData.id} /> : <Home />
+
       }
 
     </>

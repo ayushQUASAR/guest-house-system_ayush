@@ -83,7 +83,7 @@ const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
  
   return (
     <>
-    <HomeHeader/>
+    {/* <HomeHeader/> */}
     <div className="mai">
 
       {/* <div className="head1">
@@ -123,16 +123,16 @@ const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
           selectedGuestHouse === 1 ? 
           <div style={{ marginTop: '20px' }} id="sacg1">
           SAC Guest House (Non A.C)
-          <MyComponent n={8} />
+          <MyComponent maxRooms={rooms} n={8} />
         </div> 
         : selectedGuestHouse === 2 ? 
         <div style={{ marginTop: '10px' }} id="sacg2">
         Main Guest House (A.C)
-        <MyComponent n={10} />
+        <MyComponent maxRooms={rooms} n={10} />
       </div> 
       :  <div style={{ marginTop: '10px' }} id="sacg3">
       Mega Guest House (Non A.C)
-      <MyComponent n={12} />
+      <MyComponent maxRooms={rooms} n={12} />
     </div>
         }
         {/* <div style={{ marginTop: '20px' }} id="sacg1">

@@ -52,6 +52,9 @@ headers: {
 .catch((err) => console.log(err.message));
   };
 
+  const handleBackPage = () =>  {
+    setIsFirstPage(true);
+  }
 
   const handleBookNowClick = (data) => {
    setBookingDetailsData(data);
@@ -64,7 +67,7 @@ headers: {
      <div className="MainContainer">
       <div >
         <div >
-            <Booking bookingDetails={bookingDetailsData} />
+            <Booking onBackPage={handleBackPage} bookingDetails={bookingDetailsData} />
         </div>
         <div className="heading">
           <h1>REQUIRED DETAILS</h1>

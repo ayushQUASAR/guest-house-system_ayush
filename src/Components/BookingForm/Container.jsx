@@ -50,6 +50,8 @@ headers: {
 .then((res) => res.json())
 .then((data) => console.log(data))
 .catch((err) => console.log(err.message));
+
+window.alert("Booking done")
   };
 
   const handleBackPage = () =>  {

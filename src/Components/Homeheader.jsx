@@ -12,8 +12,6 @@ import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 const HomeHeader = () => {
     return (
         <div>
-
-
             <div className="h-nav">
 
                 <div className="nav-wrapper">
@@ -110,10 +108,6 @@ const HomeHeader = () => {
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     )
 }

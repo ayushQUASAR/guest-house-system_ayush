@@ -4,6 +4,9 @@ import "../style/middle.css";
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import  "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 const Approve = () => {
+  const handleClick = () => {
+    
+  }
   return (
     <>
       <div className="Approve-container">
@@ -54,7 +57,7 @@ const Approve = () => {
           <Table />
         </div>
         <div className="footbutton">
-          <button type="button" className="btn btn-primary">
+          <button type="button" className="btn btn-primary" onClick={handleClick}>
             Add new user
           </button>
         </div>

@@ -24,21 +24,6 @@ const Calendar = () => {
       acBooked: 1,
       nonAcBooked: 1,
     },
-    {
-      date: "19-11-2023",
-      acBooked: 12,
-      nonAcBooked: 4,
-    },
-    {
-      date: "20-11-2023",
-      acBooked: 10,
-      nonAcBooked: 2,
-    },
-    {
-      date: "21-11-2023",
-      acBooked: 5,
-      nonAcBooked: 6,
-    },
   ];
 
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

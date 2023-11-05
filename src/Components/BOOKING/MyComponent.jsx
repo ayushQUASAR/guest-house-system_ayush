@@ -45,19 +45,29 @@
 
 // export default MyComponent;
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MyComponent.css'; // Import the CSS file
 
-function MyComponent({ n, maxRooms }) {
+function MyComponent({ n, maxRooms, setRooms}) {
   const [selectedDivs, setSelectedDivs] = useState([]);
 
+  console.log(selectedDivs);
+
+useEffect(()=> {
+setRooms(selectedDivs);
+}, [selectedDivs]);
+
+
+  
   const handleDivClick = (divId) => {
+   
     if (selectedDivs.includes(divId)) {
       // If the div is already selected, remove it
       setSelectedDivs(selectedDivs.filter((id) => id !== divId));
     } else if (selectedDivs.length < maxRooms) {
       // Check if the maximum number of selected rooms has not been reached
       setSelectedDivs([...selectedDivs, divId]);
+     
     }
   };
 
@@ -66,6 +76,7 @@ function MyComponent({ n, maxRooms }) {
     divs.push({ id: i, content: `Item ${i}` });
   }
 
+  // console.log(divs);
   return (
     <div className="roombookingu">
       {divs.map((div) => (

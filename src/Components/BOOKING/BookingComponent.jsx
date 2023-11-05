@@ -6,11 +6,35 @@ import './MyComponent.css';
 import HomeHeader from '../Homeheader';
 // import React, { useState } from 'react';
 
-const BookingComponent = ({rooms}) => {
+const BookingComponent = ({rooms, id}) => {
 const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
+const [selectedRooms, setSelectedRooms] = useState([]);
 
-// const [selectedRooms, setSelectedRooms] = useState(rooms);
+const handleApproval = () => {
+  const data = {
+    booking: id, 
+  status : 'accept',
+  guestHouseAllotted : selectedGuestHouse,
+  roomsAllotted : selectedRooms
+};
 
+console.log("Accept Body :",data);
+fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
+  method:"POST",
+  mode: "cors",
+  body: JSON.stringify(data),
+  headers: {
+    "Content-Type" : "application/json"
+  }
+})
+.then((res) => res.json())
+.then((data) => console.log(data))
+.catch((err) => console.error(err.message))
+}
+
+const handleRooms = (rooms) => {
+setSelectedRooms(rooms);
+}
 
 
 
@@ -123,16 +147,16 @@ const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
           selectedGuestHouse === 1 ? 
           <div style={{ marginTop: '20px' }} id="sacg1">
           SAC Guest House (Non A.C)
-          <MyComponent maxRooms={rooms} n={8} />
+          <MyComponent setRooms={handleRooms} maxRooms={rooms} n={8} />
         </div> 
         : selectedGuestHouse === 2 ? 
         <div style={{ marginTop: '10px' }} id="sacg2">
         Main Guest House (A.C)
-        <MyComponent maxRooms={rooms} n={10} />
+        <MyComponent setRooms={handleRooms} maxRooms={rooms} n={10} />
       </div> 
       :  <div style={{ marginTop: '10px' }} id="sacg3">
       Mega Guest House (Non A.C)
-      <MyComponent maxRooms={rooms} n={12} />
+      <MyComponent setRooms={handleRooms} maxRooms={rooms} n={12} />
     </div>
         }
         {/* <div style={{ marginTop: '20px' }} id="sacg1">
@@ -153,7 +177,7 @@ const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
           <MyComponent n={12} />
         </div> */}
 
-        <div className="book">Book Now</div>
+        <div className="book" onClick={handleApproval}>Book Now</div>
       </div>
     </div>
     </>

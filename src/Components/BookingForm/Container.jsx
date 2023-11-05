@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { createContext, useContext, useState, useEffect }  from "react";
 import BookingDetails from "./BookingDetails";
 import BookingForm from "./BookingForm";
@@ -10,13 +9,21 @@ import BookingComponent1 from "../BOOKING1/BookingComponent1";
 import { useUserContext } from "../ContextHooks/UserContext";
 import Booking from "./BookingDetails";
 
-
+import BookingPopup from "./BookingPopup";
 
 const Container = () => {
 const [isFirstPage, setIsFirstPage] = useState(true);
 const [bookingDetailsData, setBookingDetailsData] = useState(null);
 const [userDetails, setUserDetails] = useState(null);
+const [isPopupOpen, setPopupOpen] = useState(false);
 
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
   const { formData } = useContext(FormContext);
   const {userId} = useUserContext();
   // console.log(userId);
@@ -32,7 +39,6 @@ fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
  
     console.log(userDetails);
 
@@ -51,7 +57,12 @@ headers: {
 .then((data) => console.log(data))
 .catch((err) => console.log(err.message));
 
+<<<<<<< HEAD
 window.alert("Booking done")
+=======
+
+  openPopup();
+>>>>>>> 0309f6e87b589197f53d3407bd357c3284243f63
   };
 
   const handleBackPage = () =>  {
@@ -72,7 +83,7 @@ window.alert("Booking done")
             <Booking onBackPage={handleBackPage} bookingDetails={bookingDetailsData} />
         </div>
         <div className="heading">
-          <h1>REQUIRED DETAILS</h1>
+          <h1>ENTER DETAILS OF THE VISITOR</h1>
         </div>
         <div className="bookingForm">
             <BookingForm startDate={bookingDetailsData.startDate} endDate={bookingDetailsData.endDate} />
@@ -82,6 +93,7 @@ window.alert("Booking done")
             <button type="submit" className="btn btn-primary btn-lg " onClick={handleSubmit}>Submit</button>
       </div>
     </div>}
+    <BookingPopup isOpen={isPopupOpen} onClose={closePopup} />
     </>
   );
 };

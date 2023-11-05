@@ -1,4 +1,4 @@
-import "../../style/popup_booking.css"
+// import "../../style/popup_booking.css"
 
 const RoomDetailsModal = ({ isOpen, onClose, roomDetails }) => {
   if (!isOpen) return null;

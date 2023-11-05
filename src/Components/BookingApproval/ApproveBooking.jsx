@@ -334,6 +334,8 @@ const Approve = () => {
   const removeFilter = () => {
     setIsFirstPage(false);
   }
+
+  
   return (
     <>
       <div className="Approve-container">

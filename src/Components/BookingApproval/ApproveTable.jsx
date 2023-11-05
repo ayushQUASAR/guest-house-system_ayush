@@ -33,30 +33,36 @@ const handleApproval = (id, status) => {
     setIsFirstPage(false);
     onSecondPage();
   }
-      // fetch("https://guest-house-back.onrender.com/admin/bookingApproval", {
-      //   method: "POST",
-      //   mode:"cors",
-      //   body : JSON.stringify({
-      //      user: id,
-      //     status: `${status}`,
-      //     
-      //   }),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // })
-      // .then((res) => res.json())
-      // .then((data)=> {
-      //   console.log(data);
-      //   window.alert(data.message);
 
-      //   setPendingBooking((prev) => {
-      //           const selectedUsers  = prev.filter((user) => user.user._id !== id);
-      //           return selectedUsers;
-      //   })
+  if(status === 'reject') {
+    const rejectBody = {
+      booking: id,
+     status: "reject", 
+   };
+
+   console.log("reject body: ",rejectBody);
+            fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
+        method: "POST",
+        mode:"cors",
+        body : JSON.stringify(rejectBody),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => res.json())
+      .then((data)=> {
+        console.log(data);
+        window.alert(data.message);
+
+        setPendingBooking((prev) => {
+                const selectedUsers  = prev.filter((user) => user.user._id !== id);
+                return selectedUsers;
+        })
       
-      // })
-      // .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+
+  }
 }
 
 
@@ -110,7 +116,7 @@ const handleApproval = (id, status) => {
 
        
       </div>
-    </div> : <BookingComponent rooms={currentUser.roomsSelected} onSubmit={handleSubmit}/>
+    </div> : <BookingComponent id={currentUser._id} rooms={currentUser.roomsSelected} onSubmit={handleSubmit}/>
     }
       {/* <div class="approval-table">
         <div className="d-flex flex-row justify-content-between">

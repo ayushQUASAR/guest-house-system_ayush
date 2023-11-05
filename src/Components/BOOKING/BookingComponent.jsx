@@ -1,12 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './BookingComponent.css';
 
 import MyComponent from './MyComponent';
 import './MyComponent.css';
+import HomeHeader from '../Homeheader';
 // import React, { useState } from 'react';
 
-const BookingComponent = () => {
+const BookingComponent = ({rooms}) => {
+const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
+
+// const [selectedRooms, setSelectedRooms] = useState(rooms);
+
+
+
+
+
   const handleDivClick1 = () => {
+    setSelectedGuestHouse(1);
     // Find the div element by its id
     const ghh1 = document.getElementById('gh1');
     const ghh2 = document.getElementById('gh2');
@@ -19,16 +29,13 @@ const BookingComponent = () => {
       ghh1.style.backgroundColor = 'rgb(8, 110, 101)';
       ghh2.style.backgroundColor = 'rgb(74, 170, 162)';
       ghh3.style.backgroundColor = 'rgb(74, 170, 162)';
-      sacg1.style.pointerEvents = 'auto';
-      sacg3.style.pointerEvents = 'none';
-      sacg2.style.pointerEvents = 'none';
-
-
-
-
+      // sacg1.style.pointerEvents = 'auto';
+      // sacg3.style.pointerEvents = 'none';
+      // sacg2.style.pointerEvents = 'none';
     }
   };
   const handleDivClick2 = () => {
+    setSelectedGuestHouse(2);
     // Find the div element by its id
     const ghh1 = document.getElementById('gh1');
     const ghh2 = document.getElementById('gh2');
@@ -42,13 +49,14 @@ const BookingComponent = () => {
       ghh2.style.backgroundColor = 'rgb(8, 110, 101)';
       ghh1.style.backgroundColor = 'rgb(74, 170, 162)';
       ghh3.style.backgroundColor = 'rgb(74, 170, 162)';
-      sacg1.style.pointerEvents = 'none';
-      sacg3.style.pointerEvents = 'none';
-      sacg2.style.pointerEvents = 'auto';
+      // sacg1.style.pointerEvents = 'none';
+      // sacg3.style.pointerEvents = 'none';
+      // sacg2.style.pointerEvents = 'auto';
 
     }
   };
   const handleDivClick3 = () => {
+    setSelectedGuestHouse(3);
     // Find the div element by its id
     const ghh1 = document.getElementById('gh1');
     const ghh2 = document.getElementById('gh2');
@@ -62,20 +70,20 @@ const BookingComponent = () => {
       ghh3.style.backgroundColor = 'rgb(8, 110, 101)';
       ghh2.style.backgroundColor = 'rgb(74, 170, 162)';
       ghh1.style.backgroundColor = 'rgb(74, 170, 162)';
-      sacg3.style.pointerEvents = 'auto';
-      sacg1.style.pointerEvents = 'none';
-      sacg2.style.pointerEvents = 'none';
+      // sacg3.style.pointerEvents = 'auto';
+      // sacg1.style.pointerEvents = 'none';
+      // sacg2.style.pointerEvents = 'none';
 
 
     }
   };
+
+
  
-
-
-
-
-
+ 
   return (
+    <>
+    <HomeHeader/>
     <div className="mai">
 
       {/* <div className="head1">
@@ -95,32 +103,44 @@ const BookingComponent = () => {
         </div>
 
         <div className="flex-containerTY">
-
-
           <div id="gh1" onClick={handleDivClick1}>Guest House 1</div>
           <div id="gh2" onClick={handleDivClick2}>Guest House 2</div>
           <div id="gh3" onClick={handleDivClick3}>Guest House 3</div>
-
-
-
         </div>
 
 
         
         <div className="new">
-          <div> Select Your Room(s):</div>
+          <div> Select {rooms} {rooms === 1 ? "room" : "rooms"}: </div>
           <div className="roombooking">
             <div id="available"></div>Available
             <div id="selected"></div>Selected
             <div id="booked"></div>Booked
           </div>
         </div>
-        <div style={{ marginTop: '20px' }} id="sacg1">
+
+        {
+          selectedGuestHouse === 1 ? 
+          <div style={{ marginTop: '20px' }} id="sacg1">
+          SAC Guest House (Non A.C)
+          <MyComponent n={8} />
+        </div> 
+        : selectedGuestHouse === 2 ? 
+        <div style={{ marginTop: '10px' }} id="sacg2">
+        Main Guest House (A.C)
+        <MyComponent n={10} />
+      </div> 
+      :  <div style={{ marginTop: '10px' }} id="sacg3">
+      Mega Guest House (Non A.C)
+      <MyComponent n={12} />
+    </div>
+        }
+        {/* <div style={{ marginTop: '20px' }} id="sacg1">
           SAC Guest House (Non A.C)
           <MyComponent n={8} />
         </div>
 
-        {/* <MyComponent n={8}/> */}
+        <MyComponent n={8}/> 
         <div style={{ marginTop: '10px' }} id="sacg2">
           Guest House 1 (A.C)
 
@@ -131,11 +151,12 @@ const BookingComponent = () => {
           Mega Guest House (Non A.C)
 
           <MyComponent n={12} />
-        </div>
+        </div> */}
 
         <div className="book">Book Now</div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,26 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './MyComponent.css'; // Import the CSS file
 
 function MyComponent({n}) {
-  const [highlightedDiv, setHighlightedDiv] = useState(null);
+  const [divs, setDivs] = useState(new Array(8).fill(false));
+  // const elementRef = useRef(null);
+  
+  useEffect(()=> {
+setDivs(new Array(n).fill(false));
+  }, [n])
+  console.log(divs);
+ 
+const handleDivClick = (index) => {
+    
+     setDivs((prev) => {
+      const new_state = prev;
+      new_state[index] = true;
 
-  const handleDivClick = (divId) => {
-    setHighlightedDiv(divId);
+      return new_state;
+     })
+    // setHighlightedDiv(index+1);
+
   };
 
-  const divs = [];
-  for (let i = 1; i <= n; i++) {
-    divs.push({ id: i, content: `Item ${i}` });
-  }
+  // const divs = [];
+  // for (let i = 1; i <= n; i++) {
+  //   divs.push({ id: i, content: `Item ${i}` });
+  // }
 
 
   return (
     <div className="roombookingu">
-      {divs.map((div) => (
+      {divs.map((element, index) => (
         <div
-          key={div.id}
-          onClick={() => handleDivClick(div.id)}
-          className={`divtt ${highlightedDiv === div.id ? 'highlightedyy' : ''}`}
+          key={index}
+          onClick={() => {handleDivClick(index)}}
+          className={`divtt ${divs[index] === true ? 'highlightedyy' : ''}`}
         >
           {/* {div.content} */}
         </div>

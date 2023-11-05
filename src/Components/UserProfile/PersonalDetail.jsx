@@ -23,7 +23,7 @@ const PersonalDetail = ({user}) => {
                     <img  style={{ width: "500%", height: "600%" }}src='./p.jpg' alt="" />
                 </div> 
             </div>
-            <div className = 'col-8 my-4'>
+            <div className = 'col-8'>
                 <div>
                     <h2>Personal Details</h2>
                     <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>

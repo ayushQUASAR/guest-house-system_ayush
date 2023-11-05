@@ -4,7 +4,7 @@ const BookingDetail = () => {
   return (
     
     <div >
-        <div className = 'mx-4 my-4'>
+        <div className = 'mx-4'>
             <h2 style = {{color : '#093356'}} ><strong>CURRENT BOOKING:</strong></h2>
         </div>
         <div className='mx-4 my-4'>

@@ -137,3 +137,15 @@
 }
 }
 
+#available {
+ background-color:  rgb(173, 226, 240);
+}
+
+#selected {
+  background-color: rgb(75, 228, 197);
+}
+
+#booked {
+  /* 297373 */
+background-color: #CB769E ;
+}

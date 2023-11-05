@@ -18,6 +18,13 @@
   
   .highlightedyy {
     background-color:rgb(75, 228, 197);
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    justify-content: center;
+    cursor: pointer;
     /* transition: background-color 0.3s; */
   }
   .roombookingu{

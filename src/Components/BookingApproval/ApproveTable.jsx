@@ -9,6 +9,7 @@ import BookingComponent from "../BOOKING/BookingComponent";
 const Approvaltable = ({onSecondPage}) => { 
 const [pendingBooking, setPendingBooking] = useState(null);
 const [isFirstPage, setIsFirstPage] = useState(true);
+const [currentUser, setCurrentUser] = useState(null);
 
 useEffect(()=> {
   fetch("https://guest-house-back.onrender.com/booking/approved/pending")
@@ -24,6 +25,9 @@ useEffect(()=> {
 //        return {...eachData, accepting: false}
 //       })
 
+const handleSubmit = () => {
+
+}
 const handleApproval = (id, status) => {
   if(status === 'accept') {
     setIsFirstPage(false);
@@ -35,6 +39,7 @@ const handleApproval = (id, status) => {
       //   body : JSON.stringify({
       //      user: id,
       //     status: `${status}`,
+      //     
       //   }),
       //   headers: {
       //     "Content-Type": "application/json",
@@ -97,7 +102,7 @@ const handleApproval = (id, status) => {
                         <div>{user.phone}</div>
                         <div>{user.roomBooker.name}</div> 
                         <div>{user.purpose}</div>
-                        <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {handleApproval(user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user._id, 'reject')}>Reject</button></div>
+                        <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {setCurrentUser(user);handleApproval(user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user._id, 'reject')}>Reject</button></div>
               </div>
             })
         }
@@ -105,7 +110,7 @@ const handleApproval = (id, status) => {
 
        
       </div>
-    </div> : <BookingComponent/>
+    </div> : <BookingComponent rooms={currentUser.roomsSelected} onSubmit={handleSubmit}/>
     }
       {/* <div class="approval-table">
         <div className="d-flex flex-row justify-content-between">

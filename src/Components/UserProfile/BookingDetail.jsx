@@ -4,8 +4,20 @@ const BookingDetail = () => {
   return (
     
     <div >
-        <div className = 'mx-4'>
+        <div className = 'row mx-4'>
+            <div className='col-4'>
             <h2 style = {{color : '#093356'}} ><strong>CURRENT BOOKING:</strong></h2>
+
+            </div>
+            <div className = 'col-2'></div>
+            <div className='col-4'>
+                <p className = 'd-inline'><strong>Status: </strong></p>
+                <p style = {{color: '#4bb331', display : 'inline'}}><strong>APPROVED</strong></p>
+            </div>
+            <div className='col-2'>
+            <button className = "d-inline btn" style={{backgroundColor:'red'}} type="button">
+                <p className='mx-1'>CANCEL</p></button>
+            </div>
         </div>
         <div className='mx-4 my-4'>
             <div className='row'>

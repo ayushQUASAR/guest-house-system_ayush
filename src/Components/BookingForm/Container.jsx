@@ -79,7 +79,7 @@ headers: {
             <Booking onBackPage={handleBackPage} bookingDetails={bookingDetailsData} />
         </div>
         <div className="heading">
-          <h1>REQUIRED DETAILS</h1>
+          <h1>ENTER DETAILS OF THE VISITOR</h1>
         </div>
         <div className="bookingForm">
             <BookingForm startDate={bookingDetailsData.startDate} endDate={bookingDetailsData.endDate} />

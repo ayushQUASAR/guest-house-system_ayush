@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { useLoginContext } from './ContextHooks/LoginContext';
 import "../style/dashNav.css"
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
@@ -13,6 +13,21 @@ import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 
 const HomeHeader = () => {
     const { isLogged } = useLoginContext();
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/check-session`, {
+          method: 'GET',
+          credentials: 'include',
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.loggedIn) {
+            setIsAdmin(data.isAdmin); 
+          }
+        });
+      }, []);
+
     return (
         <div>
             <div className="h-nav">
@@ -94,10 +109,10 @@ const HomeHeader = () => {
 
                                 Availability
                             </Link> */}
-                            <NavLink to="/UserDetails">
+                            {!isAdmin && (<NavLink to="/UserDetails">
 
                                 <div className="nav-optn">Profile</div>
-                            </NavLink> 
+                            </NavLink>)} 
                             {!isLogged && (<NavLink to="/login">
 
                                 <div className="nav-optn">Login</div>

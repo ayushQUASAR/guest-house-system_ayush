@@ -2,10 +2,21 @@ import React from "react";
 // import Image from "./p.jpg"
 const  SideBar = ({user}) => {
   
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    for (let i = 0; i < bytes.byteLength; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
+console.log("user.id",user.idProof)
+  // Assuming idProof is binary data
+  const idProofBase64 = arrayBufferToBase64(user.idProof);
   return (
     
     <div className="tables-container">
-        <img src={Image}/>
+        <img src={`data:image/jpeg;base64, ${idProofBase64}`} alt/>
         <hr style = {{border : '1px rgb(44, 42, 42) dotted'}}/>
       <table className="table">
         <tbody>

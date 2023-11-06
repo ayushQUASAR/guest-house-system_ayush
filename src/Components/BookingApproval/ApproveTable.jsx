@@ -55,7 +55,7 @@ const handleApproval = (id, status) => {
         window.alert(data.message);
 
         setPendingBooking((prev) => {
-                const selectedUsers  = prev.filter((user) => user.user._id !== id);
+                const selectedUsers  = prev.filter((user) => user._id !== id);
                 return selectedUsers;
         })
       

@@ -14,6 +14,7 @@ import { LoginContextProvider } from "./ContextHooks/LoginContext";
 import Container from "./BookingForm/Container";
 import { FormProvider } from "./ContextHooks/FormContext";
 import BookingComponent from "./BOOKING/BookingComponent";
+import RequireAuth from './RequireAuth';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
             <FormProvider>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/Booking" element={<Container />} />
+                <Route path="/Booking" element={<RequireAuth><Container /></RequireAuth>} />
                 <Route path="/Register" element={<Registration />} />
                 <Route
                   path="/AdminRegistration"
@@ -33,8 +34,8 @@ function App() {
                 <Route path="/Faculty" element={<Faculty />} />
                 <Route path="/Student" element={<Student />} />
                 <Route path="/Alumni" element={<Alumni />} />
-                <Route path="/Dashboard" element={<Dash />} />
-                <Route path="/UserDetails" element={<UserDetail/>} />
+                <Route path="/Dashboard" element={<RequireAuth><Dash /></RequireAuth>} />
+                <Route path="/UserDetails" element={<RequireAuth><UserDetail/></RequireAuth>} />
                 <Route path="/login" element={<Login />} />
               </Routes>
             </FormProvider>

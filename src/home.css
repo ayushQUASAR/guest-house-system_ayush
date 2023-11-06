@@ -26,7 +26,7 @@ html, body {
     color: white;
     font-size: 30px;
     position: absolute;
-    left: 43%;
+    left: calc( 45% - 75px);
     
     top: 50%;
     padding: 10px 10px;
@@ -330,4 +330,11 @@ li {
     font-size: 50px;
     text-align: center;
     color:#0072cf;
+}
+
+@media screen and (max-width:1770px) {
+    #Welcome{
+        font-size: 53px;
+    }
+    
 }

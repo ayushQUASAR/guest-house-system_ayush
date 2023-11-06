@@ -100,7 +100,7 @@ const BookingComponent1 = ({onBookNowClick}) => {
     <HomeHeader/>
 
     <div className="main12">
-      <div className="head12">Booking Rooms</div>
+      <div className="head12"><div>Booking Rooms</div></div>
       <div>
         <form className="form34">
           <label for="from">From:</label><br className='breakk'></br>

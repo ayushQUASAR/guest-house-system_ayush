@@ -23,7 +23,10 @@
     background-color: rgb(80, 221, 228);
     height: 40px;
     text-align: center;
-    padding-top: 20px;
+    
+    display: grid;
+    place-items: center;
+    /* padding-top: 20px; */
   }
   
   .form34 {
@@ -64,7 +67,6 @@
     text-align: center;
     margin-top: 30px;
     margin-bottom: 20px;
-    padding-top: 10px;
     background-color: aqua;
     cursor: pointer;
   }
@@ -83,6 +85,7 @@
   
   .para64 {
     text-align: center;
+    margin: 2rem 0 1.3rem 0;
   }
   .breakk{
     display: none;
@@ -116,7 +119,8 @@
       background-color: rgb(80, 221, 228);
       height: 60px;
       text-align: center;
-      padding-top: 20px;
+     
+  
     }
   
     .form34 {

@@ -1,8 +1,9 @@
 import react, {useState, useEffect } from "react"
 import "./DashInfo.css"
-import Image1 from "./Image1.png" 
-import Image2 from "./Image2.png"
-import Image3 from "./Image3.png"
+import HomeIcon from '@mui/icons-material/Home';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import PersonIcon from '@mui/icons-material/Person';
+
 
 const DashInfo=()=>{
     const [pendingUser, setPendingUser] = useState(0);
@@ -104,7 +105,7 @@ useEffect(() => {
         <div>
         <div className=" MainDash">
              <div className="DashCard">
-                <img src={Image1} className="Dashimage" alt="logo"/>
+                     <div className="DashIcon"><HomeIcon/></div> 
                 <div className="Dashtext">
                     <h5>3</h5>
                     <p>Total</p>
@@ -112,7 +113,7 @@ useEffect(() => {
                 </div>
              </div>
              <div className="DashCard">
-                <img src={Image2} className="Dashimage" alt="logo"/>
+                 <div className="DashIcon"><PendingActionsIcon/></div>
                 <div className="Dashtext">
                     <h5>{pendingBooking}</h5>
                     <p>Pending</p>
@@ -121,7 +122,7 @@ useEffect(() => {
                 </div>
              </div>
              <div className="DashCard">
-                <img src={Image2} className="Dashimage" alt="logo"/>
+                 <div className="DashIcon"><PendingActionsIcon /></div> 
                 <div className="Dashtext">
                     <h5>{pendingUser}</h5>
                     <p>Pending</p>
@@ -130,7 +131,7 @@ useEffect(() => {
                 </div>
              </div>
              <div className="DashCard">
-                <img src={Image3} className="Dashimage" alt="logo"/>
+                <div className="DashIcon"><PersonIcon/></div>
                 <div className="Dashtext">
                     <h5>{registeredUsers}</h5>
                     <p>Registered</p>

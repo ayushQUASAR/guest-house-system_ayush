@@ -7,7 +7,7 @@ const Dashboard = () => {
     // Your component code here
     return(
         <div className="d-flex dashcont ">
-{/*            <Calender/> */}
+
             <DashInfo/>
         </div>
     )

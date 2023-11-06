@@ -1,73 +1,99 @@
-.dashcont{
-    gap: 40px !important;
-    
+/* Base styles */
+ .DashCard2 {
+    margin-left: 8%;
+    padding: 10px;
+    border-radius: 10px;
+   
+    box-shadow: 3px 3px 3px 3px rgb(134, 194, 243);
 }
 
-.Dashtext{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin-left:50px;
-    width:100%;
-   justify-content: center;
-   
-}
-.DashCard{
-    width:45%;
+/* Updated .DashCard style for horizontal rectangles */
+.DashCard {
+    width: 200px; /* Set your desired width for the rectangle */
     display: flex;
     flex-direction: row;
-    padding:10px;
-    margin-left:30px;
-    margin-top:30px;
-    margin-bottom:20px;
-    /* border: 1px solid black !important; */
+    padding: 10px;
+    margin-left: 50px; /* Adjust the margin as needed */
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
     border-radius: 10px;
     box-shadow: 3px 3px 3px 3px rgb(134, 194, 243);
 }
-.Dashimage{
-    margin-top:20px;
-    margin-left:30px;
-    width:50px;
-    height:50px;
+
+/* Add this CSS to maintain the aspect ratio for the images within the rectangles */
+.Dashimage img {
+    width: 10px !important; /* Make the image fill its container */
+    height: 10px !important; /* Maintain the aspect ratio */
 }
-.MainDash{
-    width:100%;
-    height: 50%;
+
+
+.MainDash {
+    width: 100%;
     padding: 20px;
-    /* border:1px solid black; */
-    display:flex;
-    margin-bottom:20px;
+    /* border: 1px solid black; */
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
 
+.DashBigCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    
+    padding: 20px;
+    /* border: 1px solid black; */
 }
-.DashBigCards{
-    width:100%;
-    padding:20px;
-    /* border: 1px solid black !important; */
-}
-.Dashcircle{
-    margin-top:30px;
-  border:15px solid;
-  border-radius: 50%;
-  padding:40px;
-  text-align: center;
-  border-color:aqua;
-}
-.DashCard2{
-    width:28%;
-    margin-left:40px;
-    /* border: 3px solid black !important; */
-    border-radius:20px;
-    box-shadow: 3px 3px 3px 3px rgb(134, 194, 243);
-}
-.Dashtext2{
+
+.Dashcircle {
+    width: 100px; /* Set your desired width and height for the circle */
+    height: 100px;
+    border: 15px solid transparent; /* Adjust the border thickness as needed */
+    border-top-color: red; /* Half the ring in red */
+    border-right-color: red;
+    border-bottom-color: blue; /* Half the ring in blue */
+    border-left-color: blue;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    color: rgb(0, 0, 0); /* Text color for the numbers in the ring */
+    font-size: 24px; /* Adjust font size as needed */
+}
+
+
+.Dashtext, .Dashtext2 {
     display: flex;
     flex-direction: column;
-    margin-left:10px;
-    width:100%;
-    margin-top:15px;
-   justify-content: center;
-   margin-bottom:15px;
+    margin-left: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Media queries for responsiveness */
+
+@media screen and (max-width: 768px) {
+    .MainDash {
+        flex-direction: column;
+    }
+    
+    .DashCard, .DashCard2 {
+        width: 90%;
+        margin: 2% auto;
+    }
+    
+    .DashBigCards {
+        width: 90%;
+        margin: 2% auto;
+    }
+}
+.DashCard .css-i4bv87-MuiSvgIcon-root{
+
+    font-size:3.5rem;
+}
+.DashIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

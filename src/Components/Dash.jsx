@@ -89,7 +89,7 @@ const Dash = ({admin}) => {
             <AdminPanelSettingsIcon />
             AdminPanel</span></div>
         <div className="dash-wrapper">
-        <div className='side-title'> Administartion</div>
+        <div className='side-title'> Administration</div>
         <li>
           <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
           <div onClick={() => selectContent('adminRoomBooking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Admin Room Booking</span></div>

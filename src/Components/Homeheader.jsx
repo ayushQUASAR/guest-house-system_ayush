@@ -29,6 +29,7 @@ const HomeHeader = () => {
       }, []);
 
     return (
+        <>
         <div>
             <div className="h-nav">
 
@@ -118,10 +119,15 @@ const HomeHeader = () => {
                                 <div className="nav-optn">Login</div>
                             </NavLink>)}
 
-                            {isLogged && (<NavLink to="/login">
+                            {isLogged && isAdmin && (<NavLink to="/login">
 
                                 <div className="nav-optn">Dashboard</div>
                             </NavLink>)}
+
+                            {/* {isLogged && !isAdmin && (<NavLink to="/login">
+
+                                <div className="nav-optn">Book Now</div>
+                            </NavLink>)} */}
 
                             {/* <NavLink to="/Booking">
                             <div className="nav-optn" id="BookNow">
@@ -133,6 +139,7 @@ const HomeHeader = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

@@ -97,7 +97,7 @@ const BookingComponent1 = ({onBookNowClick}) => {
 
   return (
     <>
-    <HomeHeader/>
+    {/* <HomeHeader/> */}
 
     <div className="main12">
       <div className="head12"><div>Booking Rooms</div></div>

@@ -30,6 +30,7 @@ import BookingDetail from './UserProfile/BookingDetail';
 import BookingDetails from './BookingForm/BookingDetails';
 import BookingComponent from './BOOKING/BookingComponent';
 import PersonalDetail from './UserProfile/PersonalDetail';
+import  Container  from './BookingForm/Container';
 
 
 const UserDash = ({user}) => {
@@ -48,7 +49,7 @@ const UserDash = ({user}) => {
   
   const contentComponents = {
     dashboard: <DashboardContent />,
-    Booking: <BookingComponent />,
+    Booking: <Container />,
     bookingHistory: <BookingDetail />,
     bookingCancellationTab: <CancelledBooking />,
     UserProfile: <PersonalDetail />,

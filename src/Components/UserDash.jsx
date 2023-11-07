@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import "../style/dash.css"
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -45,7 +46,25 @@ const UserDash = ({user}) => {
     console.log(contentType)
    
   }
+
+  const navigate = useNavigate();
  const {isLogged,setIsLogged}=useLoginContext();
+
+ const handleLogout = () => {
+  fetch(`${import.meta.env.VITE_API_URL}/logout`, {
+    method: 'GET',
+    credentials: 'include',
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.message === 'Logged out successfully') {
+      setIsLogged(false);
+      navigate('/login');
+    } else {
+      console.error('Error logging out');
+    }
+  });
+};
   
   const contentComponents = {
     dashboard: <DashboardContent />,
@@ -82,7 +101,7 @@ const UserDash = ({user}) => {
         <li>
           <div  onClick={() => selectContent('UserProfile')} className="dash-optn"><span><PersonPinIcon />Profile</span></div>
           <div onClick={() => selectContent('settings')} className="dash-optn"><span><SettingsIcon />Settings</span></div>
-          <div onClick={() =>setIsLogged(false)} className="dash-optn"><span><LogoutIcon />Logout</span></div>
+          <div onClick={handleLogout} className="dash-optn"><span><LogoutIcon />Logout</span></div>
         </li>
       </div> </div>}
       <div className="dash-area">

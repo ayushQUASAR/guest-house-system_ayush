@@ -32,9 +32,7 @@
     color: #fff;
   }
   .back-button{
-    font-size: 18px;
-    background-color: rgb(100, 98, 98);
-    font-weight: 650;
+    background-color: rgb(45, 44, 44);
   }
   .back-button:hover{
     background-color:rgb(45, 44, 44) ;

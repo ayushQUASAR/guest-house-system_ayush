@@ -43,7 +43,7 @@ fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
   const handleSubmit = (event) => {
     event.preventDefault();
  
-    console.log(userDetails);
+    // console.log(userDetails);
 
     
   

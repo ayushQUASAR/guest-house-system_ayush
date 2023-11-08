@@ -9,7 +9,7 @@ import HomeHeader from '../Homeheader';
 const BookingComponent = ({rooms, id}) => {
 const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
 const [selectedRooms, setSelectedRooms] = useState([]);
-
+const [isPopupOpen, setPopupOpen] = useState(false);
 const openPopup = () => {
   setPopupOpen(true);
 };

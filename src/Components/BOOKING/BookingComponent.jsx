@@ -394,8 +394,20 @@ setSelectedRooms(x);
           {/* <MyComponent n={10} maxRooms={rooms}/> */}
         {/* </div>  */}
 
-
+        <div className='bookButtons'>
         <div className="book" onClick={handleApproval}>Book Now</div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            TIME
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">24</a></li>
+            <li><a class="dropdown-item" href="#">48</a></li>
+            <li><a class="dropdown-item" href="#">72</a></li>
+          </ul>
+        </div>
+        </div>
+
    <Popup isOpen={isPopupOpen} onClose={closePopup} />
       </div>
     </div>

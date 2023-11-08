@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './BookingComponent.css';
-
+import Popup from '../PopUp/Popup';
 import MyComponent from './MyComponent';
 import './MyComponent.css';
 import HomeHeader from '../Homeheader';
@@ -10,7 +10,15 @@ const BookingComponent = ({rooms, id}) => {
 const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
 const [selectedRooms, setSelectedRooms] = useState([]);
 
+const openPopup = () => {
+  setPopupOpen(true);
+};
+
+const closePopup = () => {
+  setPopupOpen(false);
+}
 const handleApproval = () => {
+
   const data = {
     booking: id, 
   status : 'accept',
@@ -30,6 +38,7 @@ fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
 .then((res) => res.json())
 .then((data) => console.log(data))
 .catch((err) => console.error(err.message))
+openPopup();
 }
 
 const handleRooms = (rooms) => {
@@ -180,6 +189,7 @@ setSelectedRooms(rooms);
         <div className="book" onClick={handleApproval}>Book Now</div>
       </div>
     </div>
+    <Popup isOpen={isPopupOpen} onClose={closePopup} />
     </>
   );
 };

@@ -13,7 +13,7 @@ import BookingPopup from "./BookingPopup";
 
 const Container = () => {
 const [isFirstPage, setIsFirstPage] = useState(true);
-const [bookingDetailsData, setBookingDetailsData] = useState(null);
+const [bookingDetailsData, setBookingDetailsData] = useState('');
 const [userDetails, setUserDetails] = useState(null);
 const [isPopupOpen, setPopupOpen] = useState(false);
 
@@ -72,23 +72,23 @@ headers: {
   return (
     <>
     {/* <HomeHeader/> */}
-    {isFirstPage ? <BookingComponent1 onBookNowClick={handleBookNowClick}/> :
-     <div className="MainContainer">
-      <div >
-        <div >
-            <Booking onBackPage={handleBackPage} bookingDetails={bookingDetailsData} />
-        </div>
-        <div className="heading">
-          <h1>ENTER DETAILS OF THE VISITOR</h1>
-        </div>
-        <div className="bookingForm">
-            <BookingForm startDate={bookingDetailsData.startDate} endDate={bookingDetailsData.endDate} />
-        </div>
-      </div>
+     {/* <BookingComponent1 onBookNowClick={handleBookNowClick}/>  */}
+    <div className="MainContainer">
+     <div >
+       <div >
+           <Booking onBackPage={handleBackPage} bookingDetails={bookingDetailsData} />
+       </div>
+       <div className="heading">
+         <h1>ENTER DETAILS OF THE VISITOR</h1>
+       </div>
+       <div className="bookingForm">
+           <BookingForm startDate={bookingDetailsData.startDate} endDate={bookingDetailsData.endDate} />
+       </div>
+     </div>
       <div className="button-container">
-            <button type="submit" className="btn btn-primary btn-lg " onClick={handleSubmit}>Submit</button>
-      </div>
-    </div>}
+           <button type="submit" className="btn btn-primary btn-lg " onClick={handleSubmit}>Submit</button>
+      </div> 
+    </div>
     <BookingPopup isOpen={isPopupOpen} onClose={closePopup} />
     </>
   );

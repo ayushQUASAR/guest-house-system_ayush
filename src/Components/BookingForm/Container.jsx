@@ -12,10 +12,9 @@ import Booking from "./BookingDetails";
 import BookingPopup from "./BookingPopup";
 
 const Container = () => {
-const [isFirstPage, setIsFirstPage] = useState(true);
-const [bookingDetailsData, setBookingDetailsData] = useState('');
 const [userDetails, setUserDetails] = useState(null);
 const [isPopupOpen, setPopupOpen] = useState(false);
+const [dateDetails, setDateDetails] = useState(null);
 
   const openPopup = () => {
     setPopupOpen(true);
@@ -36,6 +35,10 @@ fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
 .catch((err) => console.log(err.message));
   }, [formData])
 
+
+  const handleDateDetails = (data) => {
+    setDateDetails(data);
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -61,33 +64,27 @@ headers: {
   openPopup();
   };
 
-  const handleBackPage = () =>  {
-    setIsFirstPage(true);
-  }
-
-  const handleBookNowClick = (data) => {
-   setBookingDetailsData(data);
-    setIsFirstPage(false);
-  }
+ 
   return (
     <>
     {/* <HomeHeader/> */}
-     {/* <BookingComponent1 onBookNowClick={handleBookNowClick}/>  */}
-    <div className="MainContainer">
-     <div >
-       <div >
-           <Booking onBackPage={handleBackPage} bookingDetails={bookingDetailsData} />
-       </div>
-       <div className="heading">
-         <h1>ENTER DETAILS OF THE VISITOR</h1>
-       </div>
-       <div className="bookingForm">
-           <BookingForm startDate={bookingDetailsData.startDate} endDate={bookingDetailsData.endDate} />
-       </div>
-     </div>
+    
+     <div className="MainContainer">
+      <div >
+        <div >
+            <Booking setDateDetails={handleDateDetails}  />
+        </div>
+        <div className="heading">
+          <h1>ENTER DETAILS OF THE VISITOR</h1>
+        </div>
+        <div className="bookingForm">
+         { dateDetails &&  <BookingForm startDate={dateDetails.startDate} endDate={dateDetails.endDate} />}
+         {!dateDetails && <BookingForm/>}
+        </div>
+      </div>
       <div className="button-container">
-           <button type="submit" className="btn btn-primary btn-lg " onClick={handleSubmit}>Submit</button>
-      </div> 
+            <button type="submit" className="btn btn-primary btn-lg " onClick={handleSubmit}>Submit</button>
+      </div>
     </div>
     <BookingPopup isOpen={isPopupOpen} onClose={closePopup} />
     </>

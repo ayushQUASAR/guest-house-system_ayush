@@ -15,7 +15,7 @@ import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { NavLink } from 'react-router-dom';
 import Header from './Header';
 import Approve from './Approve';
-import DashboardContent from './DashboardContent';
+import UserDashboardContent from './UserDashboardContent';
 import AdminUserProfile from './AdminUserProfile'
 import AdminRoomBooking from './AdminRoomBooking'
 import BookedRooms from './BookedRooms'
@@ -67,7 +67,7 @@ const UserDash = ({user}) => {
 };
   
   const contentComponents = {
-    dashboard: <DashboardContent />,
+    dashboard: <UserDashboardContent />,
     Booking: <Container />,
     bookingHistory: <BookingDetail />,
     bookingCancellationTab: <CancelledBooking />,
@@ -90,7 +90,7 @@ const UserDash = ({user}) => {
             <AdminPanelSettingsIcon />
             UserPanel</span></div>
         <div className="dash-wrapper">
-        <div className='side-title'> Administration</div>
+        {/* <div className='side-title'> Administration</div> */}
         <li>
           <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
           <div onClick={() => selectContent('Booking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Booking</span></div>

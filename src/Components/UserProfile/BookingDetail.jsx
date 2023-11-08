@@ -1,4 +1,3 @@
-import '../../style/userprofile.css';
 import React, { useState, useEffect } from 'react';
 
 const BookingDetails = () => {

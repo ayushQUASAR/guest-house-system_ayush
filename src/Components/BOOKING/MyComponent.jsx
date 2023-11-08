@@ -55,6 +55,7 @@ function MyComponent({ n, maxRooms, setRooms}) {
 
 useEffect(()=> {
 setRooms(selectedDivs);
+// console.log(selectedDivs);
 }, [selectedDivs]);
 
   const handleDivClick = (divId) => {

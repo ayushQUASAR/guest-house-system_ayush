@@ -25,6 +25,8 @@ useEffect(()=> {
   .then((data) =>{ setPendingBooking(data); console.log(data)})
   .then((err) => console.log(err));
 }, []);
+
+
 // useEffect(()=> {
 //     fetch("https://guest-house-back.onrender.com/booking/approved/pending")
 //     .then((res) => res.json())
@@ -39,7 +41,7 @@ const handleSubmit = () => {
 const handleApproval = (id, status) => {
   if(status === 'accept') {
     setIsFirstPage(false);
-    openPopup();
+    // openPopup();
     onSecondPage();
   }
 
@@ -117,7 +119,7 @@ const handleApproval = (id, status) => {
                         <div>{user.phone}</div>
                         <div>{user.roomBooker.name}</div> 
                         <div>{user.purpose}</div>
-                        <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {setCurrentUser(user);handleApproval(user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user._id, 'reject')}>Reject</button></div>
+                        <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {console.log(user);setCurrentUser(user);handleApproval(user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user._id, 'reject')}>Reject</button></div>
               </div>
             })
         }
@@ -127,6 +129,7 @@ const handleApproval = (id, status) => {
       </div>
     </div> : <BookingComponent id={currentUser._id} rooms={currentUser.roomsSelected} onSubmit={handleSubmit}/>
     }
+     
       {/* <div class="approval-table">
         <div className="d-flex flex-row justify-content-between">
         

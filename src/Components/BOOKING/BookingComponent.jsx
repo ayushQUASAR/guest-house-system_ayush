@@ -196,10 +196,10 @@
 
 // export default BookingComponent;
 
-import React from 'react';
+import React, {useState} from 'react';
 import './BookingComponent.css';
-import './BookingCompoment.js'
 import MyComponent from './MyComponent';
+import Popup from '../PopUp/Popup';
 import './MyComponent.css';
 // import React, { useState } from 'react';
 
@@ -223,18 +223,20 @@ const handleApproval = () => {
   roomsAllotted : selectedRooms
 };
 
+
+
 console.log("Accept Body :",data);
-// fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
-//   method:"POST",
-//   mode: "cors",
-//   body: JSON.stringify(data),
-//   headers: {
-//     "Content-Type" : "application/json"
-//   }
-// })
-// .then((res) => res.json())
-// .then((data) => console.log(data))
-// .catch((err) => console.error(err.message))
+fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
+  method:"POST",
+  mode: "cors",
+  body: JSON.stringify(data),
+  headers: {
+    "Content-Type" : "application/json"
+  }
+})
+.then((res) => res.json())
+.then((data) => console.log(data))
+.catch((err) => console.error(err.message))
 openPopup();
 }
 
@@ -258,11 +260,11 @@ setSelectedRooms(x);
       ghh1.style.backgroundColor = 'rgb(8, 110, 101)';
       ghh2.style.backgroundColor = 'rgb(74, 170, 162)';
       ghh3.style.backgroundColor = 'rgb(74, 170, 162)';
-      sacg1.style.pointerEvents = 'auto';
+      // sacg1.style.pointerEvents = 'auto';
       
 
-      sacg3.style.pointerEvents = 'none';
-      sacg2.style.pointerEvents = 'none';
+      // sacg3.style.pointerEvents = 'none';
+      // sacg2.style.pointerEvents = 'none';
       // sacg3.className = 'roombookingu';
       // const childDivs = sacg3.querySelectorAll('div');
 
@@ -289,9 +291,9 @@ setSelectedRooms(x);
       ghh2.style.backgroundColor = 'rgb(8, 110, 101)';
       ghh1.style.backgroundColor = 'rgb(74, 170, 162)';
       ghh3.style.backgroundColor = 'rgb(74, 170, 162)';
-      sacg1.style.pointerEvents = 'none';
-      sacg3.style.pointerEvents = 'none';
-      sacg2.style.pointerEvents = 'auto';
+      // sacg1.style.pointerEvents = 'none';
+      // sacg3.style.pointerEvents = 'none';
+      // sacg2.style.pointerEvents = 'auto';
 
     }
   };
@@ -309,9 +311,9 @@ setSelectedRooms(x);
       ghh3.style.backgroundColor = 'rgb(8, 110, 101)';
       ghh2.style.backgroundColor = 'rgb(74, 170, 162)';
       ghh1.style.backgroundColor = 'rgb(74, 170, 162)';
-      sacg3.style.pointerEvents = 'auto';
-      sacg1.style.pointerEvents = 'none';
-      sacg2.style.pointerEvents = 'none';
+      // sacg3.style.pointerEvents = 'auto';
+      // sacg1.style.pointerEvents = 'none';
+      // sacg2.style.pointerEvents = 'none';
 
 
     }
@@ -326,7 +328,9 @@ setSelectedRooms(x);
     <div className="mai">
 
       <div className="head1">
+        <div>
         Booking Rooms
+        </div>
       </div>
       <div className="main1">
         <div>
@@ -348,7 +352,8 @@ setSelectedRooms(x);
 
         
         <div className="new">
-          <div> Select {rooms} {rooms === 1 ? "room" : "rooms"} </div>
+    
+          <div> Select {rooms}  {rooms === 1 ? "room" : "rooms"} </div>
           <div className="roombooking">
             <div id="available"></div>Available
             <div id="selected"></div>Selected
@@ -357,27 +362,41 @@ setSelectedRooms(x);
         </div>
 
 
-        <div style={{ marginTop: '20px' }} id="sacg1">
+        {
+          selectedGuestHouse === 1 ? 
+          <div style={{ marginTop: '20px' }} id="sacg1">
           SAC Guest House (Non A.C)
-          {/* <MyComponent n={8,2}/> */}
-          <MyComponent n={8} maxRooms={2} />
-        </div>
-
-        
+          <MyComponent setRooms={handleRooms} maxRooms={rooms} n={8} />
+        </div> 
+        : selectedGuestHouse === 2 ? 
         <div style={{ marginTop: '10px' }} id="sacg2">
-          Guest House 1 (A.C)
+        Main Guest House (A.C)
+        <MyComponent setRooms={handleRooms} maxRooms={rooms} n={10} />
+      </div> 
+      :  <div style={{ marginTop: '10px' }} id="sacg3">
+      Mega Guest House (Non A.C)
+      <MyComponent setRooms={handleRooms} maxRooms={rooms} n={12} />
+//     </div>
+       }
+        {/* <div style={{ marginTop: '20px' }} id="sacg1"> */}
+          {/* SAC Guest House (Non A.C) */}
+          {/* <MyComponent n={8,2}/> */}
+          {/* <MyComponent n={8} maxRooms={rooms} /> */}
+        {/* </div>     */}
+        {/* <div style={{ marginTop: '10px' }} id="sacg2"> */}
+          {/* Guest House 1 (A.C) */}
          
-          <MyComponent n={10} maxRooms={2}/>
-        </div>
+          {/* <MyComponent  n={10} maxRooms={rooms}/> */}
+        {/* </div> */}
+        {/* <div style={{ marginTop: '10px' }} id="sacg3"> */}
+          {/* Mega Guest House (Non A.C) */}
 
-        <div style={{ marginTop: '10px' }} id="sacg3">
-          Mega Guest House (Non A.C)
-
-          <MyComponent n={10} maxRooms={2}/>
-        </div>
+          {/* <MyComponent n={10} maxRooms={rooms}/> */}
+        {/* </div>  */}
 
 
-        <div className="book">Book Now</div>
+        <div className="book" onClick={handleApproval}>Book Now</div>
+   <Popup isOpen={isPopupOpen} onClose={closePopup} />
       </div>
     </div>
   );

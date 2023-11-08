@@ -3,13 +3,14 @@ import '../../style/userprofile.css';
 import {useState} from 'react';
 const PersonalDetail = ({user}) => {
     const [StudentData, setStudentData] = useState({
-        name2: 'Student Name',  
+        name: 'Student Name',  
         rollNumber : '2110423',
         branch :'CSE',
         ContactNumber2: '123-456-7890', 
-        email2: 'student@gmail.com'
-      }); 
-    const { name2, ContactNumber2, rollNumber, email2, branch } = StudentData;
+        email: 'student@gmail.com'
+    }); 
+    
+    const { name, ContactNumber2, rollNumber, email2, branch } = StudentData;
       // image pop up
       const [dialog, setDialog] = useState(false);
       const toggleDialog = () => {

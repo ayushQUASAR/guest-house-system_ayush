@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./BookingDetails.css";
 import BookingComponent1 from "../BOOKING1/BookingComponent1";
+import { NavLink } from "react-router-dom";
 
 const inputStyle = {
   backgroundColor: "#f8f9fa",
@@ -11,7 +12,7 @@ const inputStyle = {
 const guestHouseOptions = ["Guest House 1", "Guest House 2", "Guest House 3"];
 const maxRooms = [10, 8, 12];
 
-const BookingDetails = ({ bookingDetails, onBackPage }) => {
+const BookingDetails = ({setDateDetails}) => {
   // Get today's date in India's time zone.
   const todayInIndia = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   const todayDate = new Date(todayInIndia);
@@ -34,6 +35,8 @@ const BookingDetails = ({ bookingDetails, onBackPage }) => {
     // Calculate the duration of stay when either check-in or check-out date changes.
     const duration = (new Date(checkoutDate).getTime() - new Date(checkinDate).getTime()) / (1000 * 3600 * 24);
     setDurationOfStay(duration);
+    setDateDetails({startDate: checkinDate, endDate: checkoutDate});
+
   }, [checkinDate, checkoutDate]);
 
   const handleCheckinChange = (e) => {
@@ -87,8 +90,10 @@ const BookingDetails = ({ bookingDetails, onBackPage }) => {
 
   return (
     <div className="navbar">
-      <button type="button" className="btn btn-lg back-button" onClick={onBackPage}>
+      <button type="button" className="btn btn-lg back-button">
+        <NavLink to="/" style={{textDecoration:'none', color: "white"}}>
         BACK
+        </NavLink>
       </button>
       <div className="form-group">
         <label className="booking-label" htmlFor="checkin">

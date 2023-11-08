@@ -27,22 +27,22 @@ const handleApproval = () => {
 };
 
 console.log("Accept Body :",data);
-fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
-  method:"POST",
-  mode: "cors",
-  body: JSON.stringify(data),
-  headers: {
-    "Content-Type" : "application/json"
-  }
-})
-.then((res) => res.json())
-.then((data) => console.log(data))
-.catch((err) => console.error(err.message))
+// fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
+//   method:"POST",
+//   mode: "cors",
+//   body: JSON.stringify(data),
+//   headers: {
+//     "Content-Type" : "application/json"
+//   }
+// })
+// .then((res) => res.json())
+// .then((data) => console.log(data))
+// .catch((err) => console.error(err.message))
 openPopup();
 }
 
-const handleRooms = (rooms) => {
-setSelectedRooms(rooms);
+const handleRooms = (x) => {
+setSelectedRooms(x);
 }
 
 
@@ -144,7 +144,7 @@ setSelectedRooms(rooms);
 
         
         <div className="new">
-          <div> Select {rooms} {rooms === 1 ? "room" : "rooms"}: </div>
+          <div> Select {rooms} {rooms === 1 ? "room" : "rooms"} </div>
           <div className="roombooking">
             <div id="available"></div>Available
             <div id="selected"></div>Selected

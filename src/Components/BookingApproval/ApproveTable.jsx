@@ -164,7 +164,7 @@ const handleApproval = (id, status) => {
         </div>
         
       </div> */}
-       <Popup isOpen={isPopupOpen} onClose={closePopup} />
+       {/* <Popup isOpen={isPopupOpen} onClose={closePopup} /> */}
     </>
   );
 };

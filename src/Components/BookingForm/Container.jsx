@@ -68,7 +68,6 @@ headers: {
   return (
     <>
     {/* <HomeHeader/> */}
-    
      <div className="MainContainer">
       <div >
         <div >

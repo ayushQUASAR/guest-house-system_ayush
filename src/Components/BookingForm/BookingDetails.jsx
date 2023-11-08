@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./BookingDetails.css";
-import BookingComponent1 from "../BOOKING1/BookingComponent1";
 import { NavLink } from "react-router-dom";
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 const inputStyle = {
   backgroundColor: "#f8f9fa",
@@ -12,7 +12,7 @@ const inputStyle = {
 const guestHouseOptions = ["Guest House 1", "Guest House 2", "Guest House 3"];
 const maxRooms = [10, 8, 12];
 
-const BookingDetails = ({setDateDetails}) => {
+const BookingDetails = ({ setDateDetails }) => {
   // Get today's date in India's time zone.
   const todayInIndia = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   const todayDate = new Date(todayInIndia);
@@ -41,8 +41,7 @@ const BookingDetails = ({setDateDetails}) => {
     // Calculate the duration of stay when either check-in or check-out date changes.
     const duration = (new Date(checkoutDate).getTime() - new Date(checkinDate).getTime()) / (1000 * 3600 * 24);
     setDurationOfStay(duration);
-    setDateDetails({startDate: checkinDate, endDate: checkoutDate});
-
+    setDateDetails({ startDate: checkinDate, endDate: checkoutDate });
   }, [checkinDate, checkoutDate]);
 
   const handleCheckinChange = (e) => {
@@ -75,9 +74,11 @@ const BookingDetails = ({setDateDetails}) => {
   const handleGuestHouseChange = (e) => {
     const selectedOption = e.target.value;
     setSelectedGuestHouse(selectedOption);
-    // Reset the number of rooms selected when the guest house changes.
-    setRoomsSelected(1);
+    setRoomsSelected(1); // Reset the number of rooms selected when the guest house changes.
   };
+
+  // Generate room options based on the selected guest house's maximum limit
+  const roomOptions = Array.from({ length: maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)] }, (_, i) => i + 1);
 
   const handleRoomsChange = (e) => {
     const selectedRooms = parseInt(e.target.value, 10);
@@ -101,10 +102,28 @@ const BookingDetails = ({setDateDetails}) => {
   return (
     <div className="navbar">
       <button type="button" className="btn btn-lg back-button">
-        <NavLink to="/" style={{textDecoration:'none', color: "white"}}>
-        BACK
+        <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
+        <HomeRoundedIcon color="white" />
         </NavLink>
       </button>
+      <div className="form-group">
+        <label className="booking-label" htmlFor="guestHouse">
+          SELECT GUEST HOUSE
+        </label>
+        <select
+          className="form-control inputs"
+          style={inputStyle}
+          id="guestHouse"
+          value={selectedGuestHouse}
+          onChange={handleGuestHouseChange}
+        >
+          {guestHouseOptions.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className="form-group">
         <label className="booking-label" htmlFor="checkin">
           CHECK IN
@@ -140,52 +159,40 @@ const BookingDetails = ({setDateDetails}) => {
           DURATION OF STAY
         </label>
         <input
-          type="text"
-          className="form-control inputs"
-          style={inputStyle}
-          id="stayduration"
-          placeholder="Duration of Stay"
-          value={`${durationOfStay} days`}
-          readOnly
-        />
-      </div>
-      <div className="form-group">
-        <label className="booking-label" htmlFor="guestHouse">
-          SELECT GUEST HOUSE
-        </label>
-        <select
-          className="form-control inputs"
-          style={inputStyle}
-          id="guestHouse"
-          value={selectedGuestHouse}
-          onChange={handleGuestHouseChange}
-        >
-          {guestHouseOptions.map((option, index) => (
-            <option key={index} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+  type="text"
+  className="form-control inputs"
+  style={inputStyle}
+  id="stayduration"
+  placeholder="Duration of Stay"
+  value={`${durationOfStay} ${durationOfStay === 1 ? 'day' : 'days'}`}
+  readOnly
+/>
+
       </div>
       <div className="form-group">
         <label className="booking-label" htmlFor="rooms">
           NUMBER OF ROOMS
         </label>
-        <input
-          type="number"
-          className="form-control inputs"
-          style={inputStyle}
-          id="rooms"
-          placeholder="Rooms Selected"
-          value={roomsSelected}
-          onChange={handleRoomsChange}
-        />
+        <select
+            className="form-control inputs"
+            style={inputStyle}
+            id="rooms"
+            value={roomsSelected}
+            onChange={handleRoomsChange}
+          >
+            {roomOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button type="button" className="btn btn-sm changeSelection" onClick={handleReset}>
+          CLEAR
+        </button>
       </div>
-      <button type="button" className="btn btn-sm changeSelection" onClick={handleReset}>
-        CLEAR
-      </button>
-    </div>
-  );
+    );
 }
 
 export default BookingDetails;
+

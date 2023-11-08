@@ -16,14 +16,20 @@ const BookingDetails = ({setDateDetails}) => {
   // Get today's date in India's time zone.
   const todayInIndia = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
   const todayDate = new Date(todayInIndia);
-  const todayDateString = todayDate.toISOString().slice(0, 10);
+  const todayYear = todayDate.getFullYear();
+  const todayMonth = String(todayDate.getMonth() + 1).padStart(2, "0");
+  const todayDay = String(todayDate.getDate()).padStart(2, "0");
+  const todayDateString = `${todayYear}-${todayMonth}-${todayDay}`;
 
   const [checkinDate, setCheckinDate] = useState(todayDateString);
 
   // Calculate tomorrow's date based on the selected check-in date.
   const tomorrowDate = new Date(todayDate);
   tomorrowDate.setDate(tomorrowDate.getDate() + 1);
-  const tomorrowDateString = tomorrowDate.toISOString().slice(0, 10);
+  const tomorrowYear = tomorrowDate.getFullYear();
+  const tomorrowMonth = String(tomorrowDate.getMonth() + 1).padStart(2, "0");
+  const tomorrowDay = String(tomorrowDate.getDate()).padStart(2, "0");
+  const tomorrowDateString = `${tomorrowYear}-${tomorrowMonth}-${tomorrowDay}`;
 
   const [checkoutDate, setCheckoutDate] = useState(tomorrowDateString);
 
@@ -40,25 +46,29 @@ const BookingDetails = ({setDateDetails}) => {
   }, [checkinDate, checkoutDate]);
 
   const handleCheckinChange = (e) => {
-    const selectedDate = new Date(e.target.value);
-    if (selectedDate < todayDate) {
+    const selectedDate = e.target.value;
+    if (selectedDate < todayDateString) {
       alert("Check-in date cannot be earlier than today.");
     } else {
-      setCheckinDate(selectedDate.toISOString().slice(0, 10));
+      setCheckinDate(selectedDate);
 
       // Calculate tomorrow's date based on the selected check-in date and update check-out date.
       const nextDay = new Date(selectedDate);
       nextDay.setDate(nextDay.getDate() + 1);
-      setCheckoutDate(nextDay.toISOString().slice(0, 10));
+      const nextDayYear = nextDay.getFullYear();
+      const nextDayMonth = String(nextDay.getMonth() + 1).padStart(2, "0");
+      const nextDayDay = String(nextDay.getDate()).padStart(2, "0");
+      const nextDayString = `${nextDayYear}-${nextDayMonth}-${nextDayDay}`;
+      setCheckoutDate(nextDayString);
     }
   };
 
   const handleCheckoutChange = (e) => {
-    const selectedDate = new Date(e.target.value);
-    if (selectedDate <= new Date(checkinDate)) {
+    const selectedDate = e.target.value;
+    if (selectedDate <= checkinDate) {
       alert("Check-out date cannot be equal to or earlier than the check-in date.");
     } else {
-      setCheckoutDate(selectedDate.toISOString().slice(0, 10));
+      setCheckoutDate(selectedDate);
     }
   };
 
@@ -84,7 +94,7 @@ const BookingDetails = ({setDateDetails}) => {
     setCheckinDate(todayDateString);
     setCheckoutDate(tomorrowDateString);
     setDurationOfStay(1);
-    setSelectedGuestHouse("");
+    setSelectedGuestHouse("Guest House 1");
     setRoomsSelected(1);
   };
 
@@ -140,7 +150,7 @@ const BookingDetails = ({setDateDetails}) => {
         />
       </div>
       <div className="form-group">
-        <label className ="booking-label" htmlFor="guestHouse">
+        <label className="booking-label" htmlFor="guestHouse">
           SELECT GUEST HOUSE
         </label>
         <select
@@ -171,11 +181,11 @@ const BookingDetails = ({setDateDetails}) => {
           onChange={handleRoomsChange}
         />
       </div>
-      <button type="button" className="btn  btn-sm changeSelection" onClick={handleReset}>
+      <button type="button" className="btn btn-sm changeSelection" onClick={handleReset}>
         CLEAR
       </button>
     </div>
   );
-};
+}
 
 export default BookingDetails;

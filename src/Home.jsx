@@ -160,14 +160,14 @@ function Login() {
             NIT Jalandhar <br /> Guest Room Booking System
           </h1>
         </div>
-        <NavLink to="/Booking">
+        {/* <NavLink to="/Booking">
         <div className="book-now">
           <div>
           Book 
           </div>
      
         </div>
-        </NavLink>
+        </NavLink> */}
       </div>
       <div className="cardsSection" id="Facility">
         <div id="hostelCards">

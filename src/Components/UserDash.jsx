@@ -32,6 +32,7 @@ import BookingDetails from './BookingForm/BookingDetails';
 import BookingComponent from './BOOKING/BookingComponent';
 import PersonalDetail from './UserProfile/PersonalDetail';
 import  Container  from './BookingForm/Container';
+import UpcomingBooking from './UserProfile/UpcomingBooking';
 
 
 const UserDash = ({user}) => {
@@ -69,6 +70,7 @@ const UserDash = ({user}) => {
   const contentComponents = {
     dashboard: <UserDashboardContent />,
     Booking: <Container />,
+    UpcomingBooking : <UpcomingBooking/>,
     bookingHistory: <BookingDetail />,
     bookingCancellationTab: <CancelledBooking />,
     UserProfile: <PersonalDetail />,
@@ -93,9 +95,9 @@ const UserDash = ({user}) => {
         {/* <div className='side-title'> Administration</div> */}
         <li>
           <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
+          <div  onClick={() => selectContent('UpcomingBooking')} className="dash-optn"><span><PersonAddIcon />Upcoming Booking</span></div> 
           <div onClick={() => selectContent('Booking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Booking</span></div>
           <div  onClick={() => selectContent('bookingHistory')} className="dash-optn"><span><AssignmentTurnedInIcon />Booking History</span></div>
-          <div  onClick={() => selectContent('bookingCancellationTab')} className="dash-optn"><span><PersonAddIcon />Booking Cancellation Tabs</span></div> 
         </li>
         <div className='side-title'>User</div>
         <li>

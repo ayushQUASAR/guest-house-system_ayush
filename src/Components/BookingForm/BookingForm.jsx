@@ -36,6 +36,10 @@ const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
     setCompanionInputs(companions);
     validateForm();
   };
+  useEffect(() => {
+    // Validate the form when it mounts
+    validateForm();
+  }, []);
 
   useEffect(() => {
     // Validate the form when it mounts

@@ -1,7 +1,7 @@
 
 
 .divtt {
-    background-color: rgb(173, 226, 240);
+    background-color: rgb(197, 196, 248);
     width: 30px;
     height: 30px;
     margin: 10px;
@@ -13,11 +13,11 @@
   }
   
   .divtt:hover {
-    background-color: rgb(139, 232, 204);
+    background-color: rgb(133, 190, 255);
   }
   
   .highlightedyy {
-    background-color:rgb(75, 228, 197);
+    background-color:rgb(173, 190, 247);
     width: 30px;
     height: 30px;
     margin: 10px;
@@ -33,4 +33,4 @@
     align-items: center;
     justify-content: center;
   }
-  
+

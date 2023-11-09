@@ -9,24 +9,31 @@
   }
   
   .booking-label {
-    font-size: 24px;
+    font-size: 20px;
     display: block;
     margin-bottom: 10px;
     font-weight: bolder;
   }
   
   .inputs{
-    font-size: 22px;
+    font-size: 18px;
+    /* font-weight: 600; */
   }
 
   .changeSelection{
-    font-size: 30px;
+    font-size: 18px;
+    font-weight: 650;
     margin-left: 10px;
-    background-color: #FFC436;
-    color: #000;
+    background-color: #ee4e4e;
+    color: #fff;
   }
   .changeSelection:hover{
-    background-color: #FFC436;
-    color: #000;
-    text-decoration: underline;
+    background-color: red;
+    color: #fff;
+  }
+  .back-button{
+    background-color: rgb(45, 44, 44);
+  }
+  .back-button:hover{
+    background-color:rgb(45, 44, 44) ;
   }

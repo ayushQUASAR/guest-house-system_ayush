@@ -91,6 +91,7 @@
 .admin-title span {
     display: flex;
     align-items: center;
+    margin-top:20px;
 }
 
 .admin-title span svg {

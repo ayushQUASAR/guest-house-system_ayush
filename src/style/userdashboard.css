@@ -1,0 +1,40 @@
+/* user-dashboard.css */
+
+/* TableContainer styles */
+.user-dashboard-table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  /* Table styles */
+  .user-dashboard-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  /* Header styles */
+  .user-dashboard-header {
+    background-color: #a5a5a5;
+  }
+  
+  /* Row styles */
+  .user-dashboard-row-even {
+    background-color: #f2f2f2;
+  }
+  
+  /* Payment Button styles */
+  .user-dashboard-payment-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Add additional styles for user-dashboard as needed */
+  

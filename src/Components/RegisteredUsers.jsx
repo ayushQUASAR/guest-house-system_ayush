@@ -21,17 +21,17 @@ export default function RegisteredUsers() {
     setProfileview(user);
   };
 
-  useEffect(() => {
-    if(view!== null) {
-      console.log("its' working");
-      //http://localhost:4000/users/6545eecab7f0c070a5456b17/bookingHistory
-      fetch(`${import.meta.env.VITE_API_URL}/users/${view._id}`)
-      .then((res) => res.json())
-      .then((data) => console.log("this is data", data))
-      .catch((err) => console.error(err.message))
-    }
+  // useEffect(() => {
+  
+  //     console.log("its' working");
+  //     //http://localhost:4000/users/6545eecab7f0c070a5456b17/bookingHistory
+  //     fetch(`${import.meta.env.VITE_API_URL}/users/${view._id}/bookingHistory`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log("this is data", data))
+  //     .catch((err) => console.error(err.message))
+  //   }
       
-  },[view])
+  // },[view])
 
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + "/users/approved/registered")
@@ -41,8 +41,8 @@ export default function RegisteredUsers() {
   }, []);
 
   const addNewUser = () => {
-    setUsers([...users, newUser]);
-    setNewUser({ name: '', contactNumber: '', email: '' });
+    // setUsers([...users, newUser]);
+    // setNewUser({ name: '', contactNumber: '', email: '' });
   };
 
 
@@ -67,7 +67,7 @@ export default function RegisteredUsers() {
             <div class="p-2 bd-highlight" className="table2">
               <h1 className="bookingTable">BOOKINGS HISTORY</h1>
               <div className="t">
-                <Table />
+                <Table userId={view._id}/>
               </div>
             </div>
 

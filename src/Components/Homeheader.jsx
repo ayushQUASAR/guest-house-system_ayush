@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useLoginContext } from './ContextHooks/LoginContext';
 import "../style/dashNav.css"
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import logo from "../images/logo_250.png.png"
@@ -9,8 +10,26 @@ import AlignHorizontalLeftOutlinedIcon from '@mui/icons-material/AlignHorizontal
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { Link } from "react-scroll";
 import HelpCenterIcon from '@mui/icons-material/HelpCenter';
+
 const HomeHeader = () => {
+    const { isLogged } = useLoginContext();
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_API_URL}/check-session`, {
+          method: 'GET',
+          credentials: 'include',
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.loggedIn) {
+            setIsAdmin(data.isAdmin); 
+          }
+        });
+      }, []);
+
     return (
+        <>
         <div>
             <div className="h-nav">
 
@@ -91,14 +110,25 @@ const HomeHeader = () => {
 
                                 Availability
                             </Link> */}
-                            <NavLink to="/UserDetails">
+                            {!isAdmin && (<NavLink to="/UserDetails">
 
                                 <div className="nav-optn">Profile</div>
-                            </NavLink> 
-                            <NavLink to="/login">
+                            </NavLink>)} 
+                            {!isLogged && (<NavLink to="/login">
 
                                 <div className="nav-optn">Login</div>
-                            </NavLink>
+                            </NavLink>)}
+
+                            {isLogged && isAdmin && (<NavLink to="/login">
+
+                                <div className="nav-optn">Dashboard</div>
+                            </NavLink>)}
+
+                            {/* {isLogged && !isAdmin && (<NavLink to="/login">
+
+                                <div className="nav-optn">Book Now</div>
+                            </NavLink>)} */}
+
                             {/* <NavLink to="/Booking">
                             <div className="nav-optn" id="BookNow">
                                 Book Now
@@ -109,6 +139,7 @@ const HomeHeader = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

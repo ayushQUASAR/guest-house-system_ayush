@@ -67,32 +67,7 @@ useEffect(() => {
         .then((data) => {
             setGuestHouses(data);
             console.log(data);
-            // data.forEach((guestHouse, index) => {
-            //               let rooms = guestHouse.rooms;
-            //             let availableCount = 0;
-            //             let bookedCount = 0;
-            //               for(let i = 0;i<rooms.length;i++) {
-            //                      if(rooms[i] === false) {
-            //                         availableCount++;
-            //                      }
-            //                      if(rooms[i] === true) {
-            //                           bookedCount++;
-            //                      }
-            //               }
-            //               setAvailableRooms((prev) => {
-            //                             let new_state = prev;
-            //                             new_state[index] = availableRooms;
-            //                             return new_state;
-            //                           })
-                                      
-            //                           setBookedRooms ((prev) => {
-            //                             let new_state = prev;
-            //                             new_state[index] = bookedRooms;
-                            
-            //                             return new_state;
-            //                           })
-                                      
-            //                       })
+        
         console.log(data);
         })
         .catch((err) => console.log(err.message));

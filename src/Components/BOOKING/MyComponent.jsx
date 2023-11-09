@@ -55,10 +55,9 @@ function MyComponent({ n, maxRooms, setRooms}) {
 
 useEffect(()=> {
 setRooms(selectedDivs);
+// console.log(selectedDivs);
 }, [selectedDivs]);
 
-
-  
   const handleDivClick = (divId) => {
    
     if (selectedDivs.includes(divId)) {
@@ -67,7 +66,6 @@ setRooms(selectedDivs);
     } else if (selectedDivs.length < maxRooms) {
       // Check if the maximum number of selected rooms has not been reached
       setSelectedDivs([...selectedDivs, divId]);
-     
     }
   };
 

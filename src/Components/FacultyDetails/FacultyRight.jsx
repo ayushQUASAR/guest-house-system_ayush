@@ -59,8 +59,8 @@ export default function FacultyRight({ prop }) {
             type="text"
             className="form-control mb-3"
             placeholder="First Name"
-            value={firstName}
-            onChange={(e) => handleInputChange(e, setFirstName)}
+            value={reffirstName}
+            onChange={(e) => handleInputChange(e, setReffirstName)}
           />
         </div>
         <div className="col-md-6 col-sm-12">
@@ -68,8 +68,8 @@ export default function FacultyRight({ prop }) {
             type="text"
             className="form-control mb-3"
             placeholder="Last Name"
-            value={lastName}
-            onChange={(e) => handleInputChange(e, setLastName)}
+            value={reflastName}
+            onChange={(e) => handleInputChange(e, setReflastName)}
           />
         </div>
       </div>
@@ -79,8 +79,8 @@ export default function FacultyRight({ prop }) {
             type="email"
             className="form-control"
             placeholder="Email Address"
-            value={email}
-            onChange={(e) => handleInputChange(e, setEmail)}
+            value={facultyemail}
+            onChange={(e) => handleInputChange(e, setFacultyemail)}
           />
         </div>
       </div>
@@ -106,13 +106,13 @@ export default function FacultyRight({ prop }) {
             type="text"
             className="form-control"
             placeholder="Phone Number"
-            value={phoneNumber}
-            onChange={(e) => handleInputChange(e, setPhoneNumber)}
+            value={refphoneNumber}
+            onChange={(e) => handleInputChange(e, setRefphoneNumber)}
           />
         </div>
       </div>
       <div className="mt-auto justify-content-end d-flex">
-        <button type="submit" onClick={handleSubmit} className="btn btn-primary btn-lg rounded register-btn" disabled={!firstName || !lastName || !email || !department || !phoneNumber}>
+        <button type="submit" onClick={openPopup} className="btn btn-primary btn-lg rounded register-btn">
           Register
         </button>
       </div>

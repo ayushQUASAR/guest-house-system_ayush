@@ -4,8 +4,7 @@ const RoomDetailsModal = ({ isOpen, onClose, roomDetails }) => {
   if (!isOpen) return null;
   console.log("hiiobb", isOpen);
   return (
-    
-     <div className="popup-roombooking"> 
+    <div className="popup-roombooking">
       <div className="popup-modal">
         <span className="CloseBtn" onClick={onClose}>
           Close
@@ -27,8 +26,7 @@ const RoomDetailsModal = ({ isOpen, onClose, roomDetails }) => {
           ))}
         </div>
       </div>
-      </div>
-   
+    </div>
   );
 };
 export default RoomDetailsModal;

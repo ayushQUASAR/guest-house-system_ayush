@@ -26,7 +26,9 @@ useEffect(()=> {
   .then((err) => console.log(err));
 }, []);
 
-
+const handleBack = () => {
+  setIsFirstPage(true);
+}
 // useEffect(()=> {
 //     fetch("https://guest-house-back.onrender.com/booking/approved/pending")
 //     .then((res) => res.json())
@@ -127,7 +129,7 @@ const handleApproval = (id, status) => {
 
        
       </div>
-    </div> : <BookingComponent id={currentUser._id} rooms={currentUser.roomsSelected} onSubmit={handleSubmit}/>
+    </div> : <BookingComponent onBack={handleBack} id={currentUser._id} rooms={currentUser.roomsSelected} onSubmit={handleSubmit}/>
     }
      
       {/* <div class="approval-table">

@@ -19,7 +19,7 @@ const UserDashboard = () => {
     id: 1,
     checkIn: '2023-11-08',
     checkOut: '2023-11-12',
-    guestHouseName: 'Sample Guest House 1',
+    guestHouseName: 'Guest House 1',
     paymentStatus: 'Paid',
     ApprovalStatus: 'Approved',
     paymentFee: 200,
@@ -29,7 +29,7 @@ const UserDashboard = () => {
     id: 2,
     checkIn: '2023-11-10',
     checkOut: '2023-11-15',
-    guestHouseName: 'Sample Guest House 2',
+    guestHouseName: 'Guest House 2',
     paymentStatus: 'Pending',
     ApprovalStatus: 'Approved',
     paymentFee: 250,
@@ -40,7 +40,7 @@ const UserDashboard = () => {
     checkIn: '2023-11-12',
     checkOut: '2023-11-18',
     ApprovalStatus: 'Approved',
-    guestHouseName: 'Sample Guest House 3',
+    guestHouseName: 'Guest House 3',
     paymentStatus: 'Paid',
     paymentFee: 180,
     comments: 'No comments',
@@ -90,6 +90,7 @@ return (
   </div>
   </div>
   <div>
+    <br/>
      <div className="admin-comments-table-container">
       <table className="admin-comments-table">
         <thead>

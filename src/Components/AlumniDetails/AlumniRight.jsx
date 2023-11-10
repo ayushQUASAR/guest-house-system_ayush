@@ -1,12 +1,11 @@
-
 import { useState } from 'react';
 import '../../style/facultyalumni.css'
 import '../../style/MainContainer.css'
 import Popup from '../PopUp/Popup';
-export default function FacultyRight({prop}) {
-  const {reffirstName,reflastName, refphoneNumber,department,facultyemail, setReffirstName, setReflastName, setRefphoneNumber, setFacultyemail, setDepartment } = prop;
+export default function AlumniRight({prop}) {
+  const {reffirstName,reflastName, refphoneNumber,batch,branch,jobProfile, setReffirstName, setReflastName, setRefphoneNumber, setBatch, setBranch, setJobProfile } = prop;
 
-
+  
 
   // Event handler to update the state when input values change
   const handleInputChange = (e, stateUpdater) => {
@@ -21,22 +20,22 @@ export default function FacultyRight({prop}) {
   const closePopup = () => {
     setPopupOpen(false);
   };
-
   // Event handler for form submission (you can add your logic here)
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission action
     // You can add your code to process the form data here
     console.log('First Name:', firstName);
     console.log('Last Name:', lastName);
-    console.log('Email:', email);
-    console.log('Department:', department);
+    console.log('Branch:', branch);
+    console.log('Batch:', batch);
     console.log('Phone Number:', phoneNumber);
+    console.log('Job Profile:', jobProfile);
   };
 
   return (
     <div>
       <div className="r">
-        <h1 className="rheading">Enter Faculty Details</h1>
+        <h1 className="rheading">Enter Alumni Details</h1>
       </div>
       {/* <form onSubmit={handleSubmit}> */}
         <div className="row input">
@@ -60,24 +59,22 @@ export default function FacultyRight({prop}) {
           </div>
         </div>
         <div className="row input">
-          <div className="col-12">
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Email Address"
-              value={facultyemail}
-              onChange={(e) => handleInputChange(e, setFacultyemail)}
-            />
-          </div>
-        </div>
-        <div className="row input">
-          <div className="col-12">
+          <div className="col-md-6 col-sm-12">
             <input
               type="text"
-              className="form-control"
-              placeholder="Department"
-              value={department}
-              onChange={(e) => handleInputChange(e, setDepartment)}
+              className="form-control mb-3"
+              placeholder="Branch"
+              value={branch}
+              onChange={(e) => handleInputChange(e, setBranch)}
+            />
+          </div>
+          <div className="col-md-6 col-sm-12">
+            <input
+              type="text"
+              className="form-control mb-3"
+              placeholder="Batch"
+              value={batch}
+              onChange={(e) => handleInputChange(e, setBatch)}
             />
           </div>
         </div>
@@ -97,13 +94,24 @@ export default function FacultyRight({prop}) {
             />
           </div>
         </div>
+        <div className="row input">
+          <div className="col-12">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Current Job Profile"
+              value={jobProfile}
+              onChange={(e) => handleInputChange(e, setJobProfile)}
+            />
+          </div>
+        </div>
         <div className="mt-auto justify-content-end d-flex">
           <button type="submit" onClick={openPopup} className="btn btn-primary btn-lg rounded register-btn">
             Register
           </button>
         </div>
+        <Popup isOpen={isPopupOpen} onClose={closePopup} />
       {/* </form> */}
-      <Popup isOpen={isPopupOpen} onClose={closePopup} />
     </div>
   );
 }

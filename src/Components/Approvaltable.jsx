@@ -69,14 +69,14 @@ const Approvaltable = () => {
   <tbody>
   {
            pendingUsers && pendingUsers.length > 0 &&  pendingUsers.map((user, index) => {
-              return  <td key={user._id}>
+              return  <tr key={user._id}>
                              <tr>{index+1}</tr>
-                          <tr>{user.user.name}</tr> 
-                          <tr>{user.user.email}</tr>
-                          <tr>{user.user.phone}</tr>
-                          <tr>{user.user.refInfo}</tr> 
-                          <tr><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {handleApproval(user.user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user._id, 'reject')}>Reject</button></tr>
-                </td>
+                          <td>{user.user.name}</td> 
+                          <td>{user.user.email}</td>
+                          <td>{user.user.phone}</td>
+                          <td>{user.user.refInfo}</td> 
+                          <td><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {handleApproval(user.user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user._id, 'reject')}>Reject</button></td>
+                </tr>
               })
           }
   </tbody>

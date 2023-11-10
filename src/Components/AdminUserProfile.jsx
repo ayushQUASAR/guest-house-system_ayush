@@ -1,10 +1,10 @@
 import '../style/adminprofile.css';
 import {useState} from 'react'; 
-export default function AdminUserProfile(){
+export default function AdminUserProfile({user}){
     const [profilePhoto, setProfilePhoto] = useState('./adminProfile.png');
     const [newPhoto, setNewPhoto] = useState(null);
     const[saveButton, setSaveButton] = useState(false);
-    
+
     const handlePhotoChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -49,7 +49,7 @@ export default function AdminUserProfile(){
                 </div>
                 <div className = "col-7">
                     <div className = 'row text-center' style = {{margin : '10%'}}>
-                        <h2  style = {{color : 'white'}}><strong>ADMIN NAME</strong></h2>
+                        <h2  style = {{color : 'white'}}><strong>{user?.userDetails?.name}</strong></h2>
                     </div>
                     <div className='row' style = {{ display: 'inline'}}>
                         <img src= './comments.png' alt="Comment Image" style = {{width: '10%', display: 'inline', paddingRight: '2%'}} />
@@ -67,7 +67,7 @@ export default function AdminUserProfile(){
                         </div>
                         <div className = 'row'>
                             <div className = 'col-5' style = {{overflow :'auto'}}><strong>Email:</strong></div>
-                            <div className = 'col-7' style = {{overflow :'auto'}}>user@nitj.ac.in</div>
+                            <div className = 'col-7' style = {{overflow :'auto'}}>{user?.userDetails?.email}</div>
                         </div>
                         <div className = 'row'>
                             <div className = 'col-6' style = {{overflow :'auto'}}><strong>Role :</strong></div>
@@ -75,7 +75,7 @@ export default function AdminUserProfile(){
                         </div>
                         <div className = 'row'>
                             <div className = 'col-6' style = {{overflow :'auto'}}><strong>DOJ :</strong></div>
-                            <div className = 'col-6' style = {{overflow :'auto'}}>12 nov 2022</div>
+                            <div className = 'col-6' style = {{overflow :'auto'}}>{user?.userDetails?.DOJ}</div>
                         </div>
                         </div>
                     </div>

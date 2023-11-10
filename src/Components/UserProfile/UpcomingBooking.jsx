@@ -11,10 +11,10 @@ const UpcomingBooking = ({user}) => {
 
 
   useEffect(() => {
-const bookings = user.bookingHistory;
-const filteredBookings = bookings.filter((booking) => new Date(booking.startDate) > new Date() && (booking.status === "approved" || booking.status === "pending"))
-console.log(filteredBookings)
-const final = filteredBookings.map((booking) => {
+  const bookings = user.bookingHistory;
+  const filteredBookings = bookings.filter((booking) => new Date(booking.startDate) > new Date() && (booking.status === "approved" || booking.status === "pending"))
+  console.log(filteredBookings)
+  const final = filteredBookings.map((booking) => {
   return {
     id: booking._id,
     guestHouse: booking.guestHouseAllotted,

@@ -25,6 +25,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import RegisteredUsers from './RegisteredUsers'
 import { Settings } from '@mui/icons-material';
 import { useLoginContext } from './ContextHooks/LoginContext';
+import Container from './BookingForm/Container';
 
 
 const Dash = ({admin}) => {
@@ -61,7 +62,7 @@ const Dash = ({admin}) => {
   
   const contentComponents = {
     dashboard: <DashboardContent />,
-    adminRoomBooking: <AdminRoomBooking />,
+    adminRoomBooking: <Container />,
     bookedRooms: <BookedRooms />,
     registeredUsers: <RegisteredUsers />,
     adminuserProfile: <AdminUserProfile />,

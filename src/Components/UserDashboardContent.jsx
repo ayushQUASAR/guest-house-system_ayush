@@ -4,6 +4,7 @@ import "../style/userdashboard.css"
 const UserDashboard = ({user}) => {
 let formattedEndDate=null
 let formattedStartDate=null;
+// console.log("id",user.userDetails._id)
 
 
 // Format the date as you need
@@ -18,10 +19,10 @@ let formattedStartDate=null;
       .then((response) => response.json())
       .then((data) => {
         // Assuming data is an array of user details
-         const filteredUserDetails = data.filter(obj => obj.roomBooker._id === user.userDetails.id);
+         const filteredUserDetails = data.filter(obj => obj.roomBooker._id === user.userDetails._id);
     
-        console.log("filter",filteredUserDetails);
-        setFilterdetails(filteredUserDetails);
+        // console.log("hi",filteredUserDetails);
+        setFilterdetails(filteredUserDetails.id);
     
         // Now you can use filteredUserDetails in your component or perform further actions.
       })

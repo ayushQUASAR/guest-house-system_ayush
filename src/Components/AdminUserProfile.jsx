@@ -66,17 +66,17 @@ export default function AdminUserProfile({user}){
 
                         </div>
                         <div className = 'row'>
-                            <div className = 'col-5' style = {{overflow :'auto'}}><strong>Email:</strong></div>
-                            <div className = 'col-7' style = {{overflow :'auto'}}>{user?.userDetails?.email}</div>
+                            <div className = 'col-4' style = {{overflow :'auto'}}><strong>Email:</strong></div>
+                            <div className = 'col-8' >mriduld.cs.21@nitj.ac.in</div>
                         </div>
                         <div className = 'row'>
-                            <div className = 'col-6' style = {{overflow :'auto'}}><strong>Role :</strong></div>
-                            <div className = 'col-6' style = {{overflow :'auto'}}>Admin</div>
+                            <div className = 'col-4' style = {{overflow :'auto'}}><strong>Role :</strong></div>
+                            <div className = 'col-8' style = {{overflow :'auto'}}>Guest House Admin</div>
                         </div>
-                        <div className = 'row'>
+                        {/* <div className = 'row'>
                             <div className = 'col-6' style = {{overflow :'auto'}}><strong>DOJ :</strong></div>
                             <div className = 'col-6' style = {{overflow :'auto'}}>{user?.userDetails?.DOJ}</div>
-                        </div>
+                        </div> */}
                         </div>
                     </div>
                 </div>

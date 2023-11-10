@@ -19,7 +19,8 @@
     padding-left : 0px;
     padding-right: 0px;
     border : 2px solid black;
-    box-shadow: 0 0 0 5px #0275d8;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #275cb6;
     outline : 1px solid transparent;
   }
   .background-container { 
@@ -46,5 +47,5 @@
     height: 50%;
   }
   .dual-background {
-    background: linear-gradient(to bottom, #0275d8, #fff); /* Gradient from red to green */
+    background: linear-gradient(to bottom, #275cb6, #fff); /* Gradient from blue to white */
   }

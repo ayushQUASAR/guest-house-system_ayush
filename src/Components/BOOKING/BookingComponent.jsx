@@ -195,13 +195,9 @@
 // };
 
 // export default BookingComponent;
-
 import React, {useState} from 'react';
 import './BookingComponent.css';
-<<<<<<< HEAD
 // import './BookingComponent.js
-=======
->>>>>>> 7cbfe042a48abe0a3cd55b3324133af0d192c08f
 import MyComponent from './MyComponent';
 import Popup from '../PopUp/Popup';
 import './MyComponent.css';

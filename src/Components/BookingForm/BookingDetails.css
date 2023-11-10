@@ -1,39 +1,109 @@
 /* BookingDetails.css */
 
 .navbar {
-    display: flex;
-    justify-content: space-around;
-    background-color: #0275d8;
-    color: #fff;
-    padding: 10px;
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: space-around;
+  background-color: #0275d8;
+  color: #fff;
+  padding: 10px;
+}
+
+.booking-label {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.inputs {
+  font-size: 18px;
+}
+
+.changeSelection {
+  font-size: 18px;
+  font-weight: 650;
+  margin-left: 10px;
+  background-color: #ee4e4e;
+  color: #fff;
+}
+
+.changeSelection:hover {
+  background-color: red;
+  color: #fff;
+}
+
+.back-button {
+  background-color: rgb(45, 44, 44);
+}
+
+.back-button:hover {
+  background-color: rgb(45, 44, 44);
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1500px) {
+  .navbar {
+      flex-direction: column; /* Change to a column layout on small screens */
+      align-items: center; /* Center items in the column */
   }
-  
-  .booking-label {
-    font-size: 20px;
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bolder;
-  }
-  
-  .inputs{
-    font-size: 18px;
-    /* font-weight: 600; */
+  .inputs {
+    font-size: 16px; /* Reduce font size on smaller screens */
+    padding: 2px; /* Adjust padding for smaller input fields */
+}
+  .form-group {
+      width: 100%; /* Make form groups take full width */
+      margin-bottom: 15px; /* Add some space between form groups */
   }
 
+  .changeSelection {
+      margin-left: 0; /* Center the clear button on small screens */
+      margin-top: 10px; /* Add space between clear button and other elements */
+  }
+}
+
+/* @media (min-width: 1501px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-evenly; 
+    align-items: center;
+  }
+  .booking-label{
+    margin: 10px;
+    padding: 0;
+  }
+  .inputs{
+    width: 200px;
+    font-size: 10px; */
+    /* margin: 13px; */
+  /* }
+} */
+
+@media (min-width: 1501px) and (max-width: 2000px){
+  .navbar {
+    flex-direction: row;
+    justify-content: space-evenly; 
+    align-items: center;
+  }
+  .booking-label{
+    width: 200px;
+    margin-left: 15px;
+    /* padding: 0; */
+  }
+  .selectguesthouse{
+    width: 220px;
+    margin-left: 0;
+  }
+  .inputs{
+    width: 180px;
+    /* font-size: 10px; */
+    padding: 5px;
+    margin-left: 15px;
+  }
   .changeSelection{
-    font-size: 18px;
-    font-weight: 650;
-    margin-left: 10px;
-    background-color: #ee4e4e;
-    color: #fff;
+    margin-left: 25px;
   }
-  .changeSelection:hover{
-    background-color: red;
-    color: #fff;
-  }
-  .back-button{
-    background-color: rgb(45, 44, 44);
-  }
-  .back-button:hover{
-    background-color:rgb(45, 44, 44) ;
-  }
+}
+
+

@@ -4,7 +4,7 @@
 // import MyComponent from './MyComponent';
 // import './MyComponent.css';
 // import HomeHeader from '../Homeheader';
-// // import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
 // const BookingComponent = ({rooms, id}) => {
 // const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
@@ -198,14 +198,12 @@
 
 import React from 'react';
 import './BookingComponent.css';
-import './BookingCompoment.js'
+// import './BookingComponent.js
 import MyComponent from './MyComponent';
 import './MyComponent.css';
 // import React, { useState } from 'react';
 
 const BookingComponent = () => {
-
-
 
   const handleDivClick1 = () => {
     // Find the div element by its id
@@ -278,10 +276,6 @@ const BookingComponent = () => {
 
     }
   };
- 
-
-
-
 
 
   return (

@@ -111,13 +111,13 @@ const BookingDetails = ({ setDateDetails }) => {
 
   return (
     <div className="navbar">
-      <button type="button" className="btn btn-lg back-button">
+      {/* <button type="button" className="btn btn-lg back-button">
         <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
         <HomeRoundedIcon color="white" />
         </NavLink>
-      </button>
+      </button> */}
       <div className="form-group">
-        <label className="booking-label" htmlFor="guestHouse">
+        <label className="booking-label selectguesthouse" htmlFor="guestHouse">
           SELECT GUEST HOUSE
         </label>
         <select

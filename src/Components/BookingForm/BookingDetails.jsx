@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./BookingDetails.css";
 import { NavLink } from "react-router-dom";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import { FormContext } from "../ContextHooks/FormContext";
+
 
 const inputStyle = {
   backgroundColor: "#f8f9fa",
@@ -23,6 +25,10 @@ const BookingDetails = ({ setDateDetails }) => {
 
   const [checkinDate, setCheckinDate] = useState(todayDateString);
 
+  const {updateFormData} = useContext(FormContext);
+
+
+
   // Calculate tomorrow's date based on the selected check-in date.
   const tomorrowDate = new Date(todayDate);
   tomorrowDate.setDate(tomorrowDate.getDate() + 1);
@@ -42,7 +48,14 @@ const BookingDetails = ({ setDateDetails }) => {
     const duration = (new Date(checkoutDate).getTime() - new Date(checkinDate).getTime()) / (1000 * 3600 * 24);
     setDurationOfStay(duration);
     setDateDetails({ startDate: checkinDate, endDate: checkoutDate });
-  }, [checkinDate, checkoutDate]);
+
+    updateFormData("arrivalDate", checkinDate);
+    updateFormData("departureDate", checkoutDate);
+    updateFormData("roomsSelected" , roomsSelected);
+    const finalGuestHouse = selectedGuestHouse === "Guest House 1" ? 1 : selectedGuestHouse === "Guest House 2" ? 2 : 3;
+    updateFormData("guestHouseSelected", finalGuestHouse);
+
+  }, [checkinDate, checkoutDate, selectedGuestHouse, roomsSelected]);
 
   const handleCheckinChange = (e) => {
     const selectedDate = e.target.value;

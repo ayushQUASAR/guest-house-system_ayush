@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "../style/dash.css"
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
@@ -32,12 +32,36 @@ import BookingDetails from './BookingForm/BookingDetails';
 import BookingComponent from './BOOKING/BookingComponent';
 import PersonalDetail from './UserProfile/PersonalDetail';
 import  Container  from './BookingForm/Container';
+import UpcomingBooking from './UserProfile/UpcomingBooking';
+import { useUserContext } from './ContextHooks/UserContext';
 
 
-const UserDash = ({user}) => {
-  console.log(user);
+const UserDash = () => {
+  // console.log(user);
   const [sideState, setSidestate] = useState(true);
   const [contentType, setContentType] = useState('dashboard')
+  const [user, setUserDetails] = useState([]);
+   
+  const { userId } = useUserContext();
+
+  console.log(userId);
+
+// on initial render, Person Booking Details get saved
+useEffect(() => {
+ fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`)
+   .then((res) => res.json())
+   .then((data) =>{
+     console.log(data);
+     setUserDetails(data)
+   }
+   )
+   .catch((err) => console.log(err.message));
+}, []);
+
+
+
+
+
   const ToggleSidestate = () => {
     setSidestate(!sideState);
   }
@@ -69,9 +93,10 @@ const UserDash = ({user}) => {
   const contentComponents = {
     dashboard: <UserDashboardContent />,
     Booking: <Container />,
-    bookingHistory: <BookingDetail />,
+    UpcomingBooking : <UpcomingBooking user ={user}/>,
+    bookingHistory: <BookingDetail user={user}/>,
     bookingCancellationTab: <CancelledBooking />,
-    UserProfile: <PersonalDetail />,
+    UserProfile: <PersonalDetail user={user} />,
     settings: <DashboardSettings />,
   };
 
@@ -88,14 +113,14 @@ const UserDash = ({user}) => {
          <div className="admin-title">
           <span>
             <AdminPanelSettingsIcon />
-            UserPanel</span></div>
+            User Panel</span></div>
         <div className="dash-wrapper">
         {/* <div className='side-title'> Administration</div> */}
         <li>
           <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
+          <div  onClick={() => selectContent('UpcomingBooking')} className="dash-optn"><span><PersonAddIcon />Upcoming Booking</span></div> 
           <div onClick={() => selectContent('Booking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Booking</span></div>
           <div  onClick={() => selectContent('bookingHistory')} className="dash-optn"><span><AssignmentTurnedInIcon />Booking History</span></div>
-          <div  onClick={() => selectContent('bookingCancellationTab')} className="dash-optn"><span><PersonAddIcon />Booking Cancellation Tabs</span></div> 
         </li>
         <div className='side-title'>User</div>
         <li>

@@ -44,8 +44,8 @@ export default function RegisteredUsers() {
   }, []);
 
   const addNewUser = () => {
-    setUsers([...users, newUser]);
-    setNewUser({ name: '', contactNumber: '', email: '' });
+    // setUsers([...users, newUser]);
+    // setNewUser({ name: '', contactNumber: '', email: '' });
   };
 
 

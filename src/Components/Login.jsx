@@ -9,6 +9,7 @@ import Home from '../../src/Home'
 import { useUserContext } from './ContextHooks/UserContext'
 import { useLoginContext } from './ContextHooks/LoginContext'
 import { useNavigate } from 'react-router-dom';
+import UserDash from './UserDash'
 
 
 const Login = () => {
@@ -42,7 +43,7 @@ const Login = () => {
         if (data.isAdmin) {
           navigate('/Dashboard');
         } else {
-          navigate('/Booking');
+          navigate('/UserDetails');
         }
       }
     });
@@ -131,7 +132,7 @@ const Login = () => {
               </div>
             </div>
             {console.log("isadmindiv", isAdmin)}
-          </div> : isAdmin ? <Dash admin={loginData.id} /> : <Home />
+          </div> : isAdmin ? <Dash admin={loginData.id} /> : <UserDash />
 
       }
 

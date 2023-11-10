@@ -25,7 +25,7 @@ const clickedButtonClass = "btnClicked";
   const [refphoneNumber, setRefphoneNumber] = useState('');
   const [idProof, setIdProof] = useState(null);
   // Alumni
-  console.log(contentType==='student')
+  console.log(contentType)
 
   const [branch, setBranch] = useState('');
   const [batch, setBatch] = useState('');
@@ -89,7 +89,7 @@ formData.append("Phnnumber", Phnnumber);
 formData.append("Email", Email);
 formData.append("Password", Password);
 formData.append("Address", Address);
-formData.append("selectedOption", selectedOption);
+formData.append("selectedOption", contentType);
 formData.append("idProof", idProof);
 // Alumni
 formData.append("RefFirstName", reffirstName);
@@ -108,14 +108,14 @@ formData.append("FacultyEmail", facultyemail);
 formData.append("Department", department);
 
 
-
+console.log(formData.entries());
 
 
    fetch(import.meta.env.VITE_API_URL + "/register", {
     method: "POST",
     body: formData,
-    mode: "cors",
-   }).then((res)=> res.json() )
+    mode: "cors"
+   }).then((res)=> res.json())
    .then((data) =>{console.log("data:",data) 
   })
    .catch((err) => console.log("error",err));
@@ -127,7 +127,7 @@ formData.append("Department", department);
 
   return (
     <>
-    <div className="reg-rightside"> <form action="" onSubmit={setSubmit}>
+    <div className="reg-rightside"> <form action="/register" onSubmit={setSubmit}>
     
     
     <div>

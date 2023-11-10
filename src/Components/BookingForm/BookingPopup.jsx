@@ -9,17 +9,18 @@ const BookingPopup = ({ isOpen, onClose }) => {
   };
 
   return (
+    <NavLink to="/UserDetails">
     <div className="popup-overlay" onClick={handleClose}>
-      <div className="popup" onClick={(e) => e.stopPropagation()}>
-     
-        <img className='sucessIcon' src={sucessIcon} alt='Success Icon'/>
-
-        <h2 className='popup-heading'>Booking Successful</h2>
-        <p className='popup-para'>Please wait for your Approval from Institute.</p>
-  
-        <button className="btn btn-primary  btn-sm popupClose" onClick={handleClose}>Close</button>
+      <div className="popup" onClick={(e) => e.stopPropagation}>
+        <img className="sucessIcon" src={sucessIcon} alt="Success Icon" />
+        <h2 className="popup-heading">Booking Successful</h2>
+        <p className="popup-para">Please wait for your Approval from Institute.</p>
+        <button className="btn btn-primary btn-sm popupClose" onClick={onClose}>
+          Close
+        </button>
       </div>
     </div>
+  </NavLink>
   );
 };
 

@@ -5,6 +5,10 @@
     column-gap: 20px;
     
 }
+.book-approval-table{
+    width: 100%;
+    
+}
 .grid-table div{
    
     align-self: center;
@@ -12,6 +16,13 @@
     font-weight: 700;
     color: #646363;
   
+}
+.approval-table
+{
+    width: 100%;
+}
+td{
+    text-align: center;
 }
 .grid-table-content div{
     display: flex;

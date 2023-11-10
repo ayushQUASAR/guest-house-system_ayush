@@ -8,7 +8,8 @@ import Table from "./Table";
 export default function RegisteredUsers() {
 
 
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState("");
+  
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('');
   const [newUser, setNewUser] = useState({
@@ -27,7 +28,9 @@ export default function RegisteredUsers() {
       //http://localhost:4000/users/6545eecab7f0c070a5456b17/bookingHistory
       fetch(`${import.meta.env.VITE_API_URL}/users/${view._id}`)
       .then((res) => res.json())
-      .then((data) => console.log("this is data", data))
+      .then((data) =>{console.log("this is data", data)
+ 
+     })
       .catch((err) => console.error(err.message))
     }
       
@@ -53,29 +56,7 @@ export default function RegisteredUsers() {
         <div className='profile-close-btn' onClick={() => setProfileview(false)}>
           <CancelIcon style={{ fontSize: 50 , color : '#275cb6'  }} />
         </div>
-        <div className="card rounded-4 w-100" >
-        <div className="card-header rounded-4" style={{ backgroundColor: '#0275d8', color: 'white', border: '5px solid #0275d8' }}>
-          <h1>USER PROFILE</h1>
-        </div>
-
-        <div className="card-body">
-
-          <div class="d-flex flex-row bd-highlight mb-2">
-            <div class="p-2 bd-highlight">
-              <SideBar user={view} /> 
-            </div>
-            <div class="p-2 bd-highlight" className="table2">
-              <h1 className="bookingTable">BOOKINGS HISTORY</h1>
-              <div className="t">
-                <Table />
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
+ <SideBar view={view}/>
       </div>}
 
       <div className="card rounded-4 w-100" style={{ backgroundColor: '#4c74b9', color: 'white' }}>

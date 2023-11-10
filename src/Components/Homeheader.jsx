@@ -34,7 +34,7 @@ const HomeHeader = () => {
             <div className="h-nav">
 
                 <div className="nav-wrapper">
-                    <div className='colg-name'>National Institute Of Technology jalandhar</div>
+                    <div className='colg-name'>National Institute Of Technology Jalandhar</div>
                     <div className="h-navlogo">
                         <img src={logo} alt="NIT_logo" />
                     </div>
@@ -74,7 +74,7 @@ const HomeHeader = () => {
                             >
                                 <div className="nav-optn">
                                     <AlignHorizontalLeftOutlinedIcon />  
-                                    <div className="optn-name"> ContactUs</div> 
+                                    <div className="optn-name"> Guidelines</div> 
                                 </div>
                             </Link>
 

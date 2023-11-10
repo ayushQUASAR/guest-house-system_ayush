@@ -4,7 +4,7 @@
 // import MyComponent from './MyComponent';
 // import './MyComponent.css';
 // import HomeHeader from '../Homeheader';
-// // import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
 // const BookingComponent = ({rooms, id}) => {
 // const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
@@ -195,9 +195,9 @@
 // };
 
 // export default BookingComponent;
-
 import React, {useState} from 'react';
 import './BookingComponent.css';
+// import './BookingComponent.js
 import MyComponent from './MyComponent';
 import Popup from '../PopUp/Popup';
 import './MyComponent.css';
@@ -243,8 +243,6 @@ openPopup();
 const handleRooms = (x) => {
 setSelectedRooms(x);
 }
-
-
 
   const handleDivClick1 = () => {
     setSelectedGuestHouse(1);
@@ -320,10 +318,6 @@ setSelectedRooms(x);
 
     }
   };
- 
-
-
-
 
 
   return (

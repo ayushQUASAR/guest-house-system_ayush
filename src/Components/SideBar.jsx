@@ -10,6 +10,7 @@ const SideBar = ({ view }) => {
     if(view!== null) {
       console.log("its' working");
       //http://localhost:4000/users/6545eecab7f0c070a5456b17/bookingHistory
+
       fetch(`${import.meta.env.VITE_API_URL}/users/${view._id}`)
       .then((res) => res.json())
       .then((data) =>{console.log("this is data", data)
@@ -47,9 +48,11 @@ const SideBar = ({ view }) => {
         <h1>USER PROFILE</h1>
       </div>
       <div className="tables-container">
-        <div  >
+
+        {/* ## COMMENTED BY MRIDUL:   IMAGE WILL NOT WORK WITH RENDER, WILL HAVE TO WAIT FOR API TO HOSTED TO ANOTHER SERVICE */}
+        {/* <div  >
           {renderIdProofContent(userdata)}
-        </div>
+        </div> */}
         <hr style={{ border: '1px rgb(44, 42, 42) dotted' }} />
      <div>{userdata && <><table className="table">
 
@@ -67,8 +70,8 @@ const SideBar = ({ view }) => {
               <td>{userdata.userDetails.phone}</td>
             </tr>
             <tr>
-              <th scope="row">ID:</th>
-              <td>{userdata.userDetails._id}</td>
+              <th scope="row">Email ID:</th>
+              <td>{userdata.userDetails.email}</td>
             </tr>
           </tbody>
         </table>
@@ -77,16 +80,18 @@ const SideBar = ({ view }) => {
           <tbody>
             <tr>
               <th scope="row"> Reference Name</th>
-              <td>{userdata.userDetails.refInfo.phone}</td>
+              <td>{userdata.referenceDetails.refTo.name}</td>
             </tr>
 
-            <tr>
+
+    {/* ##COMMENTED BY MRIDUL: EMAIL IS NOT AVAILABLE TO ALL TYPE OF REFERNCE, CHANGE FIELDS ACCORDING TO THE REFERENCE TYPE  */}
+            {/* <tr>
               <th scope="row"> Reference Email</th>
-              <td>{userdata.userDetails.refInfo.email}</td>
-            </tr>
+              <td>{userdata.referenceDetails.refTo.email}</td>
+            </tr> */}
             <tr>
               <th scope="row">Contact</th>
-              <td>{userdata.userDetails.refInfo.phone}</td>
+              <td>{userdata.referenceDetails.refTo.phone}</td>
             </tr>
           </tbody>
         </table></> }</div>
@@ -102,7 +107,7 @@ const SideBar = ({ view }) => {
           <div class="p-2 bd-highlight" className="table2">
             <h1 className="bookingTable">BOOKINGS HISTORY</h1>
             <div className="t">
-              <Table/>
+              <Table userId={view._id}/>
             </div>
           </div>
 

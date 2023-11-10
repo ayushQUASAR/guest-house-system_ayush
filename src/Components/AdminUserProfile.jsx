@@ -1,37 +1,55 @@
-// import Image from '';
 import '../style/adminprofile.css';
-// import Image2 from ;
-export default function AdminUserProfile(){
+import {useState} from 'react'; 
+export default function AdminUserProfile({user}){
+    const [profilePhoto, setProfilePhoto] = useState('./adminProfile.png');
+    const [newPhoto, setNewPhoto] = useState(null);
+    const[saveButton, setSaveButton] = useState(false);
+
+    const handlePhotoChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setNewPhoto(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+    setSaveButton(true);
+  };
+
+  const handleSave = () => {
+    if (newPhoto) {
+        setProfilePhoto(newPhoto);
+        setNewPhoto(null);
+      }
+      setSaveButton(false);
+      
+  };
     return(
         <div className = 'background-container dual-background'>
             <div className = "container-fluid">
                 <div className='row'>
                 <div className = "col-5" >
-                    <div className = "row double-border" style = {{margin : '15%'}}>
-                        <img src= "./adminProfile.png" alt="" style = {{width : '10rem', height : 'auto', padding : 'auto 0px'}}/>
+                    <div className = "row double-border" style = {{margin : '15% 15% 0% 15%'}}>
+                    <img src={profilePhoto}     alt="Profile" style={{ width: '10rem', height: 'auto', padding : 'auto 0px', borderRadius : '50%' }} />
                     </div>
-                    <div className = 'row'  style = {{margin : '10%'}}>
-                        <h3 style = {{borderBottom : '2px solid black', padding : '10px'}}>Contact Details:</h3>
-                        <div className='col-12'>
-
-                        <div className = 'row'>
-                            <div className = 'col-5' style = {{overflow :'auto'}}><strong>Phone:</strong></div>
-                            <div className = 'col-7' style = {{overflow :'auto'}}>1234-4343-32</div>
-                        </div>
-                        <div className = 'row'>
-                            <div className = 'col-5' style = {{overflow :'auto'}}><strong>Email:</strong></div>
-                            <div className = 'col-7' style = {{overflow :'auto'}}>user@nitj.ac.in</div>
-                        </div>
-                        <div className = 'row'>
-                            <div className = 'col-5' style = {{overflow :'auto'}}><strong>Address:</strong></div>
-                            <div className = 'col-7' style = {{overflow :'auto'}}>xyz, urban state, Punjab</div>
-                        </div>
-                        </div>
-                    </div>
+                    <div style = {{position : 'relative', left : '50%' }}>
+                        <label htmlFor="fileInput" style={{ cursor: 'pointer', color : 'white'}}>
+                        <i class="fa fa-camera" style = {{fontSize : '150%'}}></i> 
+                        </label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            id="fileInput"
+                            onChange={handlePhotoChange}
+                            style={{ display: 'none' }}
+                        />
+                        {saveButton && <button onClick={handleSave} style = {{backgroundColor : '#648aca', color : 'white', fontSize : '50%'}}>Save Photo</button> }
+                    </div> 
                 </div>
                 <div className = "col-7">
                     <div className = 'row text-center' style = {{margin : '10%'}}>
-                        <h2  style = {{color : 'white'}}><strong>ADMIN NAME</strong></h2>
+                        <h2  style = {{color : 'white'}}><strong>{user?.userDetails?.name}</strong></h2>
                     </div>
                     <div className='row' style = {{ display: 'inline'}}>
                         <img src= './comments.png' alt="Comment Image" style = {{width: '10%', display: 'inline', paddingRight: '2%'}} />
@@ -48,16 +66,16 @@ export default function AdminUserProfile(){
 
                         </div>
                         <div className = 'row'>
-                            <div className = 'col-6' style = {{overflow :'auto'}}><strong>Designation:</strong></div>
+                            <div className = 'col-5' style = {{overflow :'auto'}}><strong>Email:</strong></div>
+                            <div className = 'col-7' style = {{overflow :'auto'}}>{user?.userDetails?.email}</div>
+                        </div>
+                        <div className = 'row'>
+                            <div className = 'col-6' style = {{overflow :'auto'}}><strong>Role :</strong></div>
                             <div className = 'col-6' style = {{overflow :'auto'}}>Admin</div>
                         </div>
                         <div className = 'row'>
-                            <div className = 'col-6' style = {{overflow :'auto'}}><strong>DOJ:</strong></div>
-                            <div className = 'col-6' style = {{overflow :'auto'}}>12 nov 2022</div>
-                        </div>
-                        <div className = 'row'>
-                            <div className = 'col-6' style = {{overflow :'auto'}}><strong>Gender:</strong></div>
-                            <div className = 'col-6' style = {{overflow :'auto'}}>Male</div>
+                            <div className = 'col-6' style = {{overflow :'auto'}}><strong>DOJ :</strong></div>
+                            <div className = 'col-6' style = {{overflow :'auto'}}>{user?.userDetails?.DOJ}</div>
                         </div>
                         </div>
                     </div>

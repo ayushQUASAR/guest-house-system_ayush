@@ -122,8 +122,9 @@ const handleApproval = (id, status) => {
           <td>{user.roomsSelected}</td>
           <td>{user.email}</td>
           <td>{user.phone}</td>
-          <td>{user.roomBooker.name}</td>
           <td>{user.purpose}</td>
+          <td>{user.roomBooker.name}</td>
+          
           <td>
             <button
               type="button"

@@ -117,7 +117,7 @@ useEffect(() => {
         <div className="dash-wrapper">
         {/* <div className='side-title'> Administration</div> */}
         <li>
-          <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
+          {/* <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div> */}
           <div  onClick={() => selectContent('UpcomingBooking')} className="dash-optn"><span><PersonAddIcon />Upcoming Booking</span></div> 
           <div onClick={() => selectContent('Booking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Booking</span></div>
           <div  onClick={() => selectContent('bookingHistory')} className="dash-optn"><span><AssignmentTurnedInIcon />Booking History</span></div>

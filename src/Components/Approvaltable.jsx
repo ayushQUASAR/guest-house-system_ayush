@@ -70,7 +70,7 @@ const Approvaltable = () => {
   {
            pendingUsers && pendingUsers.length > 0 &&  pendingUsers.map((user, index) => {
               return  <tr key={user._id}>
-                             <tr>{index+1}</tr>
+                             <td>{index+1}</td>
                           <td>{user.user.name}</td> 
                           <td>{user.user.email}</td>
                           <td>{user.user.phone}</td>

@@ -1,11 +1,13 @@
 /* Base styles */
  .DashCard2 {
-    margin-left: 8%;
+    /* margin-left: 8%; */
     padding: 10px;
+    margin: 10px;
     border-radius: 10px;
    
     box-shadow: 3px 3px 3px 3px rgb(134, 194, 243);
 }
+
 
 /* Updated .DashCard style for horizontal rectangles */
 .DashCard {
@@ -34,12 +36,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .DashBigCards {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    justify-content: space-evenly;
     width: 100%;
     
     padding: 20px;
@@ -70,7 +74,22 @@
     width: 100%;
     justify-content: center;
 }
-
+.DashCard svg{
+    color: rgb(134, 194, 243);
+}
+.Dashtext p,h5{
+    text-align: center;
+}
+.Dashtext2{
+    padding: 20px;
+}
+.Dashtext h5{
+font-size: 26px;
+}
+.Dashtext p{
+    font-size: 15px;
+    color: rgb(82, 82, 82);
+}
 /* Media queries for responsiveness */
 
 @media screen and (max-width: 768px) {

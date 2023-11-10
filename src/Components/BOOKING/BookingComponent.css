@@ -14,6 +14,7 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  background-color:white;
 }
 
 .main1 > p {
@@ -23,10 +24,10 @@
 
 .head1 {
   width: 100%;
-  background-color: rgb(80, 221, 228);
+  background-color: lightgrey !important;
   height: 30px;
   text-align: center;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 }
 
 .form {
@@ -44,11 +45,11 @@
 }
 
 .flex-containerTY > div {
-  background-color: #aee3f2;
+
+  background-color: #0073cf!important;
   border-radius: 5px;
   width: auto;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding:10px;
   margin-right: 5px;
   margin-left: 5px;
   text-align: center;
@@ -57,18 +58,21 @@
 }
 
 .book {
-  width: 20%;
+  width: 40%;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid black;
   border-radius: 5px;
   text-align: center;
   margin-bottom: 10px;
-  background-color: aqua;
+  padding:10px;
+  background-color: #0073cf;
+  color:white;
 }
 
 .roombooking {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -85,11 +89,13 @@
 .new {
   width: 100%;
   display: flex;
+  flex-direction: row;
   text-align: center;
   justify-content: center;
   align-items: center;
-  float: right;
+  /* float: right; */
   margin-top: 10px;
+  
 }
 
 .new > div {
@@ -123,7 +129,9 @@
   
 .roombooking {
   display: flex;
+  flex-direction:row;
   flex-wrap: wrap;
+  flex-grow: 3;
   justify-content: center;
 }
 
@@ -138,14 +146,34 @@
 }
 
 #available {
- background-color:  rgb(173, 226, 240);
+ background-color:  rgb(64, 248, 8);
 }
 
 #selected {
-  background-color: rgb(75, 228, 197);
+  background-color: rgb(17, 20, 241);
 }
 
 #booked {
   /* 297373 */
-background-color: #CB769E ;
+background-color: rgb(255, 0, 21);
+}
+#gh1{
+  color:white;
+}
+#gh2{
+  color:white;
+}
+#gh3{
+  color:white;
+}
+
+.bookButtons{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap:2%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
 }

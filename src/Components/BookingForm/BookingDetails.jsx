@@ -51,8 +51,11 @@ const BookingDetails = ({ setDateDetails }) => {
 
     updateFormData("arrivalDate", checkinDate);
     updateFormData("departureDate", checkoutDate);
+    updateFormData("roomsSelected" , roomsSelected);
+    const finalGuestHouse = selectedGuestHouse === "Guest House 1" ? 1 : selectedGuestHouse === "Guest House 2" ? 2 : 3;
+    updateFormData("guestHouseSelected", finalGuestHouse);
 
-  }, [checkinDate, checkoutDate]);
+  }, [checkinDate, checkoutDate, selectedGuestHouse, roomsSelected]);
 
   const handleCheckinChange = (e) => {
     const selectedDate = e.target.value;

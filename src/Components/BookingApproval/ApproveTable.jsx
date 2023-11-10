@@ -25,6 +25,10 @@ useEffect(()=> {
   .then((data) =>{ setPendingBooking(data); console.log(data)})
   .then((err) => console.log(err));
 }, []);
+
+const handleBack = () => {
+  setIsFirstPage(true);
+}
 // useEffect(()=> {
 //     fetch("https://guest-house-back.onrender.com/booking/approved/pending")
 //     .then((res) => res.json())
@@ -39,7 +43,7 @@ const handleSubmit = () => {
 const handleApproval = (id, status) => {
   if(status === 'accept') {
     setIsFirstPage(false);
-    openPopup();
+    // openPopup();
     onSecondPage();
   }
 
@@ -93,19 +97,60 @@ const handleApproval = (id, status) => {
       isFirstPage ? <div class="approval-table">
       <div className="d-flex flex-row justify-content-between">
       
-          <div>S.No</div>
-          <div>Name</div>
-          <div>Guest House</div> 
-          <div>No. of Rooms</div>
-          <div>Email</div>
-          <div>Contact Number</div>
-          <div>Reason of Booking</div>
-          <div>Reference</div>
-          <div>Approval</div>
+      <table className="book-approval-table">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Guest House</th>
+            <th>No. of Rooms</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Reason of Booking</th>
+            <th>Reference</th>
+            <th>Approval</th>
+            </tr>
+        </thead>
+        <tbody>
+    {pendingBooking &&
+      pendingBooking.length > 0 &&
+      pendingBooking.map((user, index) => (
+        <tr key={user._id}>
+          <td>{index + 1}</td>
+          <td>{user.name}</td>
+          <td>{user.guestHouseSelected}</td>
+          <td>{user.roomsSelected}</td>
+          <td>{user.email}</td>
+          <td>{user.phone}</td>
+          <td>{user.roomBooker.name}</td>
+          <td>{user.purpose}</td>
+          <td>
+            <button
+              type="button"
+              className="btn btn-success btn-sm mr-3"
+              onClick={() => {
+                setCurrentUser(user);
+                handleApproval(user._id, 'accept');
+              }}
+            >
+              Accept
+            </button>
+            <button
+              type="button"
+              className="btn btn-danger btn-sm"
+              onClick={() => handleApproval(user._id, 'reject')}
+            >
+              Reject
+            </button>
+          </td>
+        </tr>
+      ))}
+  </tbody>
+        </table>
       
       </div>
 
-      <div className="table-content">
+      {/* <div className="table-content">
         {
          pendingBooking && pendingBooking.length > 0 &&  pendingBooking.map((user, index) => {
             return  <div className="d-flex flex-row justify-content-between" key={user._id}>
@@ -117,16 +162,17 @@ const handleApproval = (id, status) => {
                         <div>{user.phone}</div>
                         <div>{user.roomBooker.name}</div> 
                         <div>{user.purpose}</div>
-                        <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {setCurrentUser(user);handleApproval(user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user._id, 'reject')}>Reject</button></div>
+                        <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {console.log(user);setCurrentUser(user);handleApproval(user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user._id, 'reject')}>Reject</button></div>
               </div>
             })
         }
 
 
        
-      </div>
+      </div> */}
     </div> : <BookingComponent id={currentUser._id} rooms={currentUser.roomsSelected} onSubmit={handleSubmit}/>
     }
+     
       {/* <div class="approval-table">
         <div className="d-flex flex-row justify-content-between">
         
@@ -164,7 +210,7 @@ const handleApproval = (id, status) => {
         </div>
         
       </div> */}
-       <Popup isOpen={isPopupOpen} onClose={closePopup} />
+       {/* <Popup isOpen={isPopupOpen} onClose={closePopup} /> */}
     </>
   );
 };

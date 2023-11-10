@@ -1,7 +1,7 @@
 
 
 .divtt {
-    background-color: rgb(173, 226, 240);
+    background-color: rgb(64, 248, 8);;
     width: 30px;
     height: 30px;
     margin: 10px;
@@ -12,12 +12,12 @@
     /* pointer-events: none;  */
   }
   
-  .divtt:hover {
-    background-color: rgb(139, 232, 204);
-  }
+  /* .divtt:hover {
+    background-color: #008080;
+  } */
   
   .highlightedyy {
-    background-color:rgb(75, 228, 197);
+    background-color:blue;;
     width: 30px;
     height: 30px;
     margin: 10px;
@@ -33,4 +33,4 @@
     align-items: center;
     justify-content: center;
   }
-  
+

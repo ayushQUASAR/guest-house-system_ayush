@@ -7,24 +7,42 @@ const Calendar = () => {
   const [date, setDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  console.log("ismodal", isModalOpen);
   const roomDetails = [
     {
-      date: "12-11-2023",
-      acBooked: 10,
-      nonAcBooked: 4,
+      guestHouseName: "Main Guest House",
+      acCount: 15,
+      nonACCount: 9,
+      location: "Near Girls Hostel",
+      numOfBeds: 1,
     },
     {
-      date: "15-11-2023",
-      acBooked: 4,
-      nonAcBooked: 2,
+      guestHouseName: "MBH Guest House",
+      acCount: 20,
+      nonACCount: 9,
+      location: "Near Girls Hostel",
+      numOfBeds: 1,
     },
     {
-      date: "13-11-2023",
-      acBooked: 1,
-      nonAcBooked: 1,
+      guestHouseName: "Snackers",
+      acCount: 20,
+      nonACCount: 8,
+      location: "Near Girls Hostel",
+      numOfBeds: 1,
     },
   ];
+
+  const calculateRoomCounts = (roomDetails) => {
+    let acSum = 0;
+    let nonACSum = 0;
+
+    for (const room of roomDetails) {
+      acSum += room.acCount;
+      nonACSum += room.nonACCount;
+    }
+
+    return { acCount: acSum, nonACCount: nonACSum };
+  };
 
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -70,66 +88,55 @@ const Calendar = () => {
     if (day !== null) {
       setSelectedDate(day);
       setIsModalOpen(true);
+      console.log("ismodal", isModalOpen);
     }
   };
 
   const renderCalendarRows = () => {
     const calendarData = getDaysInMonth();
     const rows = [];
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth() + 1;
-    const currentDay = today.getDate();
+    const today = new Date().getDate();
 
     for (let i = 0; i < calendarData.length; i += 7) {
       const row = calendarData.slice(i, i + 7);
       rows.push(
         <tr key={i}>
           {row.map((day, index) => {
-            if (day === null || (isCurrentMonth() && day < currentDay)) {
+            if (day === null || (isCurrentMonth() && day < today)) {
               return (
                 <td key={index} className="calendar-cell empty-cell">
-                  <div className="div-td">
-                    <h3 className="curdate-calendar">{day}</h3>
-                  </div>
+                  {}
                 </td>
               );
             }
-
-            const formattedDate = `${day < 10 ? "0" : ""}${day}-${
-              currentMonth < 10 ? "0" : ""
-            }${currentMonth}-${currentYear}`;
-
-            const roomDetail = roomDetails.find(
-              (detail) => detail.date === formattedDate
-            );
-            const isBooked = roomDetail !== undefined;
-
-            let acCount, nonAcCount;
-
-            if (isBooked) {
-              acCount = 15 - roomDetail.acBooked;
-              nonAcCount = 8 - roomDetail.nonAcBooked;
-            } else {
-              acCount = 15;
-              nonAcCount = 8;
-            }
-
+            const roomCounts = calculateRoomCounts(roomDetails);
             return (
               <td
                 key={index}
-                id={formattedDate}
                 className={`calendar-cell ${
-                  day === currentDay && isCurrentMonth() ? "current-day" : ""
-                } ${isBooked ? "calendar-cell-booked" : ""}`}
+                  day === today && isCurrentMonth() ? "current-day" : ""
+                }`}
                 onClick={() => handleDateClick(day)}
               >
-                <div className="div-td">
+                <div
+                  className="div-td"
+                  id={
+                    day
+                      ? day.toLocaleString("en-US", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })
+                      : ""
+                  }
+                >
                   {day !== null && (
                     <>
                       <h3 className="curdate-calendar">{day}</h3>
-                      <span className="acCount">AC : {acCount}</span>
-                      <span className="nonCount">Non-AC : {nonAcCount}</span>
+                      <span className="acCount">AC : {roomCounts.acCount}</span>
+                      <span className="nonCount">
+                        Non-AC : {roomCounts.nonACCount}
+                      </span>
                     </>
                   )}
                 </div>

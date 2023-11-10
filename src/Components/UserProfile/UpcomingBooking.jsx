@@ -58,7 +58,7 @@ setBookings(final);
         method: "DELETE"
       })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => console.log("booking",data))
       .catch((err) => console.log({message:err.message}))
 
       setBookings((prevBookings) => prevBookings.filter((booking) => booking.id !== id));

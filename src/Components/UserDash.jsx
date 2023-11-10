@@ -91,7 +91,7 @@ useEffect(() => {
 };
   
   const contentComponents = {
-    dashboard: <UserDashboardContent />,
+    dashboard: <UserDashboardContent user ={user} />,
     Booking: <Container />,
     UpcomingBooking : <UpcomingBooking user ={user}/>,
     bookingHistory: <BookingDetail user={user}/>,

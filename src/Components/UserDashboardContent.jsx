@@ -1,7 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../style/userdashboard.css"
 
-const UserDashboard = () => {
+const UserDashboard = ({user}) => {
+let formattedEndDate=null
+let formattedStartDate=null;
+
+
+// Format the date as you need
+
+  const [filteredUser,setFilterdetails]=useState()
+  useEffect(()=>{
+
+
+    const targetId = "654c11f0f975a0300e15217d"; // Replace with the ID you're looking for
+
+    fetch("https://guest-house-back.onrender.com/booking/")
+      .then((response) => response.json())
+      .then((data) => {
+        // Assuming data is an array of user details
+         const filteredUserDetails = data.filter(obj => obj.roomBooker._id === user.userDetails.id);
+    
+        console.log("filter",filteredUserDetails);
+        setFilterdetails(filteredUserDetails);
+    
+        // Now you can use filteredUserDetails in your component or perform further actions.
+      })
+      .catch((error) => console.error(error));
+    
+  },[ ])
   const adminComments = [
     {
       id: 1,
@@ -54,44 +80,74 @@ return (
     <table className="user-dashboard-table">
       <thead>
         <tr>
+          <th className="user-dashboard-header">Username</th>
           <th className="user-dashboard-header">Check In</th>
           <th className="user-dashboard-header">Check Out</th>
-          <th className="user-dashboard-header">Guest House Name</th>
+          <th className="user-dashboard-header">Address</th>
           <th className="user-dashboard-header">Guest House Name</th>
           <th className="user-dashboard-header">Approval Status</th>
           
-          <th className="user-dashboard-header">Payment Fee</th>
-          <th className="user-dashboard-header">Comments</th>
-          <th className="user-dashboard-header">Payment Window</th>
-          <th className="user-dashboard-header">Time Left</th>
+          <th className="user-dashboard-header">Designation</th>
+          {/* <th className="user-dashboard-header">Comments</th> */}
+          {/* <th className="user-dashboard-header">Payment Window</th> */}
+          {/* <th className="user-dashboard-header">Time Left</th> */}
           <th className="user-dashboard-header ">Payment Button</th>
         </tr>
       </thead>
       <tbody>
-        {data.map((item) => (
-          <tr key={item.id} className="user-dashboard-row-even">
-            <td>{item.checkIn}</td>
-            <td>{item.checkOut}</td>
-            <td>{item.guestHouseName}</td>
-            <td>{item.ApprovalStatus}</td>
-            <td>{item.paymentStatus}</td>
+
+        {
+          filteredUser!=null?
+
+       filteredUser.map((item) => {
+        {formattedStartDate = new Date(item.startDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+
+         formattedEndDate = new Date(item.endDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
           
-            <td>Rs.{item.paymentFee}</td>
-            <td>{item.comments}</td>
-            <td>5 days</td>
-            <td>2 hours</td>
+          
+          
+          
+          ;}
+        return (
+          <tr key={item.id} className="user-dashboard-row-even">
+               <td>{item.name}</td>
+            <td>{formattedStartDate}</td>
+            <td>{formattedEndDate}</td>
+         
+            <td>{item.address}</td>
+            {/* <td></td> */}
+            {/* <td></td> */}
+            <td>{item.guestHouseAllotted}</td>
+        
+            <td>{item.status}</td>
+            <td>{item.designation}</td>
+            {/* {item.status==="approved" ? <td>{item.paymentstatus}</td> :<div>wait for approval</div> } */}
+            
+          
+            {/* <td>Rs.{item.paymentFee}</td> */}
+            {/* <td>{item.comments}</td> */}
+            {/* <td>5 days</td> */}
+            {/* <td>2 hours</td> */}
             <td>
-              <button className="user-dashboard-payment-button">{item.paymentStatus==='Paid' ?'Pay Now':'Paid'}</button>
+             {item.status==="approved" ?<button className="user-dashboard-payment-button"> Pay Now</button>:<div>Wait for Approval</div>}
             </td>
-          </tr>
-        ))}
+          </tr>)})
+        :<div>No Data Exist </div>}
       </tbody>
     </table>
   </div>
   </div>
   <div>
     <br/>
-     <div className="admin-comments-table-container">
+     {/* <div className="admin-comments-table-container">
       <table className="admin-comments-table">
         <thead>
           <tr>
@@ -112,7 +168,7 @@ return (
           ))}
         </tbody>
       </table>
-    </div>
+    </div> */}
   </div>
   </>
 );

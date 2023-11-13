@@ -207,6 +207,12 @@ const BookingComponent = ({rooms, id, onBack}) => {
 const [selectedGuestHouse, setSelectedGuestHouse] = useState(1);
 const [selectedRooms, setSelectedRooms] = useState([]);
 const [isPopupOpen, setPopupOpen] = useState(false);
+const [selectedDeadlineValue, setSelectedDeadlineValue] = useState(null);
+
+const handleChange = (event) => {
+  setSelectedDeadlineValue(Number(event.target.value));
+};
+
 const openPopup = () => {
   setPopupOpen(true);
 };
@@ -220,7 +226,8 @@ const handleApproval = () => {
     booking: id, 
   status : 'accept',
   guestHouseAllotted : selectedGuestHouse,
-  roomsAllotted : selectedRooms
+  roomsAllotted : selectedRooms,
+  paymentDeadline: selectedDeadlineValue
 };
 
 
@@ -400,14 +407,14 @@ setSelectedRooms(x);
               <li><a class="dropdown-item" href="#">48</a></li>
               <li><a class="dropdown-item" href="#">72</a></li>
             </ul> */}
-            <select style={{ position:'relative', right: "5rem", bottom: "6px"}}>
-              <option>
+            <select style={{ position:'relative', right: "5rem", bottom: "6px"}} onChange={handleChange}>
+              <option value="24">
                 24 hrs
               </option>
-              <option>
+              <option value="48">
                 48 hrs
               </option>
-              <option>
+              <option value="72">
                 72 hrs
               </option>
 

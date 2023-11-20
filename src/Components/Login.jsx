@@ -126,7 +126,10 @@ const Login = () => {
 
 
                       </div>
-                      <h3 style={{ color: ' #346BD4' }}>Forgot password?</h3>
+                      <NavLink to="/forgot-password">
+                      <p style={{ color: ' #346BD4' }}>Forgot password?</p>
+                      </NavLink>
+                      
                       <button type="submit" className="sign-btn">Sign In</button>
                     </div>
                   </form>

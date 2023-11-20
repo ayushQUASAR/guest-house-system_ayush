@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import ResetPassword from './FORGETPASS/ResetPassword';
 
 const Settings = () => {
   return (
-    <div>Settings</div>
+    <><ResetPassword/></>
   )
 }
 

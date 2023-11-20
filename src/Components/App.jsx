@@ -16,6 +16,8 @@ import { FormProvider } from "./ContextHooks/FormContext";
 import BookingComponent from "./BOOKING/BookingComponent";
 import RequireAuth from './RequireAuth';
 import UserDash from "./UserDash";
+import ForgetPassword from "./FORGETPASS/ForgetPassword";
+import ResetPassword from "./FORGETPASS/ResetPassword";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/Booking" element={<RequireAuth><Container /></RequireAuth>} />
                 <Route path="/Register" element={<Registration />} />
+                <Route path="/forgot-password" element={<ForgetPassword/>}/>
+                <Route path="/update-password" element={<ResetPassword/>}/>
                 <Route
                   path="/AdminRegistration"
                   element={<AdminRegistrationMain />}

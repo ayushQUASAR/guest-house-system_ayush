@@ -58,10 +58,6 @@ useEffect(() => {
    .catch((err) => console.log(err.message));
 }, []);
 
-
-
-
-
   const ToggleSidestate = () => {
     setSidestate(!sideState);
   }

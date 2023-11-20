@@ -48,8 +48,6 @@ export default function RegisteredUsers() {
     // setNewUser({ name: '', contactNumber: '', email: '' });
   };
 
-
-
   return (
     <div className='registered-container my-5'>
       {view && <div className="profile-popup">

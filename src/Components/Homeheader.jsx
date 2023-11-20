@@ -119,7 +119,7 @@ const HomeHeader = () => {
                                 <div className="nav-optn">Login</div>
                             </NavLink>)}
 
-                            {isLogged && isAdmin && (<NavLink to="/login">
+                            {isLogged && isAdmin && (<NavLink to="/Dashboard">
 
                                 <div className="nav-optn">Dashboard</div>
                             </NavLink>)}

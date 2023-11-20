@@ -1,100 +1,102 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 // import  "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 // import '../../node_modules/bootstrap/dist/js/bootstrap.bundle';
- import "./Approvetable.css"
+import "./Approvetable.css"
 import BookingComponent from "../BOOKING/BookingComponent";
 import Popup from "../PopUp/Popup";
 
 
-const Approvaltable = ({onSecondPage}) => { 
-const [pendingBooking, setPendingBooking] = useState(null);
-const [isFirstPage, setIsFirstPage] = useState(true);
-const [currentUser, setCurrentUser] = useState(null);
-const [isPopupOpen, setPopupOpen] = useState(false);
+const Approvaltable = ({ onSecondPage }) => {
+  const [pendingBooking, setPendingBooking] = useState(null);
+  const [isFirstPage, setIsFirstPage] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
-const openPopup = () => {
-  setPopupOpen(true);
-};
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
 
-const closePopup = () => {
-  setPopupOpen(false);
-};
-useEffect(()=> {
-  fetch("https://guest-house-back.onrender.com/booking/approved/pending")
-  .then((res) => res.json())
-  .then((data) =>{ setPendingBooking(data); console.log(data)})
-  .then((err) => console.log(err));
-}, []);
 
-const handleBack = () => {
-  setIsFirstPage(true);
-}
-// useEffect(()=> {
-//     fetch("https://guest-house-back.onrender.com/booking/approved/pending")
-//     .then((res) => res.json())
-//    .then((data) => setRequests(() => {
-//       const dataSet = data.map((eachData) => {
-//        return {...eachData, accepting: false}
-//       })
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/booking/approved/pending`)
+      .then((res) => res.json())
+      .then((data) => { setPendingBooking(data); console.log(data) })
+      .then((err) => console.log(err));
+  }, []);
 
-const handleSubmit = () => {
-
-}
-const handleApproval = (id, status) => {
-  if(status === 'accept') {
-    setIsFirstPage(false);
-    // openPopup();
-    onSecondPage();
+  const handleBack = () => {
+    setIsFirstPage(true);
   }
+  // useEffect(()=> {
+  //     fetch("${import.meta.env.VITE_API_URL}/booking/approved/pending")
+  //     .then((res) => res.json())
+  //    .then((data) => setRequests(() => {
+  //       const dataSet = data.map((eachData) => {
+  //        return {...eachData, accepting: false}
+  //       })
 
-  if(status === 'reject') {
-    const rejectBody = {
-      booking: id,
-     status: "reject", 
-   };
+  const handleSubmit = () => {
 
-   console.log("reject body: ",rejectBody);
-            fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
+  }
+  const handleApproval = (id, status) => {
+    if (status === 'accept') {
+      setIsFirstPage(false);
+      // openPopup();
+      onSecondPage();
+    }
+
+    if (status === 'reject') {
+      const rejectBody = {
+        booking: id,
+        status: "reject",
+      };
+
+      console.log("reject body: ", rejectBody);
+      fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
         method: "POST",
-        mode:"cors",
-        body : JSON.stringify(rejectBody),
+        mode: "cors",
+        body: JSON.stringify(rejectBody),
         headers: {
           "Content-Type": "application/json",
         },
       })
-      .then((res) => res.json())
-      .then((data)=> {
-        console.log(data);
-        window.alert(data.message);
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          window.alert(data.message);
 
-        setPendingBooking((prev) => {
-                const selectedUsers  = prev.filter((user) => user._id !== id);
-                return selectedUsers;
+          setPendingBooking((prev) => {
+            const selectedUsers = prev.filter((user) => user._id !== id);
+            return selectedUsers;
+          })
+
         })
-      
-      })
-      .catch((err) => console.log(err));
+        .catch((err) => console.log(err));
 
+    }
   }
-}
 
 
 
-// pendingUsers.map((user, index) => {
-// return  <tr key={user._id}>
-//                <td scope="row">{index+1}</td>
-//             <td>{user.name}</td> 
-//             <td>{user.email}</td>
-//             <td>{user.phone}</td>
-//             <td>{user.refInfo}</td> 
-//             <td><button type="button" class="btn btn-success btn-sm">Accept</button> <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
-//   </tr>
-// })
+  // pendingUsers.map((user, index) => {
+  // return  <tr key={user._id}>
+  //                <td scope="row">{index+1}</td>
+  //             <td>{user.name}</td> 
+  //             <td>{user.email}</td>
+  //             <td>{user.phone}</td>
+  //             <td>{user.refInfo}</td> 
+  //             <td><button type="button" class="btn btn-success btn-sm">Accept</button> <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
+  //   </tr>
+  // })
 
   return (
     <>
     {
-      isFirstPage ? <div class="approval-table">
+      isFirstPage ? 
+      <div class="approval-table">
       <div className="d-flex flex-row justify-content-between">
       
       <table className="book-approval-table">
@@ -123,7 +125,7 @@ const handleApproval = (id, status) => {
           <td>{user.email}</td>
           <td>{user.phone}</td>
           <td>{user.purpose}</td>
-          <td>{user.roomBooker.name}</td>
+          <td>{user.roomBooker.isAdmin ? "Admin" : user.roomBooker.name}</td>
           
           <td>
             <button
@@ -148,10 +150,9 @@ const handleApproval = (id, status) => {
       ))}
   </tbody>
         </table>
-      
       </div>
 
-      {/* <div className="table-content">
+          {/* <div className="table-content">
         {
          pendingBooking && pendingBooking.length > 0 &&  pendingBooking.map((user, index) => {
             return  <div className="d-flex flex-row justify-content-between" key={user._id}>
@@ -171,9 +172,9 @@ const handleApproval = (id, status) => {
 
        
       </div> */}
-    </div> : <BookingComponent id={currentUser._id} rooms={currentUser.roomsSelected} onSubmit={handleSubmit}/>
-    }
-     
+        </div> : <BookingComponent id={currentUser._id} rooms={currentUser.roomsSelected} onSubmit={handleSubmit} />
+      }
+
       {/* <div class="approval-table">
         <div className="d-flex flex-row justify-content-between">
         
@@ -211,7 +212,7 @@ const handleApproval = (id, status) => {
         </div>
         
       </div> */}
-       {/* <Popup isOpen={isPopupOpen} onClose={closePopup} /> */}
+      {/* <Popup isOpen={isPopupOpen} onClose={closePopup} /> */}
     </>
   );
 };

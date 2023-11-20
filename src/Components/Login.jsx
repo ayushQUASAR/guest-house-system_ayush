@@ -68,7 +68,9 @@ const Login = () => {
       .then((data) => {
         setLoginData(data);
         // setUserId(data.id);
+        // console.log("userId: ", data.id);
         updateUserId(data.id);
+        console.log(userId);
         if (data.id !== undefined) {
           setIsLogged(true);
           console.log("islog ID NULL", isLogged)
@@ -132,7 +134,7 @@ const Login = () => {
               </div>
             </div>
             {console.log("isadmindiv", isAdmin)}
-          </div> : isAdmin ? <Dash admin={loginData.id} /> : <UserDash />
+          </div> : isAdmin ? <Dash admin={true} /> : <UserDash />
 
       }
 

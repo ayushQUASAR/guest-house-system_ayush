@@ -13,8 +13,9 @@ import BookingPopup from "./BookingPopup";
 import { NavLink } from "react-router-dom";
 import Booking from "./BookingDetails";
 
-const Container = () => {
+const Container = ({isAdmin, adminId}) => {
   const [userDetails, setUserDetails] = useState(null);
+  const [adminDetails, setAdminDetails] = useState(null);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [dateDetails, setDateDetails] = useState(null);
   const [isFormValid, setFormValid] = useState(false); // Form validation state
@@ -28,20 +29,37 @@ const Container = () => {
   };
   const { formData } = useContext(FormContext);
   const { userId } = useUserContext();
+  useEffect(() => {
+console.log("admin Id in container.jsx", adminId);
+console.log("user id from user context: ", userId);
+  } ,[]);
 
   // on initial render, Person Booking Details get saved
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
+    let URL = isAdmin ? `${import.meta.env.VITE_API_URL}/login/admin/${userId}` :  `${import.meta.env.VITE_API_URL}/users/${userId}`;
+    fetch(`${URL}`)
       .then((res) => res.json())
       .then((data) =>
-        setUserDetails({
+      {
+        console.log(data);
+        if(isAdmin) {
+         setAdminDetails({
           ...formData,
-          PersonName: data.userDetails.name,
-          PersonEmail: data.userDetails.email,
-          PersonPhone: data.userDetails.phone,
-          PersonAddress: data.userDetails.address,
-        })
-      )
+          isAdmin: true,
+          AdminEmail: data[0].email
+         })
+        }
+        else {
+          setUserDetails({
+            ...formData,
+            isAdmin: false,
+            PersonName: data.userDetails.name,
+            PersonEmail: data.userDetails.email,
+            PersonPhone: data.userDetails.phone,
+            PersonAddress: data.userDetails.address,
+          })
+        }
+      })
       .catch((err) => console.log(err.message));
   }, [formData]);
 
@@ -65,12 +83,17 @@ const Container = () => {
     console.log(userDetails);
 
     // console.log(userDetails);
+    if(isAdmin) {
+      console.log(adminDetails);
+    }
+
+    const bodyDetails = isAdmin ? adminDetails : userDetails;
 
     // Perform submission with formData
     fetch(`${import.meta.env.VITE_API_URL}/booking/register`, {
       method: "POST",
       mode: "cors",
-      body: JSON.stringify(userDetails),
+      body: JSON.stringify(bodyDetails),
       headers: {
         "Content-Type": "application/json",
       },

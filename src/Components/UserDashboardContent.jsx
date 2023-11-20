@@ -25,7 +25,7 @@ const UserDashboard = ({ user }) => {
     console.log("idbruh", user)
     const targetId = "654c11f0f975a0300e15217d"; // Replace with the ID you're looking for
 
-    fetch(`https://guest-house-back.onrender.com/users/bookingHistory`)
+    fetch(`${import.meta.env.VITE_API_URL}/users/bookingHistory`)
       .then((response) => response.json())
       .then((data) => {
         console.log("bro", data)

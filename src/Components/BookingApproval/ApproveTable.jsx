@@ -20,7 +20,7 @@ const closePopup = () => {
   setPopupOpen(false);
 };
 useEffect(()=> {
-  fetch("https://guest-house-back.onrender.com/booking/approved/pending")
+  fetch(`${import.meta.env.VITE_API_URL}/booking/approved/pending`)
   .then((res) => res.json())
   .then((data) =>{ setPendingBooking(data); console.log(data)})
   .then((err) => console.log(err));
@@ -123,7 +123,7 @@ const handleApproval = (id, status) => {
           <td>{user.email}</td>
           <td>{user.phone}</td>
           <td>{user.purpose}</td>
-          <td>{user.roomBooker.name}</td>
+          <td>{user.roomBooker.isAdmin ? "Admin" : user.roomBooker.name}</td>
           
           <td>
             <button

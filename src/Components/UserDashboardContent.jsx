@@ -114,9 +114,9 @@ const UserDashboard = ({ user }) => {
             </thead>
             <tbody>
 
-           
 
-      {/* //  filteredUser.map((item) => {
+
+              {/* //  filteredUser.map((item) => {
       //   {formattedStartDate = new Date(item.bookingHistory.startDate).toLocaleDateString('en-US', {
       //     year: 'numeric',
       //     month: 'long',
@@ -132,9 +132,9 @@ const UserDashboard = ({ user }) => {
 
 
 
-      
-       {/* return ( */}
-         {/* <tr key={item._id} className="user-dashboard-row-even">
+
+              {/* return ( */}
+              {/* <tr key={item._id} className="user-dashboard-row-even">
               <td>{item.bookingHistory.name}</td>
            <td>{formattedStartDate}</td>
            <td>{formattedEndDate}</td>
@@ -144,58 +144,58 @@ const UserDashboard = ({ user }) => {
          <td>{item.bookingHistory.guestHouseAllotted}</td>
 
         <td>{item.bookingHistory.status}</td> */}
-         {/* <td>{item.bookingHistory.designation}</td> */}
-       {/* {item.status==="approved" ? <td>{item.paymentstatus}</td> :<div>wait for approval</div> } */}
+              {/* <td>{item.bookingHistory.designation}</td> */}
+              {/* {item.status==="approved" ? <td>{item.paymentstatus}</td> :<div>wait for approval</div> } */}
 
 
-        {/* <td>Rs.{item.paymentFee}</td> */}
-        {/* <td>{item.comments}</td> */}
-        {/* <td>5 days</td> */}
-        {/* <td>2 hours</td> */}
-        {/* <td>
+              {/* <td>Rs.{item.paymentFee}</td> */}
+              {/* <td>{item.comments}</td> */}
+              {/* <td>5 days</td> */}
+              {/* <td>2 hours</td> */}
+              {/* <td>
          {item.status==="approved" ?<button className="user-dashboard-payment-button"> Pay Now</button>:<div>Wait for Approval</div>}
         </td>
       </tr>)
      :<div>No Data Exist </div> */}
 
 
- 
-{  filteredUser &&
-                filteredUser.bookingHistory._id !=null?
 
-  <tr className = "user-dashboard-row-even" >
-    <td>{item.name}</td>
-    <td>{formattedStartDate}</td>
-    <td>{formattedEndDate}</td>
-    <td>{item.address}</td>
-    {/* Other columns */ }
-    <td> { item.guestHouseAllotted }</td>
-            <td>{item.status}</td>
-            <td>{item.designation}</td>
-            {/* Add your other columns as needed */}
-            <td>
-              {item.status === "approved" ? (
-                <button className="user-dashboard-payment-button">Pay Now</button>
-              ) : (
-                <div>Wait for Approval</div>
-              )}
-            </td>
-          </tr>
-          
-          :<div>Doesnt not Exit</div> } 
+              {filteredUser &&
+                filteredUser.bookingHistory._id != null ?
+
+                <tr className="user-dashboard-row-even" >
+                  <td>{item.name}</td>
+                  <td>{formattedStartDate}</td>
+                  <td>{formattedEndDate}</td>
+                  <td>{item.address}</td>
+                  {/* Other columns */}
+                  <td> {item.guestHouseAllotted}</td>
+                  <td>{item.status}</td>
+                  <td>{item.designation}</td>
+                  {/* Add your other columns as needed */}
+                  <td>
+                    {item.status === "approved" ? (
+                      <button className="user-dashboard-payment-button">Pay Now</button>
+                    ) : (
+                      <div>Wait for Approval</div>
+                    )}
+                  </td>
+                </tr>
+
+                : <div>Doesnt not Exit</div>}
 
 
 
-        </tbody>
-      </table>
-    </div >
-  </div >
-  <div>
-    <br />
+            </tbody>
+          </table>
+        </div >
+      </div >
+      <div>
+        <br />
 
-  </div>
-  </>
-);
+      </div>
+    </>
+  );
 };
 
 

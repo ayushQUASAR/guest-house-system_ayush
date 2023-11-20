@@ -97,13 +97,13 @@ export default function RegisteredUsers() {
             </thead>
             <tbody>
               {users && users.length > 0 && users.map((user, index) => (
-                <tr key={user._id}>
+                <tr key={user?._id}>
                   <td>{index + 1}</td>
-                  <td>{user.user.name}</td>
-                  <td>{user.user.phone}</td>
-                  <td>{user.user.email}</td>
+                  <td>{user?.user?.name}</td>
+                  <td>{user?.user?.phone}</td>
+                  <td>{user?.user?.email}</td>
                   <td>
-                    <button className={"rounded-2 border-primary mx-3"} style={{ backgroundColor: '#0275d8', color: 'white' }} onClick={() => viewUserProfile(user.user)}>
+                    <button className={"rounded-2 border-primary mx-3"} style={{ backgroundColor: '#0275d8', color: 'white' }} onClick={() => viewUserProfile(user?.user)}>
                       View Profile
                     </button>
                   </td>

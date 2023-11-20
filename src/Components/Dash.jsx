@@ -26,10 +26,11 @@ import RegisteredUsers from './RegisteredUsers'
 import { Settings } from '@mui/icons-material';
 import { useLoginContext } from './ContextHooks/LoginContext';
 import Container from './BookingForm/Container';
+import { useUserContext } from './ContextHooks/UserContext';
 
 
 const Dash = ({admin}) => {
-  console.log(admin);
+  // console.log(admin);
   const [sideState, setSidestate] = useState(true);
   const [contentType, setContentType] = useState('dashboard')
   const ToggleSidestate = () => {
@@ -38,11 +39,14 @@ const Dash = ({admin}) => {
   const selectContent = (content) => {
     setContentType(content);
     console.log(contentType)
-   
   }
  
+  
   const navigate = useNavigate();
   const { setIsLogged } = useLoginContext();
+  const {userId} = useUserContext();
+
+  console.log("user id", userId);
 
   const handleLogout = () => {
     fetch(`${import.meta.env.VITE_API_URL}/logout`, {
@@ -62,7 +66,7 @@ const Dash = ({admin}) => {
   
   const contentComponents = {
     dashboard: <DashboardContent />,
-    adminRoomBooking: <Container />,
+    adminRoomBooking: <Container adminId={userId} isAdmin={admin ? true: false} />,
     bookedRooms: <BookedRooms />,
     registeredUsers: <RegisteredUsers />,
     adminuserProfile: <AdminUserProfile />,

@@ -7,7 +7,7 @@ import './BookingComponent.css';
 import MyComponent from './MyComponent';
 import Popup from '../PopUp/Popup';
 import './MyComponent.css';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 // import React, { useState } from 'react';
 
 const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
@@ -88,18 +88,18 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
     setSelectedRooms(x);
   }
 
-  const history = useHistory();
+  // const history = useHistory();
 
-  const goBack = () => {
-    history.goBack();
-  };
+  // const goBack = () => {
+  //   history.goBack();
+  // };
 
 
 
   return (
     <div className="mai">
 
-      <span onClick={goBack} style={{ fontSize: "13px", cursor: "pointer", position: "absolute", color: "white", borderRadius: "4px", backgroundColor: "#0073cf", marginLeft: "2px", marginTop: "2px", padding: "2px" }}>
+      <span style={{ fontSize: "13px", cursor: "pointer", position: "absolute", color: "white", borderRadius: "4px", backgroundColor: "#0073cf", marginLeft: "2px", marginTop: "2px", padding: "2px" }}>
         Back
       </span>
       <div className="head1">

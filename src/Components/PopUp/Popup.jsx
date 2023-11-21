@@ -2,24 +2,21 @@ import React from 'react';
 import './Popup.css';
 import sucessIcon from "./check.png"
 import { NavLink } from 'react-router-dom';
-const Popup = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-  const handleClose = () => {
-    onClose();
-  };
+const Popup = ({ setPopup,messageHead,para1,para2}) => {
+
 
   return (
-    <div className="popup-overlay" onClick={handleClose}>
+    <div className="popup-overlay" onClick={()=>setPopup(false)}>
       <div className="popup" onClick={(e) => e.stopPropagation()}>
      
         <img className='sucessIcon' src={sucessIcon} alt='Success Icon'/>
 
-        <h2 className='popup-heading'>Registration Successful</h2>
-        <p className='popup-para'>Your registration has been successfully completed.</p>
+        <h2 className='popup-heading'>{messageHead}</h2>
+        <p className='popup-para'>{para1}</p>
        
-        <p>Please wait for Approval of Registration from Institute. You will be able to Login once Registration is approved.</p>
+        <p>{para2}</p>
         <NavLink to="/login">
-        <button className="btn btn-primary btn-lg rounded" onClick={handleClose}>Close</button>
+        <button className="btn btn-primary btn-lg rounded" onClick={()=>setPopup(false)}>Close</button>
         </NavLink>
       </div>
     </div>

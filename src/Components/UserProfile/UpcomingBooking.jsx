@@ -83,7 +83,7 @@ setBookings(final);
         </tr>
       </thead>
       <tbody>
-        {bookings.map((booking, index) => (
+        {bookings!==null &&bookings.length>0&&bookings.map((booking, index) => (
             <tr key={booking.id}>
             <td>{index+1}</td>
             <td>{booking.status === 'approved' ? formatRoomData(booking.rooms) : "NOT ALLOTTED"}</td>

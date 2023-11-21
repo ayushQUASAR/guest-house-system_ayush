@@ -423,7 +423,7 @@ setSelectedRooms(x);
         </div>
         </div>
 
-   <Popup isOpen={isPopupOpen} onClose={closePopup} />
+        <Popup isOpen={isPopupOpen} onClose={closePopup} messageHead={'Registration Successful'} para1={'Your registration has been successfully completed.'} para2={'Please wait for Approval of Registration from Institute. You will be able to Login once Registration is approved'}/>
       </div>
     </div>
   );

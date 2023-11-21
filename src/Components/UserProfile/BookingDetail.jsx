@@ -17,7 +17,7 @@ const BookingDetails = ({user}) => {
   }
 
   const formatRoomData = (room) => {
-    let str = "Room No. ";
+    let str = "";
     if(room.length == 1) {
       return str + room[0];
     }
@@ -82,8 +82,8 @@ setBookings(final);
           {bookings.map((booking, index) => (
             <tr key={booking.id}>
               <td>{index + 1}</td>
-              <td>{booking.status === 'approved' ? formatRoomData(booking.rooms) : "NOT ALLOTTED"}</td>
-            <td>{booking.status === 'approved' ? (booking.guestHouse === 1 ? "Guest House 1" : booking.guestHouse === 2 ? "Guest House 2"  :"Guest House 3") : "NOT ALLOTTED"}</td>
+              <td>{booking.status === 'pending'  || booking.status === 'rejected' ? "-" : formatRoomData(booking.rooms)}</td>
+            <td>{booking.status === 'pending' || booking.status === 'rejected' ? "-" : (booking.guestHouse === 1 ? "Guest House 1" : booking.guestHouse === 2 ? "Guest House 2"  :"Guest House 3")}</td>
               <td>{booking.bookingDate}</td>
               <td>{`${booking.checkIn} / ${booking.checkOut}`}</td>
               <td>{booking.status}</td>

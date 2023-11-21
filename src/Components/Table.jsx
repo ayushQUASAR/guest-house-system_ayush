@@ -21,7 +21,7 @@ const Table = ({userId}) => {
   
 
   const formatRoomData = (room) => {
-    let str = "Room No. ";
+    let str = "";
     if(room.length == 1) {
       return str + room[0];
     }
@@ -52,8 +52,8 @@ const Table = ({userId}) => {
              return( <tr key={booking._id}>
                   <td scope="row">{index+1}</td>
                   <td>{formatDateToCustomFormat(new Date(booking.createdAt))}</td>
-                  <td>{booking.status === 'approved' ? (booking.guestHouseAllotted === 1 ? "Guest House 1" : booking.guestHouseSelected === 2 ? "Guest House 2"  :"Guest House 3") : "NOT ALLOTTED"}</td>
-                  <td>{booking.status === 'approved' ? formatRoomData(booking.roomsAllotted) : "NOT ALLOTTED"}</td>
+                  <td>{booking.status === 'pending' || booking.status === 'rejected' ? "-" : (booking.guestHouse === 1 ? "Guest House 1" : booking.guestHouse === 2 ? "Guest House 2"  :"Guest House 3")}</td>
+                  <td>{booking.status === 'pending'  || booking.status === 'rejected' ? "-" : formatRoomData(booking.roomsAllotted)}</td>
                   <td>{formatDateToCustomFormat(new Date(booking.startDate))}-{formatDateToCustomFormat(new Date(booking.endDate))}</td>
                    <td>{booking.status === 'approved' ? "Approved" : booking.status === 'pending' ? "Waiting for approval" : booking.status}</td>
               </tr>)

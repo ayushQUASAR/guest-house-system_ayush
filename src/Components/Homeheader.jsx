@@ -82,9 +82,7 @@ const HomeHeader = () => {
                                 to="AboutUs"
                                 smooth={true}
                                 duration={50}
-
                             >
-
                                 <div className="nav-optn">
                                     <HelpCenterIcon />  <div className="optn-name">About</div> 
                                 </div>

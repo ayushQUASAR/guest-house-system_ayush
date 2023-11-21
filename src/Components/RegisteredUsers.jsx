@@ -46,6 +46,7 @@ export default function RegisteredUsers() {
   const addNewUser = () => {
     // setUsers([...users, newUser]);
     // setNewUser({ name: '', contactNumber: '', email: '' });
+    window.location.href = '/Register';
   };
 
   return (

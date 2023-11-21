@@ -172,7 +172,7 @@ const Approvaltable = ({ onSecondPage }) => {
 
        
       </div> */}
-        </div> : <BookingComponent id={currentUser._id} rooms={currentUser.roomsSelected} onSubmit={handleSubmit} />
+        </div> : <BookingComponent guesthouseno={currentUser.guestHouseSelected} id={currentUser._id} rooms={currentUser.roomsSelected} onSubmit={handleSubmit} />
       }
 
       {/* <div class="approval-table">

@@ -4,7 +4,7 @@ import sucessIcon from "./check.png"
 import { NavLink } from 'react-router-dom';
 const Popup = ({ setPopup,messageHead,para1,para2}) => {
 
-
+  console.log(setPopup)
   return (
     <div className="popup-overlay" onClick={()=>setPopup(false)}>
       <div className="popup" onClick={(e) => e.stopPropagation()}>

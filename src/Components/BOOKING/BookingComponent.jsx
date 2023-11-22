@@ -3,7 +3,7 @@
 // export default BookingComponent;
 import React, { useState, useEffect } from 'react';
 import './BookingComponent.css';
-
+// import './BookingComponent.js
 import MyComponent from './MyComponent';
 import Popup from '../PopUp/Popup';
 import './MyComponent.css';
@@ -11,16 +11,13 @@ import ApproveBooking from '../BookingApproval/ApproveBooking.jsx'
 // import { useHistory } from 'react-router-dom';
 // import React, { useState } from 'react';
 
-
-
-
-const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
-  const [messageHead_m, setMessagehead] = useState('')
-
-  const [para1_m, setPara1] = useState('')
-  const [para2_m, setPara2] = useState('')
-  const [popup, setPopup] = useState(false)
-  const handleBack = onBack;
+const BookingComponent = (pram) => {
+  const guesthouseno = pram.guesthouseno;
+  const rooms = pram.rooms;
+  const id = pram.id;
+  const handleBack = pram.onBack;
+  ///{ guesthouseno, rooms, id, handleBack }
+  console.log('this is pram', pram)
 
   useEffect(() => {
     const ghh1 = document.getElementById('gh1');
@@ -52,7 +49,7 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
 
   const [selectedGuestHouse, setSelectedGuestHouse] = useState(guesthouseno);
   const [selectedRooms, setSelectedRooms] = useState([]);
-
+  const [isPopupOpen, setPopupOpen] = useState(false);
   const [selectedDeadlineValue, setSelectedDeadlineValue] = useState(null);
 
 
@@ -60,7 +57,13 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
     setSelectedDeadlineValue(Number(event.target.value));
   };
 
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
 
+  const closePopup = () => {
+    setPopupOpen(false);
+  }
   const handleApproval = () => {
 
     const data = {
@@ -83,17 +86,9 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
       }
     })
       .then((res) => res.json())
-      .then((data) => {
-        
-
-        setMessagehead('Booking Successful')
-      console.log()
-        setPopup(true)
-        console.log(data)
-     
-      })
+      .then((data) => console.log(data))
       .catch((err) => console.error(err.message))
-
+    openPopup();
   }
 
   const handleRooms = (x) => {
@@ -105,7 +100,11 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
   // const goBack = () => {
   //   history.goBack();
   // };
-
+  // const goBack = () => {
+  //   // window.history.back();
+  //   // <ApproveBooking/>
+  //   onBack();
+  // };
 
 
   return (
@@ -149,23 +148,37 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
           selectedGuestHouse === 1 ?
             <div style={{ marginTop: '20px' }} id="sacg1">
               SAC Guest House (Non A.C)
-              <MyComponent setRooms={handleRooms} maxRooms={rooms} n={8} />
+              <MyComponent setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={8} />
             </div>
             : selectedGuestHouse === 2 ?
               <div style={{ marginTop: '10px' }} id="sacg2">
                 Main Guest House (A.C)
-                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={10} />
+                <MyComponent setRooms={handleRooms}  guesthouseid={guesthouseno} maxRooms={rooms} n={10} />
               </div>
               : <div style={{ marginTop: '10px' }} id="sacg3">
                 Mega Guest House (Non A.C)
-                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={12} />
+                <MyComponent setRooms={handleRooms}  guesthouseid={guesthouseno} maxRooms={rooms} n={12} />
               </div>
         }
+        {/* <div style={{ marginTop: '20px' }} id="sacg1"> */}
+        {/* SAC Guest House (Non A.C) */}
+        {/* <MyComponent n={8,2}/> */}
+        {/* <MyComponent n={8} maxRooms={rooms} /> */}
+        {/* </div>     */}
+        {/* <div style={{ marginTop: '10px' }} id="sacg2"> */}
+        {/* Guest House 1 (A.C) */}
 
+        {/* <MyComponent  n={10} maxRooms={rooms}/> */}
+        {/* </div> */}
+        {/* <div style={{ marginTop: '10px' }} id="sacg3"> */}
+        {/* Mega Guest House (Non A.C) */}
+
+        {/* <MyComponent n={10} maxRooms={rooms}/> */}
+        {/* </div>  */}
 
         <div className='bookButtons'>
           <div className="book" style={{ cursor: "pointer" }} onClick={handleApproval}>Book Now</div>
-          <div class="dropdown">
+          <div className="dropdown">
             {/* <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             TIME
           </button> */}
@@ -190,7 +203,7 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
           </div>
         </div>
 
-        {popup && <Popup messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
+        {isPopupOpen && <Popup isOpen={isPopupOpen} onClose={closePopup} messageHead={'Booked Successfully'} para1={''} para2={'Confirmation mail has been sent to User.'} />}
       </div>
     </div>
   );

@@ -3,23 +3,15 @@ import React, { useState, useEffect } from "react";
 // import '../../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import "./Approvetable.css"
 import BookingComponent from "../BOOKING/BookingComponent";
-import Popup from "../PopUp/Popup";
 
 
 const Approvaltable = ({ onSecondPage }) => {
   const [pendingBooking, setPendingBooking] = useState(null);
   const [isFirstPage, setIsFirstPage] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
-  const [isPopupOpen, setPopupOpen] = useState(false);
-
-  const openPopup = () => {
-    setPopupOpen(true);
-  };
 
 
-  const closePopup = () => {
-    setPopupOpen(false);
-  };
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/booking/approved/pending`)
       .then((res) => res.json())
@@ -45,7 +37,7 @@ const Approvaltable = ({ onSecondPage }) => {
   const handleApproval = (id, status) => {
     if (status === 'accept') {
       setIsFirstPage(false);
-      // openPopup();
+   
       onSecondPage();
     }
 
@@ -214,7 +206,7 @@ const Approvaltable = ({ onSecondPage }) => {
         </div>
         
       </div> */}
-      {/* <Popup isOpen={isPopupOpen} onClose={closePopup} /> */}
+   
     </>
   );
 };

@@ -1,7 +1,7 @@
 
 
 // export default BookingComponent;
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './BookingComponent.css';
 
 import MyComponent from './MyComponent';
@@ -12,20 +12,15 @@ import ApproveBooking from '../BookingApproval/ApproveBooking.jsx'
 // import React, { useState } from 'react';
 
 
- 
+
 
 const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
-  const [messageHead_m,setMessagehead]=useState('')
- 
-  const [para1_m,setPara1] = useState('')
-  const [para2_m,setPara2] = useState('')
-  const[popup,setPopup]=useState(false)
-  const guesthouseno = pram.guesthouseno;
-  const rooms = pram.rooms;
-  const id = pram.id;
-  const handleBack = pram.onBack;
-  ///{ guesthouseno, rooms, id, handleBack }
-  console.log('this is pram', pram)
+  const [messageHead_m, setMessagehead] = useState('')
+
+  const [para1_m, setPara1] = useState('')
+  const [para2_m, setPara2] = useState('')
+  const [popup, setPopup] = useState(false)
+  const handleBack = onBack;
 
   useEffect(() => {
     const ghh1 = document.getElementById('gh1');
@@ -88,12 +83,17 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
       }
     })
       .then((res) => res.json())
-      .then((data) =>{ console.log(data)
-      
-      setMessagehead('Booking Successful')
-    setPopup(true)})
+      .then((data) => {
+        
+
+        setMessagehead('Booking Successful')
+      console.log()
+        setPopup(true)
+        console.log(data)
+     
+      })
       .catch((err) => console.error(err.message))
-   
+
   }
 
   const handleRooms = (x) => {
@@ -161,7 +161,7 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
                 <MyComponent setRooms={handleRooms} maxRooms={rooms} n={12} />
               </div>
         }
- 
+
 
         <div className='bookButtons'>
           <div className="book" style={{ cursor: "pointer" }} onClick={handleApproval}>Book Now</div>
@@ -190,7 +190,7 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
           </div>
         </div>
 
-        <Popup isOpen={isPopupOpen} onClose={closePopup} messageHead={'Registration Successful'} para1={'Your registration has been successfully completed.'} para2={'Please wait for Approval of Registration from Institute. You will be able to Login once Registration is approved'}/>
+        {popup && <Popup messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
       </div>
     </div>
   );

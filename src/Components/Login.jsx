@@ -74,13 +74,19 @@ const Login = () => {
         if (data.id !== undefined) {
           setIsLogged(true);
           console.log("islog ID NULL", isLogged)
+          window.alert('User Login is Successfull');
         }
         if (data.isAdmin) {
           setIsAdmin(true);
           console.log("islog ADMIN", isLogged)
+          window.alert('Admin Login is Successfull');
         }
-
-        window.alert(data.message);
+ else if(data.message==' not valid admin'||data.message=='not valid user')
+ {
+  // console.log('mymessage',data.message)
+  window.alert('Email/password Invalid');
+ }
+       
         console.log("islog", isLogged)
       }
       )

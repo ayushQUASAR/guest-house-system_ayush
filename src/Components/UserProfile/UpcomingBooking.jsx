@@ -11,8 +11,10 @@ const UpcomingBooking = ({user}) => {
 
 
   useEffect(() => {
-  const bookings = user.bookingHistory;
-  const filteredBookings = bookings.filter((booking) => new Date(booking.startDate) > new Date() && (booking.status === "approved" || booking.status === "pending"))
+    
+  const bookings_H = user.bookingHistory;
+  if(bookings_H){
+  const filteredBookings = bookings_H.filter((booking) => new Date(booking.startDate) > new Date() && (booking.status === "approved" || booking.status === "pending"))
   console.log(filteredBookings)
   const final = filteredBookings.map((booking) => {
   return {
@@ -25,10 +27,13 @@ const UpcomingBooking = ({user}) => {
     status: booking.status
     
   }
+
+
 });
 
 
-setBookings(final);
+setBookings(final);}
+else setBookings(null)
   }, []);
 
   

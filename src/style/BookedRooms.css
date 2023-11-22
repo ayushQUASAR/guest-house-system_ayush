@@ -1,0 +1,42 @@
+.BookedRoomsContainer{
+    /* background-color: aquamarine; */
+    border: 2px solid #7CB9E8;
+    height: 100%;
+    border-radius: 10px;
+    overflow: auto;
+}
+.bookedRoomsHeading{
+    background-color: #0275d8;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+.guestHouseSelectionHeading{
+    padding: 10px;
+    font-size: 20px;
+    margin: 10px;
+    margin-left: 3px;
+    font-weight: bold;
+}
+.guestHouseDivs{
+    display: flex;
+    flex-wrap: wrap;
+}
+.noOfGuestHouse{
+    background-color: #0275d8;
+    padding: 20px;
+    margin: 20px 30px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.noOfGuestHouse:hover{
+    background-color: #0c68b8;
+}
+.bookedRoomsList{
+    margin: 30px;
+}

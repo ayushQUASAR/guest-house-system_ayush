@@ -17,7 +17,19 @@
   } */
   
   .highlightedyy {
-    background-color:blue;;
+    background-color:blue;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    justify-content: center;
+    cursor: pointer;
+    /* transition: background-color 0.3s; */
+  }
+
+  .bookedRoom {
+    background-color:rgb(255, 0, 21) !important;
     width: 30px;
     height: 30px;
     margin: 10px;

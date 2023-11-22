@@ -2,18 +2,10 @@ import { useState } from 'react';
 import '../../style/facultyalumni.css'
 import Popup from '../PopUp/Popup';
 export default function StudentRight({prop}) {
-  const { reffirstName,reflastName, refphoneNumber,studbranch,studrollNumber,setReffirstName, setReflastName, setRefphoneNumber, setSbranch, setSrollNumber } = prop;
+  const { reffirstName,reflastName, refphoneNumber,studbranch,studrollNumber,setReffirstName, setReflastName, setRefphoneNumber, setSbranch, setSrollNumber ,messageHead_m,para1_m,para2_m,setPopup,popup} = prop;
 
   // Define state variables to store the input values
-  const [isPopupOpen, setPopupOpen] = useState(false);
 
-  const openPopup = () => {
-    setPopupOpen(true);
-  };
-
-  const closePopup = () => {
-    setPopupOpen(false);
-  };
 
   // Event handler to update the state when input values change
   const handleInputChange = (e, stateUpdater) => {
@@ -92,12 +84,12 @@ export default function StudentRight({prop}) {
         </div>
 
         <div className="mt-auto justify-content-end d-flex">
-          <button type="submit" onClick={openPopup}className="btn btn-primary btn-lg rounded register-btn">
+          <button type="submit" className="btn btn-primary btn-lg rounded register-btn">
             Register
           </button>
         </div>
       {/* </form> */}
-      <Popup isOpen={isPopupOpen} onClose={closePopup} />
+      {popup &&     <Popup  setPopup={setPopup}messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>}
     </div>
   );
 }

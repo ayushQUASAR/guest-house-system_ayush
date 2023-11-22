@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './BookingPopup.css';
-import sucessIcon from "./check.png"
+import sucessIcon from "../../images/check2.png"
 import { NavLink } from 'react-router-dom';
 const BookingPopup = ({ isOpen, onClose }) => {
   if (!isOpen) return null;

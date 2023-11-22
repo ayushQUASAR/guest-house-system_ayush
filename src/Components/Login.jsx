@@ -15,7 +15,7 @@ import UserDash from './UserDash'
 const Login = () => {
 
   const navigate = useNavigate();
-
+ 
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [loginData, setLoginData] = useState(null);
@@ -34,19 +34,19 @@ const Login = () => {
       method: 'GET',
       credentials: 'include',
     })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.loggedIn) {
-        setIsLogged(true);
-        updateUserId(data.id);
-        setIsAdmin(data.isAdmin);
-        if (data.isAdmin) {
-          navigate('/Dashboard');
-        } else {
-          navigate('/UserDetails');
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.loggedIn) {
+          setIsLogged(true);
+          updateUserId(data.id);
+          setIsAdmin(data.isAdmin);
+          if (data.isAdmin) {
+            navigate('/Dashboard');
+          } else {
+            navigate('/UserDetails');
+          }
         }
-      }
-    });
+      });
   }, []);
 
   const setSubmit = (e) => {
@@ -67,18 +67,33 @@ const Login = () => {
     }).then((res) => res.json())
       .then((data) => {
         setLoginData(data);
-        // setUserId(data.id);
+        setUserId(data);
+        // console.log("userId: ", data.id);
         updateUserId(data.id);
-        if (data.id !== undefined) {
+        console.log(data);
+        if (data.id !== undefined ) {
+
           setIsLogged(true);
-          console.log("islog ID NULL", isLogged)
+
+          // console.log("islog ID NULL", isLogged)
+     
+       
         }
         if (data.isAdmin) {
           setIsAdmin(true);
-          console.log("islog ADMIN", isLogged)
+        
+          // console.log("islog ADMIN", isLogged)
+          window.alert('Admin Login is Successfull');
+
+        }
+        else if (data.message == ' not valid admin' || data.message == 'not valid user'|| data.message=='email does not matches') {
+          // console.log('mymessage',data.message)
+          window.alert('Email/password Invalid');
+        }
+        else{
+          window.alert('User Login is Successfull');
         }
 
-        window.alert(data.message);
         console.log("islog", isLogged)
       }
       )
@@ -124,7 +139,10 @@ const Login = () => {
 
 
                       </div>
-                      <h3 style={{ color: ' #346BD4' }}>Forgot password?</h3>
+                      <NavLink to="/forgot-password">
+                        <p style={{ color: ' #346BD4' }}>Forgot password?</p>
+                      </NavLink>
+
                       <button type="submit" className="sign-btn">Sign In</button>
                     </div>
                   </form>
@@ -132,7 +150,7 @@ const Login = () => {
               </div>
             </div>
             {console.log("isadmindiv", isAdmin)}
-          </div> : isAdmin ? <Dash admin={loginData.id} /> : <UserDash />
+          </div> : isAdmin ? <Dash admin={true} /> : <UserDash />
 
       }
 

@@ -1,14 +1,11 @@
 import React from 'react'; 
 import '../../style/userprofile.css';
 import {useUserContext} from "../ContextHooks/UserContext";
-import {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react'; 
 const PersonalDetail = ({user}) => {
-    const [profilePhoto, setProfilePhoto] = useState('profile-default.jpg');
-    const [newPhoto, setNewPhoto] = useState(null);
-    const [isModalOpen, setModalOpen] = useState(false);
+    const [profilePhoto, setProfilePhoto] = useState('./p.jpg');
+    const [newPhoto, setNewPhoto] = useState(null); 
 //     const [user, setUserDetails] = useState([]);
-   
-    
 //      const { userId } = useUserContext();
 
 //      console.log(userId);
@@ -25,25 +22,34 @@ const PersonalDetail = ({user}) => {
 //       .catch((err) => console.log(err.message));
 //   }, []);
 
-    
-
+     
+    const[saveButton, setSaveButton] = useState(false);
     const handlePhotoChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-            setNewPhoto(reader.result);
-        };
-        reader.readAsDataURL(file);
-        }
+    const file = event.target.files[0];
+    if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+        setNewPhoto(reader.result);
     };
-
-  const handleUpdatePhoto = () => {
-    if (newPhoto) {
-      setProfilePhoto(newPhoto);
-      setModalOpen(false);
+    reader.readAsDataURL(file);
     }
-  };
+    setSaveButton(true);
+    };
+    const handleSave = () => {
+        if (newPhoto) {
+            setProfilePhoto(newPhoto);
+            setNewPhoto(null);
+        }
+        setSaveButton(false);
+    };
+   
+
+//   const handleUpdatePhoto = () => {
+//     if (newPhoto) {
+//       setProfilePhoto(newPhoto);
+//       setModalOpen(false);
+//     }
+//   };
     // const [StudentData, setStudentData] = useState({
     //     name: 'Student Name',  
     //     rollNumber : '2110423',
@@ -61,25 +67,24 @@ const PersonalDetail = ({user}) => {
   return (
     <div className='container-fluid'>
         <div className = 'row'>
-            <div className = 'col-4'>
-                <div className = 'row user-image'>
-                    <img  style={{ width: "500%", height: "600%" }}src='./p.jpg' alt="" />
-                    <span
-                     style={{ cursor: 'pointer', marginLeft: '10px' }}
-                    onClick={() => setModalOpen(true)}>
-                    📷
-                </span>
+        <div className = "col-4" >
+            <div className = "row" style = {{margin : '15% 15% 0% 15%'}}>
+                <img src={profilePhoto}     alt="Profile" style={{ width: '10rem', height: 'auto', padding : 'auto 0px'}} />
+            </div >
+            {/* <div style = {{position : 'relative', left : '50%' }}> */}
+                <div style = {{alignItems : 'Right', textAlign : 'Right', right : '20%'}}>
+                <label htmlFor="fileInput" style={{ cursor: 'pointer', color : 'black'}}>
+                <i className="fa fa-camera" style = {{fontSize : '150%'}}></i> 
+                </label>
+                <input type="file"
+                    accept="image/*"
+                    id="fileInput"
+                    onChange={handlePhotoChange}
+                    style={{ display: 'none' }}
+                />
+                {saveButton && <button onClick={handleSave} style = {{backgroundColor : 'white', color : 'black', fontSize : '100%'}}>Save Photo</button> }
+                    </div> 
                 </div> 
-                {isModalOpen && (
-                <div className="modal">
-                <div className="modal-content">
-                    <img src={newPhoto} alt="New Profile" />
-                    <input type="file" accept="image/*" onChange={handlePhotoChange} />
-                    <button onClick={handleUpdatePhoto}>Save</button>
-                </div>
-                </div>
-            )}
-            </div>
             <div className = 'col-8'>
                 <div>
                     <h2>Personal Details</h2>

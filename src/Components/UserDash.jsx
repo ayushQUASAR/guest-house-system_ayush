@@ -39,7 +39,7 @@ import { useUserContext } from './ContextHooks/UserContext';
 const UserDash = () => {
   // console.log(user);
   const [sideState, setSidestate] = useState(true);
-  const [contentType, setContentType] = useState('dashboard')
+  const [contentType, setContentType] = useState('UpcomingBooking')
   const [user, setUserDetails] = useState([]);
    
   const { userId } = useUserContext();
@@ -57,10 +57,6 @@ useEffect(() => {
    )
    .catch((err) => console.log(err.message));
 }, []);
-
-
-
-
 
   const ToggleSidestate = () => {
     setSidestate(!sideState);

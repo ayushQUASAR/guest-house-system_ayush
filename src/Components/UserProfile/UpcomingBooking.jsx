@@ -11,8 +11,10 @@ const UpcomingBooking = ({user}) => {
 
 
   useEffect(() => {
-  const bookings = user.bookingHistory;
-  const filteredBookings = bookings.filter((booking) => new Date(booking.startDate) > new Date() && (booking.status === "approved" || booking.status === "pending"))
+    
+  const bookings_H = user.bookingHistory;
+  if(bookings_H){
+  const filteredBookings = bookings_H.filter((booking) => new Date(booking.startDate) > new Date() && (booking.status === "approved" || booking.status === "pending"))
   console.log(filteredBookings)
   const final = filteredBookings.map((booking) => {
   return {
@@ -25,10 +27,13 @@ const UpcomingBooking = ({user}) => {
     status: booking.status
     
   }
+
+
 });
 
 
-setBookings(final);
+setBookings(final);}
+else setBookings(null)
   }, []);
 
   
@@ -83,7 +88,7 @@ setBookings(final);
         </tr>
       </thead>
       <tbody>
-        {bookings.map((booking, index) => (
+        {bookings!==null &&bookings.length>0&&bookings.map((booking, index) => (
             <tr key={booking.id}>
             <td>{index+1}</td>
             <td>{booking.status === 'approved' ? formatRoomData(booking.rooms) : "NOT ALLOTTED"}</td>

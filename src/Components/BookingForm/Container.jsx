@@ -108,7 +108,7 @@ console.log("user id from user context: ", userId);
   return (
     <>
       <div className="MainContainer">
-        <div>
+        <div className="Bookingdetails-wrapper">
           <div>
             <Booking setDateDetails={handleDateDetails} />
           </div>

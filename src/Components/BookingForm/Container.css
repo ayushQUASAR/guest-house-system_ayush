@@ -23,4 +23,9 @@
   /* height: 100%; */
   background-color: #c6c6c6;
   padding-bottom: 80px;
+  border-radius: 10px;
+}
+.Bookingdetails-wrapper{
+  /* border-radius: 20px; */
+  padding: 10px;
 }

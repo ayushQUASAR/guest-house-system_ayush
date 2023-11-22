@@ -1,22 +1,32 @@
 
 
-// export default BookingComponent;
 import React, { useState, useEffect } from 'react';
 import './BookingComponent.css';
-// import './BookingComponent.js
 import MyComponent from './MyComponent';
 import Popup from '../PopUp/Popup';
 import './MyComponent.css';
 import ApproveBooking from '../BookingApproval/ApproveBooking.jsx'
-// import { useHistory } from 'react-router-dom';
-// import React, { useState } from 'react';
 
 const BookingComponent = (pram) => {
+
+
+  // -------------------------------------
+
+
+  const [messageHead_m, setMessagehead] = useState('')
+
+  const [para1_m, setPara1] = useState('')
+  const [para2_m, setPara2] = useState('')
+  const [popup, setPopup] = useState(false)
+  // const handleBack = onBack;
+  // ------------------------------------
+
+
+  
   const guesthouseno = pram.guesthouseno;
   const rooms = pram.rooms;
   const id = pram.id;
   const handleBack = pram.onBack;
-  ///{ guesthouseno, rooms, id, handleBack }
   console.log('this is pram', pram)
 
   useEffect(() => {
@@ -86,7 +96,18 @@ const BookingComponent = (pram) => {
       }
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      // .then((data) => console.log(data))
+      .then((data) => {
+
+
+        setMessagehead('Booking Successful')
+       console.log()
+        setPopup(true)
+        console.log(data)
+
+      })
+
+      
       .catch((err) => console.error(err.message))
     openPopup();
   }
@@ -202,8 +223,8 @@ const BookingComponent = (pram) => {
             </select>
           </div>
         </div>
-
-        {isPopupOpen && <Popup isOpen={isPopupOpen} onClose={closePopup} messageHead={'Booked Successfully'} para1={''} para2={'Confirmation mail has been sent to User.'} />}
+        {popup && <Popup messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
+        {/* {isPopupOpen && <Popup isOpen={isPopupOpen} onClose={closePopup} messageHead={'Booked Successfully'} para1={''} para2={'Confirmation mail has been sent to User.'} />} */}
       </div>
     </div>
   );

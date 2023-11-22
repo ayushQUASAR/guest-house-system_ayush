@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import '../../node_modules/bootstrap/dist/js/bootstrap.bundle';
-import "../style/Approvaltable.css"
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
+import "../style/Approvaltable.css";
 
 const Approvaltable = () => {
-  const [pendingUsers, setPendingUsers] = useState('');
+  const [pendingUsers, setPendingUsers] = useState("");
 
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + "/users/approved/pending")
       .then((res) => res.json())
-      .then((data) => { setPendingUsers(data); console.log("pendinguserdata", data) })
+      .then((data) => {
+        setPendingUsers(data);
+        console.log("pendinguserdata", data);
+      })
       .then((err) => console.log(err));
   }, []);
 
@@ -33,55 +36,70 @@ const Approvaltable = () => {
         setPendingUsers((prev) => {
           const selectedUsers = prev.filter((user) => user.user._id !== id);
           return selectedUsers;
-        })
-
+        });
       })
       .catch((err) => console.log(err));
-  }
-
-
+  };
 
   // pendingUsers.map((user, index) => {
   // return  <tr key={user._id}>
   //                <td scope="row">{index+1}</td>
-  //             <td>{user.name}</td> 
+  //             <td>{user.name}</td>
   //             <td>{user.email}</td>
   //             <td>{user.phone}</td>
-  //             <td>{user.refInfo}</td> 
+  //             <td>{user.refInfo}</td>
   //             <td><button type="button" class="btn btn-success btn-sm">Accept</button> <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
   //   </tr>
   // })
 
   return (
     <>
-      <div >
-      <table className="approval-table">
-  <thead>
-    <tr>
-      <th>S.No</th>
-      <th>Name</th>
-      <th>Email id</th>
-      <th>Contact Number</th>
-      <th>Reference</th>
-      <th>Approval</th>
-    </tr>
-  </thead>
-  <tbody>
-  {
-           pendingUsers && pendingUsers.length > 0 &&  pendingUsers.map((user, index) => {
-              return  <tr key={user._id}>
-                             <td>{index+1}</td>
-                          <td>{user.user.name}</td> 
-                          <td>{user.user.email}</td>
-                          <td>{user.user.phone}</td>
-                          <td>{user.user.refInfo}</td> 
-                          <td><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {handleApproval(user.user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user._id, 'reject')}>Reject</button></td>
-                </tr>
-              })
-          }
-  </tbody>
-</table>
-
+      <div>
+        <table className="approval-table">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Name</th>
+              <th>Email id</th>
+              <th>Contact Number</th>
+              <th>Reference</th>
+              <th>Approval</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pendingUsers &&
+              pendingUsers.length > 0 &&
+              pendingUsers.map((user, index) => {
+                return (
+                  <tr key={user._id}>
+                    <td>{index + 1}</td>
+                    <td>{user.user.name}</td>
+                    <td>{user.user.email}</td>
+                    <td>{user.user.phone}</td>
+                    <td>{user.user.refInfo}</td>
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-success btn-sm mr-3"
+                        onClick={() => {
+                          handleApproval(user.user._id, "accept");
+                        }}
+                      >
+                        Accept
+                      </button>{" "}
+                      <button
+                        type="button"
+                        class="btn btn-danger btn-sm"
+                        onClick={() => handleApproval(user.user._id, "reject")}
+                      >
+                        Reject
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
 
         {/* <div className="grid-table">
         

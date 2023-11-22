@@ -1,126 +1,206 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import "../style/dash.css"
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
-import HowToRegRoundedIcon from '@mui/icons-material/HowToRegRounded';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
-import BedroomParentRoundedIcon from '@mui/icons-material/BedroomParentRounded';
-import SettingsIcon from '@mui/icons-material/Settings';
-import LogoutIcon from '@mui/icons-material/Logout';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
-import { NavLink } from 'react-router-dom';
-import Header from './Header';
-import Approve from './Approve';
-import DashboardContent from './DashboardContent';
-import AdminUserProfile from './AdminUserProfile'
-import AdminRoomBooking from './AdminRoomBooking'
-import BookedRooms from './BookedRooms'
-import ApproveBooking from './BookingApproval/ApproveBooking';
-import DashboardSettings from './DashboardSettings'
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import RegisteredUsers from './RegisteredUsers'
-import { Settings } from '@mui/icons-material';
-import { useLoginContext } from './ContextHooks/LoginContext';
-import Container from './BookingForm/Container';
-import { useUserContext } from './ContextHooks/UserContext';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../style/dash.css";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
+import HowToRegRoundedIcon from "@mui/icons-material/HowToRegRounded";
+import PersonPinIcon from "@mui/icons-material/PersonPin";
+import BedroomParentRoundedIcon from "@mui/icons-material/BedroomParentRounded";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import { NavLink } from "react-router-dom";
+import Header from "./Header";
+import Approve from "./Approve";
+import DashboardContent from "./DashboardContent";
+import AdminUserProfile from "./AdminUserProfile";
+import AdminRoomBooking from "./AdminRoomBooking";
+import BookedRooms from "./BookedRooms";
+import ApproveBooking from "./BookingApproval/ApproveBooking";
+import DashboardSettings from "./DashboardSettings";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import RegisteredUsers from "./RegisteredUsers";
+import { Settings } from "@mui/icons-material";
+import { useLoginContext } from "./ContextHooks/LoginContext";
+import Container from "./BookingForm/Container";
+import { useUserContext } from "./ContextHooks/UserContext";
 
-
-const Dash = ({admin}) => {
+const Dash = ({ admin }) => {
   // console.log(admin);
   const [sideState, setSidestate] = useState(true);
-  const [contentType, setContentType] = useState('dashboard')
+  const [contentType, setContentType] = useState("dashboard");
+  const [isGodAdmin, setGodAdmin] = useState(true);
+  // useEffect for the data fetch for the curr user if curruser == "ghadmin@nitj.ac.in" setGodAdmin(true) by default false
+
   const ToggleSidestate = () => {
     setSidestate(!sideState);
-  }
+  };
   const selectContent = (content) => {
     setContentType(content);
-    console.log(contentType)
-  }
- 
-  
+    console.log(contentType);
+  };
+
   const navigate = useNavigate();
   const { setIsLogged } = useLoginContext();
-  const {userId} = useUserContext();
+  const { userId } = useUserContext();
 
   console.log("user id", userId);
 
   const handleLogout = () => {
     fetch(`${import.meta.env.VITE_API_URL}/logout`, {
-      method: 'GET',
-      credentials: 'include',
+      method: "GET",
+      credentials: "include",
     })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.message === 'Logged out successfully') {
-        setIsLogged(false);
-        navigate('/login');
-      } else {
-        console.error('Error logging out');
-      }
-    });
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message === "Logged out successfully") {
+          setIsLogged(false);
+          navigate("/login");
+        } else {
+          console.error("Error logging out");
+        }
+      });
   };
-  
+
   const contentComponents = {
     dashboard: <DashboardContent />,
-    adminRoomBooking: <Container adminId={userId} isAdmin={admin ? true: false} />,
+    adminRoomBooking: (
+      <Container adminId={userId} isAdmin={admin ? true : false} />
+    ),
     bookedRooms: <BookedRooms />,
     registeredUsers: <RegisteredUsers />,
     adminuserProfile: <AdminUserProfile />,
     settings: <DashboardSettings />,
     approve: <Approve />,
-    approvebooking :<ApproveBooking/>,
+    approvebooking: <ApproveBooking />,
   };
 
   const selectedContent = contentComponents[contentType];
   return (
-  
     <>
-          <Header Toggle={ToggleSidestate}/>
-    <div className='dash-menu'>
-
-      {/* <div className="admin-header" onClick={ToggleSidestate}>
+      <Header Toggle={ToggleSidestate} />
+      <div className="dash-menu">
+        {/* <div className="admin-header" onClick={ToggleSidestate}>
      
        
       </div> */}
-      {sideState &&
-      
-      <div className="dash-sidebar">
-         <div className="admin-title">
-          <span>
-            <AdminPanelSettingsIcon />
-            Admin Panel</span></div>
-        <div className="dash-wrapper">
-        {/* <div className='side-title'> Administration</div> */}
-        <li>
-          <div onClick={() => selectContent('dashboard')} className="dash-optn"><span><DashboardIcon />Dashboard</span></div>
-          <div onClick={() => selectContent('adminRoomBooking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Admin Room Booking</span></div>
-          <div  onClick={() => selectContent('approvebooking')} className="dash-optn"><span><AssignmentTurnedInIcon />Approve Bookings</span></div>
-          <div  onClick={() => selectContent('approve')} className="dash-optn"><span><PersonAddIcon />Approve Registrations</span></div>
-          <div onClick={() => selectContent('bookedRooms')} className="dash-optn"><span><TaskAltIcon/>Booked Rooms</span></div>
-          <div onClick={() => selectContent('registeredUsers')} className="dash-optn"><span><HowToRegRoundedIcon/>Registered Users</span></div>
-        </li>
-        <div className='side-title'>Admin</div>
-        <li>
-          <div  onClick={() => selectContent('adminuserProfile')} className="dash-optn"><span><PersonPinIcon />Profile</span></div>
-          <div onClick={() => selectContent('settings')} className="dash-optn"><span><SettingsIcon />Settings</span></div>
-          <div onClick={handleLogout} className="dash-optn"><span><LogoutIcon />Logout</span></div>
-        </li>
-      </div> </div>}
-      <div className="dash-area">
-  <div className="dash-box">
-    {selectedContent}
-    
-  </div>
+        {sideState && (
+          <div className="dash-sidebar">
+            <div className="admin-title">
+              <span>
+                <AdminPanelSettingsIcon />
+                Admin Panel
+              </span>
+            </div>
+            <div className="dash-wrapper">
+              {/* <div className='side-title'> Administration</div> */}
+              <li>
+                <div
+                  onClick={() => selectContent("dashboard")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <DashboardIcon />
+                    Dashboard
+                  </span>
+                </div>
+                <div
+                  onClick={() => selectContent("adminRoomBooking")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <BedroomParentRoundedIcon />
+                    Admin Room Booking
+                  </span>
+                </div>
+                <div
+                  onClick={() => selectContent("approvebooking")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <AssignmentTurnedInIcon />
+                    Approve Bookings
+                  </span>
+                </div>
+                <div
+                  onClick={() => selectContent("approve")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <PersonAddIcon />
+                    Approve Registrations
+                  </span>
+                </div>
+                <div
+                  onClick={() => selectContent("bookedRooms")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <TaskAltIcon />
+                    Booked Rooms
+                  </span>
+                </div>
+                <div
+                  onClick={() => selectContent("registeredUsers")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <HowToRegRoundedIcon />
+                    Registered Users
+                  </span>
+                </div>
+                {isGodAdmin ? (
+                  <div
+                    onClick={() => selectContent("createAdmins")}
+                    className="dash-optn"
+                  >
+                    <span>
+                      <GroupAddIcon />
+                      Create Admins
+                    </span>
+                  </div>
+                ) : null}
+              </li>
+              <div className="side-title">Admin</div>
+              <li>
+                <div
+                  onClick={() => selectContent("adminuserProfile")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <PersonPinIcon />
+                    Profile
+                  </span>
+                </div>
+                <div
+                  onClick={() => selectContent("settings")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <SettingsIcon />
+                    Settings
+                  </span>
+                </div>
+                <div onClick={handleLogout} className="dash-optn">
+                  <span>
+                    <LogoutIcon />
+                    Logout
+                  </span>
+                </div>
+              </li>
+            </div>{" "}
+          </div>
+        )}
+        <div className="dash-area">
+          <div className="dash-box">{selectedContent}</div>
+        </div>
       </div>
-
-    
-    </div>
     </>
-  )
-}
+  );
+};
 
-export default Dash
+export default Dash;

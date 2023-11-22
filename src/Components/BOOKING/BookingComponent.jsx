@@ -7,10 +7,17 @@ import './BookingComponent.css';
 import MyComponent from './MyComponent';
 import Popup from '../PopUp/Popup';
 import './MyComponent.css';
+import ApproveBooking from '../BookingApproval/ApproveBooking.jsx'
 // import { useHistory } from 'react-router-dom';
 // import React, { useState } from 'react';
 
-const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
+const BookingComponent = (pram) => {
+  const guesthouseno = pram.guesthouseno;
+  const rooms = pram.rooms;
+  const id = pram.id;
+  const handleBack = pram.fun;
+   ///{ guesthouseno, rooms, id, handleBack }
+   console.log('this is pram',pram)
 
   useEffect(() => {
     const ghh1 = document.getElementById('gh1');
@@ -93,13 +100,17 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
   // const goBack = () => {
   //   history.goBack();
   // };
-
+  // const goBack = () => {
+  //   // window.history.back();
+  //   // <ApproveBooking/>
+  //   onBack();
+  // };
 
 
   return (
     <div className="mai">
 
-      <span style={{ fontSize: "13px", cursor: "pointer", position: "absolute", color: "white", borderRadius: "4px", backgroundColor: "#0073cf", marginLeft: "2px", marginTop: "2px", padding: "2px" }}>
+      <span  onClick={handleBack} style={{ fontSize: "13px", cursor: "pointer", position: "absolute", color: "white", borderRadius: "4px", backgroundColor: "#0073cf", marginLeft: "2px", marginTop: "2px", padding: "2px" }}>
         Back
       </span>
       <div className="head1">
@@ -167,7 +178,7 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
 
         <div className='bookButtons'>
           <div className="book" style={{ cursor: "pointer" }} onClick={handleApproval}>Book Now</div>
-          <div class="dropdown">
+          <div className="dropdown">
             {/* <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             TIME
           </button> */}

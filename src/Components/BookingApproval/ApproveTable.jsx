@@ -29,6 +29,7 @@ const Approvaltable = ({ onSecondPage }) => {
 
   const handleBack = () => {
     setIsFirstPage(true);
+    console.log('clicked');
   }
   // useEffect(()=> {
   //     fetch("${import.meta.env.VITE_API_URL}/booking/approved/pending")
@@ -92,11 +93,12 @@ const Approvaltable = ({ onSecondPage }) => {
   //   </tr>
   // })
 
+
   return (
     <>
     {
       isFirstPage ? 
-      <div class="approval-table">
+      <div className="approval-table">
       <div className="d-flex flex-row justify-content-between">
       
       <table className="book-approval-table">

@@ -1,12 +1,18 @@
 
 
+// export default BookingComponent;
 import React, { useState,useEffect } from 'react';
 import './BookingComponent.css';
 
 import MyComponent from './MyComponent';
 import Popup from '../PopUp/Popup';
 import './MyComponent.css';
+import ApproveBooking from '../BookingApproval/ApproveBooking.jsx'
+// import { useHistory } from 'react-router-dom';
+// import React, { useState } from 'react';
 
+
+ 
 
 const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
   const [messageHead_m,setMessagehead]=useState('')
@@ -14,6 +20,13 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
   const [para1_m,setPara1] = useState('')
   const [para2_m,setPara2] = useState('')
   const[popup,setPopup]=useState(false)
+  const guesthouseno = pram.guesthouseno;
+  const rooms = pram.rooms;
+  const id = pram.id;
+  const handleBack = pram.onBack;
+  ///{ guesthouseno, rooms, id, handleBack }
+  console.log('this is pram', pram)
+
   useEffect(() => {
     const ghh1 = document.getElementById('gh1');
     const ghh2 = document.getElementById('gh2');
@@ -47,7 +60,7 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
 
   const [selectedDeadlineValue, setSelectedDeadlineValue] = useState(null);
 
-  
+
   const handleChange = (event) => {
     setSelectedDeadlineValue(Number(event.target.value));
   };
@@ -87,15 +100,18 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
     setSelectedRooms(x);
   }
 
+  // const history = useHistory();
+
+  // const goBack = () => {
+  //   history.goBack();
+  // };
+
 
 
   return (
     <div className="mai">
 
-      <span
-       style={{ fontSize: "13px", cursor: "pointer", position: "absolute", color: "white", borderRadius: "4px", backgroundColor: "#0073cf", marginLeft: "2px", marginTop: "2px", padding: "2px" }}
-       onClick={onBack}
-       >
+      <span onClick={handleBack} style={{ fontSize: "13px", cursor: "pointer", position: "absolute", color: "white", borderRadius: "4px", backgroundColor: "#0073cf", marginLeft: "2px", marginTop: "2px", padding: "2px" }}>
         Back
       </span>
       <div className="head1">
@@ -132,17 +148,17 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
         {
           selectedGuestHouse === 1 ?
             <div style={{ marginTop: '20px' }} id="sacg1">
-              Main Guest House (A.C)
-              <MyComponent setRooms={handleRooms} maxRooms={rooms} n={10} />
+              SAC Guest House (Non A.C)
+              <MyComponent setRooms={handleRooms} maxRooms={rooms} n={8} />
             </div>
             : selectedGuestHouse === 2 ?
-            <div style={{ marginTop: '10px' }} id="sacg2">
-              Mega Guest House (Non A.C)
-                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={12} />
+              <div style={{ marginTop: '10px' }} id="sacg2">
+                Main Guest House (A.C)
+                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={10} />
               </div>
               : <div style={{ marginTop: '10px' }} id="sacg3">
-                SAC Guest House (Non A.C)
-                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={8} />
+                Mega Guest House (Non A.C)
+                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={12} />
               </div>
         }
  
@@ -150,7 +166,14 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
         <div className='bookButtons'>
           <div className="book" style={{ cursor: "pointer" }} onClick={handleApproval}>Book Now</div>
           <div class="dropdown">
-        
+            {/* <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            TIME
+          </button> */}
+            {/* <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">24</a></li>
+              <li><a class="dropdown-item" href="#">48</a></li>
+              <li><a class="dropdown-item" href="#">72</a></li>
+            </ul> */}
             <select style={{ position: 'relative', right: "5rem", bottom: "6px" }} onChange={handleChange}>
               <option value="24">
                 24 hrs
@@ -166,7 +189,8 @@ const BookingComponent = ({ guesthouseno, rooms, id, onBack }) => {
             </select>
           </div>
         </div>
-        {popup&&     <Popup  setPopup={setPopup}messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>}
+
+        <Popup isOpen={isPopupOpen} onClose={closePopup} messageHead={'Registration Successful'} para1={'Your registration has been successfully completed.'} para2={'Please wait for Approval of Registration from Institute. You will be able to Login once Registration is approved'}/>
       </div>
     </div>
   );

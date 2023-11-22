@@ -67,28 +67,31 @@ const Login = () => {
     }).then((res) => res.json())
       .then((data) => {
         setLoginData(data);
-        // setUserId(data.id);
+        setUserId(data);
         // console.log("userId: ", data.id);
         updateUserId(data.id);
-        console.log(userId);
-        if (data.id !== undefined && !data.isAdmin) {
+        console.log(data);
+        if (data.id !== undefined ) {
 
           setIsLogged(true);
 
           // console.log("islog ID NULL", isLogged)
-          window.alert('User Login is Successfull');
+     
        
         }
         if (data.isAdmin) {
           setIsAdmin(true);
-          setIsLogged(true);
+        
           // console.log("islog ADMIN", isLogged)
           window.alert('Admin Login is Successfull');
 
         }
-        else if (data.message == ' not valid admin' || data.message == 'not valid user') {
+        else if (data.message == ' not valid admin' || data.message == 'not valid user'|| data.message=='email does not matches') {
           // console.log('mymessage',data.message)
           window.alert('Email/password Invalid');
+        }
+        else{
+          window.alert('User Login is Successfull');
         }
 
         console.log("islog", isLogged)

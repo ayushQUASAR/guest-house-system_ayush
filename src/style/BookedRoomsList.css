@@ -1,0 +1,59 @@
+.roomBox {
+    width: 50px;
+    height: 50px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 20px;
+    display: inline-block;
+  }
+  .roomBox:hover {
+    cursor: pointer;
+  }
+  
+  .roomsHeading {
+    display: flex;
+    background-color: #83bdf0;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: space-between; 
+  }
+  
+  .statusOfRooms {
+    display: flex;
+  }
+  
+  .roomsHeading span {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0 5px;
+  }
+  
+  .roomsHeading span::before {
+    content: '\25A0'; /* Square-shaped bullet */
+    margin-right: 5px;
+  }
+  
+  .available::before {
+    
+    color: white;
+  }
+  
+  .booked::before {
+    color: rgb(224, 41, 41);
+  }
+  
+  .selected::before {
+    color: #0275d8;
+  }
+
+  .isBooked{
+    background-color: rgb(224, 41, 41);
+  }
+  .isAvailable{
+    background-color: white;
+  }
+  .isSelected{
+    background-color: #0275d8;
+  }
+  

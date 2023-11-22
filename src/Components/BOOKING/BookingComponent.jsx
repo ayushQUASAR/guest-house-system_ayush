@@ -15,7 +15,7 @@ const BookingComponent = (pram) => {
   const guesthouseno = pram.guesthouseno;
   const rooms = pram.rooms;
   const id = pram.id;
-  const handleBack = pram.fun;
+  const handleBack = pram.hanleBack;
    ///{ guesthouseno, rooms, id, handleBack }
    console.log('this is pram',pram)
 
@@ -111,6 +111,7 @@ const BookingComponent = (pram) => {
     <div className="mai">
 
       <span  onClick={handleBack} style={{ fontSize: "13px", cursor: "pointer", position: "absolute", color: "white", borderRadius: "4px", backgroundColor: "#0073cf", marginLeft: "2px", marginTop: "2px", padding: "2px" }}>
+
         Back
       </span>
       <div className="head1">
@@ -147,17 +148,17 @@ const BookingComponent = (pram) => {
         {
           selectedGuestHouse === 1 ?
             <div style={{ marginTop: '20px' }} id="sacg1">
-              SAC Guest House (Non A.C)
-              <MyComponent setRooms={handleRooms} maxRooms={rooms} n={8} />
+              Main Guest House (A.C)
+              <MyComponent setRooms={handleRooms} maxRooms={rooms} n={10} />
             </div>
             : selectedGuestHouse === 2 ?
-              <div style={{ marginTop: '10px' }} id="sacg2">
-                Main Guest House (A.C)
-                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={10} />
+            <div style={{ marginTop: '10px' }} id="sacg2">
+              Mega Guest House (Non A.C)
+                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={12} />
               </div>
               : <div style={{ marginTop: '10px' }} id="sacg3">
-                Mega Guest House (Non A.C)
-                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={12} />
+                SAC Guest House (Non A.C)
+                <MyComponent setRooms={handleRooms} maxRooms={rooms} n={8} />
               </div>
         }
         {/* <div style={{ marginTop: '20px' }} id="sacg1"> */}
@@ -203,7 +204,7 @@ const BookingComponent = (pram) => {
           </div>
         </div>
 
-        <Popup isOpen={isPopupOpen} onClose={closePopup} />
+        <Popup isOpen={isPopupOpen} onClose={closePopup} messageHead={'Registration Successful'} para1={'Your registration has been successfully completed.'} para2={'Please wait for Approval of Registration from Institute. You will be able to Login once Registration is approved'}/>
       </div>
     </div>
   );

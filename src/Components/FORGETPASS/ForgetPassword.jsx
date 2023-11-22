@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './ForgetPassword.css';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import { NavLink } from 'react-router-dom';
 
 const ForgetPassword = () => {
   const [email,setEmail] = useState("");
@@ -24,7 +26,12 @@ const ForgetPassword = () => {
   
 
   return (
+    
     <div className="forgetmain1">
+        <NavLink className="nav-tohome" to="/">
+            <div className="nav-tohome"><HomeRoundedIcon color="white" /><div className='optn-name'>Home</div></div>
+
+          </NavLink>
       <div className="forgethead1">Forget Password</div>
 
       <div>

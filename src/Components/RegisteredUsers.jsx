@@ -53,7 +53,7 @@ export default function RegisteredUsers() {
 
           <div class="d-flex flex-row bd-highlight mb-2">
             <div class="p-2 bd-highlight">
-              <SideBar user={view} /> 
+              <SideBar view={view} /> 
             </div>
             <div class="p-2 bd-highlight" className="table2">
               <h1 className="bookingTable">BOOKINGS HISTORY</h1>
@@ -109,6 +109,7 @@ export default function RegisteredUsers() {
               {users && users.length > 0 && users.map((user, index) => (
                 <tr key={user._id}>
                   <td>{index + 1}</td>
+                  {console.log(user)}
                   <td>{user.user.name}</td>
                   <td>{user.user.phone}</td>
                   <td>{user.user.email}</td>

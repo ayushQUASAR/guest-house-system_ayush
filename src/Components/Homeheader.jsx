@@ -108,7 +108,7 @@ const HomeHeader = () => {
 
                                 Availability
                             </Link> */}
-                            {!isAdmin && (<NavLink to="/UserDetails">
+                            {!isAdmin &&isLogged&& (<NavLink to="/UserDetails">
 
                                 <div className="nav-optn">Profile</div>
                             </NavLink>)} 

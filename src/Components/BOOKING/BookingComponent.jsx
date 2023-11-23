@@ -10,7 +10,7 @@ import ApproveBooking from '../BookingApproval/ApproveBooking.jsx'
 const BookingComponent = (pram) => {
 
 
-  // -------------------------------------
+
 
 
   const [messageHead_m, setMessagehead] = useState('')
@@ -18,8 +18,7 @@ const BookingComponent = (pram) => {
   const [para1_m, setPara1] = useState('')
   const [para2_m, setPara2] = useState('')
   const [popup, setPopup] = useState(false)
-  // const handleBack = onBack;
-  // ------------------------------------
+
 
 
   
@@ -223,7 +222,7 @@ const BookingComponent = (pram) => {
             </select>
           </div>
         </div>
-        {popup && <Popup messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
+        {popup && <Popup setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
         {/* {isPopupOpen && <Popup isOpen={isPopupOpen} onClose={closePopup} messageHead={'Booked Successfully'} para1={''} para2={'Confirmation mail has been sent to User.'} />} */}
       </div>
     </div>

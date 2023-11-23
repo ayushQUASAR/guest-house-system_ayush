@@ -1,6 +1,6 @@
 import React from 'react';
 import './Popup.css';
-import sucessIcon from "./check.png"
+import sucessIcon from "../../images/check2.png"
 import { NavLink } from 'react-router-dom';
 const Popup = ({ setPopup,messageHead,para1,para2}) => {
 

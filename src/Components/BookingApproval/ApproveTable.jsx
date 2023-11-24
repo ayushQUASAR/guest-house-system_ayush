@@ -3,15 +3,48 @@ import React, { useState, useEffect } from "react";
 // import '../../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import "./Approvetable.css"
 import BookingComponent from "../BOOKING/BookingComponent";
+import CustomPrompt from "../PopUp/Rejectpopup";
 
 
 const Approvaltable = ({ onSecondPage }) => {
   const [pendingBooking, setPendingBooking] = useState(null);
   const [isFirstPage, setIsFirstPage] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isCustomPromptOpen, setCustomPromptOpen] = useState(false);
+  const [customPromptReason, setCustomPromptReason] = useState('');
 
 
+  // const openPopup = () => {
+  //   setPopupOpen(true);
+  // };
 
+
+  // const closePopup = () => {
+  //   setPopupOpen(false);
+  // };
+  const openCustomPrompt = () => {
+    setCustomPromptOpen(true);
+  };
+
+  const closeCustomPrompt = () => {
+    setCustomPromptOpen(false);
+  };
+
+  const handleReject = (id) => {
+    setCurrentUser(id);
+    openCustomPrompt();
+  };
+
+  const handlePromptSubmit = (reason) => {
+    if (reason === "") {
+      window.alert('Rejection not processed. Reason was not provided.');
+    } else {
+      setCustomPromptReason(reason);
+      handleApproval(currentUser, 'reject', reason);
+      closeCustomPrompt();
+    }
+  };
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/booking/approved/pending`)
       .then((res) => res.json())
@@ -34,10 +67,10 @@ const Approvaltable = ({ onSecondPage }) => {
   const handleSubmit = () => {
 
   }
-  const handleApproval = (id, status) => {
+  const handleApproval = (id, status,reason) => {
     if (status === 'accept') {
       setIsFirstPage(false);
-   
+      // openPopup();
       onSecondPage();
     }
 
@@ -45,6 +78,7 @@ const Approvaltable = ({ onSecondPage }) => {
       const rejectBody = {
         booking: id,
         status: "reject",
+        reason:reason,
       };
 
       console.log("reject body: ", rejectBody);
@@ -135,7 +169,7 @@ const Approvaltable = ({ onSecondPage }) => {
             <button
               type="button"
               className="btn btn-danger btn-sm"
-              onClick={() => handleApproval(user._id, 'reject')}
+              onClick={() => handleReject(user._id, 'reject')}
             >
               Reject
             </button>
@@ -168,6 +202,11 @@ const Approvaltable = ({ onSecondPage }) => {
       </div> */}
         </div> : <BookingComponent guesthouseno={currentUser.guestHouseSelected} id={currentUser._id} rooms={currentUser.roomsSelected} onBack={handleBack} />
       }
+       <CustomPrompt
+        isOpen={isCustomPromptOpen}
+        onClose={closeCustomPrompt}
+        onSubmit={handlePromptSubmit}
+      />
 
       {/* <div class="approval-table">
         <div className="d-flex flex-row justify-content-between">
@@ -206,7 +245,7 @@ const Approvaltable = ({ onSecondPage }) => {
         </div>
         
       </div> */}
-   
+      {/* <Popup isOpen={isPopupOpen} onClose={closePopup} /> */}
     </>
   );
 };

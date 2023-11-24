@@ -1,0 +1,48 @@
+.custom-prompt {
+    display: none;
+    top: 50%;
+    left: 50%; 
+    width:45%;
+    transform: translate(+50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+   border-radius:5%;
+    box-shadow: 0 4px 8px rgba(19, 4, 231, 0.925);
+    z-index: 1000;
+    padding:1%;
+  }
+  
+  .custom-prompt.open {
+    display: block;
+  }
+  .RejectPromptHeader{
+    border: 1px solid #000000;
+    margin-bottom:1%;
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgb(3, 3, 255);
+    color:white;
+    padding:1%;
+  }
+  .RejectPromptTextArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .RejectPromptSubmit{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        flex-wrap: wrap;
+       
+        padding:2%;
+  }
+  .RejectPromptBtn{
+    background-color: rgba(0, 0, 255, 0.856);
+    color:white;
+  }

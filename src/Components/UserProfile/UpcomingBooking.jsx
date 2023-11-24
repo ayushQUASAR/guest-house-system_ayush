@@ -57,6 +57,11 @@ else setBookings(null)
     return str;
   }
 
+  const handlePayment = () => {
+    window.confirm('Do you want to proceed for payment?')
+    
+  };
+
   const handleCancel = (id) => {
     if (window.confirm('Are you sure you want to cancel this booking?')) {
       fetch(`${import.meta.env.VITE_API_URL}/booking/${id}`, {
@@ -84,7 +89,8 @@ else setBookings(null)
           <th>Check-In</th>
           <th>Check-Out</th>
           <th>Status</th> 
-          <th>Cancel Button</th>
+          <th>Cancel Booking</th>
+          <th>Payment </th>
         </tr>
       </thead>
       <tbody>
@@ -99,6 +105,8 @@ else setBookings(null)
             <td>{booking.checkOut}</td>
             <td>{booking.status}</td>
             <td> <button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking.id)}>Cancel</button>
+          </td>
+          <td> <button className='btn' style = {{backgroundColor : 'green', color : 'white'}} onClick={()=>handlePayment()}>Pay Now</button>
           </td>
           </tr>
         ))}

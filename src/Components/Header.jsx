@@ -20,12 +20,12 @@ const Header = () => {
                     <div className="h-navlogo">
                         <img src={logo} alt="NIT_logo" />
                     </div>
-                    <div className="bg-nav">
-                        <li>
-                            <NavLink className="nav-underline" to="/">
+                    {/* <div className="bg-nav">
+                        <li> */}
+                            {/* <NavLink className="nav-underline" to="/">
                                 <div  className="nav-optn"><HomeRoundedIcon color="white" /><div className='optn-name'>Home</div></div>
 
-                            </NavLink>
+                            </NavLink> */}
 
                             {/* <div className="nav-optn">
                                 <ContactlessIcon /> ContactUs
@@ -38,8 +38,8 @@ const Header = () => {
                             </div> <div className="nav-optn">
                                 <CurrencyRupeeIcon /> Charges
                             </div> */}
-                        </li>
-                    </div>
+                        {/* </li>
+                    </div> */}
                 </div>
             </div>
 

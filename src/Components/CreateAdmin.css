@@ -2,13 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 
 .header-create-admin {
-    font-family: 'Barlow', sans-serif;
+    /* font-family: 'Barlow', sans-serif; */
     /* text-align: center; */
+    font-size: xx-large;
+    color: black;
 }
 
 .label-create-admins {
-    font-family: 'Barlow', sans-serif;
+    /* font-family: 'Barlow', sans-serif; */
     font-size:medium;
+
 }
 .create-admins-boxes {
     margin: 0px;
@@ -17,7 +20,7 @@
     width: 500px;
     padding: 20px;
     /* border: 1px solid red; */
-    box-shadow: 1px 2px 2px 1px rgb(164, 173, 184);
+    /* box-shadow: 1px 2px 2px 1px rgb(164, 173, 184); */
     display: flex;
     justify-content: center;
     align-items: center;

@@ -80,6 +80,11 @@ th {
   border-radius: 10px;
   border: 1px solid #f31212c9;
 }
+.empty-cell {
+  color: #2284b2;
+  font-size: large;
+}
+
 .nonCount, .acCount {
     margin: 3px;
 }

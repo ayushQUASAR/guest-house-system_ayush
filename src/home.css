@@ -142,7 +142,7 @@ li.houseCardBackface {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, #0072cfaf,rgba(240, 248, 255, 0.489));
-    backdrop-filter: blur(5px); 
+    backdrop-filter: blur(15px); 
     z-index: 1; 
 }
 .description {
@@ -297,6 +297,15 @@ nav {
     font-size: 50px;
     text-align: center;
     color:#0073cf;
+}
+.availabilitySection {
+    padding: 30px 150px;
+    background-color: rgba(185, 194, 255, 0.225);
+}
+#availabilityHeader {
+    font-size: 50px;
+    text-align: center;
+    color:#0073cf;   
 }
 li {
     padding: 10px;

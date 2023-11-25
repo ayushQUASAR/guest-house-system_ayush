@@ -1,18 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-#calendar-root {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f8f8f8;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
-  width: 35%;
- 
-  max-width: 1100px;
-  /* margin: 0 auto; */
-  margin-top: 20px;
-}
 
 .header {
   display: flex;

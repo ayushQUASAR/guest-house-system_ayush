@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./Calendar.css";
-import RoomDetailsModal from "./Modal";
-import "./Modal.css";
 
 const Calendar = () => {
   const [date, setDate] = useState(new Date());

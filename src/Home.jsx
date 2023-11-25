@@ -5,13 +5,13 @@ import infoSolid from "/infoSolid.svg";
 import gallery from "/gallerySolid.svg";
 import availability from "/calendarSolid.svg";
 import contactSVG from "/contactSVG.svg";
-import Footer from "./Components/Footer/Footer"
+import Footer from "./Components/Footer/Footer";
 import houseSVG from "/guestHouse.svg";
 import guidelinesSVG from "/list-check-solid.svg";
 import { Link } from "react-scroll";
 import { NavLink } from "react-router-dom";
 import HomeHeader from "./Components/Homeheader";
-
+import Calendar from "./Components/CalendarHome/Calendar";
 function Login() {
   const houses = [
     {
@@ -74,7 +74,7 @@ function Login() {
 
   return (
     <>
-    <HomeHeader/>
+      <HomeHeader />
       {/* <nav className="stickyNav">
         <a href="https://www.nitj.ac.in/" target="_blank">
           <img
@@ -211,13 +211,13 @@ function Login() {
           NIT Jalandhar strongly believes in the old Indian adage "Athithi Devo
           Bhava". We give our visitors the best facilities be it in terms of
           service, ambience or food. It is common practice in Indian institutes
-          to create on-campus guest houses to host official guests. NIT Jalandhar
-          has created a guest house to meet its needs. The campus has three guest
-          houses to accommodate the guests and delegates who visit the campus,
-          the Guest House 1 with 15 Delux rooms, the Guest House 2 with 15 Deluxe Rooms and the Guest House 3
-          with 28 Standard rooms, all rooms are air conditioned. The rooms have
-          double beds and other amenities. The Guest House 1 also
-          provides a meeting room.
+          to create on-campus guest houses to host official guests. NIT
+          Jalandhar has created a guest house to meet its needs. The campus has
+          three guest houses to accommodate the guests and delegates who visit
+          the campus, the Guest House 1 with 15 Delux rooms, the Guest House 2
+          with 15 Deluxe Rooms and the Guest House 3 with 28 Standard rooms, all
+          rooms are air conditioned. The rooms have double beds and other
+          amenities. The Guest House 1 also provides a meeting room.
         </p>
         <div className="facilitiesHolder">
           <div id="content1">
@@ -274,7 +274,8 @@ function Login() {
               purpose.
             </li>
             <li>
-              Alumni can book rooms in NIT guest house for themselves and their immediate family members i.e. parents and children but not for
+              Alumni can book rooms in NIT guest house for themselves and their
+              immediate family members i.e. parents and children but not for
               their other relatives, friends, or colleagues.
             </li>
             <li>
@@ -287,7 +288,11 @@ function Login() {
       <div className="contactUsDiv">
         <h1 id="contactHeader">Contact</h1>
       </div>
-      <Footer/>
+      <div className="availabilitySection">
+        <h1 id="availabilityHeader">Availability</h1>
+        <Calendar />
+      </div>
+      <Footer />
     </>
   );
 }

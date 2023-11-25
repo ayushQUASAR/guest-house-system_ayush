@@ -28,6 +28,7 @@ import { Settings } from "@mui/icons-material";
 import { useLoginContext } from "./ContextHooks/LoginContext";
 import Container from "./BookingForm/Container";
 import { useUserContext } from "./ContextHooks/UserContext";
+import CreateAdmin from "./CreateAdmin";
 
 const Dash = ({ admin }) => {
   // console.log(admin);
@@ -77,6 +78,7 @@ const Dash = ({ admin }) => {
     settings: <DashboardSettings />,
     approve: <Approve />,
     approvebooking: <ApproveBooking />,
+    createAdmins: <CreateAdmin />,
   };
 
   const selectedContent = contentComponents[contentType];

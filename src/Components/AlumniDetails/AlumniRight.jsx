@@ -98,7 +98,7 @@ export default function AlumniRight({prop}) {
           </div>
         </div>
         <div className="mt-auto justify-content-end d-flex">
-          <button type="submit"  className="btn btn-primary btn-lg rounded register-btn">
+          <button onClick={()=>setPopup(true)} type="submit"  className="btn btn-primary btn-lg rounded register-btn">
             Register
           </button>
         </div>

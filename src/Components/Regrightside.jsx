@@ -10,6 +10,7 @@ import Student from './StudentDetails/StudentRight'
 export default function Regrightside() {
   const defaultButtonClass = "btnDefault";
   const clickedButtonClass = "btnClicked";
+  const [msgerror, setMerror] = useState(null)
   const [error, setError] = useState(null)
   const [Firstname, setFirstname] = useState("")
   const [Lastname, setLastname] = useState("")
@@ -29,14 +30,16 @@ export default function Regrightside() {
 
   const [branch, setBranch] = useState('');
   const [batch, setBatch] = useState('');
+  const [registerOptn, setRegisteroptn] = useState(null);
+  const [registeractiveclass, setRegisterclass] = useState(false)
 
   const [jobProfile, setJobProfile] = useState('');
 
   // student
-  const [messageHead_m,setMessagehead]=useState('Registration Successful')
- 
-  const [para1_m,setPara1] = useState('Your registration has been successfully completed.')
-  const [para2_m,setPara2] = useState('An Email has been sent for verification ,Check your Mail and Please wait for Approval of Registration from Institute.You will be able to Login once Registration is approved')
+  const [messageHead_m, setMessagehead] = useState('Registration Successful')
+
+  const [para1_m, setPara1] = useState('Your registration has been successfully completed.')
+  const [para2_m, setPara2] = useState('An Email has been sent for verification ,Check your Mail and Please wait for Approval of Registration from Institute.You will be able to Login once Registration is approved')
   const [studrollNumber, setSrollNumber] = useState('');
   const [studbranch, setSbranch] = useState('');
 
@@ -44,8 +47,24 @@ export default function Regrightside() {
 
   const [facultyemail, setFacultyemail] = useState('');
   const [department, setDepartment] = useState('');
-  const [popup,setPopup]=useState(false)
+  const [popup, setPopup] = useState(false)
 
+  const handleEmailChange = (e) => {
+    const inputEmail = e.target.value;
+    setEmail(inputEmail);
+
+    // Verify email domain
+    const isValidEmail = inputEmail.endsWith('@nitj.ac.in');
+    setMerror(isValidEmail ? '' : 'Invalid email domain. Please use @nitj.ac.in');
+  };
+
+  const handleUsernameChange = (e) => {
+    setFirstname(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -72,6 +91,8 @@ export default function Regrightside() {
   }
   const setSubmit = (e) => {
     e.preventDefault();
+
+    
     const newEntry = {
       Email: Email,
       Firstname: Firstname,
@@ -84,36 +105,11 @@ export default function Regrightside() {
 
     }
     setData([...data, newEntry]);
-    const handlepopup=(val, message) => {
-      console.log(message === 'pending', 'broooo');
-    
-      if (message === 'accepted') {
-       
-        setMessagehead('User Already Registered.');
-        setPara1('Please continue Login from the Login Page');
-        setPara2('');
-        console.log('hellobaby');
-        setPopup(val);
-      } else if (message === 'rejected') {
-        
-        setMessagehead('User is Rejected by the Admin. ');
-        setPara1('Contact the Booking Office for further Help');
-        setPara2('');
-        setPopup(val);
-        console.log('hellobaby');
-      } else if (message === 'pending') {
-         setMessagehead('Please Wait for Approval from the Institute')
-        setPopup(val);
-        
-      } else if (error) {
-        setPopup(false);
-        window.alert(error);
-      }
-    };
-    
+    console.log('submit',newEntry)
 
 
-    
+
+
     const formData = new FormData();
     formData.append("Firstname", Firstname);
     formData.append("Lastname", Lastname);
@@ -139,7 +135,7 @@ export default function Regrightside() {
     formData.append("FacultyEmail", facultyemail);
     formData.append("Department", department);
 
-
+    console.log(formData)
     console.log(formData.entries());
 
 
@@ -153,12 +149,39 @@ export default function Regrightside() {
         handlepopup(true, data.status);
       })
       .catch((err) => {
-        setError(err)
+     setError(err)
+     console.log('error in post request')
       });
 
     console.log("registered")
 
   }
+  const handlepopup = (val, message) => {
+    console.log(message);
+
+    if (message === 'accepted') {
+
+      setMessagehead('User Already Registered.');
+      setPara1('Please continue Login from the Login Page');
+      setPara2('');
+      console.log('hellobaby');
+      setPopup(val);
+    } else if (message === 'rejected') {
+
+      setMessagehead('User is Rejected by the Admin. ');
+      setPara1('Contact the Booking Office for further Help');
+      setPara2('');
+      setPopup(val);
+      console.log('hellobaby');
+    } else if (message === 'pending') {
+      setMessagehead('Please Wait for Approval from the Institute')
+      setPopup(val);
+
+    } else if (error) {
+      setPopup(false);
+      window.alert(error);
+    }
+  };
 
 
   return (
@@ -175,141 +198,213 @@ export default function Regrightside() {
             <h1 className="rheading">Create an Account</h1>
           </div>
 
+          <div className="registration-optn">
+            <div onClick={() => { setRegisteroptn(1), setRegisterclass(true) }} className={`college-official-optn ${registeractiveclass && registerOptn == 1 ? 'registerclass' : ''}`}>
+              Student/Faculty
+            </div>
+            <div onClick={() => { setRegisteroptn(2), setRegisterclass(true) }} className={`college-official-optn ${registeractiveclass && registerOptn == 2 ? 'registerclass' : ''}`}>
+              Others
+            </div>
+          </div>
+          {registerOptn == 1 ? <div><div className="college-official-form">
 
-          <div className="row input">
-            <div className="col-md-6 col-sm-12">
-              <input required type="text" className="form-control mb-3" onChange={(e) => setFirstname(e.target.value)} value={Firstname} placeholder="First Name" />
-            </div>
-            <div className="col-md-6 col-sm-12">
-              <input required type="text" className="form-control mb-3" onChange={(e) => setLastname(e.target.value)} value={Lastname} placeholder="Last Name" />
-            </div>
-          </div>
-          <div className="row input">
-            <div className="col-md-3 col-sm-12">
-              <div className="input-group">
-                <input required type="text" className="form-control" value="+91" readOnly />
-              </div>
-            </div>
-            <div className="col-md-9 col-sm-12">
-              <input required type="text" value={Phnnumber} onChange={(e) => setPhnnumber(e.target.value)} className="form-control" placeholder="Phone Number" />
-            </div>
-          </div>
-          <div className="row input">
-            <div className="col-12">
-              <input required type="text" value={Address} onChange={(e) => setAddress(e.target.value)} className="form-control" placeholder="Address" />
-            </div>
-          </div>
-          <div className="row input">
-            <div className="col-12">
-              <input required type="email" value={Email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email" />
-            </div>
-          </div>
-          <div className="row input">
-            <div className="col-12">
-              <div className="input-group">
-                <span className="input-group-text">
-                  <img src="password-icon.png" alt="Password Icon" />
-                </span>
-                <input required onChange={(e) => setPassword(e.target.value)} value={Password} type="password" className="form-control" placeholder="Password" />
-              </div>
-            </div>
-          </div>
-          <div className="row input">
-            <div className="col-12">
-              <div className="input-group">
-                <h2 className="govt-id-heading">Upload Govt ID</h2>
-              </div>
-            </div>
-          </div>
-          <div className="row input">
-            <div className="col-12">
-              <div className="input-group">
-                <input required type="file" onChange={handleFileChange} className="form-control" id="fileInput" />
-              </div>
-            </div>
-          </div>
 
-          <div className="row input align-items-center">
-            <div className="col-md-3 col-sm-6 col-12">
-              <h2 className="reference-heading">Reference</h2>
+            <div className="form-group">
+              <label>Email:</label>
+              <input
+              required
+                type="text"
+                value={Email}
+                onChange={handleEmailChange}
+                placeholder="example@nitj.ac.in"
+                className="college-official-email"
+              />
+                {msgerror!==null  && <p className="error-message">{msgerror}</p>}
             </div>
-            <div className="col-md-3 col-sm-6 col-12">
-              <label>
-                {/* <input  required
+            <div className="form-group">
+              <label>Firstname:</label>
+              <input
+                required
+                type="text"
+                value={Firstname}
+                onChange={handleUsernameChange}
+                className="college-official-username"
+              />
+            </div>      <div className="form-group">
+              <label>Lastname:</label>
+              <input
+                required
+                type="text"
+                value={Lastname}
+                onChange={(e)=>{setLastname(e.target.value)}}
+                className="college-official-username"
+              />
+            </div>
+            <div className="form-group">
+              <label>Password:</label>
+              <input
+                required
+                type="password"
+                value={Password}
+                onChange={handlePasswordChange}
+                className="college-official-password"
+              />
+            </div>
+          
+             
+                <div className="form-group">
+                  <h2 className="govt-id-heading">Upload Govt/College ID</h2>
+                </div>
+          <div className="form-group">
+                  <input required type="file" onChange={handleFileChange} className="form-control" id="fileInput" />
+                </div>
+            
+           
+            <div className="form-group">
+              <button type="submit"  className="btn btn-primary btn-lg rounded" style={{margin:30}}>
+                Register
+              </button>
+            </div>
+          
+            {/* {popup &&     <Popup  setPopup={setPopup}messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>} */}
+
+          </div></div> : registerOptn == 2 ?
+            <div>
+              <div className="row input">
+                <div className="col-md-6 col-sm-12">
+                  <input required type="text" className="form-control mb-3" onChange={(e) => setFirstname(e.target.value)} value={Firstname} placeholder="First Name" />
+                </div>
+                <div className="col-md-6 col-sm-12">
+                  <input required type="text" className="form-control mb-3" onChange={(e) => setLastname(e.target.value)} value={Lastname} placeholder="Last Name" />
+                </div>
+              </div>
+              <div className="row input">
+                <div className="col-md-3 col-sm-12">
+                  <div className="input-group">
+                    <input required type="text" className="form-control" value="+91" readOnly />
+                  </div>
+                </div>
+                <div className="col-md-9 col-sm-12">
+                  <input required type="text" value={Phnnumber} onChange={(e) => setPhnnumber(e.target.value)} className="form-control" placeholder="Phone Number" />
+                </div>
+              </div>
+              <div className="row input">
+                <div className="col-12">
+                  <input required type="text" value={Address} onChange={(e) => setAddress(e.target.value)} className="form-control" placeholder="Address" />
+                </div>
+              </div>
+              <div className="row input">
+                <div className="col-12">
+                  <input required type="email" value={Email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email" />
+                </div>
+              </div>
+              <div className="row input">
+                <div className="col-12">
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <img src="password-icon.png" alt="Password Icon" />
+                    </span>
+                    <input required onChange={(e) => setPassword(e.target.value)} value={Password} type="password" className="form-control" placeholder="Password" />
+                  </div>
+                </div>
+              </div>
+              <div className="row input">
+                <div className="col-12">
+                  <div className="input-group">
+                    <h2 className="govt-id-heading">Upload Govt ID</h2>
+                  </div>
+                </div>
+              </div>
+              <div className="row input">
+                <div className="col-12">
+                  <div className="input-group">
+                    <input required type="file" onChange={handleFileChange} className="form-control" id="fileInput" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="row input align-items-center">
+                <div className="col-md-3 col-sm-6 col-12">
+                  <h2 className="reference-heading">Reference</h2>
+                </div>
+                <div className="col-md-3 col-sm-6 col-12">
+                  <label>
+                    {/* <input  required
                 type="radio"
                 value="student"
                 onClick={()=>setContentType('student')}
                 checked={selectedOption === 'student'}
                 onChange={handleOptionChange}
               /> */}
-                <button type="button" onClick={() => setContentType('student')} className={` ${contentType === 'student'
-                  ? clickedButtonClass : defaultButtonClass
+                    <button type="button" onClick={() => setContentType('student')} className={` ${contentType === 'student'
+                      ? clickedButtonClass : defaultButtonClass
 
 
-                  } `}
-                >
-                  <img src="student-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
-                  Student
-                </button>
-              </label>
-            </div>
+                      } `}
+                    >
+                      <img src="student-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
+                      Student
+                    </button>
+                  </label>
+                </div>
 
-            <div className="col-md-3 col-sm-6 col-12">
-              <label>
-                {/* <input  required
+                <div className="col-md-3 col-sm-6 col-12">
+                  <label>
+                    {/* <input  required
               onClick={()=>setContentType('faculty')}
                 type="radio"
                 value="faculty"
                 checked={selectedOption === 'faculty'}
                 onChange={handleOptionChange}
               /> */}
-                <button type="button" onClick={() => setContentType('faculty')} className={` ${contentType === 'faculty'
-                  ? clickedButtonClass : defaultButtonClass
-                  } `}
-                >
-                  <img src="faculty-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
-                  Faculty
-                </button>
-              </label>
-            </div>
+                    <button type="button" onClick={() => setContentType('faculty')} className={` ${contentType === 'faculty'
+                      ? clickedButtonClass : defaultButtonClass
+                      } `}
+                    >
+                      <img src="faculty-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
+                      Faculty
+                    </button>
+                  </label>
+                </div>
 
-            <div className="col-md-3 col-sm-6 col-12">
-              <label>
-                {/* <input
+                <div className="col-md-3 col-sm-6 col-12">
+                  <label>
+                    {/* <input
                 type="radio"  required
                 onClick={()=>setContentType('alumni')}
                 value="alumni"
                 checked={selectedOption === 'alumni'}
                 onChange={handleOptionChange}
               /> */}
-                <button type="button" onClick={() => setContentType('alumni')} className={` ${contentType === 'alumni'
-                  ? clickedButtonClass : defaultButtonClass
-                  } `}
-                >
-                  <img src="alumni-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
-                  Alumni
-                </button>
-              </label>
-            </div>
+                    <button type="button" onClick={() => setContentType('alumni')} className={` ${contentType === 'alumni'
+                      ? clickedButtonClass : defaultButtonClass
+                      } `}
+                    >
+                      <img src="alumni-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
+                      Alumni
+                    </button>
+                  </label>
+                </div>
 
-          </div>
-          <div className="row input">
-            <NavLink to="/" >
+              </div>
+              <div className="row input">
+                <NavLink to="/" >
 
-              Already have an account? Login
+                  Already have an account? Login
 
-            </NavLink>
-            {/* <div className="col-md-6 col-sm-12">
+                </NavLink>
+                {/* <div className="col-md-6 col-sm-12">
             <button disabled={selectedOption === null}  onClick={()=>setNext(false)} className="form-control btn btn-success rounded" style={buttonStyle}>
               Next
             </button>
           </div> */}
-          </div>
+              </div>
 
+            </div> : <div></div>}
+          {contentType == 'student' && <Student prop={{ reffirstName, reflastName, refphoneNumber, studbranch, studrollNumber, setReffirstName, setReflastName, setRefphoneNumber, setSbranch, setSrollNumber, messageHead_m, para1_m, para2_m, setPopup, popup }} />}
+          {contentType == 'faculty' && <Faculty prop={{ reffirstName, reflastName, refphoneNumber, department, facultyemail, setReffirstName, setReflastName, setRefphoneNumber, setFacultyemail, setDepartment, messageHead_m, para1_m, para2_m, setPopup, popup }} />}
+          {contentType == 'alumni' && <Alumni prop={{ reffirstName, reflastName, refphoneNumber, batch, branch, jobProfile, setReffirstName, setReflastName, setRefphoneNumber, setBatch, setBranch, setJobProfile, messageHead_m, para1_m, para2_m, setPopup, popup }} />}
         </div>
-        {contentType == 'student' && <Student prop={{ reffirstName, reflastName, refphoneNumber, studbranch, studrollNumber, setReffirstName, setReflastName, setRefphoneNumber, setSbranch, setSrollNumber, messageHead_m, para1_m, para2_m,setPopup,popup }} />}
-        {contentType == 'faculty' && <Faculty prop={{ reffirstName, reflastName, refphoneNumber, department, facultyemail, setReffirstName, setReflastName, setRefphoneNumber, setFacultyemail, setDepartment, messageHead_m, para1_m, para2_m ,setPopup,popup}} />}
-        {contentType == 'alumni' && <Alumni prop={{ reffirstName, reflastName, refphoneNumber, batch, branch, jobProfile, setReffirstName, setReflastName, setRefphoneNumber, setBatch, setBranch, setJobProfile, messageHead_m, para1_m, para2_m,setPopup,popup }} />}
       </form>
       </div>
     </>

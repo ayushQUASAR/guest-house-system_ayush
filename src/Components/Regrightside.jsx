@@ -75,20 +75,26 @@ export default function Regrightside() {
       window.alert("File not uploaded.");
     }
 
-    if (file.size <= 1000000) {
-      console.log(file.type);
-      if (file.type.startsWith("image/") || file.type === "application/pdf") {
-        setIdProof(file);
+    
+    
+    if (file.type.startsWith("image/") || file.type === "application/pdf") {
+        console.log(file.type);
+        
+        if (file.size <= 1000000) {
+          setIdProof(file);
+        }
+
+        else {
+          window.alert(" file size can be maximum upto. 1MB. Please Upload file within the limit ");
+        }
       }
       else {
         window.alert("ONLY IMAGES AND PDF ARE ALLOWED. Please Upload again");
       }
     }
-    else {
-      window.alert(" file size can be maximum upto. 1MB. Please Upload file within the limit ");
-    }
+  
 
-  }
+  
   const setSubmit = (e) => {
     e.preventDefault();
 

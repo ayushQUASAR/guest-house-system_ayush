@@ -153,10 +153,12 @@ export default function Regrightside() {
       .then((data) => {
         console.log("data:", data)
         handlepopup(true, data.status);
+        window.alert("Registered Siccessfully");
       })
       .catch((err) => {
      setError(err)
-     console.log('error in post request')
+     console.log('error in post request');
+     window.alert(err);
       });
 
     console.log("registered")

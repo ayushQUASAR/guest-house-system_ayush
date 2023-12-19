@@ -19,7 +19,7 @@ const Calendar = () => {
     const fetchRoomDetails = async () => {
       try {
         const response = await fetch(
-          "https://guest-house-back.onrender.com/calendar"
+          "http://localhost:3000/calendar"
         );
         const data = await response.json();
         setRoomDetails(data); // Assuming the response is in JSON format

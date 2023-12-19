@@ -11,7 +11,7 @@ const inputStyle = {
   fontWeight: 500,
 };
 
-const guestHouseOptions = ["Guest House 1", "Guest House 2", "Guest House 3"];
+const guestHouseOptions = ["Guest House 1", "Guest House 2", "Guest House 3 (A.C.)"];
 const maxRooms = [10, 8, 12];
 
 const BookingDetails = ({ setDateDetails }) => {

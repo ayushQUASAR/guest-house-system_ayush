@@ -99,6 +99,7 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+
   };
 
   const roomBoxes = Array.from(
@@ -134,7 +135,7 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
           <span className="selected">Selected</span>
         </div>
       </div>
-      <DatePicker selected={selectedDate} onChange={handleDateChange} />
+      <DatePicker className="DATECSS" selected={selectedDate} onChange={handleDateChange} />
       <div className="guestHouseBoxes">{roomBoxes}</div>
   
       {bookingDetails && (

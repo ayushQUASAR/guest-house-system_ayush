@@ -2,12 +2,16 @@
 import { useState } from "react";
 import "../style/regform.css"
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import Alumni from './AlumniDetails/AlumniRight'
 import Faculty from './FacultyDetails/FacultyRight'
 import Student from './StudentDetails/StudentRight'
+// import Popup from "./PopUp/Popup";
 
 export default function Regrightside() {
+  const navigate = useNavigate();
+
   const defaultButtonClass = "btnDefault";
   const clickedButtonClass = "btnClicked";
   const [msgerror, setMerror] = useState(null)
@@ -39,7 +43,7 @@ export default function Regrightside() {
   const [messageHead_m, setMessagehead] = useState('Registration Successful')
 
   const [para1_m, setPara1] = useState('Your registration has been successfully completed.')
-  const [para2_m, setPara2] = useState('An Email has been sent for verification ,Check your Mail and Please wait for Approval of Registration from Institute.You will be able to Login once Registration is approved')
+  const [para2_m, setPara2] = useState("An Email has been sent for verification. \nKindly check your Mail.\nYou will be able to Login once Registration is approved")
   const [studrollNumber, setSrollNumber] = useState('');
   const [studbranch, setSbranch] = useState('');
 
@@ -153,7 +157,8 @@ export default function Regrightside() {
       .then((data) => {
         console.log("data:", data)
         handlepopup(true, data.status);
-        window.alert("Registered Siccessfully");
+        window.alert("Registered Successfully. \n \nA verification link has been sent to you on your email and you will be able to login after verification");
+        navigate("/login");
       })
       .catch((err) => {
      setError(err)
@@ -274,7 +279,7 @@ export default function Regrightside() {
               </button>
             </div>
           
-            {/* {popup &&     <Popup  setPopup={setPopup}messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>} */}
+            {/* {popup &&     <Popup  setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>} */}
 
           </div></div> : registerOptn == 2 ?
             <div>

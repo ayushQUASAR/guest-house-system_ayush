@@ -17,6 +17,10 @@ const Approvaltable = () => {
   }, []);
 
   const handleApproval = (id, status) => {
+
+   const confirm =  window.confirm(`Are you sure you want to ${status} this user?`);
+
+    if (confirm === true) {
     fetch(import.meta.env.VITE_API_URL + "/admin/approveRegistration", {
       method: "POST",
       mode: "cors",
@@ -40,6 +44,7 @@ const Approvaltable = () => {
       })
       .catch((err) => console.log(err));
   };
+}
 
   // pendingUsers.map((user, index) => {
   // return  <tr key={user._id}>

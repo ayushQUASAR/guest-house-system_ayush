@@ -32,8 +32,12 @@ const Approvaltable = ({ onSecondPage }) => {
   };
 
   const handleReject = (id) => {
-    setCurrentUser(id);
-    openCustomPrompt();
+    const confirm =  window.confirm(`Are you sure you want to reject this booking?`);
+    if (confirm === true) {
+      setCurrentUser(id);
+      openCustomPrompt();
+    }
+    
   };
 
   const handlePromptSubmit = (reason) => {
@@ -68,6 +72,9 @@ const Approvaltable = ({ onSecondPage }) => {
 
   }
   const handleApproval = (id, status,reason) => {
+    const confirm =  window.confirm(`Are you sure you want to accept this booking?`);
+
+    if (confirm === true) {
     if (status === 'accept') {
       setIsFirstPage(false);
       // openPopup();
@@ -105,6 +112,7 @@ const Approvaltable = ({ onSecondPage }) => {
 
     }
   }
+}
 
 
 

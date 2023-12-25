@@ -39,3 +39,17 @@
     height: 400px;
     overflow: scroll;
 }
+.btmmarg{
+
+    margin: 5px;
+    /* margin-bottom: 5px; */
+}
+.extra{
+
+    width: 100%;
+   
+}
+.extra1{
+    /* width: 100%; */
+    overflow-x: scroll;
+}

@@ -133,7 +133,7 @@ const Approvaltable = ({ onSecondPage }) => {
     {
       isFirstPage ? 
       <div className="approval-table">
-      <div className="d-flex flex-row justify-content-between extra1">
+      <div className="d-flex flex-row justify-content-between">
       
       <table className="book-approval-table">
         <thead>
@@ -170,7 +170,7 @@ const Approvaltable = ({ onSecondPage }) => {
           <td>
             <button
               type="button"
-              className="btn btn-success btn-sm mr-3 btmmarg"
+              className="btn btn-success btn-sm mr-3"
               onClick={() => {
                 setCurrentUser(user);
                 handleApproval(user._id, 'accept');
@@ -180,7 +180,7 @@ const Approvaltable = ({ onSecondPage }) => {
             </button>
             <button
               type="button"
-              className="btn btn-danger btn-sm btmmarg"
+              className="btn btn-danger btn-sm"
               onClick={() => handleReject(user._id, 'reject')}
             >
               Reject

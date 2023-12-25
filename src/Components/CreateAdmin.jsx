@@ -39,11 +39,11 @@ function CreateAdmin() {
       });
 
       if (!response.ok) {
-        throw new Error('HTTP error! Status: ${response.status}');  
+        throw new Error(`HTTP error! Status: ${response.status}`);  
       }
 
       const result = await response.json();
-       window.confirm(result);
+       window.confirm(result.message);
       console.log('Response from server:', result);
     } catch (error) {
       console.error('Error sending data to server:', error.message);

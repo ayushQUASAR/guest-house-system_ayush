@@ -126,7 +126,7 @@ const Calendar = () => {
             if (isBooked) {
               acCount = 10 - roomDetail.acBooked;
               nonAcCount =
-                20 - roomDetail.nonAc1Booked + roomDetail.nonAc2Booked;
+                20 - (roomDetail.nonAc1Booked + roomDetail.nonAc2Booked);
               nonAcCCCCount1 = roomDetail.nonAc1Booked;
               nonAcCCCCount2 = roomDetail.nonAc2Booked;
             } else {

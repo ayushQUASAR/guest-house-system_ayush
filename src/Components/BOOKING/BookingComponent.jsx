@@ -148,7 +148,7 @@ const BookingComponent = (pram) => {
         <div className="flex-containerTY">
           <div id="gh1"  >Guest House 1</div>
           <div id="gh2"  >Guest House 2</div>
-          <div id="gh3" >Guest House 3</div>
+          <div id="gh3" >Guest House 3 (A.C.)</div>
         </div>
 
 

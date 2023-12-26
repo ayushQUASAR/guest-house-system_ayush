@@ -21,14 +21,34 @@ function CreateAdmin() {
     }));
   };
 
-  const handleClickCreateAdmin = (e) => {
+  const handleClickCreateAdmin = async (e) => {
+    e.preventDefault();
+
     if (newAdmin.password !== newAdmin.confirmPass) {
-      console.error("Passwords do not match");
+      console.error('Passwords do not match');
       return;
     }
-    console.log("Current State:", newAdmin);
-  };
 
+    try {
+      const response = await fetch('http://localhost:3000/login/admin', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newAdmin),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);  
+      }
+
+      const result = await response.json();
+       window.confirm(result.message);
+      console.log('Response from server:', result);
+    } catch (error) {
+      console.error('Error sending data to server:', error.message);
+    }
+  };
   return (
     <>
       <div className="container-create-admin">

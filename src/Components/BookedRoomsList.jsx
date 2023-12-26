@@ -2,23 +2,26 @@ import React, { useState, useEffect } from "react";
 import BookedRoomPopUp from "./BookedRoomPopUp";
 import { format, set } from "date-fns"; // Import format from date-fns for date formatting
 import  "../style/BookedRoomsList.css";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
   const [roomStatus, setRoomStatus] = useState([]);
   const [selectedRooms, setSelectedRooms] = useState([]);
   const [bookingDetails, setBookingDetails] = useState(null);
   const [roomID, setRoomID] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const selectedGuestHouse = guestHouse;
 
-  useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + "/guestHouse")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data[index].rooms);
-        setRoomStatus(data[index].rooms);
-      })
-      .catch((err) => console.error(err.message));
-  }, [guestHouse]);
+  // useEffect(() => {
+  //   fetch(import.meta.env.VITE_API_URL + "/guestHouse")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data[index].rooms);
+  //       setRoomStatus(data[index].rooms);
+  //     })
+  //     .catch((err) => console.error(err.message));
+  // }, [guestHouse]);
 
   const noOfRooms = {
     "MAIN GUEST HOUSE": 10,
@@ -34,6 +37,31 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
   } else {
     index = 2;
   }
+
+  useEffect(() => {
+    fetchGuestHouseData(index);
+  }, [index, selectedDate]);
+
+  const fetchGuestHouseData = async (index) => {
+    try {
+      const response = await fetch(
+        import.meta.env.VITE_API_URL +
+        `/booking/approved/approved?guestHouse=${index + 1}`
+      );
+      const data = await response.json();
+      const roomStatus = Array(noOfRooms[guestHouse]).fill(false);
+      data.forEach((booking) => {
+        const checkInDate = new Date(booking.checkInDate);
+        const checkOutDate = new Date(booking.checkOutDate);
+        if (selectedDate >= checkInDate && selectedDate <= checkOutDate) {
+          roomStatus[booking.roomId - 1] = true;
+        }
+      });
+      setRoomStatus(roomStatus);
+    } catch (error) {
+      console.error('Failed to fetch guest house data:', error);
+    }
+  };
 
   const handleRoomClick = async (roomIndex) => {
     if (!roomStatus[roomIndex]) {
@@ -69,23 +97,34 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
     }
   };
 
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+
+  };
+
   const roomBoxes = Array.from(
     { length: noOfRooms[selectedGuestHouse] },
-    (_, i) => (
-      <div
-        key={i + 1}
-        className={`roomBox ${
-          roomStatus[i]
-            ? "isBooked"
-            : selectedRooms.includes(i)
-            ? "isSelected"
-            : "isAvailable"
-        }`}
-        onClick={() => handleRoomClick(i)}
-      ></div>
-    )
-  );
+    (_, i) => {
+      // if (roomStatus[i]) {
+      //   return null;
+      // }
 
+      console.log(roomStatus);
+  
+      return (
+        <div
+          key={i + 1}
+          className={`roomBox ${
+            roomStatus[i]
+            ? "isBooked" :
+            selectedRooms.includes(i) ? "isSelected" : "isAvailable"
+          }`}
+          onClick={() => handleRoomClick(i)}
+        ></div>
+      );
+    }
+  );
+  
   return (
     <>
       <div className="roomsHeading">
@@ -96,8 +135,9 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
           <span className="selected">Selected</span>
         </div>
       </div>
+      <DatePicker className="DATECSS" selected={selectedDate} onChange={handleDateChange} />
       <div className="guestHouseBoxes">{roomBoxes}</div>
-
+  
       {bookingDetails && (
         <BookedRoomPopUp
           details={roomID}

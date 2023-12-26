@@ -41,12 +41,12 @@ const HomeHeader = () => {
             </div>
             <div className="bg-nav">
               <li>
-                <Link to="/" smooth={true} duration={50}>
+                {/* <Link to="/" smooth={true} duration={50}>
                   <div className="nav-optn">
                     <HomeRoundedIcon color="white" />
                     <div className="optn-name">Home</div>{" "}
                   </div>
-                </Link>
+                </Link> */}
 
                 <Link to="contactHeader" smooth={true} duration={100}>
                   <div className="nav-optn">
@@ -91,11 +91,11 @@ const HomeHeader = () => {
 
                                 Availability
                             </Link> */}
-                {!isAdmin && (
+                {/* {!isAdmin && (
                   <NavLink to="/UserDetails">
                     <div className="nav-optn">Profile</div>
                   </NavLink>
-                )}
+                )} */}
                 {!isLogged && (
                   <NavLink to="/login">
                     <div className="nav-optn">Login</div>

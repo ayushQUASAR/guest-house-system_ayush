@@ -32,8 +32,12 @@ const Approvaltable = ({ onSecondPage }) => {
   };
 
   const handleReject = (id) => {
-    setCurrentUser(id);
-    openCustomPrompt();
+    const confirm =  window.confirm(`Are you sure you want to reject this booking?`);
+    if (confirm === true) {
+      setCurrentUser(id);
+      openCustomPrompt();
+    }
+    
   };
 
   const handlePromptSubmit = (reason) => {
@@ -68,6 +72,9 @@ const Approvaltable = ({ onSecondPage }) => {
 
   }
   const handleApproval = (id, status,reason) => {
+    const confirm =  window.confirm(`Are you sure you want to accept this booking?`);
+
+    if (confirm === true) {
     if (status === 'accept') {
       setIsFirstPage(false);
       // openPopup();
@@ -105,6 +112,7 @@ const Approvaltable = ({ onSecondPage }) => {
 
     }
   }
+}
 
 
 
@@ -136,6 +144,8 @@ const Approvaltable = ({ onSecondPage }) => {
             <th>No. of Rooms</th>
             <th>Email</th>
             <th>Contact Number</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Reason of Booking</th>
             <th>Reference</th>
             <th>Approval</th>
@@ -152,6 +162,8 @@ const Approvaltable = ({ onSecondPage }) => {
           <td>{user.roomsSelected}</td>
           <td>{user.email}</td>
           <td>{user.phone}</td>
+          <td>{new Date(user.startDate).toLocaleDateString()}</td>
+  <td>{new Date(user.endDate).toLocaleDateString()}</td>
           <td>{user.purpose}</td>
           <td>{user.roomBooker.isAdmin ? "Admin" : user.roomBooker.name}</td>
           

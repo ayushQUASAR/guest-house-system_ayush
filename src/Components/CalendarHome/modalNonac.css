@@ -30,11 +30,6 @@
     cursor: pointer;
   }
   
-  .modalHeader {
-    margin: 0px 0px 10px 0px;
-    color: #0072cfe4;
-    text-align: center;
-  }
   
   .modal-nonac-container-calendar {
     display: flex;
@@ -48,4 +43,21 @@
     width: 400px;
     height: 200px;
     
+  }
+
+  .modal-nonac-calendar-nameHouse {
+    font-size:x-large;
+  }
+  .modal-nonac-calendar-loc {
+    margin: 0px;
+    display: block;
+    font-size: medium;
+    text-align: center;
+    color: rgb(103, 101, 101);
+  }
+
+  .total-val-present-nonac {
+    text-align: center;
+    margin: 10px 0px ;
+    font-size: x-large;
   }

@@ -7,6 +7,7 @@ import "./modalNonac.css";
 
 const Calendar = () => {
   const [date, setDate] = useState(new Date());
+  const [pagecount, setPageCount] = useState(1);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [roomDetails, setRoomDetails] = useState([]);
@@ -18,11 +19,9 @@ const Calendar = () => {
   useEffect(() => {
     const fetchRoomDetails = async () => {
       try {
-        const response = await fetch(
-          "https://guest-house-back.onrender.com/calendar"
-        );
+        const response = await fetch("http://localhost:3000/calendar");
         const data = await response.json();
-        setRoomDetails(data); // Assuming the response is in JSON format
+        setRoomDetails(data);
       } catch (error) {
         console.error("Error fetching room details:", error);
       }
@@ -69,6 +68,9 @@ const Calendar = () => {
 
   const nextMonth = () => {
     setDate(new Date(date.getFullYear(), date.getMonth() + 1));
+    setPageCount((page) => {
+      return page + 1;
+    });
   };
 
   const handleACClick = (day, acCount) => {
@@ -86,7 +88,6 @@ const Calendar = () => {
       setModalnonACCount1(nonacCount1);
       setModalnonACCount2(nonacCount2);
       console.log(modalnonACCount2);
-      // console.log(modalACCount);
     }
   };
 

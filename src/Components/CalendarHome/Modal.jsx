@@ -1,7 +1,7 @@
 const RoomDetailsModalAC = ({ isOpen, onClose, acCount }) => {
   if (!isOpen) return null;
   return (
-    <div className="modal-overlay-calendar">
+    <div className="modal-overlay-calendar" onClick={onClose}>
       <div className="modal-ac">
         <span className="CloseBtn-modal-calendar" onClick={onClose}>
           Close

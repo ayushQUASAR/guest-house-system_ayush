@@ -78,16 +78,15 @@ const Calendar = () => {
       setSelectedDate(day);
       setIsModalOpen(true);
       setModalACCount(acCount);
-      // console.log(modalACCount);
     }
   };
+
   const handlenonACClick = (day, nonacCount1, nonacCount2) => {
     if (day !== null) {
       setSelectedDate(day);
       setIsModalOpenNonAc(true);
       setModalnonACCount1(nonacCount1);
       setModalnonACCount2(nonacCount2);
-      console.log(modalnonACCount2);
     }
   };
 
@@ -104,14 +103,6 @@ const Calendar = () => {
       rows.push(
         <tr key={i}>
           {row.map((day, index) => {
-            if (day === null || (isCurrentMonth() && day < currentDay)) {
-              return (
-                <td key={index} className="calendar-cell empty-cell">
-                  {day}
-                </td>
-              );
-            }
-
             const formattedDate = `${currentYear}-${
               currentMonth < 10 ? "0" : ""
             }${currentMonth}-${day < 10 ? "0" : ""}${day}T00:00:00.000Z`;
@@ -143,8 +134,10 @@ const Calendar = () => {
                 className={`calendar-cell ${
                   day === currentDay && isCurrentMonth() ? "current-day" : ""
                 } ${
-                  isBooked && day < currentDay && isCurrentMonth()
-                    ? "calendar-cell-booked"
+                  isBooked
+                    ? day < currentDay && isCurrentMonth()
+                      ? "calendar-cell-booked"
+                      : ""
                     : ""
                 }`}
               >

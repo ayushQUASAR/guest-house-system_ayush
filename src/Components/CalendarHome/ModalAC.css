@@ -29,7 +29,15 @@
     background-color: #00aaf9;
     border-radius: 4px;
     cursor: pointer;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out; 
+    &:hover {
+      background-color: #0072cfae; 
+      font-weight: bold; 
+    }
   }
+  
   
   .modalHeader {
     margin: 0px;
@@ -42,14 +50,14 @@
     margin: 30px 0p 0px 0px;
   }
   .modal-calendar-nameHouse {
-    font-size:xx-large;
+    font-size:x-large;
   }
   .modal-calendar-loc {
     margin: 0px;
     display: block;
     font-size: medium;
     text-align: center;
-    color: rgb(103, 101, 101);
+    color: rgb(72, 72, 72);
   }
 
   .modal-container-calendar {

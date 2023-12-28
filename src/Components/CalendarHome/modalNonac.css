@@ -21,6 +21,7 @@
     max-height: 350px;
     height: 100%;
     padding-top: 15px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
   }
   
   .CloseBtn-modal-calendar {
@@ -38,6 +39,7 @@
   .container-modal-nonac-calendar {
     text-align: center;
     background-color: #00aaf96b;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     /* padding: 22px; */
     width: 400px;

@@ -132,8 +132,8 @@ const Calendar = () => {
             } else {
               acCount = 10;
               nonAcCount = 20;
-              nonAcCCCCount1 = 8;
-              nonAcCCCCount2 = 12;
+              nonAcCCCCount1 = 0;
+              nonAcCCCCount2 = 0;
             }
 
             return (

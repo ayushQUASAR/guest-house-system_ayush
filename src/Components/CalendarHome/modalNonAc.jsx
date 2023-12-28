@@ -11,7 +11,7 @@ const RoomDetailsNonAc = ({ isOpen, onClose, nonAcCount1, nonAcCount2 }) => {
           <div className="container-modal-nonac-calendar">
             <h2 className="modal-nonac-calendar-nameHouse">Snackers</h2>
             <h3 className="modal-nonac-calendar-loc">
-              Location : Near Chemical Department
+              Location : Student Activities Center
             </h3>
 
             <h2 className="total-val-present-nonac">

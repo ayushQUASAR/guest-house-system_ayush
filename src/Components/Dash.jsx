@@ -128,7 +128,9 @@ const Dash = ({ admin }) => {
                     Approve Bookings
                   </span>
                 </div>
+
                 <div
+               
                   onClick={() => selectContent("approve")}
                   className="dash-optn"
                 >
@@ -137,7 +139,9 @@ const Dash = ({ admin }) => {
                     Approve Registrations
                   </span>
                 </div>
+                
                 <div
+                  // onClick={() => selectContent("approve")}
                   onClick={() => selectContent("bookedRooms")}
                   className="dash-optn"
                 >
@@ -146,6 +150,8 @@ const Dash = ({ admin }) => {
                     Booked Rooms
                   </span>
                 </div>
+
+
                 <div
                   onClick={() => selectContent("registeredUsers")}
                   className="dash-optn"
@@ -155,6 +161,8 @@ const Dash = ({ admin }) => {
                     Registered Users
                   </span>
                 </div>
+
+
                 {isGodAdmin ? (
                   <div
                     onClick={() => selectContent("createAdmins")}

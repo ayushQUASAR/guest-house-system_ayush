@@ -8,6 +8,7 @@ import "./modalNonac.css";
 const Calendar = () => {
   const [pagecount, setPageCount] = useState(1);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [currDate, setCurrDate] = useState(new Date());
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [roomDetails, setRoomDetails] = useState([]);
   const [modalACCount, setModalACCount] = useState(null);
@@ -120,7 +121,7 @@ const Calendar = () => {
       rows.push(
         <tr key={i}>
           {row.map((day, index) => {
-            if (day === null || (isCurrentMonth() && day < currentDay)) {
+            if (day === null || (isCurrentMonth() && day < today.getDate())) {
               return (
                 <td key={index} className="calendar-cell empty-cell">
                   {day}

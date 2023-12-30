@@ -6,7 +6,6 @@ import "./ModalAC.css";
 import "./modalNonac.css";
 
 const Calendar = () => {
-  const [date, setDate] = useState(new Date());
   const [pagecount, setPageCount] = useState(1);
   const [selectedDate, setSelectedDate] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,26 +14,35 @@ const Calendar = () => {
   const [isModalOpenNonAc, setIsModalOpenNonAc] = useState(false);
   const [modalnonACCount1, setModalnonACCount1] = useState(null);
   const [modalnonACCount2, setModalnonACCount2] = useState(null);
+  const [displayedMonth, setDisplayedMonth] = useState(new Date());
 
   useEffect(() => {
     const fetchRoomDetails = async () => {
       try {
         const response = await fetch("http://localhost:3000/calendar");
         const data = await response.json();
-        setRoomDetails(data);
+
+        const filteredData = data.filter((detail) => {
+          const detailDate = new Date(detail.date);
+          return (
+            detailDate.getMonth() === displayedMonth.getMonth() &&
+            detailDate.getFullYear() === displayedMonth.getFullYear()
+          );
+        });
+        setRoomDetails(filteredData);
       } catch (error) {
         console.error("Error fetching room details:", error);
       }
     };
 
     fetchRoomDetails();
-  }, []);
+  }, [displayedMonth]);
 
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   const getDaysInMonth = () => {
-    const year = date.getFullYear();
-    const month = date.getMonth();
+    const year = displayedMonth.getFullYear();
+    const month = displayedMonth.getMonth();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const firstDayOfWeek = new Date(year, month, 1).getDay();
 
@@ -54,22 +62,31 @@ const Calendar = () => {
   const isCurrentMonth = () => {
     const today = new Date();
     return (
-      date.getFullYear() === today.getFullYear() &&
-      date.getMonth() === today.getMonth()
+      displayedMonth.getFullYear() === today.getFullYear() &&
+      displayedMonth.getMonth() === today.getMonth()
     );
   };
 
-  const prevMonth = () => {
-    if (isCurrentMonth()) {
-      return;
-    }
-    setDate(new Date(date.getFullYear(), date.getMonth() - 1));
+  const nextMonth = () => {
+    setDisplayedMonth((prevMonth) => {
+      const nextMonthDate = new Date(
+        prevMonth.getFullYear(),
+        prevMonth.getMonth() + 1
+      );
+
+      setPageCount((page) => page + 1);
+      return nextMonthDate;
+    });
   };
 
-  const nextMonth = () => {
-    setDate(new Date(date.getFullYear(), date.getMonth() + 1));
-    setPageCount((page) => {
-      return page + 1;
+  const prevMonth = () => {
+    setDisplayedMonth((prevMonth) => {
+      const prevMonthDate = new Date(
+        prevMonth.getFullYear(),
+        prevMonth.getMonth() - 1
+      );
+
+      return prevMonthDate;
     });
   };
 
@@ -78,16 +95,15 @@ const Calendar = () => {
       setSelectedDate(day);
       setIsModalOpen(true);
       setModalACCount(acCount);
-      // console.log(modalACCount);
     }
   };
+
   const handlenonACClick = (day, nonacCount1, nonacCount2) => {
     if (day !== null) {
       setSelectedDate(day);
       setIsModalOpenNonAc(true);
       setModalnonACCount1(nonacCount1);
       setModalnonACCount2(nonacCount2);
-      console.log(modalnonACCount2);
     }
   };
 
@@ -95,9 +111,9 @@ const Calendar = () => {
     const calendarData = getDaysInMonth();
     const rows = [];
     const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth() + 1;
-    const currentDay = today.getDate();
+    const currentYear = displayedMonth.getFullYear();
+    const currentMonth = displayedMonth.getMonth() + 1;
+    const currentDay = displayedMonth.getDate();
 
     for (let i = 0; i < calendarData.length; i += 7) {
       const row = calendarData.slice(i, i + 7);
@@ -116,9 +132,12 @@ const Calendar = () => {
               currentMonth < 10 ? "0" : ""
             }${currentMonth}-${day < 10 ? "0" : ""}${day}T00:00:00.000Z`;
 
-            const roomDetail = roomDetails.find(
-              (detail) => detail.date === formattedDate
-            );
+            console.log(formattedDate);
+
+            const roomDetail = roomDetails.find((detail) => {
+              return detail.date === formattedDate;
+            });
+
             const isBooked = roomDetail !== undefined;
 
             let acCount, nonAcCount;
@@ -184,14 +203,17 @@ const Calendar = () => {
       <div className="header">
         <div
           className={`btn ${isCurrentMonth() ? "disabled" : ""}`}
-          onClick={prevMonth}
+          onClick={() => prevMonth()}
         >
           Previous Month
         </div>
         <h2 className="month-year">
-          {date.toLocaleString("default", { month: "long", year: "numeric" })}
+          {displayedMonth.toLocaleString("default", {
+            month: "long",
+            year: "numeric",
+          })}
         </h2>
-        <div className="btn" onClick={nextMonth}>
+        <div className="btn" onClick={() => nextMonth()}>
           Next Month
         </div>
       </div>

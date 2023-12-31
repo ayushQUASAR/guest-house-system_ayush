@@ -41,6 +41,13 @@ const Calendar = () => {
 
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+  const isWithinAllowedRange = () => {
+    const maxAllowedNextMonth = new Date();
+    maxAllowedNextMonth.setMonth(maxAllowedNextMonth.getMonth() + 3);
+
+    return displayedMonth <= maxAllowedNextMonth;
+  };
+
   const getDaysInMonth = () => {
     const year = displayedMonth.getFullYear();
     const month = displayedMonth.getMonth();
@@ -214,7 +221,10 @@ const Calendar = () => {
             year: "numeric",
           })}
         </h2>
-        <div className="btn" onClick={() => nextMonth()}>
+        <div
+          className={`btn ${!isWithinAllowedRange() ? "disabled" : ""}`}
+          onClick={() => nextMonth()}
+        >
           Next Month
         </div>
       </div>

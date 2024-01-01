@@ -1,55 +1,10 @@
-// import React, { useEffect, useState, useRef } from 'react';
-// import './MyComponent.css'; // Import the CSS file
 
-// function MyComponent({n, maxRooms}) {
-//   const [divs, setDivs] = useState(new Array(8).fill(false));
-//   // const elementRef = useRef(null);
-
-//   useEffect(()=> {
-// setDivs(new Array(n).fill(false));
-//   }, [n])
-//   console.log(divs);
-
-// const handleDivClick = (index) => {
-
-//      setDivs((prev) => {
-//       const new_state = prev;
-//       new_state[index] = true;
-
-//       return new_state;
-//      })
-//     // setHighlightedDiv(index+1);
-
-//   };
-
-//   // const divs = [];
-//   // for (let i = 1; i <= n; i++) {
-//   //   divs.push({ id: i, content: `Item ${i}` });
-//   // }
-
-
-//   return (
-//     <div className="roombookingu">
-//       {divs.map((element, index) => (
-//         <div
-//           key={index}
-//           onClick={() => {handleDivClick(index)}}
-//           className={`divtt ${divs[index] === true ? 'highlightedyy' : ''}`}
-//         >
-//           {/* {div.content} */}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default MyComponent;
 
 import React, { useState, useEffect } from 'react';
 import './MyComponent.css'; // Import the CSS file
 import { ContentCutOutlined } from '@mui/icons-material';
 
-function MyComponent({ n, maxRooms, guesthouseid, setRooms }) {
+function MyComponent({ onDataChange, n, maxRooms, guesthouseid, setRooms }) {
   const [selectedDivs, setSelectedDivs] = useState([]);
   const [roomStatus, setRoomStatus] = useState([]);
 
@@ -59,6 +14,9 @@ function MyComponent({ n, maxRooms, guesthouseid, setRooms }) {
     setRooms(selectedDivs);
     // console.log(selectedDivs);
   }, [selectedDivs]);
+
+  console.log("selectedDivs.length :"+selectedDivs.length)
+  onDataChange(selectedDivs.length);
 
 
   useEffect(() => {
@@ -72,15 +30,27 @@ function MyComponent({ n, maxRooms, guesthouseid, setRooms }) {
       .catch((err) => console.error(err.message));
   }, []);
 
+  const [count, setcount] = useState(selectedDivs.length);
   const handleDivClick = (divId) => {
+
     if (roomStatus[divId - 1] === false) {
+
+      
+     
+
       if (selectedDivs.includes(divId)) {
         // If the div is already selected, remove it
         setSelectedDivs(selectedDivs.filter((id) => id !== divId));
+     
       } else if (selectedDivs.length < maxRooms) {
         // Check if the maximum number of selected rooms has not been reached
         setSelectedDivs([...selectedDivs, divId]);
+       
       }
+     
+    
+
+      
     }
   };
 

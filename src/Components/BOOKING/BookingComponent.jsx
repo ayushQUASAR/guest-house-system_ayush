@@ -154,9 +154,9 @@ const BookingComponent = (pram) => {
         </div>
 
         <div className="flex-containerTY">
-          <div id="gh1"  >Guest House 1</div>
-          <div id="gh2"  >Guest House 2</div>
-          <div id="gh3" >Guest House 3 (A.C.)</div>
+          <div id="gh1"  >  Main Guest House </div>
+          <div id="gh2"  >Mega Guest House </div>
+          <div id="gh3" >   SAC Guest House</div>
         </div>
 
 
@@ -175,17 +175,18 @@ const BookingComponent = (pram) => {
         {
           selectedGuestHouse === 1 ?
             <div style={{ marginTop: '20px' }} id="sacg1">
-              SAC Guest House (Non A.C)
-              <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={8} />
-            </div>
+              Main Guest House  (A.C)
+                <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={10} />
+             </div>
             : selectedGuestHouse === 2 ?
               <div style={{ marginTop: '10px' }} id="sacg2">
-                Main Guest House (A.C)
-                <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={10} />
-              </div>
-              : <div style={{ marginTop: '10px' }} id="sacg3">
-                Mega Guest House (Non A.C)
+                     Mega Guest House (Non A.C)
                 <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={12} />
+               
+          </div>
+              : <div style={{ marginTop: '10px' }} id="sacg3">
+            SAC Guest House (Non A.C)
+              <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={8} />
               </div>
         }
 
@@ -194,14 +195,7 @@ const BookingComponent = (pram) => {
         <div className='bookButtons'>
           <div className="book" style={{ cursor: "pointer" }} onClick={handleApproval}>Book Now</div>
           <div className="dropdown">
-            {/* <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            TIME
-          </button> */}
-            {/* <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">24</a></li>
-              <li><a class="dropdown-item" href="#">48</a></li>
-              <li><a class="dropdown-item" href="#">72</a></li>
-            </ul> */}
+     
             <select style={{ position: 'relative', right: "5rem", bottom: "6px" }} onChange={handleChange}>
               <option value="24">
                 24 hrs

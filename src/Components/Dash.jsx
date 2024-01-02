@@ -28,7 +28,7 @@ import { Settings } from "@mui/icons-material";
 import { useLoginContext } from "./ContextHooks/LoginContext";
 import Container from "./BookingForm/Container";
 import { useUserContext } from "./ContextHooks/UserContext";
-import CreateAdmin from "./CreateAdmin";
+import ManageAdmin from "./ManageAdmin";
 
 const Dash = ({ admin }) => {
   // console.log(admin);
@@ -78,7 +78,7 @@ const Dash = ({ admin }) => {
     settings: <DashboardSettings />,
     approve: <Approve />,
     approvebooking: <ApproveBooking />,
-    createAdmins: <CreateAdmin />,
+    manageAdmins: <ManageAdmin />,
   };
 
   const selectedContent = contentComponents[contentType];
@@ -165,12 +165,12 @@ const Dash = ({ admin }) => {
 
                 {isGodAdmin ? (
                   <div
-                    onClick={() => selectContent("createAdmins")}
+                    onClick={() => selectContent("manageAdmins")}
                     className="dash-optn"
                   >
                     <span>
                       <GroupAddIcon />
-                      Create Admins
+                      Manage Admins
                     </span>
                   </div>
                 ) : null}

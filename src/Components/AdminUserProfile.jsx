@@ -51,11 +51,6 @@ export default function AdminUserProfile({user}){
                     <div className = 'row text-center' style = {{margin : '10%'}}>
                         <h2  style = {{color : 'white'}}><strong>{user?.userDetails?.name}</strong></h2>
                     </div>
-                    <div className='row' style = {{ display: 'inline'}}>
-                        <img src= './comments.png' alt="Comment Image" style = {{width: '10%', display: 'inline', paddingRight: '2%'}} />
-                        <span style = {{color : 'white', display: 'inline', fontSize: '1rem'}}>Send Message</span>
-                        
-                    </div>
 
                     <div className = 'admin-info-container row'>
                         <div className = 'col-2'></div>

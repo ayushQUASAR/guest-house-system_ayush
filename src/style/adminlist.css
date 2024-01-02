@@ -1,0 +1,7 @@
+.container-admin-list{
+    width: 500px;
+    padding: 20px; 
+    justify-content: center;
+    align-items: center;
+    border-radius:5px;
+}

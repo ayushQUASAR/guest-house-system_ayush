@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Calendar.css";
 import RoomDetailsModalAC from "./Modal";
-import RoomDetailsNonAc from "./modalNonAc";
 import "./ModalAC.css";
-import "./modalNonac.css";
 
 const Calendar = () => {
   const [pagecount, setPageCount] = useState(1);
@@ -103,6 +101,8 @@ const Calendar = () => {
       setSelectedDate(day);
       setIsModalOpen(true);
       setModalACCount(acCount);
+      setModalnonACCount1(nonacCount1);
+      setModalnonACCount2(nonacCount2);
     }
   };
 
@@ -150,13 +150,20 @@ const Calendar = () => {
 
             let acCount, nonAcCount;
             let nonAcCCCCount1, nonAcCCCCount2;
+            let totalCount;
             if (isBooked) {
+              totalCount =
+                30 -
+                (roomDetail.acBooked +
+                  roomDetail.nonAc1Booked +
+                  roomDetail.nonAc2Booked);
               acCount = 10 - roomDetail.acBooked;
               nonAcCount =
                 20 - (roomDetail.nonAc1Booked + roomDetail.nonAc2Booked);
               nonAcCCCCount1 = roomDetail.nonAc1Booked;
               nonAcCCCCount2 = roomDetail.nonAc2Booked;
             } else {
+              totalCount = 30;
               acCount = 10;
               nonAcCount = 20;
               nonAcCCCCount1 = 0;
@@ -183,16 +190,16 @@ const Calendar = () => {
                         className="acCount"
                         onClick={() => handleACClick(day, acCount)}
                       >
-                        AC : {acCount}
+                        Total : {totalCount}
                       </span>
-                      <span
+                      {/* <span
                         className="nonCount"
                         onClick={() =>
                           handlenonACClick(day, nonAcCCCCount1, nonAcCCCCount2)
                         }
                       >
-                        Non-AC : {nonAcCount}
-                      </span>
+                        Standard : {nonAcCount}
+                      </span> */}
                     </>
                   )}
                 </div>
@@ -245,13 +252,15 @@ const Calendar = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         acCount={modalACCount}
+        nonAcCount1={modalnonACCount1}
+        nonAcCount2={modalnonACCount2}
       />
-      <RoomDetailsNonAc
+      {/* <RoomDetailsNonAc
         isOpen={isModalOpenNonAc}
         onClose={() => setIsModalOpenNonAc(false)}
         nonAcCount1={modalnonACCount1}
         nonAcCount2={modalnonACCount2}
-      />
+      /> */}
     </div>
   );
 };

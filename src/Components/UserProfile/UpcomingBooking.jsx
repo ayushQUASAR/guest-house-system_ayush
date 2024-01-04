@@ -1,39 +1,41 @@
 import React, { useState, useEffect } from 'react';
+import { useUserContext } from '../ContextHooks/UserContext';
 
-const UpcomingBooking = ({user}) => {
+const UpcomingBooking = () => {
   const [bookings, setBookings] = useState([
-    
-    { id: 1, rooms:[2,3], guestHouse: 'Guest House 1', bookingDate: '2023-11-01', checkIn: '2023-11-10', checkOut: '2023-11-07', status : 'Pending' },
-    { id: 2, rooms: [2,3], guestHouse: 'Guest House 2', bookingDate: '2023-11-05', checkIn: '2023-11-12', checkOut: '2023-11-17', status : 'Success' },
-    { id: 3, rooms: [2,3], guestHouse: 'Guest House 1', bookingDate: '2023-11-08', checkIn: '2023-11-20', checkOut: '2023-11-25', status : 'Pending'  },
+    // { id: 1, rooms:[2,3], guestHouse: 'Guest House 1', bookingDate: '2023-11-01', checkIn: '2023-11-10', checkOut: '2023-11-07', status : 'Pending' },
+    // { id: 2, rooms: [2,3], guestHouse: 'Guest House 2', bookingDate: '2023-11-05', checkIn: '2023-11-12', checkOut: '2023-11-17', status : 'Success' },
+    // { id: 3, rooms: [2,3], guestHouse: 'Guest House 1', bookingDate: '2023-11-08', checkIn: '2023-11-20', checkOut: '2023-11-25', status : 'Pending'  },
   ]);
-  
-
-
+  const { userId } = useUserContext();
+  const [user, setUserDetails] = useState([]);
   useEffect(() => {
-    
+    fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`)
+      .then((res) => res.json())
+      .then((data) =>{
+        console.log(data);
+        setUserDetails(data)
+      }
+      )
+      .catch((err) => console.log(err.message));   
   const bookings_H = user.bookingHistory;
   if(bookings_H){
-  const filteredBookings = bookings_H.filter((booking) => new Date(booking.startDate) > new Date() && (booking.status === "approved" || booking.status === "pending"))
-  console.log(filteredBookings)
-  const final = filteredBookings.map((booking) => {
-  return {
-    id: booking._id,
-    guestHouse: booking.guestHouseAllotted,
-    bookingDate: formatDateToISO(new Date(booking.createdAt)),
-    checkIn: formatDateToISO(new Date(booking.startDate)),
-    checkOut: formatDateToISO(new Date(booking.endDate)),
-    rooms: booking.roomsAllotted,
-    status: booking.status
-    
+    const filteredBookings = bookings_H.filter((booking) => new Date(booking.startDate) > new Date() && (booking.status === "approved" || booking.status === "pending"))
+    console.log(filteredBookings)
+    const final = filteredBookings.map((booking) => {
+    return {
+      id: booking._id,
+      guestHouse: booking.guestHouseAllotted,
+      bookingDate: formatDateToISO(new Date(booking.createdAt)),
+      checkIn: formatDateToISO(new Date(booking.startDate)),
+      checkOut: formatDateToISO(new Date(booking.endDate)),
+      rooms: booking.roomsAllotted,
+      status: booking.status
+      
+    }})  ;
+    setBookings(final);
   }
-
-
-});
-
-
-setBookings(final);}
-else setBookings(null)
+  else setBookings(null)
   }, []);
 
   

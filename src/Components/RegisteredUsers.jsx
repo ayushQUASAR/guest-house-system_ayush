@@ -154,26 +154,6 @@ export default function RegisteredUsers() {
   let namee;
   const deleteUser = (user) => {
     setConfirmationPopup(true);
-    const userId = user.user?._id;
-
-    // Make a DELETE request to the API endpoint
-    fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          // If the deletion is successful, update the state or perform any necessary actions
-          console.log('User deleted successfully');
-          // Update the state or perform any necessary actions here
-        } else {
-          console.error('Failed to delete user');
-          // Handle the error or show a message to the user
-        }
-      })
-      .catch((err) => console.error(err));
   
   };
 
@@ -287,7 +267,7 @@ export default function RegisteredUsers() {
                         className="rounded-2 border-danger mx-3"
                         style={{ backgroundColor: 'red', color: 'white' }}
                         onClick={() => deleteUser(user.user)}
-            >
+                      >
                         Delete
                       </button>
                     </td>

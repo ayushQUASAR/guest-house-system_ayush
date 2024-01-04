@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import { useUserContext } from '../ContextHooks/UserContext';
 
 
-
-const BookingDetails = ({ user }) => {
+const BookingDetails = () => {
+  const { userId } = useUserContext();
+  const [user, setUserDetails] = useState([]);
   const [bookings, setBookings] = useState([
     { id: 1, rooms: [2, 3], guestHouse: 'Guest House 1', bookingDate: '2023-11-01', checkIn: '2023-11-10', checkOut: '2023-11-07' },
     { id: 2, rooms: [2, 3], guestHouse: 'Guest House 2', bookingDate: '2023-11-05', checkIn: '2023-11-12', checkOut: '2023-11-17' },
     { id: 3, rooms: [2, 3], guestHouse: 'Guest House 1', bookingDate: '2023-11-08', checkIn: '2023-11-20', checkOut: '2023-11-25' },
   ]);
-
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`)
+      .then((res) => res.json())
+      .then((data) =>{
+        console.log(data);
+        setUserDetails(data)
+      }
+      )
+      .catch((err) => console.log(err.message));
+   }, []);
+   
   function formatDateToISO(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so we add 1
@@ -37,8 +49,6 @@ const BookingDetails = ({ user }) => {
     let bookings_h = user.bookingHistory;
     if(bookings_h)
     {
-
-    
     const final = bookings_h.map((booking) => {
       return {
         id: booking._id,
@@ -74,7 +84,7 @@ const BookingDetails = ({ user }) => {
           </tr>
         </thead>
         <tbody>
-          {bookings!=null &&bookings.map((booking, index) => (
+          {bookings !=null && bookings.map((booking, index) => (
             <tr key={booking.id}>
               <td>{index + 1}</td>
               <td>{booking.status === 'pending' || booking.status === 'rejected' ? "-" : formatRoomData(booking.rooms)}</td>

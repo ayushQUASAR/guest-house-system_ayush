@@ -21,7 +21,7 @@ const BookingComponent = (pram) => {
 
 
 
-  
+
   const guesthouseno = pram.guesthouseno;
   const rooms = pram.rooms;
   const id = pram.id;
@@ -60,6 +60,13 @@ const BookingComponent = (pram) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [selectedDeadlineValue, setSelectedDeadlineValue] = useState(null);
+  const [data, setData] = useState(0);
+
+  const handleDataChange = (newData) => {
+    setData(newData);
+  };
+
+
 
 
   const handleChange = (event) => {
@@ -75,56 +82,57 @@ const BookingComponent = (pram) => {
   }
   const handleApproval = () => {
 
-    const data = {
-      booking: id,
-      status: 'accept',
-      guestHouseAllotted: selectedGuestHouse,
-      roomsAllotted: selectedRooms,
-      paymentDeadline: selectedDeadlineValue
-    };
+    if (data === rooms) {
+
+      const data = {
+        booking: id,
+        status: 'accept',
+        guestHouseAllotted: selectedGuestHouse,
+        roomsAllotted: selectedRooms,
+        paymentDeadline: selectedDeadlineValue
+      };
 
 
 
-    console.log("Accept Body :", data);
-    fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then((res) => res.json())
-      // .then((data) => console.log(data))
-      .then((data) => {
-
-
-        setMessagehead('Booking Successful')
-       console.log()
-        setPopup(true)
-        console.log(data)
-
+      console.log("Accept Body :", data);
+      fetch(`${import.meta.env.VITE_API_URL}/admin/bookingApproval`, {
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
       })
+        .then((res) => res.json())
+        // .then((data) => console.log(data))
+        .then((data) => {
 
-      
-      .catch((err) => console.error(err.message))
-    openPopup();
+
+          setMessagehead('Booking Successful')
+          console.log()
+          setPopup(true)
+          console.log(data)
+
+        })
+
+
+        .catch((err) => console.error(err.message))
+      openPopup();
+    } else {
+
+     
+      window.alert("Please Select the required no of rooms.")
+     
+    }
+
+
+
   }
 
   const handleRooms = (x) => {
     setSelectedRooms(x);
   }
 
-  // const history = useHistory();
-
-  // const goBack = () => {
-  //   history.goBack();
-  // };
-  // const goBack = () => {
-  //   // window.history.back();
-  //   // <ApproveBooking/>
-  //   onBack();
-  // };
 
 
   return (
@@ -146,9 +154,9 @@ const BookingComponent = (pram) => {
         </div>
 
         <div className="flex-containerTY">
-          <div id="gh1"  >Guest House 1</div>
-          <div id="gh2"  >Guest House 2</div>
-          <div id="gh3" >Guest House 3 (A.C.)</div>
+          <div id="gh1"  >  Main Guest House </div>
+          <div id="gh2"  >Mega Guest House </div>
+          <div id="gh3" >   SAC Guest House</div>
         </div>
 
 
@@ -167,46 +175,27 @@ const BookingComponent = (pram) => {
         {
           selectedGuestHouse === 1 ?
             <div style={{ marginTop: '20px' }} id="sacg1">
-              SAC Guest House (Non A.C)
-              <MyComponent setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={8} />
-            </div>
+              Main Guest House  (A.C)
+                <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={10} />
+             </div>
             : selectedGuestHouse === 2 ?
               <div style={{ marginTop: '10px' }} id="sacg2">
-                Main Guest House (A.C)
-                <MyComponent setRooms={handleRooms}  guesthouseid={guesthouseno} maxRooms={rooms} n={10} />
-              </div>
+                     Mega Guest House (Non A.C)
+                <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={12} />
+               
+          </div>
               : <div style={{ marginTop: '10px' }} id="sacg3">
-                Mega Guest House (Non A.C)
-                <MyComponent setRooms={handleRooms}  guesthouseid={guesthouseno} maxRooms={rooms} n={12} />
+            SAC Guest House (Non A.C)
+              <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} maxRooms={rooms} n={8} />
               </div>
         }
-        {/* <div style={{ marginTop: '20px' }} id="sacg1"> */}
-        {/* SAC Guest House (Non A.C) */}
-        {/* <MyComponent n={8,2}/> */}
-        {/* <MyComponent n={8} maxRooms={rooms} /> */}
-        {/* </div>     */}
-        {/* <div style={{ marginTop: '10px' }} id="sacg2"> */}
-        {/* Guest House 1 (A.C) */}
 
-        {/* <MyComponent  n={10} maxRooms={rooms}/> */}
-        {/* </div> */}
-        {/* <div style={{ marginTop: '10px' }} id="sacg3"> */}
-        {/* Mega Guest House (Non A.C) */}
 
-        {/* <MyComponent n={10} maxRooms={rooms}/> */}
-        {/* </div>  */}
 
         <div className='bookButtons'>
           <div className="book" style={{ cursor: "pointer" }} onClick={handleApproval}>Book Now</div>
           <div className="dropdown">
-            {/* <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            TIME
-          </button> */}
-            {/* <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">24</a></li>
-              <li><a class="dropdown-item" href="#">48</a></li>
-              <li><a class="dropdown-item" href="#">72</a></li>
-            </ul> */}
+     
             <select style={{ position: 'relative', right: "5rem", bottom: "6px" }} onChange={handleChange}>
               <option value="24">
                 24 hrs

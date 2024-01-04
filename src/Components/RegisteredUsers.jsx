@@ -152,10 +152,7 @@ export default function RegisteredUsers() {
     setProfileview(user);
   };
   let namee;
-  const deleteUser = (user) => {
-    setConfirmationPopup(true);
   
-  };
 
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + '/users/approved/registered')
@@ -170,6 +167,34 @@ export default function RegisteredUsers() {
   const addNewUser = () => {
     setUsers([...users, newUser]);
     setNewUser({ name: '', contactNumber: '', email: '' });
+  };
+
+  const deleteUser = (user) => {
+    
+    const userId = user._id;
+    console.log(userId);
+    const confirm = window.confirm(`Are you sure you want to delete ${user.name}?`);
+
+    if (confirm === true) {
+     // Make a DELETE request to the API endpoint
+     fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
+       method: 'DELETE',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+     })
+       .then((res) => {
+         if (res.ok) {
+           // If the deletion is successful, update the state or perform any necessary actions
+           console.log('User deleted successfully');
+           // Update the state or perform any necessary actions here
+         } else {
+           console.error('Failed to delete user');
+           // Handle the error or show a message to the user
+         }
+       })
+       .catch((err) => console.error(err));
+      }
   };
 
   return (

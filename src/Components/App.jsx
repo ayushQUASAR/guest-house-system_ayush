@@ -18,6 +18,7 @@ import RequireAuth from "./RequireAuth";
 import UserDash from "./UserDash";
 import ForgetPassword from "./FORGETPASS/ForgetPassword";
 import ResetPassword from "./FORGETPASS/ResetPassword";
+import Receipt from "./Receipt/Receipt";
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
                   }
                 />
                 <Route path="/login" element={<Login />} />
+                <Route path="/receipt" element={<Receipt />} />
               </Routes>
             </FormProvider>
           </UserContextProvider>

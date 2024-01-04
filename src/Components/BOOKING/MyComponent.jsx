@@ -30,6 +30,31 @@ function MyComponent({ onDataChange, n, maxRooms, guesthouseid, setRooms }) {
       .catch((err) => console.error(err.message));
   }, []);
 
+  // useEffect(() => {
+  //   const fetchGuestHouseData = async (index) => {
+  //     try {
+  //       const response = await fetch(
+  //         import.meta.env.VITE_API_URL +
+  //         `/booking/approved/approved?guestHouse=${index + 1}`
+  //       );
+  //       const data = await response.json();
+  //       const roomStatus = Array(noOfRooms[guesthouseid]).fill(false);
+  //       data.forEach((booking) => {
+  //         const checkInDate = new Date(booking.checkInDate);
+  //         const checkOutDate = new Date(booking.checkOutDate);
+  //         for (let i = checkInDate; i <= checkOutDate; i.setDate(i.getDate() + 1)) {
+  //           roomStatus[booking.roomId - 1] = true;
+  //         }
+  //       });
+  //       setRoomStatus(roomStatus);
+  //     } catch (error) {
+  //       console.error('Failed to fetch guest house data:', error);
+  //     }
+  //   };
+  
+  //   fetchGuestHouseData(guesthouseid - 1);
+  // }, [guesthouseid]);
+
   const [count, setcount] = useState(selectedDivs.length);
   const handleDivClick = (divId) => {
 

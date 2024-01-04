@@ -190,7 +190,7 @@ const Calendar = () => {
                         className="acCount"
                         onClick={() => handleACClick(day, acCount)}
                       >
-                        Total : {totalCount}
+                        Available : {totalCount}
                       </span>
                       {/* <span
                         className="nonCount"

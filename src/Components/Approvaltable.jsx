@@ -7,7 +7,7 @@ const Approvaltable = () => {
   const [pendingUsers, setPendingUsers] = useState("");
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + "/users/approved/pending")
+    fetch(import.meta.env.VITE_API_URL + "/admin/approveRegistration")
       .then((res) => res.json())
       .then((data) => {
         setPendingUsers(data);
@@ -38,7 +38,7 @@ const Approvaltable = () => {
         window.alert(data.message);
 
         setPendingUsers((prev) => {
-          const selectedUsers = prev.filter((user) => user.user._id !== id);
+          const selectedUsers = prev.filter((user) => user.user?._id !== id);
           return selectedUsers;
         });
       })
@@ -47,7 +47,7 @@ const Approvaltable = () => {
 }
 
   // pendingUsers.map((user, index) => {
-  // return  <tr key={user._id}>
+  // return  <tr key={user?._id}>
   //                <td scope="row">{index+1}</td>
   //             <td>{user.name}</td>
   //             <td>{user.email}</td>
@@ -76,18 +76,19 @@ const Approvaltable = () => {
               pendingUsers.length > 0 &&
               pendingUsers.map((user, index) => {
                 return (
-                  <tr key={user._id}>
+                  <tr key={user.user?._id}>
                     <td>{index + 1}</td>
-                    <td>{user.user.name}</td>
-                    <td>{user.user.email}</td>
-                    <td>{user.user.phone}</td>
-                    <td>{user.user.refInfo}</td>
+                    <td>{user.user?.name}</td>
+                    <td>{user.user?.email}</td>
+                    <td>{user.user?.phone}</td>
+                    <td>{user.user?.refInfo}</td>
                     <td>
                       <button
                         type="button"
                         class="btn btn-success btn-sm mr-3"
                         onClick={() => {
-                          handleApproval(user.user._id, "accept");
+                          handleApproval(user.user?._id, "accept");
+                          console.log(user.user?._id);
                         }}
                       >
                         Accept
@@ -95,7 +96,7 @@ const Approvaltable = () => {
                       <button
                         type="button"
                         class="btn btn-danger btn-sm"
-                        onClick={() => handleApproval(user.user._id, "reject")}
+                        onClick={() => handleApproval(user.user?._id, "reject")}
                       >
                         Reject
                       </button>
@@ -120,13 +121,13 @@ const Approvaltable = () => {
         {/* <div className="table-content">
           {
            pendingUsers && pendingUsers.length > 0 &&  pendingUsers.map((user, index) => {
-              return  <div className="grid-table-content" key={user._id}>
+              return  <div className="grid-table-content" key={user?._id}>
                              <div>{index+1}</div>
                           <div>{user.user.name}</div> 
                           <div>{user.user.email}</div>
                           <div>{user.user.phone}</div>
                           <div>{user.user.refInfo}</div> 
-                          <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {handleApproval(user.user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user._id, 'reject')}>Reject</button></div>
+                          <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {handleApproval(user.user?._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user.user?._id, 'reject')}>Reject</button></div>
                 </div>
               })
           }

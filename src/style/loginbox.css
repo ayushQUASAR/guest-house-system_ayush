@@ -5,25 +5,39 @@
 }
 .lleft-box,
 .lright-box {
-  position: relative;
-  
+  position: relative; 
   width: 50vw;
-  height: 100vh;
+  height: 100vh; 
+  justify-content: center;
 }
 .lleft-box {
   background-color: rgb(50, 115, 214);
   display: flex;
   align-items: center;
+  text-align: center;
   flex-direction: column;
   justify-content: center;
+  padding-right: 6rem;
 }
 .lleft-box :nth-child(1) {
   color: white;
   font-size: 50px;
 }
+@keyframes name {
+  0% {top : 200px; opacity: 10%;}
+  100% {top : 0px; opacity : 100%;}
+}
 .lleft-box :nth-child(2) {
   color: white;
   font-size: 35px;
+  animation-name: name;
+  animation-duration: 5s;
+}
+.lleft-box :nth-child(3) {
+  color: white;
+  font-size: 35px;
+  animation-name: name;
+  animation-duration: 5s;
 }
 .lright-box {
   background-color: #c6c6c6;
@@ -32,13 +46,13 @@
   justify-content: center;
 }
 .login-logo {
-  left: calc(50% - 100px);
-  top: 40%;
+  left: calc(20% );
+  top: 10%;
   z-index: 100;
   width: 200px;
   height: 200px;
   background-color: #ffffff;
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   align-items: center;
   padding: 10px;

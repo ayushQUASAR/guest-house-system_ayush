@@ -15,13 +15,14 @@ import UserDash from './UserDash'
 const Login = () => {
 
   const navigate = useNavigate();
- 
+
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [loginData, setLoginData] = useState(null);
   // const [isLogged, setIsLogged] = useState(false);
   const { isLogged, setIsLogged } = useLoginContext();
   const [isAdmin, setIsAdmin] = useState();
+  const [isMainAdmin, setIsMainAdmin] = useState(false);
   // console.log(loginData);
 
   const [data, setData] = useState([]);
@@ -71,21 +72,27 @@ const Login = () => {
         // console.log("userId: ", data.id);
         updateUserId(data.id);
         console.log(data);
-        if (data.id !== undefined ) {
+        if (data.id !== undefined) {
 
           setIsLogged(true);
           console.log("islog ID NULL", isLogged)
-     
-       
+
+
         }
         if (data.isAdmin) {
           setIsAdmin(true);
-        
+
           console.log("islog ADMIN", isLogged)
-         
+
 
         }
-     
+
+        if (data.isMainAdmin) {
+          setIsMainAdmin(true);
+
+          console.log("islog MAINADMIN", isLogged)
+        }
+
         window.alert(data.message);
         console.log("islog", isLogged)
       }
@@ -98,12 +105,15 @@ const Login = () => {
         !isLogged ?
           <div className="login-box">
 
-            <div className="login-logo">
-              <img src={Logo} alt="NIT logo" />
-            </div>
+
             <div className="lleft-box">
-              <div>NIT Jalandhar</div>
-              <div>Computer Centre</div>
+              <div className="login-logo">
+                <img src={Logo} alt="NIT logo" />
+              </div>
+              {/* <div>NIT Jalandhar </div> */}
+              <div style={{color: 'White', fontSize: '36px',}}>Welcome To NITJ</div>
+              <div style={{color: 'White', fontSize: '36px',}}>Guest House
+              </div>
 
             </div>
             <div className="lright-box">
@@ -143,7 +153,7 @@ const Login = () => {
               </div>
             </div>
             {console.log("isadmindiv", isAdmin)}
-          </div> : isAdmin ? <Dash admin={true} /> : <UserDash />
+          </div> : isAdmin ? <Dash admin={true} isMainAdmin={isMainAdmin} /> : <UserDash />
 
       }
 

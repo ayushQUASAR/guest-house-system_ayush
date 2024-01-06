@@ -8,12 +8,12 @@
     z-index: 1000;
     color: white;
     font-weight: 700;
-}
+} 
 .colg-name{
     z-index: 10001;
     position: absolute;
     left: 200px;
-  font-size: 40px;
+    font-size: 40px; 
 }
 
 .bg-nav li{

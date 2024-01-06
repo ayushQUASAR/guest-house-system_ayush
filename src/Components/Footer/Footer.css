@@ -1,4 +1,21 @@
 /* Footer Styles */
+@font-face {
+  font-family: 'ChakraColor';
+  src: url('path/to/chakra-color.woff2') format('woff2'), /* replace 'path/to/chakra-color.woff2' with the actual path to your font file */
+       url('path/to/chakra-color.woff') format('woff'); /* replace 'path/to/chakra-color.woff' with the actual path to your font file */
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: 'ChakraColor', sans-serif;
+}
+
+/* Apply the font to specific elements if needed */
+h1, h2, p {
+  font-family: 'ChakraColor', sans-serif;
+}
+
+
 .flex-container167 {
   /* margin-top: 200px; */
   display: flex;
@@ -10,14 +27,25 @@
 }
 
 .div1 {
+  /* border: 3px solid red; */
   color: white;
   width: 30%;
   height: 300px;
   text-align: left;
   font-size: 10px;
-  border-right: 1px solid white;
+  /* border-right: 1px solid white; */
+  margin-right: 20px;
 }
-
+li{
+  text-decoration: none;
+}
+.external-link {
+  text-decoration: none; /* Remove underline */
+  color: white; /* Set your desired text color */
+  &:hover {
+    color: rgb(2, 2, 22); /* Set your desired text color on hover */
+  }
+}
 .socialflex {
   display: flex;
   font-size: 25px;
@@ -31,6 +59,7 @@
 }
 
 .div3 {
+  border-left: 1px solid white;
   color: white;
   width: 63%;
   height: 300px;

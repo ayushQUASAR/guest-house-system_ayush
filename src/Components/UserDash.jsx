@@ -48,7 +48,7 @@ const UserDash = () => {
 
 // on initial render, Person Booking Details get saved
 useEffect(() => {
- fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`)
+ fetch(`{${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory}`)
    .then((res) => res.json())
    .then((data) =>{
      console.log(data);

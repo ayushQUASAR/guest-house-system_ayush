@@ -22,6 +22,7 @@ const Login = () => {
   // const [isLogged, setIsLogged] = useState(false);
   const { isLogged, setIsLogged } = useLoginContext();
   const [isAdmin, setIsAdmin] = useState();
+  const [isMainAdmin, setIsMainAdmin] = useState(false);
   // console.log(loginData);
 
   const [data, setData] = useState([]);
@@ -85,6 +86,12 @@ const Login = () => {
          
 
         }
+
+        if (data.isMainAdmin) {
+          setIsMainAdmin(true);
+
+          console.log("islog MAINADMIN", isLogged)
+        }
      
         window.alert(data.message);
         console.log("islog", isLogged)
@@ -143,7 +150,7 @@ const Login = () => {
               </div>
             </div>
             {console.log("isadmindiv", isAdmin)}
-          </div> : isAdmin ? <Dash admin={true} /> : <UserDash />
+          </div> : isAdmin ? <Dash admin={true} isMainAdmin={isMainAdmin} /> : <UserDash />
 
       }
 

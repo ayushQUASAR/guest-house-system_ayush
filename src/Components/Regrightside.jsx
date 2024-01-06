@@ -1,12 +1,11 @@
-
 import { useState } from "react";
-import "../style/regform.css"
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import "../style/regform.css";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { Link, NavLink } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-import Alumni from './AlumniDetails/AlumniRight'
-import Faculty from './FacultyDetails/FacultyRight'
-import Student from './StudentDetails/StudentRight'
+import { useNavigate } from "react-router-dom";
+import Alumni from "./AlumniDetails/AlumniRight";
+import Faculty from "./FacultyDetails/FacultyRight";
+import Student from "./StudentDetails/StudentRight";
 // import Popup from "./PopUp/Popup";
 
 export default function Regrightside() {
@@ -14,52 +13,59 @@ export default function Regrightside() {
 
   const defaultButtonClass = "btnDefault";
   const clickedButtonClass = "btnClicked";
-  const [msgerror, setMerror] = useState(null)
-  const [error, setError] = useState(null)
-  const [Firstname, setFirstname] = useState("")
-  const [Lastname, setLastname] = useState("")
-  const [Phnnumber, setPhnnumber] = useState("")
-  const [Address, setAddress] = useState("")
-  const [Email, setEmail] = useState("")
-  const [Password, setPassword] = useState("")
-  const [contentType, setContentType] = useState('')
+  const [msgerror, setMerror] = useState(null);
+  const [error, setError] = useState(null);
+  const [Firstname, setFirstname] = useState("");
+  const [Lastname, setLastname] = useState("");
+  const [Phnnumber, setPhnnumber] = useState("");
+  const [phoneNumberStu, setPhoneNumberStu] = useState("");
+  const [Address, setAddress] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [contentType, setContentType] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
   const [data, setData] = useState([]);
-  const [reffirstName, setReffirstName] = useState('');
-  const [reflastName, setReflastName] = useState('');
-  const [refphoneNumber, setRefphoneNumber] = useState('');
+  const [reffirstName, setReffirstName] = useState("");
+  const [reflastName, setReflastName] = useState("");
+  const [refphoneNumber, setRefphoneNumber] = useState("");
   const [idProof, setIdProof] = useState(null);
   // Alumni
-  console.log(contentType)
+  console.log(contentType);
 
-  const [branch, setBranch] = useState('');
-  const [batch, setBatch] = useState('');
+  const [branch, setBranch] = useState("");
+  const [batch, setBatch] = useState("");
   const [registerOptn, setRegisteroptn] = useState(null);
-  const [registeractiveclass, setRegisterclass] = useState(false)
+  const [registeractiveclass, setRegisterclass] = useState(false);
 
-  const [jobProfile, setJobProfile] = useState('');
+  const [jobProfile, setJobProfile] = useState("");
 
   // student
-  const [messageHead_m, setMessagehead] = useState('Registration Successful')
+  const [messageHead_m, setMessagehead] = useState("Registration Successful");
 
-  const [para1_m, setPara1] = useState('Your registration has been successfully completed.')
-  const [para2_m, setPara2] = useState("An Email has been sent for verification. \nKindly check your Mail.\nYou will be able to Login once Registration is approved")
-  const [studrollNumber, setSrollNumber] = useState('');
-  const [studbranch, setSbranch] = useState('');
+  const [para1_m, setPara1] = useState(
+    "Your registration has been successfully completed."
+  );
+  const [para2_m, setPara2] = useState(
+    "An Email has been sent for verification. \nKindly check your Mail.\nYou will be able to Login once Registration is approved"
+  );
+  const [studrollNumber, setSrollNumber] = useState("");
+  const [studbranch, setSbranch] = useState("");
 
   // faculty
 
-  const [facultyemail, setFacultyemail] = useState('');
-  const [department, setDepartment] = useState('');
-  const [popup, setPopup] = useState(false)
+  const [facultyemail, setFacultyemail] = useState("");
+  const [department, setDepartment] = useState("");
+  const [popup, setPopup] = useState(false);
 
   const handleEmailChange = (e) => {
     const inputEmail = e.target.value;
     setEmail(inputEmail);
 
     // Verify email domain
-    const isValidEmail = inputEmail.endsWith('@nitj.ac.in');
-    setMerror(isValidEmail ? '' : 'Invalid email domain. Please use @nitj.ac.in');
+    const isValidEmail = inputEmail.endsWith("@nitj.ac.in");
+    setMerror(
+      isValidEmail ? "" : "Invalid email domain. Please use @nitj.ac.in"
+    );
   };
 
   const handleUsernameChange = (e) => {
@@ -79,30 +85,24 @@ export default function Regrightside() {
       window.alert("File not uploaded.");
     }
 
-    
-    
     if (file.type.startsWith("image/") || file.type === "application/pdf") {
-        console.log(file.type);
-        
-        if (file.size <= 1000000) {
-          setIdProof(file);
-        }
+      console.log(file.type);
 
-        else {
-          window.alert(" file size can be maximum upto. 1MB. Please Upload file within the limit ");
-        }
+      if (file.size <= 1000000) {
+        setIdProof(file);
+      } else {
+        window.alert(
+          " file size can be maximum upto. 1MB. Please Upload file within the limit "
+        );
       }
-      else {
-        window.alert("ONLY IMAGES AND PDF ARE ALLOWED. Please Upload again");
-      }
+    } else {
+      window.alert("ONLY IMAGES AND PDF ARE ALLOWED. Please Upload again");
     }
-  
+  };
 
-  
   const setSubmit = (e) => {
     e.preventDefault();
 
-    
     const newEntry = {
       Email: Email,
       Firstname: Firstname,
@@ -112,13 +112,9 @@ export default function Regrightside() {
       Password: Password,
       selectedOption: selectedOption,
       idProof: idProof,
-
-    }
+    };
     setData([...data, newEntry]);
-    console.log('submit',newEntry)
-
-
-
+    console.log("submit", newEntry);
 
     const formData = new FormData();
     formData.append("Firstname", Firstname);
@@ -147,280 +143,461 @@ export default function Regrightside() {
 
     formData.append("registerOption", registerOptn);
 
-    console.log(formData)
+    console.log(formData);
     console.log(formData.entries());
-
 
     fetch(import.meta.env.VITE_API_URL + "/register", {
       method: "POST",
       body: formData,
-      mode: "cors"
-    }).then((res) => res.json())
+      mode: "cors",
+    })
+      .then((res) => res.json())
       .then((data) => {
-        console.log("data:", data)
+        console.log("data:", data);
         handlepopup(true, data.status);
-        window.alert("Registered Successfully. \n \nA verification link has been sent to you on your email and you will be able to login after verification");
+        window.alert(
+          "Registered Successfully. \n \nA verification link has been sent to you on your email and you will be able to login after verification"
+        );
         navigate("/login");
       })
       .catch((err) => {
-     setError(err)
-     console.log('error in post request');
-     window.alert(err);
+        setError(err);
+        console.log("error in post request");
+        window.alert(err);
       });
 
-    console.log("registered")
-
-  }
+    console.log("registered");
+  };
   const handlepopup = (val, message) => {
     console.log(message);
 
-    if (message === 'accepted') {
+    if (message === "accepted") {
+      setMessagehead("User Already Registered.");
+      setPara1("Please continue Login from the Login Page");
+      setPara2("");
 
-      setMessagehead('User Already Registered.');
-      setPara1('Please continue Login from the Login Page');
-      setPara2('');
-   
       setPopup(val);
-    } else if (message === 'rejected') {
-
-      setMessagehead('User is Rejected by the Admin. ');
-      setPara1('Contact the Booking Office for further Help');
-      setPara2('');
+    } else if (message === "rejected") {
+      setMessagehead("User is Rejected by the Admin. ");
+      setPara1("Contact the Booking Office for further Help");
+      setPara2("");
       setPopup(val);
-    
-    } else if (message === 'pending') {
-      setMessagehead('Please Wait for Approval from the Institute')
+    } else if (message === "pending") {
+      setMessagehead("Please Wait for Approval from the Institute");
       setPopup(val);
-
     } else if (error) {
       setPopup(false);
       window.alert(error);
     }
   };
 
-
   return (
     <>
-      <div className="reg-rightside"> <form action="/register" onSubmit={setSubmit}>
-
-
-        <div>
-          <NavLink className="nav-tohome" to="/">
-            <div className="nav-tohome"><HomeRoundedIcon color="white" /><div className='optn-name'>Home</div></div>
-
-          </NavLink>
-          <div className="r">
-            <h1 className="rheading">Create an Account</h1>
-          </div>
-
-          <div className="registration-optn">
-            <div onClick={() => { setRegisteroptn(1), setRegisterclass(true) }} className={`college-official-optn ${registeractiveclass && registerOptn == 1 ? 'registerclass' : ''}`}>
-              Student/Faculty
+      <div className="reg-rightside">
+        {" "}
+        <form action="/register" onSubmit={setSubmit}>
+          <div>
+            <NavLink className="nav-tohome" to="/">
+              <div className="nav-tohome">
+                <HomeRoundedIcon color="white" />
+                <div className="optn-name">Home</div>
+              </div>
+            </NavLink>
+            <div className="r">
+              <h1 className="rheading">Create an Account</h1>
             </div>
-            <div onClick={() => { setRegisteroptn(2), setRegisterclass(true) }} className={`college-official-optn ${registeractiveclass && registerOptn == 2 ? 'registerclass' : ''}`}>
-              Others
-            </div>
-          </div>
-          {registerOptn == 1 ? <div><div className="college-official-form">
 
-
-            <div className="form-group">
-              <label>Email:</label>
-              <input
-              required
-                type="text"
-                value={Email}
-                onChange={handleEmailChange}
-                placeholder="example@nitj.ac.in"
-                className="college-official-email"
-              />
-                {msgerror!==null  && <p className="error-message">{msgerror}</p>}
+            <div className="registration-optn">
+              <div
+                onClick={() => {
+                  setRegisteroptn(1), setRegisterclass(true);
+                }}
+                className={`college-official-optn ${
+                  registeractiveclass && registerOptn == 1
+                    ? "registerclass"
+                    : ""
+                }`}
+              >
+                Student/Faculty
+              </div>
+              <div
+                onClick={() => {
+                  setRegisteroptn(2), setRegisterclass(true);
+                }}
+                className={`college-official-optn ${
+                  registeractiveclass && registerOptn == 2
+                    ? "registerclass"
+                    : ""
+                }`}
+              >
+                Others
+              </div>
             </div>
-            <div className="form-group">
-              <label>Firstname:</label>
-              <input
-                required
-                type="text"
-                value={Firstname}
-                onChange={handleUsernameChange}
-                className="college-official-username"
-              />
-            </div>      <div className="form-group">
-              <label>Lastname:</label>
-              <input
-                required
-                type="text"
-                value={Lastname}
-                onChange={(e)=>{setLastname(e.target.value)}}
-                className="college-official-username"
-              />
-            </div>
-            <div className="form-group">
-              <label>Password:</label>
-              <input
-                required
-                type="password"
-                value={Password}
-                onChange={handlePasswordChange}
-                className="college-official-password"
-              />
-            </div>
-          
-             
-                <div className="form-group">
-                  <h2 className="govt-id-heading">Upload Govt/College ID</h2>
-                </div>
-          <div className="form-group">
-                  <input required type="file" onChange={handleFileChange} className="form-control" id="fileInput" />
-                </div>
-            
-           
-            <div className="form-group">
-              <button type="submit"  className="btn btn-primary btn-lg rounded" style={{margin:30}}>
-                Register
-              </button>
-            </div>
-          
-            {/* {popup &&     <Popup  setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>} */}
-
-          </div></div> : registerOptn == 2 ?
-            <div>
-              <div className="row input">
-                <div className="col-md-6 col-sm-12">
-                  <input required type="text" className="form-control mb-3" onChange={(e) => setFirstname(e.target.value)} value={Firstname} placeholder="First Name" />
-                </div>
-                <div className="col-md-6 col-sm-12">
-                  <input required type="text" className="form-control mb-3" onChange={(e) => setLastname(e.target.value)} value={Lastname} placeholder="Last Name" />
+            {registerOptn == 1 ? (
+              <div>
+                <div className="college-official-form">
+                  <div className="form-group">
+                    <label>Email:</label>
+                    <input
+                      required
+                      type="text"
+                      value={Email}
+                      onChange={handleEmailChange}
+                      placeholder="example@nitj.ac.in"
+                      className="college-official-email"
+                    />
+                    {msgerror !== null && (
+                      <p className="error-message">{msgerror}</p>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <label>Firstname:</label>
+                    <input
+                      required
+                      type="text"
+                      value={Firstname}
+                      onChange={handleUsernameChange}
+                      className="college-official-username"
+                    />
+                  </div>{" "}
+                  <div className="form-group">
+                    <label>Lastname:</label>
+                    <input
+                      required
+                      type="text"
+                      value={Lastname}
+                      onChange={(e) => {
+                        setLastname(e.target.value);
+                      }}
+                      className="college-official-username"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Password:</label>
+                    <input
+                      required
+                      type="password"
+                      value={Password}
+                      onChange={handlePasswordChange}
+                      className="college-official-password"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Phone Number:</label>
+                    <input
+                      required
+                      type="text"
+                      value={Phnnumber}
+                      placeholder="10-digit Phone Number"
+                      onChange={(e) => {
+                        const input = e.target.value;
+                        if (/^\d{0,10}$/.test(input)) {
+                          setPhoneNumberStu(input);
+                        }
+                      }}
+                      className="college-official-username"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <h2 className="govt-id-heading">Upload Govt/College ID</h2>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      required
+                      type="file"
+                      onChange={handleFileChange}
+                      className="form-control"
+                      id="fileInput"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-lg rounded"
+                      style={{ margin: 30 }}
+                    >
+                      Register
+                    </button>
+                  </div>
+                  {/* {popup &&     <Popup  setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>} */}
                 </div>
               </div>
-              <div className="row input">
-                <div className="col-md-3 col-sm-12">
-                  <div className="input-group">
-                    <input required type="text" className="form-control" value="+91" readOnly />
+            ) : registerOptn == 2 ? (
+              <div>
+                <div className="row input">
+                  <div className="col-md-6 col-sm-12">
+                    <input
+                      required
+                      type="text"
+                      className="form-control mb-3"
+                      onChange={(e) => setFirstname(e.target.value)}
+                      value={Firstname}
+                      placeholder="First Name"
+                    />
+                  </div>
+                  <div className="col-md-6 col-sm-12">
+                    <input
+                      required
+                      type="text"
+                      className="form-control mb-3"
+                      onChange={(e) => setLastname(e.target.value)}
+                      value={Lastname}
+                      placeholder="Last Name"
+                    />
                   </div>
                 </div>
-                <div className="col-md-9 col-sm-12">
-                  <input required type="text" value={Phnnumber} onChange={(e) => setPhnnumber(e.target.value)} className="form-control" placeholder="Phone Number" />
-                </div>
-              </div>
-              <div className="row input">
-                <div className="col-12">
-                  <input required type="text" value={Address} onChange={(e) => setAddress(e.target.value)} className="form-control" placeholder="Address" />
-                </div>
-              </div>
-              <div className="row input">
-                <div className="col-12">
-                  <input required type="email" value={Email} onChange={(e) => setEmail(e.target.value)} className="form-control" placeholder="Email" />
-                </div>
-              </div>
-              <div className="row input">
-                <div className="col-12">
-                  <div className="input-group">
-                    <span className="input-group-text">
-                      <img src="password-icon.png" alt="Password Icon" />
-                    </span>
-                    <input required onChange={(e) => setPassword(e.target.value)} value={Password} type="password" className="form-control" placeholder="Password" />
+                <div className="row input">
+                  <div className="col-md-3 col-sm-12">
+                    <div className="input-group">
+                      <input
+                        required
+                        type="text"
+                        className="form-control"
+                        value="+91"
+                        readOnly
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-9 col-sm-12">
+                    <input
+                      required
+                      type="text"
+                      value={Phnnumber}
+                      onChange={(e) => setPhnnumber(e.target.value)}
+                      className="form-control"
+                      placeholder="Phone Number"
+                    />
                   </div>
                 </div>
-              </div>
-              <div className="row input">
-                <div className="col-12">
-                  <div className="input-group">
-                    <h2 className="govt-id-heading">Upload Govt ID</h2>
+                <div className="row input">
+                  <div className="col-12">
+                    <input
+                      required
+                      type="text"
+                      value={Address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      className="form-control"
+                      placeholder="Address"
+                    />
                   </div>
                 </div>
-              </div>
-              <div className="row input">
-                <div className="col-12">
-                  <div className="input-group">
-                    <input required type="file" onChange={handleFileChange} className="form-control" id="fileInput" />
+                <div className="row input">
+                  <div className="col-12">
+                    <input
+                      required
+                      type="email"
+                      value={Email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="form-control"
+                      placeholder="Email"
+                    />
                   </div>
                 </div>
-              </div>
+                <div className="row input">
+                  <div className="col-12">
+                    <div className="input-group">
+                      <span className="input-group-text">
+                        <img src="password-icon.png" alt="Password Icon" />
+                      </span>
+                      <input
+                        required
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={Password}
+                        type="password"
+                        className="form-control"
+                        placeholder="Password"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="row input">
+                  <div className="col-12">
+                    <div className="input-group">
+                      <h2 className="govt-id-heading">Upload Govt ID</h2>
+                    </div>
+                  </div>
+                </div>
+                <div className="row input">
+                  <div className="col-12">
+                    <div className="input-group">
+                      <input
+                        required
+                        type="file"
+                        onChange={handleFileChange}
+                        className="form-control"
+                        id="fileInput"
+                      />
+                    </div>
+                  </div>
+                </div>
 
-              <div className="row input align-items-center">
-                <div className="col-md-3 col-sm-6 col-12">
-                  <h2 className="reference-heading">Reference</h2>
-                </div>
-                <div className="col-md-3 col-sm-6 col-12">
-                  <label>
-                    {/* <input  required
+                <div className="row input align-items-center">
+                  <div className="col-md-3 col-sm-6 col-12">
+                    <h2 className="reference-heading">Reference</h2>
+                  </div>
+                  <div className="col-md-3 col-sm-6 col-12">
+                    <label>
+                      {/* <input  required
                 type="radio"
                 value="student"
                 onClick={()=>setContentType('student')}
                 checked={selectedOption === 'student'}
                 onChange={handleOptionChange}
               /> */}
-                    <button type="button" onClick={() => setContentType('student')} className={` ${contentType === 'student'
-                      ? clickedButtonClass : defaultButtonClass
+                      <button
+                        type="button"
+                        onClick={() => setContentType("student")}
+                        className={` ${
+                          contentType === "student"
+                            ? clickedButtonClass
+                            : defaultButtonClass
+                        } `}
+                      >
+                        <img
+                          src="student-icon.png"
+                          alt="Icon"
+                          style={{ marginRight: "10px" }}
+                        />
+                        Student
+                      </button>
+                    </label>
+                  </div>
 
-
-                      } `}
-                    >
-                      <img src="student-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
-                      Student
-                    </button>
-                  </label>
-                </div>
-
-                <div className="col-md-3 col-sm-6 col-12">
-                  <label>
-                    {/* <input  required
+                  <div className="col-md-3 col-sm-6 col-12">
+                    <label>
+                      {/* <input  required
               onClick={()=>setContentType('faculty')}
                 type="radio"
                 value="faculty"
                 checked={selectedOption === 'faculty'}
                 onChange={handleOptionChange}
               /> */}
-                    <button type="button" onClick={() => setContentType('faculty')} className={` ${contentType === 'faculty'
-                      ? clickedButtonClass : defaultButtonClass
-                      } `}
-                    >
-                      <img src="faculty-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
-                      Faculty
-                    </button>
-                  </label>
-                </div>
+                      <button
+                        type="button"
+                        onClick={() => setContentType("faculty")}
+                        className={` ${
+                          contentType === "faculty"
+                            ? clickedButtonClass
+                            : defaultButtonClass
+                        } `}
+                      >
+                        <img
+                          src="faculty-icon.png"
+                          alt="Icon"
+                          style={{ marginRight: "10px" }}
+                        />
+                        Faculty
+                      </button>
+                    </label>
+                  </div>
 
-                <div className="col-md-3 col-sm-6 col-12">
-                  <label>
-                    {/* <input
+                  <div className="col-md-3 col-sm-6 col-12">
+                    <label>
+                      {/* <input
                 type="radio"  required
                 onClick={()=>setContentType('alumni')}
                 value="alumni"
                 checked={selectedOption === 'alumni'}
                 onChange={handleOptionChange}
               /> */}
-                    <button type="button" onClick={() => setContentType('alumni')} className={` ${contentType === 'alumni'
-                      ? clickedButtonClass : defaultButtonClass
-                      } `}
-                    >
-                      <img src="alumni-icon.png" alt="Icon" style={{ marginRight: "10px" }} />
-                      Alumni
-                    </button>
-                  </label>
+                      <button
+                        type="button"
+                        onClick={() => setContentType("alumni")}
+                        className={` ${
+                          contentType === "alumni"
+                            ? clickedButtonClass
+                            : defaultButtonClass
+                        } `}
+                      >
+                        <img
+                          src="alumni-icon.png"
+                          alt="Icon"
+                          style={{ marginRight: "10px" }}
+                        />
+                        Alumni
+                      </button>
+                    </label>
+                  </div>
                 </div>
-
-              </div>
-              <div className="row input">
-                <NavLink to="/" >
-
-                  Already have an account? Login
-
-                </NavLink>
-                {/* <div className="col-md-6 col-sm-12">
+                <div className="row input">
+                  <NavLink to="/">Already have an account? Login</NavLink>
+                  {/* <div className="col-md-6 col-sm-12">
             <button disabled={selectedOption === null}  onClick={()=>setNext(false)} className="form-control btn btn-success rounded" style={buttonStyle}>
               Next
             </button>
           </div> */}
+                </div>
               </div>
-
-            </div> : <div></div>}
-          {contentType == 'student' && <Student prop={{ reffirstName, reflastName, refphoneNumber, studbranch, studrollNumber, setReffirstName, setReflastName, setRefphoneNumber, setSbranch, setSrollNumber, messageHead_m, para1_m, para2_m, setPopup, popup }} />}
-          {contentType == 'faculty' && <Faculty prop={{ reffirstName, reflastName, refphoneNumber, department, facultyemail, setReffirstName, setReflastName, setRefphoneNumber, setFacultyemail, setDepartment, messageHead_m, para1_m, para2_m, setPopup, popup }} />}
-          {contentType == 'alumni' && <Alumni prop={{ reffirstName, reflastName, refphoneNumber, batch, branch, jobProfile, setReffirstName, setReflastName, setRefphoneNumber, setBatch, setBranch, setJobProfile, messageHead_m, para1_m, para2_m, setPopup, popup }} />}
-        </div>
-      </form>
+            ) : (
+              <div></div>
+            )}
+            {contentType == "student" && (
+              <Student
+                prop={{
+                  reffirstName,
+                  reflastName,
+                  refphoneNumber,
+                  studbranch,
+                  studrollNumber,
+                  setReffirstName,
+                  setReflastName,
+                  setRefphoneNumber,
+                  setSbranch,
+                  setSrollNumber,
+                  messageHead_m,
+                  para1_m,
+                  para2_m,
+                  setPopup,
+                  popup,
+                }}
+              />
+            )}
+            {contentType == "faculty" && (
+              <Faculty
+                prop={{
+                  reffirstName,
+                  reflastName,
+                  refphoneNumber,
+                  department,
+                  facultyemail,
+                  setReffirstName,
+                  setReflastName,
+                  setRefphoneNumber,
+                  setFacultyemail,
+                  setDepartment,
+                  messageHead_m,
+                  para1_m,
+                  para2_m,
+                  setPopup,
+                  popup,
+                }}
+              />
+            )}
+            {contentType == "alumni" && (
+              <Alumni
+                prop={{
+                  reffirstName,
+                  reflastName,
+                  refphoneNumber,
+                  batch,
+                  branch,
+                  jobProfile,
+                  setReffirstName,
+                  setReflastName,
+                  setRefphoneNumber,
+                  setBatch,
+                  setBranch,
+                  setJobProfile,
+                  messageHead_m,
+                  para1_m,
+                  para2_m,
+                  setPopup,
+                  popup,
+                }}
+              />
+            )}
+          </div>
+        </form>
       </div>
     </>
   );

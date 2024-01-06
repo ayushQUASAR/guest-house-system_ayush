@@ -142,7 +142,7 @@ li.houseCardBackface {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, #0072cfaf,rgba(240, 248, 255, 0.489));
-    backdrop-filter: blur(15px); 
+    backdrop-filter: blur(7px); 
     z-index: 1; 
 }
 .description {

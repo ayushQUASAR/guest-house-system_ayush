@@ -107,9 +107,6 @@ const Login = () => {
 
 
             <div className="lleft-box">
-<<<<<<< HEAD
-              <div>Dr. BR Ambedkar National Institute of Technology Jalandhar</div>
-=======
               <div className="login-logo">
                 <img src={Logo} alt="NIT logo" />
               </div>
@@ -117,7 +114,6 @@ const Login = () => {
               <div style={{color: 'White', fontSize: '36px',}}>Welcome To NITJ</div>
               <div style={{color: 'White', fontSize: '36px',}}>Guest House
               </div>
->>>>>>> 52687f35fd7a1a177256312f8a7fef4e9da748f2
 
             </div>
             <div className="lright-box">

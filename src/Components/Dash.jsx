@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/dash.css";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
@@ -30,28 +30,13 @@ import Container from "./BookingForm/Container";
 import { useUserContext } from "./ContextHooks/UserContext";
 import ManageAdmin from "./ManageAdmin";
 
-const Dash = ({ admin, isMainAdmin }) => {
+const Dash = ({ admin }) => {
   // console.log(admin);
   const [sideState, setSidestate] = useState(true);
   const [contentType, setContentType] = useState("dashboard");
-  const [isGodAdmin, setGodAdmin] = useState(() => {
-    const storedIsGodAdmin = localStorage.getItem('isGodAdmin');
-    return storedIsGodAdmin ? JSON.parse(storedIsGodAdmin) : false;
-  });
+  const [isGodAdmin, setGodAdmin] = useState(true);
   // useEffect for the data fetch for the curr user if curruser == "ghadmin@nitj.ac.in" setGodAdmin(true) by default false
 
-  useEffect(() => {
-    if (isMainAdmin === true) {
-      setGodAdmin(true);
-    }
-  }, [isMainAdmin]);
-  
-  useEffect(() => {
-    localStorage.setItem('isGodAdmin', JSON.stringify(isGodAdmin));
-  }, [isGodAdmin]);
-  
-  console.log(isGodAdmin);
-  
   const ToggleSidestate = () => {
     setSidestate(!sideState);
   };
@@ -178,7 +163,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                 </div>
 
 
-                {(
+                {isGodAdmin ? (
                   <div
                     onClick={() => selectContent("manageAdmins")}
                     className="dash-optn"
@@ -188,7 +173,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                       Manage Admins
                     </span>
                   </div>
-                ) }
+                ) : null}
               </li>
               <div className="side-title">Admin</div>
               <li>

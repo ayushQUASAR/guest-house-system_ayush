@@ -204,7 +204,7 @@ function Login() {
       </div>
       <div className="aboutSection" id="AboutUs">
         <h1 className="aboutUs">About Us</h1>
-        <p className="aboutUsPara">
+        <p className="aboutUsPara" style ={{textAlign: 'justify'}}>
           NIT Jalandhar strongly believes in the old Indian adage "Athithi Devo
           Bhava". We give our visitors the best facilities be it in terms of
           service, ambience or food. It is common practice in Indian institutes

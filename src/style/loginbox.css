@@ -22,8 +22,6 @@
 .lleft-box :nth-child(1) {
   color: white;
   font-size: 50px;
-  animation-name: name;
-  animation-duration: 5s;
 }
 @keyframes name {
   0% {top : 200px; opacity: 10%;}
@@ -32,6 +30,14 @@
 .lleft-box :nth-child(2) {
   color: white;
   font-size: 35px;
+  animation-name: name;
+  animation-duration: 5s;
+}
+.lleft-box :nth-child(3) {
+  color: white;
+  font-size: 35px;
+  animation-name: name;
+  animation-duration: 5s;
 }
 .lright-box {
   background-color: #c6c6c6;

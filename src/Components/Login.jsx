@@ -109,8 +109,7 @@ const Login = () => {
               <img src={Logo} alt="NIT logo" />
             </div>
             <div className="lleft-box">
-              <div>NIT Jalandhar</div>
-              <div>Computer Centre</div>
+              <div>Dr. BR Ambedkar National Institute of Technology Jalandhar</div>
 
             </div>
             <div className="lright-box">

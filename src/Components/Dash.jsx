@@ -178,7 +178,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                 </div>
 
 
-                {isGodAdmin ? (
+                {(
                   <div
                     onClick={() => selectContent("manageAdmins")}
                     className="dash-optn"
@@ -188,7 +188,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                       Manage Admins
                     </span>
                   </div>
-                ) : null}
+                ) }
               </li>
               <div className="side-title">Admin</div>
               <li>

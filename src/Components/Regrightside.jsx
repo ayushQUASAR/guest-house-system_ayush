@@ -282,22 +282,6 @@ export default function Regrightside() {
                     />
                   </div>
                   <div className="form-group">
-                    <label>Phone Number:</label>
-                    <input
-                      required
-                      type="text"
-                      value={Phnnumber}
-                      placeholder="10-digit Phone Number"
-                      onChange={(e) => {
-                        const input = e.target.value;
-                        if (/^\d{0,10}$/.test(input)) {
-                          setPhnnumber(input);
-                        }
-                      }}
-                      className="college-official-username"
-                    />
-                  </div>
-                  <div className="form-group">
                     <h2 className="govt-id-heading">Upload Govt/College ID</h2>
                   </div>
                   <div className="form-group">

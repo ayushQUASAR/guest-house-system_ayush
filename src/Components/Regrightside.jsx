@@ -18,7 +18,6 @@ export default function Regrightside() {
   const [Firstname, setFirstname] = useState("");
   const [Lastname, setLastname] = useState("");
   const [Phnnumber, setPhnnumber] = useState("");
-  const [phoneNumberStu, setPhoneNumberStu] = useState("");
   const [Address, setAddress] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -292,7 +291,7 @@ export default function Regrightside() {
                       onChange={(e) => {
                         const input = e.target.value;
                         if (/^\d{0,10}$/.test(input)) {
-                          setPhoneNumberStu(input);
+                          setPhnnumber(input);
                         }
                       }}
                       className="college-official-username"

@@ -20,7 +20,7 @@ function ManageAdmin(){
     };
     return(
         <div>
-            <h1 style ={{color : '#009dff', fontSize: '3rem', marginBottom : '0px'}}><strong>Manage Admin</strong></h1>
+            <h1 style ={{color : '#009dff', fontSize: '3rem', marginBottom : '0px'}}><strong>Manage Admins</strong></h1>
             <hr style ={{color : '#009dff', border : '1px solid'}}/>
             <div className = "d-flex justify-content-evenly">
             <button   id = "button1" className="button" style = {button1Styles} onClick ={() => handleButtonClick('button1')}><span className='mx-2'>Create Admin</span></button>

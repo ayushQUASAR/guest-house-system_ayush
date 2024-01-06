@@ -203,7 +203,7 @@ function Login() {
         </div>
       </div>
       <div className="aboutSection" id="AboutUs">
-        <h1 className="aboutUs">About Us</h1>
+        <h1 className="aboutUs"><strong>About Us</strong></h1>
         <p className="aboutUsPara" style ={{textAlign: 'justify'}}>
           NIT Jalandhar strongly believes in the old Indian adage "Athithi Devo
           Bhava". We give our visitors the best facilities be it in terms of
@@ -242,7 +242,7 @@ function Login() {
         </div>
       </div>
       <div className="guidelinesDiv">
-        <h1 id="guidelinesHeader">Guidelines</h1>
+        <h1 id="guidelinesHeader"><strong>Guidelines</strong></h1>
         <div className="guidelinesList">
           <ul>
             <li>
@@ -284,11 +284,11 @@ function Login() {
       </div>
 
       <div className="availabilitySection">
-        <h1 id="availabilityHeader">Room Availability</h1>
+        <h1 id="availabilityHeader"><strong>Room Availability</strong></h1>
         <Calendar />
       </div>
       <div className="contactUsDiv">
-        <h1 id="contactHeader">Contact</h1>
+        <h1 id="contactHeader"><strong>Contact</strong></h1>
       </div>
       <Footer />
     </>

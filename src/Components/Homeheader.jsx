@@ -56,8 +56,9 @@ const HomeHeader = () => {
                     <div className="optn-name"> ContactUs</div>
                   </div>
                 </Link>
+                <Link to = "availabilityHeader"></Link>
                 <div className="nav-optn">
-                  <LocalDiningRoundedIcon /> Food
+                  <LocalDiningRoundedIcon />Room Availability
                 </div>
                 <Link to="guidelinesHeader" smooth={true} duration={50}>
                   <div className="nav-optn">

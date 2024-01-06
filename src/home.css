@@ -58,7 +58,7 @@ html, body {
     width: 30vw;
     color: white;
     height: 40vw;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 2px 2px 1px #0404045b;
     transition: 0.28s ease-in;
     display: flex;
@@ -120,7 +120,9 @@ li.houseCardBackface {
     box-shadow: 2px 2px 1px #faf9f95b;
   }
 
-
+  .houseName{
+    text-align: center;
+  }
 .backgroundImage {
     background-image: url("/1547015099phpOoPsAO.jpeg");
     position: relative; 

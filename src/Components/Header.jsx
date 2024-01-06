@@ -16,7 +16,11 @@ const Header = () => {
             <div className="h-nav">
                
                 <div className="nav-wrapper">
+<<<<<<< HEAD
                 <div className='colg-name'>Dr. BR Ambedkar National Institute Of Technology Jalandhar, Punjab</div>
+=======
+                <div className='colg-name'>Dr. B. R. Ambedkar National Institute Of Technology Jalandhar</div>
+>>>>>>> 52687f35fd7a1a177256312f8a7fef4e9da748f2
                     <div className="h-navlogo">
                         <img src={logo} alt="NIT_logo" />
                     </div>

@@ -38,6 +38,7 @@
   color: #007bff;
   display: flex;
   text-decoration: none;
+  font-size: larger;
 }
 .btnDefault {
   background-color: #007bff;

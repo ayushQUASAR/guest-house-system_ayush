@@ -145,6 +145,8 @@ export default function Regrightside() {
     formData.append("FacultyEmail", facultyemail);
     formData.append("Department", department);
 
+    formData.append("registerOption", registerOptn);
+
     console.log(formData)
     console.log(formData.entries());
 
@@ -177,7 +179,7 @@ export default function Regrightside() {
       setMessagehead('User Already Registered.');
       setPara1('Please continue Login from the Login Page');
       setPara2('');
-      console.log('hellobaby');
+   
       setPopup(val);
     } else if (message === 'rejected') {
 
@@ -185,7 +187,7 @@ export default function Regrightside() {
       setPara1('Contact the Booking Office for further Help');
       setPara2('');
       setPopup(val);
-      console.log('hellobaby');
+    
     } else if (message === 'pending') {
       setMessagehead('Please Wait for Approval from the Institute')
       setPopup(val);

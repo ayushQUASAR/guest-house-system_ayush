@@ -64,22 +64,16 @@ th {
 }
 
 .acCount {
-  color: #6c12f3;
-  background-color: #6c12f325;
-  border: 1px solid #6c12f3;
+  color: #12f368;
+  background-color: #12f37725;
+  border: 1px solid #16b64e;
   text-align: center;
   border-radius: 10px;
 }
 .acCount, .nonCount {
   cursor: pointer;
 }
-.nonCount {
-  color: #f31212c9;
-  background-color: #f3121216;
-  text-align: center;
-  border-radius: 10px;
-  border: 1px solid #f31212c9;
-}
+
 .empty-cell {
   color: #2284b2;
   font-size: large;

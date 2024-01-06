@@ -117,7 +117,7 @@ const BookingComponent = (pram) => {
 
 
         .catch((err) => console.error(err.message))
-      openPopup();
+      // openPopup();
     } else {
 
      

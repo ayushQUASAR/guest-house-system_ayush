@@ -135,6 +135,7 @@ import '../style/registered.css';
 import SideBar from './SideBar';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Table from './Table';
+import ConfirmationPopup from './PopUp/ConfirmationPopup.jsx'; // Assuming you have renamed your component to ConfirmationPopup
 
 export default function RegisteredUsers() {
   const [users, setUsers] = useState([]);
@@ -146,10 +147,12 @@ export default function RegisteredUsers() {
     email: '',
   });
   const [view, setProfileview] = useState(null);
-
+  const [isConfirmationPopupOpen, setConfirmationPopup] = useState(false);
   const viewUserProfile = (user) => {
     setProfileview(user);
   };
+  let namee;
+  
 
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + '/users/approved/registered')
@@ -164,6 +167,34 @@ export default function RegisteredUsers() {
   const addNewUser = () => {
     setUsers([...users, newUser]);
     setNewUser({ name: '', contactNumber: '', email: '' });
+  };
+
+  const deleteUser = (user) => {
+    
+    const userId = user._id;
+    console.log(userId);
+    const confirm = window.confirm(`Are you sure you want to delete ${user.name}?`);
+
+    if (confirm === true) {
+     // Make a DELETE request to the API endpoint
+     fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
+       method: 'DELETE',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+     })
+       .then((res) => {
+         if (res.ok) {
+           // If the deletion is successful, update the state or perform any necessary actions
+           console.log('User deleted successfully');
+           // Update the state or perform any necessary actions here
+         } else {
+           console.error('Failed to delete user');
+           // Handle the error or show a message to the user
+         }
+       })
+       .catch((err) => console.error(err));
+      }
   };
 
   return (
@@ -234,6 +265,7 @@ export default function RegisteredUsers() {
                 <th scope="col">Contact Number</th>
                 <th scope="col">Email Id</th>
                 <th scope="col">User Profile, Booking History</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -254,6 +286,17 @@ export default function RegisteredUsers() {
                         View Profile
                       </button>
                     </td>
+
+                    <td>
+                      <button
+                        className="rounded-2 border-danger mx-3"
+                        style={{ backgroundColor: 'red', color: 'white' }}
+                        onClick={() => deleteUser(user.user)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+
                   </tr>
                 ))}
             </tbody>
@@ -262,6 +305,14 @@ export default function RegisteredUsers() {
           <button className="rounded-2 border-primary" style={{ backgroundColor: '#0275d8', color: 'white' }} onClick={addNewUser}>
             Add New User
           </button>
+
+          {isConfirmationPopupOpen && (
+        <ConfirmationPopup
+          confirmationP={setConfirmationPopup}
+          messageHead="Do you want to delete this user ?"
+          username=""
+        />
+      )}
         </div>
       </div>
     </div>

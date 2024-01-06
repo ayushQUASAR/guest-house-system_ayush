@@ -15,41 +15,41 @@ import Calendar from "./Components/CalendarHome/Calendar";
 function Login() {
   const houses = [
     {
-      name: "Guest House 1",
-      roomsCount: 15,
+      name: "Main Guest House ",
+      roomsCount: 10,
       loaction: "blah blah",
       facilities: [
         "24 hours running hot and cold water",
         "Free Wi-Fi",
         "TV with cable",
         "Telephone service",
-        "Laundry service",
+
         "Big sized rooms",
       ],
     },
     {
-      name: "Guest House 2",
-      roomsCount: 15,
+      name: "SAC Guest House",
+      roomsCount: 8,
       loaction: "blah blah",
       facilities: [
         "24 hours running hot and cold water",
         "Free Wi-Fi",
         "TV with cable",
         "Telephone service",
-        "Laundry service",
+
         "Big sized rooms",
       ],
     },
     {
-      name: "Guest House 3",
-      roomsCount: 15,
+      name: "Mega Guest House",
+      roomsCount: 12,
       loaction: "blah blah",
       facilities: [
         "24 hours running hot and cold water",
         "Free Wi-Fi",
         "TV with cable",
         "Telephone service",
-        "Laundry service",
+
         "Big sized rooms",
       ],
     },
@@ -154,21 +154,18 @@ function Login() {
           </NavLink>
         </div>
       </nav> */}
-      <div className="backgroundImage" id="Home">
+
+      <div className="backgroundImage" >
         <div className="description">
           <h1 id="Welcome">
-            NIT Jalandhar <br /> Guest Room Booking System
+            Dr. B R Ambedkar National Institute of Technology Jalandhar <br /> Guest Room Booking System
           </h1>
         </div>
-        {/* <NavLink to="/Booking">
-        <div className="book-now">
-          <div>
-          Book 
-          </div>
-     
-        </div>
-        </NavLink> */}
+      
       </div>
+
+
+
       <div className="cardsSection" id="Facility">
         <div id="hostelCards">
           {houses.map((house, index) => (
@@ -185,7 +182,7 @@ function Login() {
                     className="guestHouseSVG"
                   />
                   <div className="cardContent">
-                    <p className="houseName">{house.name}</p>
+                    <p className="houseName" >{house.name}</p>
                     <p className="roomCount">{house.roomsCount} Deluxe Rooms</p>
                   </div>
                 </React.Fragment>
@@ -227,12 +224,12 @@ function Login() {
               <li>Free Wi-Fi</li>
               <li>TV with cable</li>
               <li>Telephone service</li>
-              <li>Laundry service</li>
+              {/* <li>Laundry service</li> */}
               <li>Big sized rooms</li>
               <li>Tea making(in Room) facilities.</li>
             </ul>
           </div>
-          <div id="content2">
+          {/* <div id="content2">
             <h2>Standard Room Facilities</h2>
             <ul className="listItem">
               <li>24 hours running hot and cold water</li>
@@ -241,7 +238,7 @@ function Login() {
               <li>Telephone service</li>
               <li>Laundry service</li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="guidelinesDiv">
@@ -249,10 +246,10 @@ function Login() {
         <div className="guidelinesList">
           <ul>
             <li>
-              <b>Check-in Time: 11:30 AM</b>
+              <b>Check-in Time: 12:00 PM</b>
             </li>
             <li>
-              <b>Check-out time: 10:30 AM</b>
+              <b>Check-out time: 11:00 AM</b>
             </li>
             <li>
               Maximum booking period is seven days. For extension, please seek
@@ -285,12 +282,13 @@ function Login() {
           </ul>
         </div>
       </div>
+
+      <div className="availabilitySection">
+        <h1 id="availabilityHeader">Room Availability</h1>
+        <Calendar />
+      </div>
       <div className="contactUsDiv">
         <h1 id="contactHeader">Contact</h1>
-      </div>
-      <div className="availabilitySection">
-        <h1 id="availabilityHeader">Availability</h1>
-        <Calendar />
       </div>
       <Footer />
     </>

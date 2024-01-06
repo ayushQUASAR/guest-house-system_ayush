@@ -34,6 +34,7 @@ import PersonalDetail from './UserProfile/PersonalDetail';
 import  Container  from './BookingForm/Container';
 import UpcomingBooking from './UserProfile/UpcomingBooking';
 import { useUserContext } from './ContextHooks/UserContext';
+import UserResetPassword from './FORGETPASS/UserResetPassword';
 
 
 const UserDash = () => {
@@ -93,7 +94,7 @@ useEffect(() => {
     bookingHistory: <BookingDetail user={user}/>,
     bookingCancellationTab: <CancelledBooking />,
     UserProfile: <PersonalDetail user={user} />,
-    settings: <DashboardSettings />,
+    settings: <UserResetPassword />,
   };
 
   const selectedContent = contentComponents[contentType];

@@ -11,7 +11,7 @@ const Approve = () => {
     <>
       <div className="Approve-container">
         <div className="approve-topbar">
-          <h1>APPROVAL REGISTRATION</h1>
+          <h1>APPROVE REGISTRATION</h1>
       
         <div className="d-flex flex-row bd-highlight mb-3 searchflex">
           <div className="p-2 bd-highlight">

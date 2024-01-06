@@ -48,30 +48,31 @@ const HomeHeader = () => {
                     <div className="optn-name">Home</div>{" "}
                   </div>
                 </Link> */}
+                <Link to="AboutUs" smooth={true} duration={50} style = {{cursor : 'pointer'}}>
+                  <div className="nav-optn">
+                    <HelpCenterIcon /> <div className="optn-name">About</div>
+                  </div>
+                </Link>
 
-                <Link to="contactHeader" smooth={true} duration={100}>
+                <Link to="guidelinesHeader" smooth={true} duration={50}style = {{cursor : 'pointer'}}>
+                  <div className="nav-optn">
+                    <AlignHorizontalLeftOutlinedIcon />
+                    <div className="optn-name"> Guidelines</div>
+                  </div>
+                </Link>
+                <Link to = "availabilityHeader" smooth={true} duration={75} style = {{cursor : 'pointer'}}>
+                <div className="nav-optn">
+                  <LocalDiningRoundedIcon />Room Availability
+                </div>
+                </Link>
+                <Link to="contactHeader" smooth={true} duration={100}style = {{cursor : 'pointer'}}>
                   <div className="nav-optn">
                     <ContactlessIcon />
 
                     <div className="optn-name"> ContactUs</div>
                   </div>
                 </Link>
-                <Link to = "availabilityHeader"></Link>
-                <div className="nav-optn">
-                  <LocalDiningRoundedIcon />Room Availability
-                </div>
-                <Link to="guidelinesHeader" smooth={true} duration={50}>
-                  <div className="nav-optn">
-                    <AlignHorizontalLeftOutlinedIcon />
-                    <div className="optn-name"> Guidelines</div>
-                  </div>
-                </Link>
 
-                <Link to="AboutUs" smooth={true} duration={50}>
-                  <div className="nav-optn">
-                    <HelpCenterIcon /> <div className="optn-name">About</div>
-                  </div>
-                </Link>
                 {/* <div className="nav-optn">
                                 <CurrencyRupeeIcon /> Charges
                             </div> */}

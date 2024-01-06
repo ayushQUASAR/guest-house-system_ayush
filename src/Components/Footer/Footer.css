@@ -15,6 +15,10 @@ h1, h2, p {
   font-family: 'ChakraColor', sans-serif;
 }
 
+.socialflex a i {
+  color: white;
+}
+
 
 .flex-container167 {
   /* margin-top: 200px; */

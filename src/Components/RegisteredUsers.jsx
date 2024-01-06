@@ -1,4 +1,3 @@
-
 // import React, { useState, useEffect } from 'react';
 // import "../style/registered.css"
 // import SideBar from "./SideBar"
@@ -19,10 +18,7 @@
 //   const viewUserProfile = (user) => {
 //     setProfileview(user);
 
-
-
 //   };
-
 
 //   useEffect(() => {
 //     fetch(import.meta.env.VITE_API_URL + "/users/approved/registered")
@@ -35,8 +31,6 @@
 //     setUsers([...users, newUser]);
 //     setNewUser({ name: '', contactNumber: '', email: '' });
 //   };
-
-
 
 //   return (
 //     <div className='registered-container my-5'>
@@ -53,7 +47,7 @@
 
 //           <div class="d-flex flex-row bd-highlight mb-2">
 //             <div class="p-2 bd-highlight">
-//               <SideBar view={view} /> 
+//               <SideBar view={view} />
 //             </div>
 //             <div class="p-2 bd-highlight" className="table2">
 //               <h1 className="bookingTable">BOOKINGS HISTORY</h1>
@@ -128,23 +122,23 @@
 //       </div>
 //     </div>
 //   );
-// }; 
+// };
 
-import React, { useState, useEffect } from 'react';
-import '../style/registered.css';
-import SideBar from './SideBar';
-import CancelIcon from '@mui/icons-material/Cancel';
-import Table from './Table';
-import ConfirmationPopup from './PopUp/ConfirmationPopup.jsx'; // Assuming you have renamed your component to ConfirmationPopup
+import React, { useState, useEffect } from "react";
+import "../style/registered.css";
+import SideBar from "./SideBar";
+import CancelIcon from "@mui/icons-material/Cancel";
+import Table from "./Table";
+import ConfirmationPopup from "./PopUp/ConfirmationPopup.jsx"; // Assuming you have renamed your component to ConfirmationPopup
 
 export default function RegisteredUsers() {
   const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState('');
-  const [filter, setFilter] = useState('');
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("");
   const [newUser, setNewUser] = useState({
-    name: '',
-    contactNumber: '',
-    email: '',
+    name: "",
+    contactNumber: "",
+    email: "",
   });
   const [view, setProfileview] = useState(null);
   const [isConfirmationPopupOpen, setConfirmationPopup] = useState(false);
@@ -152,49 +146,49 @@ export default function RegisteredUsers() {
     setProfileview(user);
   };
   let namee;
-  
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + '/users/approved/registered')
+    fetch(import.meta.env.VITE_API_URL + "/users/approved/registered")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
-        console.log('regusers', data);
+        console.log("regusers", data);
       })
       .catch((err) => console.error(err));
   }, []);
 
   const addNewUser = () => {
     setUsers([...users, newUser]);
-    setNewUser({ name: '', contactNumber: '', email: '' });
+    setNewUser({ name: "", contactNumber: "", email: "" });
   };
 
   const deleteUser = (user) => {
-    
     const userId = user._id;
     console.log(userId);
-    const confirm = window.confirm(`Are you sure you want to delete ${user.name}?`);
+    const confirm = window.confirm(
+      `Are you sure you want to delete ${user.name}?`
+    );
 
     if (confirm === true) {
-     // Make a DELETE request to the API endpoint
-     fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
-       method: 'DELETE',
-       headers: {
-         'Content-Type': 'application/json',
-       },
-     })
-       .then((res) => {
-         if (res.ok) {
-           // If the deletion is successful, update the state or perform any necessary actions
-           console.log('User deleted successfully');
-           // Update the state or perform any necessary actions here
-         } else {
-           console.error('Failed to delete user');
-           // Handle the error or show a message to the user
-         }
-       })
-       .catch((err) => console.error(err));
-      }
+      // Make a DELETE request to the API endpoint
+      fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          if (res.ok) {
+            // If the deletion is successful, update the state or perform any necessary actions
+            console.log("User deleted successfully");
+            // Update the state or perform any necessary actions here
+          } else {
+            console.error("Failed to delete user");
+            // Handle the error or show a message to the user
+          }
+        })
+        .catch((err) => console.error(err));
+    }
   };
 
   return (
@@ -202,11 +196,21 @@ export default function RegisteredUsers() {
     <div>
       {view && (
         <div className="profile-popup">
-          <div className="profile-close-btn" onClick={() => setProfileview(false)}>
-            <CancelIcon style={{ fontSize: 50, color: '#275cb6' }} />
+          <div
+            className="profile-close-btn"
+            onClick={() => setProfileview(false)}
+          >
+            <CancelIcon style={{ fontSize: 50, color: "#275cb6" }} />
           </div>
           <div className="card rounded-4 w-100">
-            <div className="card-header rounded-4" style={{ backgroundColor: '#0275d8', color: 'white', border: '5px solid #0275d8' }}>
+            <div
+              className="card-header rounded-4"
+              style={{
+                backgroundColor: "#0275d8",
+                color: "white",
+                border: "5px solid #0275d8",
+              }}
+            >
               <h1>USER PROFILE</h1>
             </div>
             <div className="card-body">
@@ -226,12 +230,17 @@ export default function RegisteredUsers() {
         </div>
       )}
 
-      <div className="card rounded-4 w-100" style={{ backgroundColor: '#4c74b9', color: 'white' }}>
+      <div
+        className="card rounded-4 w-100"
+        style={{ backgroundColor: "#4c74b9", color: "white" }}
+      >
         <div className="card-header mx-4">
-          <h3 style={{ fontWeight: '700' }} className="car">
+          <h3 style={{ fontWeight: "700" }} className="car">
             REGISTERED USERS
           </h3>
-          <p style={{ color: 'white' }}>Total number of Registration Users: {users.length}</p>
+          <p style={{ color: "white" }}>
+            Total number of Registration Users: {users.length}
+          </p>
         </div>
         <div className="card-body text-black bg-white rounded-bottom-4">
           <div className="search-bar">
@@ -242,7 +251,11 @@ export default function RegisteredUsers() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button type="button" className="rounded-2 border-primary mx-3" style={{ backgroundColor: '#0275d8', color: 'white' }}>
+            <button
+              type="button"
+              className="rounded-2 border-primary mx-3"
+              style={{ backgroundColor: "#0275d8", color: "white" }}
+            >
               Search
             </button>
             <select
@@ -280,7 +293,7 @@ export default function RegisteredUsers() {
                     <td>
                       <button
                         className="rounded-2 border-primary mx-3"
-                        style={{ backgroundColor: '#0275d8', color: 'white' }}
+                        style={{ backgroundColor: "#0275d8", color: "white" }}
                         onClick={() => viewUserProfile(user.user)}
                       >
                         View Profile
@@ -290,29 +303,28 @@ export default function RegisteredUsers() {
                     <td>
                       <button
                         className="rounded-2 border-danger mx-3"
-                        style={{ backgroundColor: 'red', color: 'white' }}
+                        style={{ backgroundColor: "red", color: "white" }}
                         onClick={() => deleteUser(user.user)}
                       >
                         Delete
                       </button>
                     </td>
-
                   </tr>
                 ))}
             </tbody>
           </table>
 
-          <button className="rounded-2 border-primary" style={{ backgroundColor: '#0275d8', color: 'white' }} onClick={addNewUser}>
+          {/* <button className="rounded-2 border-primary" style={{ backgroundColor: '#0275d8', color: 'white' }} onClick={addNewUser}>
             Add New User
-          </button>
+          </button> */}
 
           {isConfirmationPopupOpen && (
-        <ConfirmationPopup
-          confirmationP={setConfirmationPopup}
-          messageHead="Do you want to delete this user ?"
-          username=""
-        />
-      )}
+            <ConfirmationPopup
+              confirmationP={setConfirmationPopup}
+              messageHead="Do you want to delete this user ?"
+              username=""
+            />
+          )}
         </div>
       </div>
     </div>

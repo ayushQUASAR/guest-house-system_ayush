@@ -111,8 +111,9 @@ const Login = () => {
                 <img src={Logo} alt="NIT logo" />
               </div>
               {/* <div>NIT Jalandhar </div> */}
-              <div style={{color: 'White', fontSize: '70px',}}>NIT Jalandhar </div>
-              <div style={{color: 'White', fontSize: '36px',}}>Guest House Login</div>
+              <div style={{color: 'White', fontSize: '36px',}}>Welcome To NITJ</div>
+              <div style={{color: 'White', fontSize: '36px',}}>Guest House
+              </div>
 
             </div>
             <div className="lright-box">

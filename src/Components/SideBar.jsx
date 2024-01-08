@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import Table from './Table'
+import Table from './Table';
 // import Image from "./p.jpg"
 const SideBar = ({ view }) => {
   const [userdata,setUserData]=useState(null)
@@ -44,6 +44,7 @@ const SideBar = ({ view }) => {
 
   return (
     <div className="card rounded-4 w-100" >
+
       <div className="card-header rounded-4" style={{ backgroundColor: '#0275d8', color: 'white', border: '5px solid #0275d8' }}>
         <h1>USER PROFILE</h1>
       </div>
@@ -80,7 +81,7 @@ const SideBar = ({ view }) => {
           <tbody>
             <tr>
               <th scope="row"> Reference Name</th>
-              <td>{userdata.referenceDetails.refTo.name}</td>
+              {/* <td>{userdata.referenceDetails.refInfo}</td> */}
             </tr>
 
 
@@ -91,7 +92,7 @@ const SideBar = ({ view }) => {
             </tr> */}
             <tr>
               <th scope="row">Contact</th>
-              <td>{userdata.referenceDetails.refTo.phone}</td>
+              {/* <td>{userdata.referenceDetails.refTo.phone}</td> */}
             </tr>
           </tbody>
         </table></> }</div>
@@ -105,7 +106,7 @@ const SideBar = ({ view }) => {
 
           </div>
           <div class="p-2 bd-highlight" className="table2">
-            <h1 className="bookingTable">BOOKINGS HISTORY</h1>
+            <h1 className="bookingTable" style = {{color: 'black'}}>BOOKINGS HISTORY</h1>
             <div className="t">
               <Table userId={view._id}/>
             </div>

@@ -2,25 +2,25 @@ import React from 'react';
 import '../../style/userprofile.css';
 import {useUserContext} from "../ContextHooks/UserContext";
 import {useState, useEffect} from 'react'; 
-const PersonalDetail = ({user}) => {
+const PersonalDetail = () => {
     const [profilePhoto, setProfilePhoto] = useState('./p.jpg');
     const [newPhoto, setNewPhoto] = useState(null); 
-//     const [user, setUserDetails] = useState([]);
-//      const { userId } = useUserContext();
+    const [user, setUserDetails] = useState([]);
+     const { userId } = useUserContext();
 
-//      console.log(userId);
+     console.log(userId);
 
 //   // on initial render, Person Booking Details get saved
-//   useEffect(() => {
-//     fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
-//       .then((res) => res.json())
-//       .then((data) =>{
-//         console.log(data);
-//         setUserDetails(data)
-//       }
-//       )
-//       .catch((err) => console.log(err.message));
-//   }, []);
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
+      .then((res) => res.json())
+      .then((data) =>{
+        console.log(data);
+        setUserDetails(data);
+      }
+      )
+      .catch((err) => console.log(err.message));
+  }, []);
 
      
     const[saveButton, setSaveButton] = useState(false);
@@ -99,11 +99,11 @@ const PersonalDetail = ({user}) => {
                     </div>
                     <div className = 'row mx-4' style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Contact Number</div>
-                        <div className='col-6'>{user?.userDetails?.phone}</div>
+                        <div className='col-6'>{user?.userDetails?.phone?user?.userDetails?.phone:"XXXXXXXXXX"}</div>
                     </div>
                     <div className = 'row mx-4' style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Address</div>
-                        <div className='col-6'>{user?.userDetails?.address}</div>
+                        <div className='col-6'>{user?.userDetails?.address?user?.userDetails?.address:"No address"}</div>
                     </div>
                     <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Govt approved proof attached</div>
@@ -114,7 +114,7 @@ const PersonalDetail = ({user}) => {
                             <div className="dialog">
                             <div className="dialog-content">
                                 <button className="close-icon" onClick={toggleDialog}>&#10005;</button>
-                                <img className="popup-image" src='./Logo_of_NIT_Jalandhar.png' alt="Popup Image" />
+                                <img className="popup-image" src={user?.userDetails?.idProof?.data} alt="Popup Image" />
                             </div>
                             </div>
                         )}

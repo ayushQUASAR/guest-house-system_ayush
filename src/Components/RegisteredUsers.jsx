@@ -218,12 +218,12 @@ export default function RegisteredUsers() {
                 <div className="p-2 bd-highlight">
                   <SideBar view={view} />
                 </div>
-                <div className="p-2 bd-highlight table2">
-                  <h1 className="bookingTable">BOOKINGS HISTORY</h1>
+                {/* <div className="p-2 bd-highlight table2">
+                  <h1 className="bookingTable" >BOOKINGS HISTORY</h1>
                   <div className="t">
                     <Table />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

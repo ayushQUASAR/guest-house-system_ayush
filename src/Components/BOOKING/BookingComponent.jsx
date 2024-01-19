@@ -89,7 +89,7 @@ const BookingComponent = (pram) => {
         status: 'accept',
         guestHouseAllotted: selectedGuestHouse,
         roomsAllotted: selectedRooms,
-        paymentDeadline: selectedDeadlineValue
+        paymentDeadline: 24
       };
 
 
@@ -194,9 +194,9 @@ const BookingComponent = (pram) => {
 
         <div className='bookButtons'>
           <div className="book" style={{ cursor: "pointer" }} onClick={handleApproval}>Book Now</div>
-          <div className="dropdown">
+          {/* <div className="dropdown"> */}
      
-            <select style={{ position: 'relative', right: "5rem", bottom: "6px" }} onChange={handleChange}>
+            {/* <select style={{ position: 'relative', right: "5rem", bottom: "6px" }} onChange={handleChange}>
               <option value="24">
                 24 hrs
               </option>
@@ -208,8 +208,8 @@ const BookingComponent = (pram) => {
               </option>
 
 
-            </select>
-          </div>
+            </select> */}
+          {/* </div> */}
         </div>
         {popup && <Popup setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
         {/* {isPopupOpen && <Popup isOpen={isPopupOpen} onClose={closePopup} messageHead={'Booked Successfully'} para1={''} para2={'Confirmation mail has been sent to User.'} />} */}

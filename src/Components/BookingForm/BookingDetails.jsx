@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./BookingDetails.css";
 import { NavLink } from "react-router-dom";
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { FormContext } from "../ContextHooks/FormContext";
-
 
 const inputStyle = {
   backgroundColor: "#f8f9fa",
@@ -11,12 +10,18 @@ const inputStyle = {
   fontWeight: 500,
 };
 
-const guestHouseOptions = ["Main Guest House", "SAC Guest House", "Mega Guest House"];
-const maxRooms = [10, 8, 12];
+const guestHouseOptions = [
+  "Main Guest House",
+  "SAC Guest House",
+  "Mega Guest House",
+];
+const maxRooms = [10, 8, 10];
 
 const BookingDetails = ({ setDateDetails }) => {
   // Get today's date in India's time zone.
-  const todayInIndia = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+  const todayInIndia = new Date().toLocaleString("en-US", {
+    timeZone: "Asia/Kolkata",
+  });
   const todayDate = new Date(todayInIndia);
   const todayYear = todayDate.getFullYear();
   const todayMonth = String(todayDate.getMonth() + 1).padStart(2, "0");
@@ -25,9 +30,7 @@ const BookingDetails = ({ setDateDetails }) => {
 
   const [checkinDate, setCheckinDate] = useState(todayDateString);
 
-  const {updateFormData} = useContext(FormContext);
-
-
+  const { updateFormData } = useContext(FormContext);
 
   // Calculate tomorrow's date based on the selected check-in date.
   const tomorrowDate = new Date(todayDate);
@@ -37,30 +40,46 @@ const BookingDetails = ({ setDateDetails }) => {
   const tomorrowDay = String(tomorrowDate.getDate()).padStart(2, "0");
   const tomorrowDateString = `${tomorrowYear}-${tomorrowMonth}-${tomorrowDay}`;
 
+  //adding limitation to the checkin and checkout date
+  const maxAllowedCheckInDate = new Date(todayDate);
+  maxAllowedCheckInDate.setDate(maxAllowedCheckInDate.getDate() + 21);
+  const maxAllowedCheckoutDate = new Date(checkinDate);
+  maxAllowedCheckoutDate.setDate(maxAllowedCheckoutDate.getDate() + 3);
+
+
   const [checkoutDate, setCheckoutDate] = useState(tomorrowDateString);
 
   const [durationOfStay, setDurationOfStay] = useState(1); // Default to 1 day.
-  const [selectedGuestHouse, setSelectedGuestHouse] = useState("Main Guest House");
+  const [selectedGuestHouse, setSelectedGuestHouse] =
+    useState("Main Guest House");
   const [roomsSelected, setRoomsSelected] = useState(1);
 
   useEffect(() => {
     // Calculate the duration of stay when either check-in or check-out date changes.
-    const duration = (new Date(checkoutDate).getTime() - new Date(checkinDate).getTime()) / (1000 * 3600 * 24);
+    const duration =
+      (new Date(checkoutDate).getTime() - new Date(checkinDate).getTime()) /
+      (1000 * 3600 * 24);
     setDurationOfStay(duration);
     setDateDetails({ startDate: checkinDate, endDate: checkoutDate });
 
     updateFormData("arrivalDate", checkinDate);
     updateFormData("departureDate", checkoutDate);
-    updateFormData("roomsSelected" , roomsSelected);
-    const finalGuestHouse = selectedGuestHouse === "Main Guest House" ? 1 : selectedGuestHouse === "SAC Guest House" ? 2 : 3;
+    updateFormData("roomsSelected", roomsSelected);
+    const finalGuestHouse =
+      selectedGuestHouse === "Main Guest House"
+        ? 1
+        : selectedGuestHouse === "SAC Guest House"
+        ? 2
+        : 3;
     updateFormData("guestHouseSelected", finalGuestHouse);
-
   }, [checkinDate, checkoutDate, selectedGuestHouse, roomsSelected]);
 
   const handleCheckinChange = (e) => {
     const selectedDate = e.target.value;
     if (selectedDate < todayDateString) {
       alert("Check-in date cannot be earlier than today.");
+    } else if(selectedDate > maxAllowedCheckInDate){
+      alert("Check-in date cannot be later than 21 days.");
     } else {
       setCheckinDate(selectedDate);
 
@@ -78,7 +97,11 @@ const BookingDetails = ({ setDateDetails }) => {
   const handleCheckoutChange = (e) => {
     const selectedDate = e.target.value;
     if (selectedDate <= checkinDate) {
-      alert("Check-out date cannot be equal to or earlier than the check-in date.");
+      alert(
+        "Check-out date cannot be equal to or earlier than the check-in date."
+      );
+    } else if(selectedDate > maxAllowedCheckoutDate){
+      alert("Maximum stay can be 3 days only !")
     } else {
       setCheckoutDate(selectedDate);
     }
@@ -91,14 +114,23 @@ const BookingDetails = ({ setDateDetails }) => {
   };
 
   // Generate room options based on the selected guest house's maximum limit
-  const roomOptions = Array.from({ length: maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)] }, (_, i) => i + 1);
+  const roomOptions = Array.from(
+    { length: maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)] },
+    (_, i) => i + 1
+  );
 
   const handleRoomsChange = (e) => {
     const selectedRooms = parseInt(e.target.value, 10);
     if (selectedRooms < 1) {
       alert("Minimum 1 room should be selected.");
-    } else if (selectedRooms > maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)]) {
-      alert(`Maximum ${maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)]} rooms are allowed for this guest house.`);
+    } else if (
+      selectedRooms > maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)]
+    ) {
+      alert(
+        `Maximum ${
+          maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)]
+        } rooms are allowed for this guest house.`
+      );
     } else {
       setRoomsSelected(selectedRooms);
     }
@@ -150,6 +182,7 @@ const BookingDetails = ({ setDateDetails }) => {
           value={checkinDate}
           onChange={handleCheckinChange}
           min={todayDateString} // Set the minimum date to today
+          max={maxAllowedCheckInDate.toISOString().split('T')[0]}
         />
       </div>
       <div className="form-group">
@@ -165,6 +198,7 @@ const BookingDetails = ({ setDateDetails }) => {
           value={checkoutDate}
           onChange={handleCheckoutChange}
           min={checkinDate} // Set the minimum date to the check-in date
+          max={maxAllowedCheckoutDate.toISOString().split("T")[0]}
         />
       </div>
       <div className="form-group">
@@ -172,40 +206,42 @@ const BookingDetails = ({ setDateDetails }) => {
           DURATION OF STAY
         </label>
         <input
-  type="text"
-  className="form-control inputs"
-  style={inputStyle}
-  id="stayduration"
-  placeholder="Duration of Stay"
-  value={`${durationOfStay} ${durationOfStay === 1 ? 'day' : 'days'}`}
-  readOnly
-/>
-
+          type="text"
+          className="form-control inputs"
+          style={inputStyle}
+          id="stayduration"
+          placeholder="Duration of Stay"
+          value={`${durationOfStay} ${durationOfStay === 1 ? "day" : "days"}`}
+          readOnly
+        />
       </div>
       <div className="form-group">
         <label className="booking-label" htmlFor="rooms">
           NUMBER OF ROOMS
         </label>
         <select
-            className="form-control inputs"
-            style={inputStyle}
-            id="rooms"
-            value={roomsSelected}
-            onChange={handleRoomsChange}
-          >
-            {roomOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button type="button" className="btn btn-sm changeSelection" onClick={handleReset}>
-          CLEAR
-        </button>
+          className="form-control inputs"
+          style={inputStyle}
+          id="rooms"
+          value={roomsSelected}
+          onChange={handleRoomsChange}
+        >
+          {roomOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
-    );
-}
+      <button
+        type="button"
+        className="btn btn-sm changeSelection"
+        onClick={handleReset}
+      >
+        CLEAR
+      </button>
+    </div>
+  );
+};
 
 export default BookingDetails;
-

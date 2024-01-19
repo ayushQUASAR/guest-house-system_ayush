@@ -18,6 +18,7 @@ export default function Regrightside() {
   const [Firstname, setFirstname] = useState("");
   const [Lastname, setLastname] = useState("");
   const [Phnnumber, setPhnnumber] = useState("");
+  const [Branch, setBranch] = useState("");
   const [Address, setAddress] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -29,9 +30,7 @@ export default function Regrightside() {
   const [refphoneNumber, setRefphoneNumber] = useState("");
   const [idProof, setIdProof] = useState(null);
   // Alumni
-  console.log(contentType);
-
-  const [branch, setBranch] = useState("");
+  console.log(contentType); 
   const [batch, setBatch] = useState("");
   const [registerOptn, setRegisteroptn] = useState(null);
   const [registeractiveclass, setRegisterclass] = useState(false);
@@ -370,6 +369,30 @@ export default function Regrightside() {
                       required
                       type="email"
                       value={Email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="form-control"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+                <div className="row input">
+                  <div className="col-12">
+                    <input
+                      required
+                      type="number"
+                      value={PhoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      className="form-control"
+                      placeholder="Phone number"
+                    />
+                  </div>
+                </div>
+                <div className="row input">
+                  <div className="col-12">
+                    <input
+                      required
+                      type="text"
+                      value={branch}
                       onChange={(e) => setEmail(e.target.value)}
                       className="form-control"
                       placeholder="Email"

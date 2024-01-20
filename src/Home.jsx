@@ -15,7 +15,7 @@ import Calendar from "./Components/CalendarHome/Calendar";
 function Login() {
   const houses = [
     {
-      name: "Main Guest House ",
+      name: "Guest House ",
       roomsCount: 10,
       loaction: "blah blah",
       facilities: [
@@ -42,7 +42,7 @@ function Login() {
     },
     {
       name: "Mega Guest House",
-      roomsCount: 12,
+      roomsCount: 10,
       loaction: "blah blah",
       facilities: [
         "24 hours running hot and cold water",
@@ -158,7 +158,7 @@ function Login() {
       <div className="backgroundImage" >
         <div className="description">
           <h1 id="Welcome">
-            Dr. B R Ambedkar National Institute of Technology Jalandhar <br /> Guest Room Booking System
+            Dr. B R Ambedkar<br /> National Institute of Technology Jalandhar <br /> Guest Room Booking System
           </h1>
         </div>
       

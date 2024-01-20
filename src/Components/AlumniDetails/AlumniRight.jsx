@@ -2,8 +2,9 @@ import { useState } from 'react';
 import '../../style/facultyalumni.css'
 import '../../style/MainContainer.css'
 import Popup from '../PopUp/Popup';
+import Dropdown from '../Dropdown/Dropdown';
 export default function AlumniRight({prop}) {
-  const {reffirstName,reflastName, refphoneNumber,batch,branch,jobProfile, setReffirstName, setReflastName, setRefphoneNumber, setBatch, setBranch, setJobProfile,messageHead_m,para1_m,para2_m,setPopup,popup  } = prop;
+  const {reffirstName,reflastName, refphoneNumber,batch,Branch,jobProfile, setReffirstName, setReflastName, setRefphoneNumber, setBatch, setBranch, setJobProfile,messageHead_m,para1_m,para2_m,setPopup,popup  } = prop;
 
   
 
@@ -50,16 +51,19 @@ export default function AlumniRight({prop}) {
             />
           </div>
         </div>
-        <div className="row input">
-          <div className="col-md-6 col-sm-12">
-            <input
+        <div className="row input"> 
+         <div className="col-md-6 col-sm-12">
+            {/* <input
               type="text"
               className="form-control mb-3"
               placeholder="Branch"
               value={branch}
               onChange={(e) => handleInputChange(e, setBranch)}
-            />
-          </div>
+            /> */}
+                 <Dropdown names={['CSE','ICE','EE','IPE','TT','MECH','Data Science','BT','ECE','CIVIL','IT','MSC','MBA']}placeholder={'Branch'} Branch={Branch} setBranch={setBranch}/>
+          </div></div>
+        <div className="row input">
+        
           <div className="col-md-6 col-sm-12">
             <input
               type="text"

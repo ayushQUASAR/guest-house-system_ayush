@@ -33,9 +33,9 @@ const HomeHeader = () => {
       <div>
         <div className="h-nav">
           <div className="nav-wrapper">
-            <div className="colg-name">
-            Dr. B R Ambedkar National Institute of Technology <br /> Jalandhar 
-       
+            <div className="colg-name ">
+              Dr. B R Ambedkar National Institute <br />of Technology Jalandhar
+
             </div>
             <div className="h-navlogo">
               <img src={logo} alt="NIT_logo" />
@@ -48,24 +48,24 @@ const HomeHeader = () => {
                     <div className="optn-name">Home</div>{" "}
                   </div>
                 </Link> */}
-                <Link to="AboutUs" smooth={true} duration={50} style = {{cursor : 'pointer'}}>
+                <Link to="AboutUs" smooth={true} duration={50} style={{ cursor: 'pointer' }}>
                   <div className="nav-optn">
                     <HelpCenterIcon /> <div className="optn-name">About</div>
                   </div>
                 </Link>
 
-                <Link to="guidelinesHeader" smooth={true} duration={50}style = {{cursor : 'pointer'}}>
+                <Link to="guidelinesHeader" smooth={true} duration={50} style={{ cursor: 'pointer' }}>
                   <div className="nav-optn">
                     <AlignHorizontalLeftOutlinedIcon />
                     <div className="optn-name"> Guidelines</div>
                   </div>
                 </Link>
-                <Link to = "availabilityHeader" smooth={true} duration={75} style = {{cursor : 'pointer'}}>
-                <div className="nav-optn">
-                  <LocalDiningRoundedIcon />Room Availability
-                </div>
+                <Link to="availabilityHeader" smooth={true} duration={75} style={{ cursor: 'pointer' }}>
+                  <div className="nav-optn">
+                    <LocalDiningRoundedIcon /><div className="optn-name"> Room Availability</div>
+                  </div>
                 </Link>
-                <Link to="contactHeader" smooth={true} duration={100}style = {{cursor : 'pointer'}}>
+                <Link to="contactHeader" smooth={true} duration={100} style={{ cursor: 'pointer' }}>
                   <div className="nav-optn">
                     <ContactlessIcon />
 
@@ -101,13 +101,13 @@ const HomeHeader = () => {
                 )} */}
                 {!isLogged && (
                   <NavLink to="/login">
-                    <div className="nav-optn">Login</div>
+                    <div className="nav-optn"><div className="optn-name"> Login</div></div>
                   </NavLink>
                 )}
 
                 {isLogged && isAdmin && (
                   <NavLink to="/login">
-                    <div className="nav-optn">Dashboard</div>
+                    <div className="nav-optn"><div className="optn-name"> Dashboard</div></div>
                   </NavLink>
                 )}
 

@@ -17,7 +17,7 @@ function Login() {
     {
       name: "Guest House ",
       roomsCount: 10,
-      loaction: "blah blah",
+      location: "blah blah",
       facilities: [
         "24 hours running hot and cold water",
         "Free Wi-Fi",
@@ -30,7 +30,7 @@ function Login() {
     {
       name: "SAC Guest House",
       roomsCount: 8,
-      loaction: "blah blah",
+      location: "blah blah",
       facilities: [
         "24 hours running hot and cold water",
         "Free Wi-Fi",
@@ -43,7 +43,7 @@ function Login() {
     {
       name: "Mega Guest House",
       roomsCount: 10,
-      loaction: "blah blah",
+      location: "blah blah",
       facilities: [
         "24 hours running hot and cold water",
         "Free Wi-Fi",
@@ -73,8 +73,8 @@ function Login() {
   };
 
   return (
-    <>
-      <HomeHeader />
+    
+     <div> <HomeHeader />
       {/* <nav className="stickyNav">
         <a href="https://www.nitj.ac.in/" target="_blank">
           <img
@@ -291,7 +291,7 @@ function Login() {
         <h1 id="contactHeader"><strong>Contact</strong></h1>
       </div>
       <Footer />
-    </>
+      </div>
   );
 }
 

@@ -161,11 +161,14 @@ function Login() {
             Dr. B R Ambedkar<br /> National Institute of Technology Jalandhar <br /> Guest Room Booking System
           </h1>
         </div>
-      
+
       </div>
 
 
 
+
+      {/* <div className="cardsSection" id="Facility">
+        <div id="hostelCards"> */}
       <div className="cardsSection" id="Facility">
         <div id="hostelCards">
           {houses.map((house, index) => (
@@ -173,7 +176,7 @@ function Login() {
               className={`hostelCard ${showBackface[index] ? "rotate" : ""}`}
               key={index}
               onClick={() => rotateCard(index)}
-            >
+             >
               {!showBackface[index] && (
                 <React.Fragment>
                   <img
@@ -202,9 +205,12 @@ function Login() {
           ))}
         </div>
       </div>
+
+
+
       <div className="aboutSection" id="AboutUs">
         <h1 className="aboutUs"><strong>About Us</strong></h1>
-        <p className="aboutUsPara" style ={{textAlign: 'justify'}}>
+        <p className="aboutUsPara" style={{ textAlign: 'justify' }}>
           NIT Jalandhar strongly believes in the old Indian adage "Athithi Devo
           Bhava". We give our visitors the best facilities be it in terms of
           service, ambience or food. It is common practice in Indian institutes
@@ -283,10 +289,10 @@ function Login() {
         </div>
       </div>
 
-      <div className="availabilitySection">
+      {/* <div className="availabilitySection">
         <h1 id="availabilityHeader"><strong>Room Availability</strong></h1>
         <Calendar />
-      </div>
+      </div> */}
       <div className="contactUsDiv">
         <h1 id="contactHeader"><strong>Contact</strong></h1>
       </div>

@@ -20,6 +20,7 @@ html, body {
     background-color: rgba(185, 194, 255, 0.225);
     margin: 0; 
     color: rgb(255, 255, 255);
+    flex-wrap: wrap;
 }
 .book-now{
     transform: translate(50%,50%);
@@ -55,7 +56,7 @@ html, body {
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 1;
-    width: 30vw;
+    width: 25%;
     color: white;
     height: 40vw;
     border-radius: 10px;
@@ -349,6 +350,14 @@ li {
 @media screen and (max-width:1770px) {
     #Welcome{
         font-size: 53px;
+    }
+    
+}
+
+@media only screen and (max-width: 767px) {
+    .hostelCard{
+        width: 100%;
+        height: 400px;
     }
     
 }

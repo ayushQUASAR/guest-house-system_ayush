@@ -7,32 +7,86 @@
 .registration-optn {
   display: flex;
   justify-content: space-evenly;
+  transition: all 0.5s ;
 
   margin: 25px 20px;
   border-radius: 10px;
-  box-shadow: 6px 8px 10px rgb(98, 180, 253),-4px -5px 10px rgb(155, 208, 255);
+  /* box-shadow: 6px 8px 10px rgb(98, 180, 253),-4px -5px 10px rgb(155, 208, 255); */
   padding: 10px 20px;
+  position: absolute;
+  bottom: 40%;
   align-items: center;
 }
-.college-official-optn{
-  width: 200px;
-  height: 70px;
-  line-height: 60px;
+.register-optn-wrapper {
+  
+  width: 100%;
+    height: 80vh;
+    margin:  auto;
+    padding: 40px 0;
+    position: relative;
+
+}
+.register-optn-box-active{
+  outline: 2px solid blue;
+
+}
+.college-official-optn:focus{
+  outline: 3px solid rgb(4, 82, 150);
+box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
+}
+.form-next-btn{
+  position: absolute;
+  left: 40%;
+  justify-content: center;
+  bottom: 10%;
+  outline: 2px solid blue;
+  align-items: center;
+  display: flex;
+  height: 80px;
+  width: 80px;
+  box-shadow: 2px 3px 10px rgb(174, 213, 247),-2px -3px 10px rgb(136, 196, 236);
+  border-radius: 50%;
+}
+.college-official-form-wrapper{
+  position: absolute;
+  transition: right 0.8s;
+  margin: auto;
+  /* top: 0; */
+  /* flex-direction: column; */
+  display: flex;
+  width: 100%;
+  align-items: center;
+  /* bottom: 0; */
+  justify-content: center;
+}
+.college-official-optn {
+  width: 130px;
+  height: 130px;
+  /* line-height: 60px; */
   padding: 5px 20px;
-  border-radius: 10px;
-  background-color: #4393ee;
+  margin: 5px 10px;
+  border: 0;
+  outline: 2px solid #007bff;
   font-size: 1.2rem;
-  color: white;
+  color: #007bff;
   font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   letter-spacing: 0.104rem;
   text-align: center;
-  
 }
 .centered-box {
   border-radius: 10px;
   padding: 50px;
   width: 100%;
+  
   box-shadow: 2px 2px 2px 2px rgb(128, 125, 125);
+}
+.centered-box-row{
+  min-height: 85vh;
 }
 .nav-tohome {
   color: #007bff;
@@ -62,7 +116,9 @@
 
 .reg-rightside {
   overflow-y: scroll;
-  max-height: 80vh;
+  overflow-x: hidden;
+  height: 100%;
+  position: relative;
 }
 
 .btnDefault {
@@ -96,7 +152,7 @@
   /* border: 2px solid rgb(12, 12, 12); */
   border-radius: 25px 100px 25px 100px;
 }
-.registerclass{
+.registerclass {
   background-color: #f58c8c !important;
 }
 
@@ -202,12 +258,15 @@
 /* Form.css */
 
 .college-official-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
   border: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .form-group {
@@ -221,7 +280,8 @@
 }
 
 .college-official-form input {
-  width: 100%;
+  width: 400px;
+
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;

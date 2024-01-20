@@ -44,7 +44,7 @@ export default function FacultyRight({ prop }) {
       <div className="r">
         <h1 className="rheading">Enter Faculty Details</h1>
       </div>
-      <div>
+      <div className="row input">
         <div className="col-md-6 col-sm-12">
           <input
             type="text"

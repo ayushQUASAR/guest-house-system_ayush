@@ -10,7 +10,7 @@ export default function Main() {
   return (
     <div className="container">
       <div className="centered-box">
-        <div className="row">
+        <div className="row centered-box-row">
           <div className="col-lg-6 col-md-12 leftSide">
             <LeftSide />
           </div>

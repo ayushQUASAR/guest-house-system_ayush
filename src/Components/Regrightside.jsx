@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 import Alumni from "./AlumniDetails/AlumniRight";
 import Faculty from "./FacultyDetails/FacultyRight";
 import Student from "./StudentDetails/StudentRight";
-// import Popup from "./PopUp/Popup";
+import { Icon } from '@iconify/react';
+
+import Popup from "./PopUp/Popup";
 
 export default function Regrightside() {
   const navigate = useNavigate();
@@ -29,8 +31,13 @@ export default function Regrightside() {
   const [reflastName, setReflastName] = useState("");
   const [refphoneNumber, setRefphoneNumber] = useState("");
   const [idProof, setIdProof] = useState(null);
+  const [rightValue, setRightValue] = useState(-1300);
+  const [registerrightval,setRegisterrightval]=useState(0);
+  const [leftval,setLeft]=useState();
+ 
+
   // Alumni
-  console.log(contentType); 
+  console.log(Branch);
   const [batch, setBatch] = useState("");
   const [registerOptn, setRegisteroptn] = useState(null);
   const [registeractiveclass, setRegisterclass] = useState(false);
@@ -55,6 +62,10 @@ export default function Regrightside() {
   const [department, setDepartment] = useState("");
   const [popup, setPopup] = useState(false);
 
+
+  // const setStyle=(e)=>{
+  //  Password;
+  // }
   const handleEmailChange = (e) => {
     const inputEmail = e.target.value;
     setEmail(inputEmail);
@@ -97,6 +108,14 @@ export default function Regrightside() {
       window.alert("ONLY IMAGES AND PDF ARE ALLOWED. Please Upload again");
     }
   };
+ const regOnview=()=>{
+  setRegisterrightval((prevRightValue) => (prevRightValue === 0 ? -1300 : 0));
+
+ }
+  const onView=()=>{
+    setRightValue((prevRightValue) => (prevRightValue === 0 ? -1300 : 0));
+    setLeft(1300);
+  }
 
   const setSubmit = (e) => {
     e.preventDefault();
@@ -128,12 +147,12 @@ export default function Regrightside() {
     formData.append("RefLastName", reflastName);
     formData.append("RefPhoneNumber", refphoneNumber);
     formData.append("AlumniBatch", batch);
-    formData.append("AlumniBranch", branch);
+    formData.append("AlumniBranch", Branch);
     formData.append("ALumniJobProfile", jobProfile);
 
     // Student
     formData.append("StudentRollNumber", studrollNumber);
-    formData.append("StudentBranch", studbranch);
+    formData.append("StudentBranch", Branch);
 
     // Faculty
     formData.append("FacultyEmail", facultyemail);
@@ -193,46 +212,67 @@ export default function Regrightside() {
     <>
       <div className="reg-rightside">
         {" "}
-        <form action="/register" onSubmit={setSubmit}>
-          <div>
-            <NavLink className="nav-tohome" to="/">
+        <NavLink className="nav-tohome" to="/">
               <div className="nav-tohome">
                 <HomeRoundedIcon color="white" />
                 <div className="optn-name">Home</div>
               </div>
             </NavLink>
-            <div className="r">
+        <form action="/register" onSubmit={setSubmit}>
+          <div className="register-optn-wrapper">
+          
+            {/* <div className="r">
               <h1 className="rheading">Create an Account</h1>
-            </div>
+            </div> */}
 
-            <div className="registration-optn">
-              <div
+            <div className="registration-optn" style={{left:`${registerrightval}px`}}>
+              {/* <div
                 onClick={() => {
                   setRegisteroptn(1), setRegisterclass(true);
                 }}
-                className={`college-official-optn ${
-                  registeractiveclass && registerOptn == 1
+                className={`college-official-optn ${registeractiveclass && registerOptn == 1
                     ? "registerclass"
                     : ""
-                }`}
+                  }`}
               >
                 Student/Faculty
+              </div> */}
+
+              <div tabIndex="0" onClick={() => {
+                  setRegisteroptn(1), setRegisterclass(true);
+                }}className="college-official-optn" >
+              <Icon icon="fluent-emoji-high-contrast:teacher" width={'80'}height={'80'}color="#007bff" /> <p>Faculty</p>
+              </div>     <div tabIndex="0" onClick={() => {
+                  setRegisteroptn(2), setRegisterclass(true);
+                }}className="college-official-optn" >
+               <Icon icon="ph:student-bold" width={'80'}height={'80'}color="#007bff" /> <p>Student</p>
+              </div>  
+             
+                <div tabIndex="0" onClick={() => {
+                  setRegisteroptn(3), setRegisterclass(true);
+                }} className="college-official-optn">
+                <Icon icon="iconamoon:profile" width={'80'}height={'80'} color="#007bff" />  <p>Others</p>
               </div>
+              
+
+{/*                     
               <div
                 onClick={() => {
                   setRegisteroptn(2), setRegisterclass(true);
                 }}
-                className={`college-official-optn ${
-                  registeractiveclass && registerOptn == 2
+                className={`college-official-optn ${registeractiveclass && registerOptn == 2
                     ? "registerclass"
                     : ""
-                }`}
+                  }`}
               >
                 Others
-              </div>
+              </div> */}
             </div>
+          {  registerOptn&&<div onClick={()=>{onView(),regOnview()}} className="form-next-btn" style={{left:`${leftval}px `}}>
+              <Icon width="30"icon="material-symbols:arrow-forward-ios-rounded" color="blue" />
+              </div>}
             {registerOptn == 1 ? (
-              <div>
+              <div className="college-official-form-wrapper"style={{left: `${rightValue}px `}}>
                 <div className="college-official-form">
                   <div className="form-group">
                     <label>Email:</label>
@@ -304,9 +344,96 @@ export default function Regrightside() {
                   {/* {popup &&     <Popup  setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>} */}
                 </div>
               </div>
-            ) : registerOptn == 2 ? (
-              <div>
-                <div className="row input">
+            ): registerOptn == 2 ? (
+              <div className="college-official-form-wrapper"style={{left: `${rightValue}px `}}>
+                <div className="college-official-form">
+                  <div className="form-group">
+                    <label>Email:</label>
+                    <input
+                      required
+                      type="text"
+                      value={Email}
+                      onChange={handleEmailChange}
+                      placeholder="example@nitj.ac.in"
+                      className="college-official-email"
+                    />
+                    {msgerror !== null && (
+                      <p className="error-message">{msgerror}</p>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <label>Firstname:</label>
+                    <input
+                      required
+                      type="text"
+                      value={Firstname}
+                      onChange={handleUsernameChange}
+                      className="college-official-username"
+                    />
+                  </div>{" "}
+                  <div className="form-group">
+                    <label>Lastname:</label>
+                    <input
+                      required
+                      type="text"
+                      value={Lastname}
+                      onChange={(e) => {
+                        setLastname(e.target.value);
+                      }}
+                      className="college-official-username"
+                    />
+                  </div>   
+                  {/* <div className="form-group"> */}
+                    {/* <label>Branch</label> */}
+                    {/* <input
+                      required
+                      type="text"
+                      value={Lastname}
+                      onChange={(e) => {
+                        setLastname(e.target.value);
+                      }}
+                      className="college-official-username"
+                    /> */}
+                
+                  {/* </div> */}
+                  <div className="form-group">
+                    <label>Password:</label>
+                    <input
+                      required
+                      type="password"
+                      value={Password}
+                      onChange={handlePasswordChange}
+                      className="college-official-password"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <h2 className="govt-id-heading">Upload Govt/College ID</h2>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      required
+                      type="file"
+                      onChange={handleFileChange}
+                      className="form-control"
+                      id="fileInput"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-lg rounded"
+                      style={{ margin: 30 }}
+                    >
+                      Register
+                    </button>
+                  </div>
+                  {popup &&     <Popup  setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>}
+                </div>
+              </div>
+            ) : registerOptn == 3 ? (
+         
+              <div className="college-official-form-wrapper"style={{right: `${rightValue}px `}}>
+                   <div>  <div className="row input">
                   <div className="col-md-6 col-sm-12">
                     <input
                       required
@@ -380,7 +507,7 @@ export default function Regrightside() {
                     <input
                       required
                       type="number"
-                      value={PhoneNumber}
+                      value={Phnnumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       className="form-control"
                       placeholder="Phone number"
@@ -392,7 +519,7 @@ export default function Regrightside() {
                     <input
                       required
                       type="text"
-                      value={branch}
+                      value={Branch}
                       onChange={(e) => setEmail(e.target.value)}
                       className="form-control"
                       placeholder="Email"
@@ -453,11 +580,10 @@ export default function Regrightside() {
                       <button
                         type="button"
                         onClick={() => setContentType("student")}
-                        className={` ${
-                          contentType === "student"
+                        className={` ${contentType === "student"
                             ? clickedButtonClass
                             : defaultButtonClass
-                        } `}
+                          } `}
                       >
                         <img
                           src="student-icon.png"
@@ -481,11 +607,10 @@ export default function Regrightside() {
                       <button
                         type="button"
                         onClick={() => setContentType("faculty")}
-                        className={` ${
-                          contentType === "faculty"
+                        className={` ${contentType === "faculty"
                             ? clickedButtonClass
                             : defaultButtonClass
-                        } `}
+                          } `}
                       >
                         <img
                           src="faculty-icon.png"
@@ -509,11 +634,10 @@ export default function Regrightside() {
                       <button
                         type="button"
                         onClick={() => setContentType("alumni")}
-                        className={` ${
-                          contentType === "alumni"
+                        className={` ${contentType === "alumni"
                             ? clickedButtonClass
                             : defaultButtonClass
-                        } `}
+                          } `}
                       >
                         <img
                           src="alumni-icon.png"
@@ -525,19 +649,80 @@ export default function Regrightside() {
                     </label>
                   </div>
                 </div>
+                {contentType == "student" && (
+              <Student
+                prop={{
+                  reffirstName,
+                  reflastName,
+                  refphoneNumber,
+                  Branch,
+                  studrollNumber,
+                  setReffirstName,
+                  setReflastName,
+                  setRefphoneNumber,
+                  setBranch,
+                  setSrollNumber,
+                  messageHead_m,
+                  para1_m,
+                  para2_m,
+                  setPopup,
+                  popup,
+                }}
+              />
+            )}
+            {contentType == "faculty" && (
+              <Faculty
+                prop={{
+                  reffirstName,
+                  reflastName,
+                  refphoneNumber,
+                  department,
+                  facultyemail,
+                  setReffirstName,
+                  setReflastName,
+                  setRefphoneNumber,
+                  setFacultyemail,
+                  setDepartment,
+                  messageHead_m,
+                  para1_m,
+                  para2_m,
+                  setPopup,
+                  popup,
+                }}
+              />
+            )}
+            {contentType == "alumni" && (
+              <Alumni
+                prop={{
+                  reffirstName,
+                  reflastName,
+                  refphoneNumber,
+                  batch,
+                  Branch,
+                  jobProfile,
+                  setReffirstName,
+                  setReflastName,
+                  setRefphoneNumber,
+                  setBatch,
+                  setBranch,
+                  setJobProfile,
+                  messageHead_m,
+                  para1_m,
+                  para2_m,
+                  setPopup,
+                  popup,
+                }}
+              />
+               )}
                 <div className="row input">
                   <NavLink to="/">Already have an account? Login</NavLink>
-                  {/* <div className="col-md-6 col-sm-12">
-            <button disabled={selectedOption === null}  onClick={()=>setNext(false)} className="form-control btn btn-success rounded" style={buttonStyle}>
-              Next
-            </button>
-          </div> */}
+                
                 </div>
-              </div>
-            ) : (
+                </div></div>
+          ) : (
               <div></div>
             )}
-            {contentType == "student" && (
+            {/* {contentType == "student" && (
               <Student
                 prop={{
                   reffirstName,
@@ -601,7 +786,7 @@ export default function Regrightside() {
                   popup,
                 }}
               />
-            )}
+               )} */}
           </div>
         </form>
       </div>

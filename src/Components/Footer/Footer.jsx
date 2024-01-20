@@ -77,6 +77,7 @@ const Footer = () => {
               marginLeft: "60px",
               display: "block",
               textAlign: "center",
+              marginBottom: "20px",
             }}
           >
             Quick Links

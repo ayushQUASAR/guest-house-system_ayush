@@ -118,7 +118,7 @@ const DashInfo = () => {
       <div className="DashBigCards d-flex">
         <div className="DashCard2">
           <div className="Dashtext2">
-            <h3 >MAIN GUEST HOUSE</h3>
+            <h3 >GUEST HOUSE</h3>
             <p>Total Capacity : 10</p>
             <p>Available Rooms : {availableRooms[0]}</p>
             <p>Booked Rooms</p>
@@ -130,7 +130,7 @@ const DashInfo = () => {
         <div className="DashCard2">
           <div className="Dashtext2">
             <h3>MEGA GUEST HOUSE</h3>
-            <p>Total Capacity : 12</p>
+            <p>Total Capacity : 10</p>
             <p>Available Rooms : {availableRooms[1]}</p>
             <p>Booked Rooms</p>
             <div className="Dashcircle">

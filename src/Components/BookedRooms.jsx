@@ -16,7 +16,7 @@ function BookedRooms() {
         <h3 className="guestHouseSelectionHeading">SELECT GUEST HOUSE</h3>
         <div className="guestHouseDivs">
           <div className="noOfGuestHouse" onClick={handleClick}>
-            MAIN GUEST HOUSE
+            GUEST HOUSE
           </div>
 
           <div className="noOfGuestHouse" onClick={handleClick}>

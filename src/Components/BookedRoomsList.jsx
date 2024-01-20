@@ -24,13 +24,13 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
   // }, [guestHouse]);
 
   const noOfRooms = {
-    "MAIN GUEST HOUSE": 10,
+    "GUEST HOUSE": 10,
     "SAC GUEST HOUSE": 8,
-    "MEGA GUEST HOUSE": 12,
+    "MEGA GUEST HOUSE": 10,
   };
 
   let index = 0;
-  if (guestHouse === "MAIN GUEST HOUSE") {
+  if (guestHouse === "GUEST HOUSE") {
     index = 0;
   } else if (guestHouse === "MEGA GUEST HOUSE") {
     index = 1;

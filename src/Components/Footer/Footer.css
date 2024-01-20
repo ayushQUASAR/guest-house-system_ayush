@@ -142,6 +142,7 @@ li{
      height: auto;
     /* margin-right: auto; */
     align-self: center;
+    border-left: 0px solid white;
   }
 
   .flex-container23 {

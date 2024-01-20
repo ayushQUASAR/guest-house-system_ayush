@@ -176,7 +176,7 @@ function Login() {
               className={`hostelCard ${showBackface[index] ? "rotate" : ""}`}
               key={index}
               onClick={() => rotateCard(index)}
-             >
+            >
               {!showBackface[index] && (
                 <React.Fragment>
                   <img
@@ -210,7 +210,7 @@ function Login() {
 
       <div className="aboutSection" id="AboutUs">
         <h1 className="aboutUs"><strong>About Us</strong></h1>
-        <p className="aboutUsPara" style={{ textAlign: 'justify',justifyContent:'center' }}>
+        <p className="aboutUsPara" style={{ textAlign: 'justify', justifyContent: 'center' }}>
           NIT Jalandhar strongly believes in the old Indian adage "Athithi Devo
           Bhava". We give our visitors the best facilities be it in terms of
           service, ambience or food. It is common practice in Indian institutes
@@ -222,9 +222,11 @@ function Login() {
           rooms are air conditioned. The rooms have double beds and other
           amenities. The Guest House 1 also provides a meeting room.
         </p>
+        <h2 id="delxroom">Deluxe Room Facilities</h2>
         <div className="facilitiesHolder">
+
           <div id="content1">
-            <h2 id="delxroom">Deluxe Room Facilities</h2>
+
             <ul className="listItem">
               <li>24 hours running hot and cold water</li>
               <li>Free Wi-Fi</li>

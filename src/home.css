@@ -22,6 +22,10 @@ html, body {
     color: rgb(255, 255, 255);
     flex-wrap: wrap;
 }
+#delxroom{
+
+    text-align: center;
+}
 .book-now{
     transform: translate(50%,50%);
     color: white;

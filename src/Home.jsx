@@ -224,7 +224,7 @@ function Login() {
         </p>
         <div className="facilitiesHolder">
           <div id="content1">
-            <h2>Deluxe Room Facilities</h2>
+            <h2 id="delxroom">Deluxe Room Facilities</h2>
             <ul className="listItem">
               <li>24 hours running hot and cold water</li>
               <li>Free Wi-Fi</li>
@@ -293,7 +293,7 @@ function Login() {
         <h1 id="availabilityHeader"><strong>Room Availability</strong></h1>
         <Calendar />
       </div> */}
-      <div className="contactUsDiv">
+      <div className="contactUsDi">
         <h1 id="contactHeader"><strong>Contact</strong></h1>
       </div>
       <Footer />

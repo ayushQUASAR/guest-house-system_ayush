@@ -74,7 +74,7 @@ const Footer = () => {
         <div className="div3">
           <h4
             style={{
-              marginLeft: "60px",
+              // marginLeft: "60px",
               display: "block",
               textAlign: "center",
               marginBottom: "20px",

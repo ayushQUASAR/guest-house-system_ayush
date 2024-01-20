@@ -363,8 +363,16 @@ li {
     .aboutSection {
         padding: 15px 15px 15px 15px;
         /* word-spacing: px; */
-        font-size: 18px;
+        font-size: 15px;
         
+    }
+
+    .guidelinesDiv {
+        padding: 15px 15px 15px 15px;
+        word-spacing: 1px;
+        font-size: 15px;
+        text-align: justify;
+        background-color: rgba(185, 194, 255, 0.225);
     }
     
 }

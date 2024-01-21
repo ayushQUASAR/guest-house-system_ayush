@@ -17,7 +17,7 @@ function Login() {
     {
       name: "Guest House ",
       roomsCount: 10,
-      location: "blah blah",
+      location: "near girl hostel",
       facilities: [
         "24 hours running hot and cold water",
         "Free Wi-Fi",
@@ -30,7 +30,7 @@ function Login() {
     {
       name: "SAC Guest House",
       roomsCount: 8,
-      location: "blah blah",
+      location: "near science block",
       facilities: [
         "24 hours running hot and cold water",
         "Free Wi-Fi",
@@ -43,7 +43,7 @@ function Login() {
     {
       name: "Mega Guest House",
       roomsCount: 10,
-      location: "blah blah",
+      location: "near mega boys hostel",
       facilities: [
         "24 hours running hot and cold water",
         "Free Wi-Fi",
@@ -291,10 +291,10 @@ function Login() {
         </div>
       </div>
 
-      {/* <div className="availabilitySection">
+      <div className="availabilitySection">
         <h1 id="availabilityHeader"><strong>Room Availability</strong></h1>
         <Calendar />
-      </div> */}
+      </div>
       <div className="contactUsDi">
         <h1 id="contactHeader"><strong>Contact</strong></h1>
       </div>

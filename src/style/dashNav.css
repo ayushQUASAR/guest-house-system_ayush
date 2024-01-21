@@ -13,7 +13,7 @@
     z-index: 10001;
     position: absolute;
     left: 200px;
-    font-size: 4rem; 
+    font-size: 2rem; 
 }
 
 .bg-nav li{
@@ -71,7 +71,7 @@
 
 @media screen and (max-width:1700px) {
     .colg-name{
-        font-size: 3rem;
+        font-size: 1.5rem;
         left: 175px;
     }
 }@media screen and (max-width:1580px) {

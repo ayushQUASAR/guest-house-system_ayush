@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useUserContext } from '../ContextHooks/UserContext';
-import CancelPopUp from './CancelPopUp';
+import CancelPopUp from './CancelPopUp'; 
 const UpcomingBooking = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [bookings, setBookings] = useState([
@@ -65,15 +65,17 @@ const UpcomingBooking = () => {
   };
 
   const handleCancel = (id) => {
+    if(showPopup){
+      setShowPopup(false);
+    }
     if (window.confirm('Are you sure you want to cancel this booking?')) {
-      setShowPopup(true);
-      {showPopup && CancelPopUp}
       fetch(`${import.meta.env.VITE_API_URL}/booking/${id}`, {
         method: "DELETE"
       })
       .then((res) => res.json())
       .then((data) => console.log("booking",data))
       .catch((err) => console.log({message:err.message}))
+      setShowPopup(true);
       setBookings((prevBookings) => prevBookings.filter((booking) => booking.id !== id));
     }
   };
@@ -97,7 +99,7 @@ const UpcomingBooking = () => {
         </tr>
       </thead>
       <tbody>
-        {bookings !== null &&bookings.length > 0&&bookings.map((booking, index) => (
+        {bookings !== null &&bookings.length > 0 &&bookings.map((booking, index) => (
             <tr key={booking.id}>
             <td>{index+1}</td>
             <td>{booking.status === 'approved' ? formatRoomData(booking.rooms) : "NOT ALLOTTED"}</td>
@@ -106,15 +108,22 @@ const UpcomingBooking = () => {
             <td>{booking.checkIn}</td>
             <td>{booking.checkOut}</td>
             <td>{booking.status}</td>
-            <td> <button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking.id)}>Cancel</button>
-          </td>
-          <td> <button className='btn' style = {{backgroundColor : 'green', color : 'white'}} onClick={()=>handlePayment()}>Pay Now</button>
-          </td>
+            {booking.status === 'Pending' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking.id)} disabled>Cancel</button>
+          </td>)}
+            {booking.status === 'Success' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking.id)}>Cancel</button>
+          </td>)}
+            
+          {booking.status === 'Success' && <td> <button className='btn' style = {{backgroundColor : 'green', color : 'white'}} onClick={()=>handlePayment()} disabled>Pay Now</button>
+          </td>}
+          {booking.status === 'Pending' && <td> <button className='btn' style = {{backgroundColor : 'green', color : 'white'}} onClick={()=>handlePayment()}>Pay Now</button>
+          </td>}
           </tr>
         ))}
       </tbody>
     </table>
     {/* <CancelPopUp/> */}
+    
+    {showPopup && <CancelPopUp />} 
     </div>
   );
 };

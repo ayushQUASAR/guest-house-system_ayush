@@ -34,8 +34,7 @@ const HomeHeader = () => {
         <div className="h-nav">
           <div className="nav-wrapper">
             <div className="colg-name ">
-              Dr. B R Ambedkar National Institute <br />of Technology Jalandhar
-
+              Dr. B R Ambedkar National Institute <br />of Technology Jalandhar, Punjab
             </div>
             <div className="h-navlogo">
               <img src={logo} alt="NIT_logo" />
@@ -69,7 +68,7 @@ const HomeHeader = () => {
                   <div className="nav-optn">
                     <ContactlessIcon />
 
-                    <div className="optn-name"> ContactUs</div>
+                    <div className="optn-name"> Contact Us</div>
                   </div>
                 </Link>
 

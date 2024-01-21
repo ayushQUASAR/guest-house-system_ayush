@@ -87,15 +87,14 @@ html, body {
             color: rgb(255, 255, 255);
             -moz-transform: scale(-1, 1);
             -webkit-transform: scale(-1, 1);
-            -o-transform: scale(-1, 1);
-            -ms-transform: scale(-1, 1);
-            transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
 
 }
 li.houseCardBackface {
     margin: 0px;
 }
-
 
   .hostelCard:hover {
     cursor: pointer;
@@ -165,6 +164,7 @@ li.houseCardBackface {
     text-align: center;
     margin: 0px 30px ;
     font-weight:bolder;
+    color : #ffffff; ;
 }
 nav {
     background-color: #ffffff; 
@@ -276,7 +276,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 
 .houseName {
@@ -313,9 +313,9 @@ nav {
     text-align: center;
     color:#0073cf;   
 }
-li {
+/* li {
     padding: 10px;
-}
+} */
 .aboutSection {
     padding: 30px 150px;
     word-spacing: 3px;

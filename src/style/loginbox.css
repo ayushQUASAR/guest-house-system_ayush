@@ -39,6 +39,12 @@
   animation-name: name;
   animation-duration: 5s;
 }
+.lleft-box :nth-child(4) {
+  color: white;
+  font-size: 35px;
+  animation-name: name;
+  animation-duration: 5s;
+}
 .lright-box {
   background-color: #c6c6c6;
   display: flex;
@@ -49,16 +55,16 @@
   left: calc(20% );
   top: 10%;
   z-index: 100;
-  width: 200px;
-  height: 200px;
-  background-color: #ffffff;
+  width: 220px;
+  height: 220px;
+  /* background-color: #ffffff; */
   /* position: absolute; */
   display: flex;
   align-items: center;
   padding: 10px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   justify-content: center;
 }
 .login-logo img {
-  width: 150px;
+  width: 200px;
 }

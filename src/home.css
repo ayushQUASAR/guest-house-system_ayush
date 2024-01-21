@@ -16,7 +16,7 @@ html, body {
     justify-content: center;
     align-items: center;
     margin-top:0px;
-    padding: 30px;
+    padding: 0px;
     background-color: rgba(185, 194, 255, 0.225);
     margin: 0; 
     color: rgb(255, 255, 255);
@@ -62,7 +62,7 @@ html, body {
     z-index: 1;
     width: 25vw;
     color: white;
-    height: 40vw;
+    height: 25vw;
     border-radius: 10px;
     box-shadow: 2px 2px 1px #0404045b;
     transition: 0.28s ease-in;
@@ -82,11 +82,11 @@ html, body {
 
 .houseCardBackface {
     transform: scale(-1, 1);
-    font-weight: 600;
-    font-size: 1.52rem;
-            color: rgb(255, 255, 255);
-            -moz-transform: scale(-1, 1);
-            -webkit-transform: scale(-1, 1);
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
     -o-transform: scale(-1, 1);
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);

@@ -12,45 +12,52 @@ import { Link } from "react-scroll";
 import { NavLink } from "react-router-dom";
 import HomeHeader from "./Components/Homeheader";
 import Calendar from "./Components/CalendarHome/Calendar";
+import Contact from "./Components/Contact";
 function Login() {
   const houses = [
     {
       name: "Institute Guest House ",
       roomsCount: 10,
-      location: "near girl hostel",
+      location: "Near Director's Bungalow",
       facilities: [
-        "24 hours running hot and cold water",
-        "Free Wi-Fi",
-        "TV with cable",
-        "Telephone service",
-
-        "Big sized rooms",
+        "Free Wi-Fi access throughout the premises",
+        "Cable TV provided",
+        "In-room telephone services",
+        "Facilities for making tea in rooms",
+        "Complimentary toiletries provided",
+        "Daily housekeeping services to ensure cleanliness and comfort",
+        "On-site parking for guests",
+        "Access to a fitness center facilities"
       ],
     },
     {
       name: "SAC Guest House",
       roomsCount: 8,
-      location: "near science block",
+      location: "Student Activities Center",
       facilities: [
-        "24 hours running hot and cold water",
-        "Free Wi-Fi",
-        "TV with cable",
-        "Telephone service",
-
-        "Big sized rooms",
+        "Free Wi-Fi access throughout the premises",
+        "Cable TV provided",
+        "In-room telephone services",
+        "Facilities for making tea in rooms",
+        "Complimentary toiletries provided",
+        "Daily housekeeping services to ensure cleanliness and comfort",
+        "On-site parking for guests",
+        "Access to a fitness center facilities"
       ],
     },
     {
       name: "Mega Guest House",
       roomsCount: 12,
-      location: "near mega boys hostel",
+      location: "Near Mega Boys Hostel",
       facilities: [
-        "24 hours running hot and cold water",
-        "Free Wi-Fi",
-        "TV with cable",
-        "Telephone service",
-
-        "Big sized rooms",
+        "Free Wi-Fi access throughout the premises",
+        "Cable TV provided",
+        "In-room telephone services",
+        "Facilities for making tea in rooms",
+        "Complimentary toiletries provided",
+        "Daily housekeeping services to ensure cleanliness and comfort",
+        "On-site parking for guests",
+        "Access to a fitness center facilities"
       ],
     },
   ];
@@ -194,7 +201,9 @@ function Login() {
               {showBackface[index] && (
                 <div className="houseCardBackface">
                   <h1 className="headerBackface">{house.name}</h1>
-                  <h2 className="backFacehouseCardLoc">{house.location}</h2>
+                  <h2 className="backFacehouseCardLoc" style = {{fontSize : '1.2rem', textAlign : 'center', paddingBottom : '1rem'}}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"> <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                    <span className="mx-2">{house.location}</span></h2>
                   <ul className="facilitiesList">
                     {house.facilities.map((facility, index) => (
                       <li key={index}>{facility}</li>
@@ -273,7 +282,9 @@ function Login() {
       </div>
       <div className="contactUsDi">
         <h1 id="contactHeader"><strong>Contact Us</strong></h1>
-        <p style = {{textAlign : 'center'}}>For any query or issue, please contact ....</p>
+        <p style = {{textAlign : 'center'}}>For any query or issue, please contact ....
+        <Contact/>
+        </p>
       </div>
       <Footer />
       </div>

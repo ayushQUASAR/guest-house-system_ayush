@@ -11,11 +11,11 @@
 
 /* Updated .DashCard style for horizontal rectangles */
 .DashCard {
-    width: 200px; /* Set your desired width for the rectangle */
+    width: 180px; /* Set your desired width for the rectangle */
     display: flex;
     flex-direction: row;
     padding: 10px;
-    margin-left: 50px; /* Adjust the margin as needed */
+    /* margin-left: 20px; Adjust the margin as needed */
     margin-top: 0.5vw;
     margin-bottom: 0.5vw;
     border-radius: 10px;

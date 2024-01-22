@@ -13,6 +13,8 @@ import { NavLink } from "react-router-dom";
 import HomeHeader from "./Components/Homeheader";
 import Calendar from "./Components/CalendarHome/Calendar";
 import Contact from "./Components/Contact";
+import EmbeddedMap from './Components/EmbeddedMap';
+import ImageGallery from "./Components/ImageGallery";
 function Login() {
   const houses = [
     {
@@ -61,6 +63,7 @@ function Login() {
       ],
     },
   ];
+  
 
   const [cardRotations, setCardRotations] = useState(
     Array(houses.length).fill(false)
@@ -212,10 +215,13 @@ function Login() {
                 </div>
               )}
             </div>
-          ))}
-        </div>
+          ))} 
+        </div> 
       </div>
-
+      <div className = "imageGallery" id = "imageGallery">
+        <h1 className = "imageheader"><strong>Image Gallery</strong></h1>
+          <ImageGallery/>
+      </div>
 
 
       <div className="aboutSection" id="AboutUs">
@@ -276,15 +282,17 @@ function Login() {
         </div>
       </div>
 
-      <div className="availabilitySection">
+      <div className="availabilitySection" style = {{
+    backgroundColor: 'rgba(185, 194, 255, 0.225)'}}>
         <h1 id="availabilityHeader"><strong>Room Availability</strong></h1>
         <Calendar />
       </div>
-      <div className="contactUsDi">
-        <h1 id="contactHeader"><strong>Contact Us</strong></h1>
-        <p style = {{textAlign : 'center'}}>For any query or issue, please contact ....
+      <div className="contactUsDiv">
+        <h1 id="contactHeader"><strong>Contact Us</strong></h1> 
+        <div style = {{textAlign : 'center', alignItems : 'center'}}>
+        <EmbeddedMap/>
         <Contact/>
-        </p>
+        </div>
       </div>
       <Footer />
       </div>

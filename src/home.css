@@ -292,13 +292,17 @@ nav {
     z-index: 2;
     font-weight: 100;
 }
-
+.imageheader{
+    padding-top : 1em;
+    font-size: 50px;
+    text-align: center;
+    color:#0072cf;
+}
 
 .guidelinesDiv {
     padding: 30px 150px;
     word-spacing: 3px;
     font-size: 18px;
-    background-color: rgba(185, 194, 255, 0.225);
 }
 #guidelinesHeader {
     font-size: 50px;
@@ -320,7 +324,7 @@ nav {
     padding: 30px 150px;
     word-spacing: 3px;
     font-size: 18px;
-    
+    background-color: rgba(185, 194, 255, 0.225);
 }
 .aboutUs {
     font-size: 50px;
@@ -342,8 +346,7 @@ nav {
 
 .contactUsDiv {
     padding: 30px 150px;
-    word-spacing: 7px;
-    background-color: rgba(185, 194, 255, 0.225);
+    word-spacing: 7px; 
 }
 #contactHeader {
     font-size: 50px;
@@ -398,7 +401,6 @@ nav {
         word-spacing: 1px;
         font-size: 15px;
         text-align: justify;
-        background-color: rgba(185, 194, 255, 0.225);
     }
     #contactHeader {
         font-size: 50px;

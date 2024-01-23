@@ -14,14 +14,15 @@
     margin : 2rem;
     border: 2px solid transparent;
     transition: border 0.3s ease-in-out;
-    
   }
   
   .gallery img.selected {
     /* border-color: #3498db; */
     width: 22rem; /* Add your desired border color here */
   }
-  
+  .gallery img:hover{
+    box-shadow: 5px 5px 5px 5px rgba(39, 128, 201, 0.2); 
+  }
   .popup {
     position: fixed;
     top: 0;
@@ -32,9 +33,13 @@
     align-items: center;
     justify-content: center; 
     z-index: 1000;
-    min-width : 90rem; 
+    min-width:100%;
   }
-  
+  @media screen and (max-width:800px){
+    .popup{
+      display: none; 
+    }
+  } 
   .popup-content {
     background: transparent; 
     /* border: 1px solid #ccc; */

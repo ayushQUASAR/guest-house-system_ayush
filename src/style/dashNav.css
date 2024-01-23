@@ -161,10 +161,7 @@
         align-items: center;
         justify-content: center;
         bottom: -20px;
-        display: flex;
-        /* box-shadow: 2px 5px 10px rgb(56, 56, 56);
-        border-radius: 50%; */
-        /* background-color:#ffffff ; */
+        display: flex; 
     }
 }@media screen and (max-width:1200px) {
     .colg-name{

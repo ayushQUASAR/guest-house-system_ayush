@@ -79,7 +79,11 @@ html, body {
     flex-direction: column;
     /* backface-visibility: hidden; */
 }
-
+.hostelCard:hover {
+    cursor: pointer;
+    background-color:  #4ec5d0;
+    box-shadow: 2px 2px 10px rgba(185, 194, 255, 0.225);
+}
 .houseCardBackface {
     transform: scale(-1, 1);
     font-weight: 400;
@@ -95,14 +99,26 @@ html, body {
 li.houseCardBackface {
     margin: 0px;
 }
-
-  .hostelCard:hover {
-    cursor: pointer;
-    background-color:  #4ec5d0;
-    box-shadow: 2px 2px 10px rgba(185, 194, 255, 0.225);
-    width: 27vw;
-    height:27vw;
-  }
+@media screen and (min-width:1000px) {
+    .hostelCard:hover { 
+        width: 27vw;
+        height:27vw;
+    }
+    .houseName {
+        font-size: 39px;
+        margin: 0px;
+        z-index: 2;
+        font-weight: 1000;
+    }
+}
+@media screen and (max-width:1000px){
+    .houseName {
+        font-size: 20px;
+        margin: 0px;
+        z-index: 2;
+        font-weight: 1000;
+    }
+}
   
   .hostelCard.rotate {
    transform: rotateY(180deg);   
@@ -283,12 +299,7 @@ nav {
     /* padding-top: 10px; */
 }
 
-.houseName {
-    font-size: 39px;
-    margin: 0px;
-    z-index: 2;
-    font-weight: 1000;
-}
+
 
 .roomCount {
     font-size: 20px;

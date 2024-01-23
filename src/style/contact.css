@@ -11,6 +11,9 @@
     padding : 2rem;
     margin  : 2rem;
 }
+.box:hover{
+    background-color: rgb(218, 232, 239);
+}
 .h2{
     color : #008cff;  
 }

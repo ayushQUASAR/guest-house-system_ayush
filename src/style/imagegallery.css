@@ -21,7 +21,9 @@
     /* border-color: #3498db; */
     width: 22rem; /* Add your desired border color here */
   }
-  
+  .gallery img:hover{
+    box-shadow: 5px 5px 5px 5px rgba(39, 128, 201, 0.2); 
+  }
   .popup {
     position: fixed;
     top: 0;

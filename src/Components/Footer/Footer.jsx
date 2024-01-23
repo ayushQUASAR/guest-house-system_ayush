@@ -8,7 +8,7 @@ const Footer = () => {
     <>
       {" "}
       <div className="flex-container167">
-        <div className="div1">
+        <div className="div1" style = {{paddingLeft : '5px'}}>
           <div>
             <img
               style={{
@@ -77,7 +77,8 @@ const Footer = () => {
               // marginLeft: "60px",
               display: "block",
               textAlign: "center",
-              // marginBottom: "20px",
+              marginBottom: "30px",
+              marginTop : "10px"
             }}
           >
             Quick Links

@@ -212,7 +212,7 @@ const Approvaltable = ({ onSecondPage }) => {
 
        
       </div> */}
-        </div> : <BookingComponent guesthouseno={currentUser.guestHouseSelected} id={currentUser._id} rooms={currentUser.roomsSelected} onBack={handleBack} />
+        </div> : <BookingComponent guesthouseno={currentUser.guestHouseSelected} id={currentUser._id} rooms={currentUser.roomsSelected} startDate={currentUser.startDate} endDate={currentUser.endDate} onBack={handleBack} />
       }
        <CustomPrompt
         isOpen={isCustomPromptOpen}

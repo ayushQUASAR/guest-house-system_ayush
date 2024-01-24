@@ -14,9 +14,7 @@ const Popup = () => {
   };
 
   return (
-    <div>
-      {/* <button onClick={openPopup}>Open Popup</button> */}
-
+    <div> 
       {isPopupOpen && (
         <div className="popup-overlay">
           <div className="popup-content">

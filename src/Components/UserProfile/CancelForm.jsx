@@ -51,7 +51,7 @@ const CancelForm = () => {
   };
   return (
     <>
-      {form && <div className="popup">
+      {form && <div>
         <form onSubmit={handleSubmit}>
           <p>All the fields marked with (*) are mandatory.<br/>
             Please fill the following form for reimbursement of room chargers. 

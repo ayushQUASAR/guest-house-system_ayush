@@ -128,7 +128,7 @@
     left: 40px;
     align-items: center;
     justify-content: center;
-    bottom: 0px;
+    bottom: -20px;
     display: flex;
     z-index: 1000;
     /* box-shadow: 2px 5px 10px rgb(56, 56, 56);
@@ -144,6 +144,16 @@
     .colg-name{
         font-size: 1.5rem;
         left: 175px;
+    }
+    .h-navlogo{
+        height: 120px;
+        width : 120px;
+        position: absolute;
+        left: 40px;
+        align-items: center;
+        justify-content: center;
+        bottom: -20px;
+        display: flex; 
     }
 }@media screen and (max-width:1580px) {
     .colg-name{

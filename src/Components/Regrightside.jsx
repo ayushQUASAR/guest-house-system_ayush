@@ -32,9 +32,9 @@ export default function Regrightside() {
   const [refphoneNumber, setRefphoneNumber] = useState("");
   const [idProof, setIdProof] = useState(null);
   const [rightValue, setRightValue] = useState(-1300);
-  const [registerrightval,setRegisterrightval]=useState(0);
-  const [leftval,setLeft]=useState();
- 
+  const [registerrightval, setRegisterrightval] = useState(0);
+  const [leftval, setLeft] = useState();
+
 
   // Alumni
   console.log(Branch);
@@ -101,18 +101,18 @@ export default function Regrightside() {
         setIdProof(file);
       } else {
         window.alert(
-          " file size can be maximum upto. 1MB. Please Upload file within the limit "
+          "File Size Can Be Maximum Upto 1MB. Please Upload A  File Within Limit "
         );
       }
     } else {
       window.alert("ONLY IMAGES AND PDF ARE ALLOWED. Please Upload again");
     }
   };
- const regOnview=()=>{
-  setRegisterrightval((prevRightValue) => (prevRightValue === 0 ? -1300 : 0));
+  const regOnview = () => {
+    setRegisterrightval((prevRightValue) => (prevRightValue === 0 ? -1300 : 0));
 
- }
-  const onView=()=>{
+  }
+  const onView = () => {
     setRightValue((prevRightValue) => (prevRightValue === 0 ? -1300 : 0));
     setLeft(1300);
   }
@@ -213,19 +213,19 @@ export default function Regrightside() {
       <div className="reg-rightside">
         {" "}
         <NavLink className="nav-tohome" to="/">
-              <div className="nav-tohome">
-                <HomeRoundedIcon color="white" />
-                <div className="optn-name">Home</div>
-              </div>
-            </NavLink>
+          <div className="nav-tohome">
+            <HomeRoundedIcon color="white" />
+            <div className="optn-name">Home</div>
+          </div>
+        </NavLink>
         <form action="/register" onSubmit={setSubmit}>
           <div className="register-optn-wrapper">
-          
+
             {/* <div className="r">
               <h1 className="rheading">Create an Account</h1>
             </div> */}
 
-            <div className="registration-optn" style={{left:`${registerrightval}px`}}>
+            <div className="registration-optn" style={{ left: `${registerrightval}px` }}>
               {/* <div
                 onClick={() => {
                   setRegisteroptn(1), setRegisterclass(true);
@@ -239,23 +239,23 @@ export default function Regrightside() {
               </div> */}
 
               <div tabIndex="0" onClick={() => {
-                  setRegisteroptn(1), setRegisterclass(true);
-                }}className="college-official-optn" >
-              <Icon icon="fluent-emoji-high-contrast:teacher" width={'80'}height={'80'}color="#007bff" /> <p>Faculty</p>
+                setRegisteroptn(1), setRegisterclass(true);
+              }} className="college-official-optn" >
+                <Icon icon="fluent-emoji-high-contrast:teacher" width={'80'} height={'80'} color="#007bff" /> <p>Faculty</p>
               </div>     <div tabIndex="0" onClick={() => {
-                  setRegisteroptn(2), setRegisterclass(true);
-                }}className="college-official-optn" >
-               <Icon icon="ph:student-bold" width={'80'}height={'80'}color="#007bff" /> <p>Student</p>
-              </div>  
-             
-                <div tabIndex="0" onClick={() => {
-                  setRegisteroptn(3), setRegisterclass(true);
-                }} className="college-official-optn">
-                <Icon icon="iconamoon:profile" width={'80'}height={'80'} color="#007bff" />  <p>Others</p>
+                setRegisteroptn(2), setRegisterclass(true);
+              }} className="college-official-optn" >
+                <Icon icon="ph:student-bold" width={'80'} height={'80'} color="#007bff" /> <p>Student</p>
               </div>
-              
 
-{/*                     
+              <div tabIndex="0" onClick={() => {
+                setRegisteroptn(3), setRegisterclass(true);
+              }} className="college-official-optn">
+                <Icon icon="iconamoon:profile" width={'80'} height={'80'} color="#007bff" />  <p>Others</p>
+              </div>
+
+
+              {/*                     
               <div
                 onClick={() => {
                   setRegisteroptn(2), setRegisterclass(true);
@@ -268,11 +268,11 @@ export default function Regrightside() {
                 Others
               </div> */}
             </div>
-          {  registerOptn&&<div onClick={()=>{onView(),regOnview()}} className="form-next-btn" style={{left:`${leftval}px `}}>
-              <Icon width="30"icon="material-symbols:arrow-forward-ios-rounded" color="blue" />
-              </div>}
+            {registerOptn && <div onClick={() => { onView(), regOnview() }} className="form-next-btn" style={{ left: `${leftval}px ` }}>
+              <Icon width="30" icon="material-symbols:arrow-forward-ios-rounded" color="blue" />
+            </div>}
             {registerOptn == 1 ? (
-              <div className="college-official-form-wrapper"style={{left: `${rightValue}px `}}>
+              <div className="college-official-form-wrapper" style={{ left: `${rightValue}px ` }}>
                 <div className="college-official-form">
                   <div className="form-group">
                     <label>Email:</label>
@@ -344,8 +344,8 @@ export default function Regrightside() {
                   {/* {popup &&     <Popup  setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>} */}
                 </div>
               </div>
-            ): registerOptn == 2 ? (
-              <div className="college-official-form-wrapper"style={{left: `${rightValue}px `}}>
+            ) : registerOptn == 2 ? (
+              <div className="college-official-form-wrapper" style={{ left: `${rightValue}px ` }}>
                 <div className="college-official-form">
                   <div className="form-group">
                     <label>Email:</label>
@@ -382,10 +382,10 @@ export default function Regrightside() {
                       }}
                       className="college-official-username"
                     />
-                  </div>   
+                  </div>
                   {/* <div className="form-group"> */}
-                    {/* <label>Branch</label> */}
-                    {/* <input
+                  {/* <label>Branch</label> */}
+                  {/* <input
                       required
                       type="text"
                       value={Lastname}
@@ -394,7 +394,7 @@ export default function Regrightside() {
                       }}
                       className="college-official-username"
                     /> */}
-                
+
                   {/* </div> */}
                   <div className="form-group">
                     <label>Password:</label>
@@ -427,13 +427,13 @@ export default function Regrightside() {
                       Register
                     </button>
                   </div>
-                  {popup &&     <Popup  setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>}
+                  {popup && <Popup setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
                 </div>
               </div>
             ) : registerOptn == 3 ? (
-         
-              <div className="college-official-form-wrapper"style={{right: `${rightValue}px `}}>
-                   <div>  <div className="row input">
+
+              <div className="college-official-form-wrapper" style={{ right: `${rightValue}px ` }}>
+                <div>  <div className="row input">
                   <div className="col-md-6 col-sm-12">
                     <input
                       required
@@ -455,271 +455,271 @@ export default function Regrightside() {
                     />
                   </div>
                 </div>
-                <div className="row input">
-                  <div className="col-md-3 col-sm-12">
-                    <div className="input-group">
+                  <div className="row input">
+                    <div className="col-md-3 col-sm-12">
+                      <div className="input-group">
+                        <input
+                          required
+                          type="text"
+                          className="form-control"
+                          value="+91"
+                          readOnly
+                        />
+                      </div>
+                    </div>
+                    <div className="col-md-9 col-sm-12">
                       <input
                         required
                         type="text"
+                        value={Phnnumber}
+                        onChange={(e) => setPhnnumber(e.target.value)}
                         className="form-control"
-                        value="+91"
-                        readOnly
+                        placeholder="Phone Number"
                       />
                     </div>
                   </div>
-                  <div className="col-md-9 col-sm-12">
-                    <input
-                      required
-                      type="text"
-                      value={Phnnumber}
-                      onChange={(e) => setPhnnumber(e.target.value)}
-                      className="form-control"
-                      placeholder="Phone Number"
-                    />
-                  </div>
-                </div>
-                <div className="row input">
-                  <div className="col-12">
-                    <input
-                      required
-                      type="text"
-                      value={Address}
-                      onChange={(e) => setAddress(e.target.value)}
-                      className="form-control"
-                      placeholder="Address"
-                    />
-                  </div>
-                </div>
-                <div className="row input">
-                  <div className="col-12">
-                    <input
-                      required
-                      type="email"
-                      value={Email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="form-control"
-                      placeholder="Email"
-                    />
-                  </div>
-                </div>
-                <div className="row input">
-                  <div className="col-12">
-                    <input
-                      required
-                      type="number"
-                      value={Phnnumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      className="form-control"
-                      placeholder="Phone number"
-                    />
-                  </div>
-                </div>
-                <div className="row input">
-                  <div className="col-12">
-                    <input
-                      required
-                      type="text"
-                      value={Branch}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="form-control"
-                      placeholder="Email"
-                    />
-                  </div>
-                </div>
-                <div className="row input">
-                  <div className="col-12">
-                    <div className="input-group">
-                      <span className="input-group-text">
-                        <img src="password-icon.png" alt="Password Icon" />
-                      </span>
+                  <div className="row input">
+                    <div className="col-12">
                       <input
                         required
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={Password}
-                        type="password"
+                        type="text"
+                        value={Address}
+                        onChange={(e) => setAddress(e.target.value)}
                         className="form-control"
-                        placeholder="Password"
+                        placeholder="Address"
                       />
                     </div>
                   </div>
-                </div>
-                <div className="row input">
-                  <div className="col-12">
-                    <div className="input-group">
-                      <h2 className="govt-id-heading">Upload Govt ID</h2>
-                    </div>
-                  </div>
-                </div>
-                <div className="row input">
-                  <div className="col-12">
-                    <div className="input-group">
+                  <div className="row input">
+                    <div className="col-12">
                       <input
                         required
-                        type="file"
-                        onChange={handleFileChange}
+                        type="email"
+                        value={Email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="form-control"
-                        id="fileInput"
+                        placeholder="Email"
                       />
                     </div>
                   </div>
-                </div>
+                  <div className="row input">
+                    <div className="col-12">
+                      <input
+                        required
+                        type="number"
+                        value={Phnnumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        className="form-control"
+                        placeholder="Phone number"
+                      />
+                    </div>
+                  </div>
+                  <div className="row input">
+                    <div className="col-12">
+                      <input
+                        required
+                        type="text"
+                        value={Branch}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="form-control"
+                        placeholder="Email"
+                      />
+                    </div>
+                  </div>
+                  <div className="row input">
+                    <div className="col-12">
+                      <div className="input-group">
+                        <span className="input-group-text">
+                          <img src="password-icon.png" alt="Password Icon" />
+                        </span>
+                        <input
+                          required
+                          onChange={(e) => setPassword(e.target.value)}
+                          value={Password}
+                          type="password"
+                          className="form-control"
+                          placeholder="Password"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row input">
+                    <div className="col-12">
+                      <div className="input-group">
+                        <h2 className="govt-id-heading">Upload Govt ID</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row input">
+                    <div className="col-12">
+                      <div className="input-group">
+                        <input
+                          required
+                          type="file"
+                          onChange={handleFileChange}
+                          className="form-control"
+                          id="fileInput"
+                        />
+                      </div>
+                    </div>
+                  </div>
 
-                <div className="row input align-items-center">
-                  <div className="col-md-3 col-sm-6 col-12">
-                    <h2 className="reference-heading">Reference</h2>
-                  </div>
-                  <div className="col-md-3 col-sm-6 col-12">
-                    <label>
-                      {/* <input  required
+                  <div className="row input align-items-center">
+                    <div className="col-md-3 col-sm-6 col-12">
+                      <h2 className="reference-heading">Reference</h2>
+                    </div>
+                    <div className="col-md-3 col-sm-6 col-12">
+                      <label>
+                        {/* <input  required
                 type="radio"
                 value="student"
                 onClick={()=>setContentType('student')}
                 checked={selectedOption === 'student'}
                 onChange={handleOptionChange}
               /> */}
-                      <button
-                        type="button"
-                        onClick={() => setContentType("student")}
-                        className={` ${contentType === "student"
+                        <button
+                          type="button"
+                          onClick={() => setContentType("student")}
+                          className={` ${contentType === "student"
                             ? clickedButtonClass
                             : defaultButtonClass
-                          } `}
-                      >
-                        <img
-                          src="student-icon.png"
-                          alt="Icon"
-                          style={{ marginRight: "10px" }}
-                        />
-                        Student
-                      </button>
-                    </label>
-                  </div>
+                            } `}
+                        >
+                          <img
+                            src="student-icon.png"
+                            alt="Icon"
+                            style={{ marginRight: "10px" }}
+                          />
+                          Student
+                        </button>
+                      </label>
+                    </div>
 
-                  <div className="col-md-3 col-sm-6 col-12">
-                    <label>
-                      {/* <input  required
+                    <div className="col-md-3 col-sm-6 col-12">
+                      <label>
+                        {/* <input  required
               onClick={()=>setContentType('faculty')}
                 type="radio"
                 value="faculty"
                 checked={selectedOption === 'faculty'}
                 onChange={handleOptionChange}
               /> */}
-                      <button
-                        type="button"
-                        onClick={() => setContentType("faculty")}
-                        className={` ${contentType === "faculty"
+                        <button
+                          type="button"
+                          onClick={() => setContentType("faculty")}
+                          className={` ${contentType === "faculty"
                             ? clickedButtonClass
                             : defaultButtonClass
-                          } `}
-                      >
-                        <img
-                          src="faculty-icon.png"
-                          alt="Icon"
-                          style={{ marginRight: "10px" }}
-                        />
-                        Faculty
-                      </button>
-                    </label>
-                  </div>
+                            } `}
+                        >
+                          <img
+                            src="faculty-icon.png"
+                            alt="Icon"
+                            style={{ marginRight: "10px" }}
+                          />
+                          Faculty
+                        </button>
+                      </label>
+                    </div>
 
-                  <div className="col-md-3 col-sm-6 col-12">
-                    <label>
-                      {/* <input
+                    <div className="col-md-3 col-sm-6 col-12">
+                      <label>
+                        {/* <input
                 type="radio"  required
                 onClick={()=>setContentType('alumni')}
                 value="alumni"
                 checked={selectedOption === 'alumni'}
                 onChange={handleOptionChange}
               /> */}
-                      <button
-                        type="button"
-                        onClick={() => setContentType("alumni")}
-                        className={` ${contentType === "alumni"
+                        <button
+                          type="button"
+                          onClick={() => setContentType("alumni")}
+                          className={` ${contentType === "alumni"
                             ? clickedButtonClass
                             : defaultButtonClass
-                          } `}
-                      >
-                        <img
-                          src="alumni-icon.png"
-                          alt="Icon"
-                          style={{ marginRight: "10px" }}
-                        />
-                        Alumni
-                      </button>
-                    </label>
+                            } `}
+                        >
+                          <img
+                            src="alumni-icon.png"
+                            alt="Icon"
+                            style={{ marginRight: "10px" }}
+                          />
+                          Alumni
+                        </button>
+                      </label>
+                    </div>
                   </div>
-                </div>
-                {contentType == "student" && (
-              <Student
-                prop={{
-                  reffirstName,
-                  reflastName,
-                  refphoneNumber,
-                  Branch,
-                  studrollNumber,
-                  setReffirstName,
-                  setReflastName,
-                  setRefphoneNumber,
-                  setBranch,
-                  setSrollNumber,
-                  messageHead_m,
-                  para1_m,
-                  para2_m,
-                  setPopup,
-                  popup,
-                }}
-              />
-            )}
-            {contentType == "faculty" && (
-              <Faculty
-                prop={{
-                  reffirstName,
-                  reflastName,
-                  refphoneNumber,
-                  department,
-                  facultyemail,
-                  setReffirstName,
-                  setReflastName,
-                  setRefphoneNumber,
-                  setFacultyemail,
-                  setDepartment,
-                  messageHead_m,
-                  para1_m,
-                  para2_m,
-                  setPopup,
-                  popup,
-                }}
-              />
-            )}
-            {contentType == "alumni" && (
-              <Alumni
-                prop={{
-                  reffirstName,
-                  reflastName,
-                  refphoneNumber,
-                  batch,
-                  Branch,
-                  jobProfile,
-                  setReffirstName,
-                  setReflastName,
-                  setRefphoneNumber,
-                  setBatch,
-                  setBranch,
-                  setJobProfile,
-                  messageHead_m,
-                  para1_m,
-                  para2_m,
-                  setPopup,
-                  popup,
-                }}
-              />
-               )}
-                <div className="row input">
-                  <NavLink to="/">Already have an account? Login</NavLink>
-                
-                </div>
+                  {contentType == "student" && (
+                    <Student
+                      prop={{
+                        reffirstName,
+                        reflastName,
+                        refphoneNumber,
+                        Branch,
+                        studrollNumber,
+                        setReffirstName,
+                        setReflastName,
+                        setRefphoneNumber,
+                        setBranch,
+                        setSrollNumber,
+                        messageHead_m,
+                        para1_m,
+                        para2_m,
+                        setPopup,
+                        popup,
+                      }}
+                    />
+                  )}
+                  {contentType == "faculty" && (
+                    <Faculty
+                      prop={{
+                        reffirstName,
+                        reflastName,
+                        refphoneNumber,
+                        department,
+                        facultyemail,
+                        setReffirstName,
+                        setReflastName,
+                        setRefphoneNumber,
+                        setFacultyemail,
+                        setDepartment,
+                        messageHead_m,
+                        para1_m,
+                        para2_m,
+                        setPopup,
+                        popup,
+                      }}
+                    />
+                  )}
+                  {contentType == "alumni" && (
+                    <Alumni
+                      prop={{
+                        reffirstName,
+                        reflastName,
+                        refphoneNumber,
+                        batch,
+                        Branch,
+                        jobProfile,
+                        setReffirstName,
+                        setReflastName,
+                        setRefphoneNumber,
+                        setBatch,
+                        setBranch,
+                        setJobProfile,
+                        messageHead_m,
+                        para1_m,
+                        para2_m,
+                        setPopup,
+                        popup,
+                      }}
+                    />
+                  )}
+                  <div className="row input">
+                    <NavLink to="/">Already have an account? Login</NavLink>
+
+                  </div>
                 </div></div>
-          ) : (
+            ) : (
               <div></div>
             )}
             {/* {contentType == "student" && (

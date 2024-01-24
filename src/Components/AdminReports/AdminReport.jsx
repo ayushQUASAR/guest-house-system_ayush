@@ -1,13 +1,13 @@
 import React from "react";
 import BookingCancellationReport from "./BookingCancellationReport";
-
+import Report from "./Report"
 import PastBookings from "./PastBookings";
 
 const AdminReport = () => {
   return (
     <>
-        
-        <BookingCancellationReport />
+        <Report/>
+        {/* <BookingCancellationReport /> */}
         {/* <PastBookings/> */}
     </>
   );

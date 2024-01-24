@@ -65,9 +65,6 @@ const UpcomingBooking = () => {
   };
 
   const handleCancel = (id) => {
-    if(showPopup){
-      setShowPopup(false);
-    }
     if (window.confirm('Are you sure you want to cancel this booking?')) {
       fetch(`${import.meta.env.VITE_API_URL}/booking/${id}`, {
         method: "DELETE"
@@ -120,8 +117,7 @@ const UpcomingBooking = () => {
           </tr>
         ))}
       </tbody>
-    </table>
-    {/* <CancelPopUp/> */}
+    </table> 
     
     {showPopup && <CancelPopUp />} 
     </div>

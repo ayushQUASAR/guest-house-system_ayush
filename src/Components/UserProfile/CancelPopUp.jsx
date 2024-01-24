@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Popup.css'; // Import your CSS file for styling
+import './popup.css'; // Import your CSS file for styling
 import CancelForm from './CancelForm';
 
 const Popup = () => {

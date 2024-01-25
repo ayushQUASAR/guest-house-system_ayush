@@ -6,18 +6,17 @@ import { useNavigate } from "react-router-dom";
 import Alumni from "./AlumniDetails/AlumniRight";
 import Faculty from "./FacultyDetails/FacultyRight";
 import Student from "./StudentDetails/StudentRight";
+import Dropdown from './Dropdown/Dropdown';
 import { Icon } from '@iconify/react';
 
 import Popup from "./PopUp/Popup";
 
 export default function Regrightside() {
   const navigate = useNavigate();
-
   const defaultButtonClass = "btnDefault";
   const clickedButtonClass = "btnClicked";
   const [msgerror, setMerror] = useState(null);
   const [error, setError] = useState(null);
- 
   const [Firstname, setFirstname] = useState("");
   const [Lastname, setLastname] = useState("");
   const [Phnnumber, setPhnnumber] = useState("");
@@ -123,7 +122,6 @@ export default function Regrightside() {
 
   const setSubmit = (e) => {
     e.preventDefault();
-
     const newEntry = {
       Email: Email,
       Firstname: Firstname,
@@ -136,7 +134,6 @@ export default function Regrightside() {
     };
     setData([...data, newEntry]);
     console.log("submit", newEntry);
-
     const formData = new FormData();
     formData.append("Firstname", Firstname);
     formData.append("Lastname", Lastname);
@@ -299,7 +296,7 @@ export default function Regrightside() {
                       <p className="error-message">{msgerror}</p>
                     )}
                   </div>
-                  
+
                   <div className="form-group">
                     <label>Phone No:</label>
                     {/* <div className="row input"> */}
@@ -366,6 +363,9 @@ export default function Regrightside() {
                     />
                   </div>
 
+                  <Dropdown names={['CSE', 'ICE', 'EE', 'IPE', 'TT', 'MECH', 'Data Science', 'BT', 'ECE', 'CIVIL', 'IT', 'MSC', 'MBA']} placeholder={'Student Branch'} Branch={studbranch} setBranch={setSbranch} />
+     
+
                   <div className="form-group">
                     <h2 className="govt-id-heading">Upload Govt/College ID</h2>
                   </div>
@@ -415,7 +415,7 @@ export default function Regrightside() {
                     )}
                   </div>
 
-                  
+
                   <div className="form-group">
                     <label>Phone No:</label>
                     {/* <div className="row input"> */}
@@ -490,6 +490,9 @@ export default function Regrightside() {
                       className="college-official-password"
                     />
                   </div>
+
+                  <Dropdown names={['CSE', 'ICE', 'EE', 'IPE', 'TT', 'MECH', 'Data Science', 'BT', 'ECE', 'CIVIL', 'IT', 'MSC', 'MBA']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
+    
                   <div className="form-group">
                     <h2 className="govt-id-heading">Upload Govt/College ID</h2>
                   </div>
@@ -603,10 +606,10 @@ export default function Regrightside() {
                     />
                     {/* </div> */}
                   </div>
-                 
+
                   {/* <div className="form-group"> */}
-                    {/* <div className="col-12"> */}
-                    {/* <label>Branch:</label>
+                  {/* <div className="col-12"> */}
+                  {/* <label>Branch:</label>
                     <input
                       required
                       type="text"
@@ -615,7 +618,7 @@ export default function Regrightside() {
                       className="form-control"
                       placeholder="Email"
                     /> */}
-                    {/* </div> */}
+                  {/* </div> */}
                   {/* </div> */}
                   {/* <div className="form-group"> */}
                   {/* <div className="col-12"> */}

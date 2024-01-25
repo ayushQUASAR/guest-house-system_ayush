@@ -6,9 +6,8 @@ import PastBookings from "./PastBookings";
 const AdminReport = () => {
   return (
     <>
-        
         <BookingCancellationReport />
-        {/* <PastBookings/> */}
+        <PastBookings/>
     </>
   );
 };

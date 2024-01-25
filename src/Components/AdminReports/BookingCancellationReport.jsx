@@ -74,7 +74,7 @@ const BookingCancellationReport = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <h1 style={{ color: "black", fontWeight: 550 }}>PAST BOOKING(s)</h1>
+      <h1 style={{ color: "black", fontWeight: 550 }}>CANCELLED BOOKING(s)</h1>
       <TableContainer sx={{ maxHeight: "calc(100vh - 200px)", overflowY: "auto" }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

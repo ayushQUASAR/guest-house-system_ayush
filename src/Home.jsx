@@ -218,16 +218,12 @@ function Login() {
           ))} 
         </div> 
       </div>
-      <div className = "imageGallery" id = "imageGallery">
-        <h1 className = "imageheader"><strong>Image Gallery</strong></h1>
-          <ImageGallery/>
-      </div>
-
+      
 
       <div className="aboutSection" id="AboutUs">
         <h1 className="aboutUs"><strong>About Us</strong></h1>
         <p className="aboutUsPara" style={{ textAlign: 'justify', justifyContent: 'center' }}>
-        At NIT Jalandhar, we follow the Indian ethos of "Athithi Devo Bhava" which means treating guests with great respect. We make sure our guests have the best experience, from good service to a nice setting and great food. Like many Indian Institutions, we have built guest houses on our campus for visitors. We have three guest houses namely Institute Guest House, SAC Guest House, and Mega Guest House. Institute Guest House has 10 standard rooms, SAC Guest House also has 8 standard rooms, and Mega Guest House has 12 standard rooms. All the rooms have air conditioning, double beds, and other comforts. The available facilities are as follows:
+        At NIT Jalandhar, we follow  the Indian ethos of "Athithi Devo Bhava" which means treating guests with great respect. We make sure our guests have the best experience, from good service to a nice setting and great food. Like many Indian Institutions, we have built guest houses on our campus for visitors. We have three guest houses namely Institute Guest House, SAC Guest House, and Mega Guest House. Institute Guest House has 10 standard rooms, SAC Guest House also has 8 standard rooms, and Mega Guest House has 12 standard rooms. All the rooms have air conditioning, double beds, and other comforts. The available facilities are as follows:
         </p> 
                 {/* <h2 id="delxroom">Standard Room Facilities</h2> */}
         <div className="facilitiesHolder">
@@ -260,7 +256,8 @@ function Login() {
           </div> */}
         </div>
       </div>
-      <div className="guidelinesDiv">
+      <div className="guidelinesDiv"style = {{
+    backgroundColor: 'rgba(185, 194, 255, 0.225)'}}>
         <h1 id="guidelinesHeader"><strong>Guidelines</strong></h1>
         <div className="guidelinesList">
           <ul>
@@ -282,11 +279,15 @@ function Login() {
         </div>
       </div>
 
-      <div className="availabilitySection" style = {{
-    backgroundColor: 'rgba(185, 194, 255, 0.225)'}}>
+      <div className="availabilitySection" >
         <h1 id="availabilityHeader"><strong>Room Availability</strong></h1>
         <Calendar />
       </div>
+      <div className = "imageGallery" id = "imageGallery">
+        <h1 className = "imageheader"><strong>Image Gallery</strong></h1>
+          <ImageGallery/>
+      </div>
+
       <div className="contactUsDiv">
         <h1 id="contactHeader"><strong>Contact Us</strong></h1> 
         <div style = {{textAlign : 'center', alignItems : 'center'}}>

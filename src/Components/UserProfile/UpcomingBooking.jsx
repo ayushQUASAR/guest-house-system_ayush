@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useUserContext } from "../ContextHooks/UserContext";
 import CancelPopUp from "./CancelPopUp";
 import CancelForm from "./CancelForm";
+
+
 const UpcomingBooking = () => {
   const [showPopup, setShowPopup] = useState(false);
 
@@ -81,6 +83,13 @@ const UpcomingBooking = () => {
   const handleCancel = (id) => {
     console.log("id = ", id);
     if (window.confirm("Are you sure you want to cancel this booking?")) {
+    if (window.confirm('Are you sure you want to cancel this booking?')) {
+      fetch(`${import.meta.env.VITE_API_URL}/booking/${id}`, {
+        method: "DELETE"
+      })
+      .then((res) => res.json())
+      .then((data) => console.log("booking",data))
+      .catch((err) => console.log({message:err.message}))
       setShowPopup(true);
     }
   };
@@ -111,6 +120,7 @@ const UpcomingBooking = () => {
             <th>Cancel Booking</th>
             <th>Payment </th>
           </tr>
+
         </thead>
         <tbody>
           {bookings !== null &&

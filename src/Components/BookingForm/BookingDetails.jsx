@@ -15,7 +15,7 @@ const guestHouseOptions = [
   "SAC Guest House",
   "Mega Guest House",
 ];
-const maxRooms = [10, 8, 10];
+const maxRooms = [2, 2, 2];
 
 const BookingDetails = ({ setDateDetails }) => {
   // Get today's date in India's time zone.

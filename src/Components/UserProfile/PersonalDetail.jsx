@@ -6,9 +6,8 @@ const PersonalDetail = () => {
     const [profilePhoto, setProfilePhoto] = useState('./p.jpg');
     const [newPhoto, setNewPhoto] = useState(null); 
     const [user, setUserDetails] = useState([]);
-     const { userId } = useUserContext();
-
-     console.log(userId);
+    const { userId } = useUserContext();
+    console.log(userId);
 
 //   // on initial render, Person Booking Details get saved
   useEffect(() => {
@@ -121,7 +120,8 @@ const PersonalDetail = () => {
                         </div>
                     </div>
                 </div>
-                <div className = 'my-4'>
+
+                {user?.userDetails?.registerOption === 2 && <div className = 'my-4'>
                     <h2>Reference Details (for {user?.userDetails?.refInfo})</h2>
                     <div className = 'row mx-4 ' style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Name</div>
@@ -144,6 +144,8 @@ const PersonalDetail = () => {
                         <div className='col-6'> {email}</div>
                     </div> */}
                 </div>
+                }
+                
             </div>
         </div>
     </div>

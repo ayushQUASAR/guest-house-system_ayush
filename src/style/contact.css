@@ -4,10 +4,11 @@
     justify-content: space-between; 
 }
 .box{
-    width : 20rem;
-    height : 10rem;
+    width : 15rem;
+    height : 8rem;
     box-shadow: 2px 5px 10px rgb(56, 56, 56);
     border-radius: 5%;
+    background-color:  rgba(185, 194, 255, 0.225);
     padding : 2%;
     margin-bottom  : 5%;
     margin-left: 5%; 

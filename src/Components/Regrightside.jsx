@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Alumni from "./AlumniDetails/AlumniRight";
 import Faculty from "./FacultyDetails/FacultyRight";
 import Student from "./StudentDetails/StudentRight";
-import Dropdown from './Dropdown/Dropdown';
+
 import { Icon } from '@iconify/react';
 
 import Popup from "./PopUp/Popup";
@@ -363,9 +363,6 @@ export default function Regrightside() {
                     />
                   </div>
 
-                  <Dropdown names={['CSE', 'ICE', 'EE', 'IPE', 'TT', 'MECH', 'Data Science', 'BT', 'ECE', 'CIVIL', 'IT', 'MSC', 'MBA']} placeholder={'Student Branch'} Branch={studbranch} setBranch={setSbranch} />
-     
-
                   <div className="form-group">
                     <h2 className="govt-id-heading">Upload Govt/College ID</h2>
                   </div>
@@ -491,8 +488,6 @@ export default function Regrightside() {
                     />
                   </div>
 
-                  <Dropdown names={['CSE', 'ICE', 'EE', 'IPE', 'TT', 'MECH', 'Data Science', 'BT', 'ECE', 'CIVIL', 'IT', 'MSC', 'MBA']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
-    
                   <div className="form-group">
                     <h2 className="govt-id-heading">Upload Govt/College ID</h2>
                   </div>

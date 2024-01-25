@@ -21,53 +21,19 @@ const CancelForm = () => {
     const numberOfDays = 3; // replace with number of days
     const arrivalDate = new Date("2024-02-01"); // replace with the actual arrival date
     // difference of days 
-    /*
-    const timeDifference = arrivalDate.getTime() - cancellationDate.getTime();
-
-    // Calculate the difference in years, months, days, hours, and minutes
-    const yearsDifference = arrivalDate.getFullYear() - cancellationDate.getFullYear();
-    const monthsDifference = arrivalDate.getMonth() - cancellationDate.getMonth();
-    const daysDifference = arrivalDate.getDate() - cancellationDate.getDate();
-    const hoursDifference = arrivalDate.getHours() - cancellationDate.getHours();
-    const minutesDifference = arrivalDate.getMinutes() - cancellationDate.getMinutes();
-
-    // Adjust for cases where the time of the second date is less
-    if (minutesDifference < 0) {
-        // Borrow hours from the day
-        hoursDifference--;
-        minutesDifference += 60;
+    let differenceInMilliseconds = arrivalDate - cancellationDate;
+    let differenceInSeconds = differenceInMilliseconds / 1000;
+    let differenceInMinutes = differenceInSeconds / 60;
+    let differenceInHours = differenceInMinutes / 60;
+    let leftDays = differenceInHours / 24;
+    let Amount;
+    if(Booking.guestHouseSelected === 1){
+      Amount = 1000; // Replace with the actual amount 
     }
-    if (hoursDifference < 0) {
-        // Borrow days from the month
-        const lastMonth = new Date(arrivalDate.getFullYear(), arrivalDate.getMonth() - 1, 0);
-        hoursDifference += 24;
-        daysDifference--;
+    else{
+      Amount = 600;
     }
-
-    if (daysDifference < 0) {
-        // Borrow days from the month
-        const lastMonth = new Date(arrivalDate.getFullYear(), arrivalDate.getMonth() - 1, 0);
-        daysDifference += lastMonth.getDate();
-        monthsDifference--;
-    }
-
-    if (monthsDifference < 0) {
-        // Borrow months from the year
-        monthsDifference += 12;
-        yearsDifference--;
-    }
-
-    // Output the results
-    console.log(`Time difference in milliseconds: ${timeDifference}`);
-    console.log(`Difference in years: ${yearsDifference}`);
-    console.log(`Difference in months: ${monthsDifference}`);
-    console.log(`Difference in days: ${daysDifference}`);
-    console.log(`Difference in hours: ${hoursDifference}`);
-    console.log(`Difference in minutes: ${minutesDifference}`);
-
-*/
-    const originalAmount = 1000; // Replace with the actual amount
-    const leftDays = Math.floor(cancellationDate - arrivalDate)/( 1000 * 3600 * 24 );
+    const originalAmount = Amount * numberOfDays;
     let amountDeducted;
    
     console.log("cancellationDate" + cancellationDate + "numberOfDays" + numberOfDays + "arrivalDate" + arrivalDate + "leftDays" + leftDays);

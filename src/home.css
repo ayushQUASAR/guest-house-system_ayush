@@ -307,6 +307,9 @@ nav {
     z-index: 2;
     font-weight: 100;
 }
+.imageGallery{ 
+        background-color: rgba(185, 194, 255, 0.225);
+}
 .imageheader{
     padding-top : 1em;
     font-size: 50px;
@@ -339,7 +342,6 @@ nav {
     padding: 30px 150px;
     word-spacing: 3px;
     font-size: 18px;
-    background-color: rgba(185, 194, 255, 0.225);
 }
 .aboutUs {
     font-size: 50px;
@@ -355,8 +357,7 @@ nav {
 .facilitiesHolder {
     display: flex;
     width: 100%;
-    justify-content: space-between;
-    
+    justify-content: space-between; 
 }
 
 .contactUsDiv {
@@ -416,6 +417,7 @@ nav {
         word-spacing: 1px;
         font-size: 15px;
         text-align: justify;
+        background-color: rgba(185, 194, 255, 0.225);
     }
     #contactHeader {
         font-size: 50px;

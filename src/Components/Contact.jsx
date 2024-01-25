@@ -3,7 +3,7 @@ const Contact = () =>{
     return(
         <>
         <div>
-            <div className="row outer-container" style = {{padding : '2rem 0rem'}}>
+            <div  className="row outer-container" style = {{padding : '1rem 0rem', fontSize : '' }}>
                 <div className="box col-sm-12 col-md-6 col-lg-3" >
                     <h2 style = {{color : '#008cff'}}>Location</h2>
                     <p>G.T Road, Amritsar Bypass, Jalandhar, Punjab, India-144008</p>
@@ -16,7 +16,7 @@ const Contact = () =>{
                 </div>
                 <div className="box col-sm-12 col-md-6 col-lg-3" >
                     <h2 style = {{color : '#008cff'}}>Phone Number:</h2>
-                    <p>XXXXXXXXXX</p>
+                    <p>8968659090</p>
                 </div>
             </div>
         </div>

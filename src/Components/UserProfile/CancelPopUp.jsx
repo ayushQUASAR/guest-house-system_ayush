@@ -1,8 +1,5 @@
-
-import React from 'react';
-
 import React, { useState } from 'react';
-import './popup.css'; // Import your CSS file for styling
+import './popup.css'; 
 import CancelForm from './CancelForm';
 
 const Popup = ({ isOpen, closePopup }) => {

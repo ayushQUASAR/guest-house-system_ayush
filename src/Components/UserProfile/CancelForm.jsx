@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-const CancelForm = ({ bookingId, onDelete }) => {
+const CancelForm = ({ bookingId, onDeleteSuccess }) => {
   const [formData, setFormData] = useState({
     name: '',
     bankname : '',
@@ -13,78 +13,50 @@ const CancelForm = ({ bookingId, onDelete }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setForm(false);
+    try {
+      // Make an HTTP POST request to save form data
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/saveFormData`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          // Include the necessary form data in the request body
+          name: formData.name,
+          bankname: formData.bankname,
+          accountNumber: formData.accountNumber,
+          ifscCode: formData.ifscCode,
+        }),
+      });
 
-    // Perform the deletion after submitting the form
-    fetch(`${import.meta.env.VITE_API_URL}/booking/${bookingId}`, {
-      method: "DELETE"
-    })
-    .then((res) => res.json())
-    .then((data) => {
+      if (!response.ok) {
+        throw new Error('Failed to save form data');
+      }
+
+      // Assuming the server responds with JSON data containing the saved details
+      const savedData = await response.json();
+
+      // Update the result state with the saved data
       setResult({
-        guestHouse : 'booking.guestHouse',
-        name: formData.name,
-        branch: 'booking.branch', 
-        accountNumber: formData.accountNumber,
-        ifscCode: formData.ifscCode,
+        guestHouse: 'booking.guestHouse',
+        name: savedData.name,
+        branch: 'booking.branch',
+        accountNumber: savedData.accountNumber,
+        ifscCode: savedData.ifscCode,
         arrivalDate: arrivalDate.toDateString(),
         cancellationDate: cancellationDate.toDateString(),
         numberOfDays,
         amountDeducted,
         amountReturned,
       });
-      onDelete();
-    })
-    .catch((err) => console.log("error while deleting a booking ",err.message));
-  const handleSubmit = (e) => {
-    e.preventDefault(); 
-    setForm(false);
-    // Calculate cancellation details 
-    const cancellationDate = new Date();
-    
-    const numberOfDays = 3; // replace with number of days
-    const arrivalDate = new Date("2024-02-01"); // replace with the actual arrival date
-    // difference of days 
-    let differenceInMilliseconds = arrivalDate - cancellationDate;
-    let differenceInSeconds = differenceInMilliseconds / 1000;
-    let differenceInMinutes = differenceInSeconds / 60;
-    let differenceInHours = differenceInMinutes / 60;
-    let leftDays = differenceInHours / 24;
-    let Amount;
-    if(Booking.guestHouseSelected === 1){
-      Amount = 1000; // Replace with the actual amount 
+
+      onDeleteSuccess()
+    } catch (error) {
+      console.error('Error saving form data:', error.message);
     }
-    else{
-      Amount = 600;
-    }
-    const originalAmount = Amount * numberOfDays;
-    let amountDeducted;
-   
-    console.log("cancellationDate" + cancellationDate + "numberOfDays" + numberOfDays + "arrivalDate" + arrivalDate + "leftDays" + leftDays);
-    if(leftDays >= 3) {
-      amountDeducted = 0.25 * originalAmount;
-    }else if(leftDays < 3 && leftDays >= 1) {
-      amountDeducted = 0.50 * originalAmount;
-    }
-    else{
-      alert("You can not cancel the booking");
-    }
-    const amountReturned = originalAmount - amountDeducted;
-    console.log(amountDeducted, amountReturned);
-    setResult({
-      guestHouse : 'booking.guestHouse',
-      name: formData.name,
-      branch: 'booking.branch', 
-      accountNumber: formData.accountNumber,
-      ifscCode: formData.ifscCode,
-      arrivalDate: arrivalDate.toDateString(),
-      cancellationDate: cancellationDate.toDateString(),
-      numberOfDays,
-      amountDeducted,
-      amountReturned,
-    });
   };
 
   return (
@@ -92,7 +64,7 @@ const CancelForm = ({ bookingId, onDelete }) => {
       {form && <div>
         <form onSubmit={handleSubmit}>
           <p>All the fields marked with (*) are mandatory.<br/>
-            Please fill the following form for reimbursement of room chargers. 
+            Please fill the following form for reimbursement of room charges. 
           </p>
           <div className="col-md-12">
             <label htmlFor="firstName" className="form-label">
@@ -119,8 +91,6 @@ const CancelForm = ({ bookingId, onDelete }) => {
             <input type="text" className="form-control" id="IFSC" name="ifscCode" value={formData.ifscCode} onChange={handleInputChange} required />
           </div>
           <br />
-
-          <button type = "submit" className='btn btn-primary '>Submit</button>
           <button type = "submit">Submit</button>
         </form>
       </div>}

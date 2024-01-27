@@ -3,7 +3,7 @@ import '../../style/facultyalumni.css'
 import Popup from '../PopUp/Popup';
 import Dropdown from '../Dropdown/Dropdown';
 export default function StudentRight({ prop }) {
-  const { reffirstName, reflastName, refphoneNumber, Branch, studrollNumber, setReffirstName, setReflastName, setRefphoneNumber, setBranch, setSrollNumber, messageHead_m, para1_m, para2_m, setPopup, popup } = prop;
+  const { reffirstName, reflastName, refphoneNumber, department, studrollNumber, setReffirstName, setReflastName, setRefphoneNumber, setDepartment, setSrollNumber, messageHead_m, para1_m, para2_m, setPopup, popup } = prop;
 
   // Define state variables to store the input values
 
@@ -85,7 +85,7 @@ export default function StudentRight({ prop }) {
               onChange={(e) => handleInputChange(e, setSbranch)}
             /> */}
         <label>Branch:</label>
-        <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Branch'} Branch={Branch} setBranch={setBranch} />
+        <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Branch'} Branch={department} setBranch={setDepartment} />
       </div>
       {/* </div> */}
       <button type="submit" className="btn btn-primary ">

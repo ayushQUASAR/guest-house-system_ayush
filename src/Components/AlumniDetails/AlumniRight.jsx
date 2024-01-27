@@ -4,7 +4,7 @@ import '../../style/MainContainer.css'
 import Popup from '../PopUp/Popup';
 import Dropdown from '../Dropdown/Dropdown';
 export default function AlumniRight({ prop }) {
-  const { reffirstName, reflastName, refphoneNumber, batch, Branch, jobProfile, setReffirstName, setReflastName, setRefphoneNumber, setBatch, setBranch, setJobProfile, messageHead_m, para1_m, para2_m, setPopup, popup } = prop;
+  const { reffirstName, reflastName, refphoneNumber, batch, department, jobProfile, setReffirstName, setReflastName, setRefphoneNumber, setBatch, setDepartment, setJobProfile, messageHead_m, para1_m, para2_m, setPopup, popup } = prop;
 
 
 
@@ -54,19 +54,21 @@ export default function AlumniRight({ prop }) {
       </div>
       {/* </div> */}
       {/* <div className="row input"> */}
-      <div className="form-group">
-        <label>Branch:</label>
-        {/* <input
-              type="text"
-              className="form-control mb-3"
-              placeholder="Branch"
-              value={branch}
-              onChange={(e) => handleInputChange(e, setBranch)}
-            /> */}
-        <Dropdown names={['CSE', 'ICE', 'EE', 'IPE', 'TT', 'MECH', 'Data Science', 'BT', 'ECE', 'CIVIL', 'IT', 'MSC', 'MBA']} placeholder={'Branch'} Branch={Branch} setBranch={setBranch} />
-      </div>
+
       {/* </div> */}
       {/* <div className="row input"> */}
+
+      <div className="form-group">
+        {/* <input
+              type="text"
+              className="form-control"
+              placeholder="Branch"
+              value={studbranch}
+              onChange={(e) => handleInputChange(e, setSbranch)}
+            /> */}
+        <label>Branch:</label>
+        <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Branch'} Branch={department} setBranch={setDepartment} />
+      </div>
 
       <div className="form-group">
         <label>Batch:</label>

@@ -85,7 +85,7 @@ export default function StudentRight({ prop }) {
               onChange={(e) => handleInputChange(e, setSbranch)}
             /> */}
         <label>Branch:</label>
-        <Dropdown names={['CSE', 'ICE', 'EE', 'IPE', 'TT', 'MECH', 'Data Science', 'BT', 'ECE', 'CIVIL', 'IT', 'MSC', 'MBA']} placeholder={'Branch'} Branch={Branch} setBranch={setBranch} />
+        <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Branch'} Branch={Branch} setBranch={setBranch} />
       </div>
       {/* </div> */}
       <button type="submit" className="btn btn-primary ">

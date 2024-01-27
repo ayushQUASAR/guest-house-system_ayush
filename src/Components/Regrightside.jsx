@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Alumni from "./AlumniDetails/AlumniRight";
 import Faculty from "./FacultyDetails/FacultyRight";
 import Student from "./StudentDetails/StudentRight";
+import Dropdown from "./Dropdown/Dropdown";
 
 import { Icon } from '@iconify/react';
 
@@ -34,10 +35,9 @@ export default function Regrightside() {
   const [rightValue, setRightValue] = useState(-1300);
   const [registerrightval, setRegisterrightval] = useState(0);
   const [leftval, setLeft] = useState();
-
+  // const [studentFacultyOther, setStudentFacultyOther] = useState("");
 
   // Alumni
-  console.log(Branch);
   const [batch, setBatch] = useState("");
   const [registerOptn, setRegisteroptn] = useState(null);
   const [registeractiveclass, setRegisterclass] = useState(false);
@@ -108,6 +108,7 @@ export default function Regrightside() {
       window.alert("ONLY IMAGES AND PDF ARE ALLOWED. Please Upload again");
     }
   };
+
   const regOnview = () => {
     setRegisterrightval((prevRightValue) => (prevRightValue === 0 ? -1300 : 0));
 
@@ -143,6 +144,7 @@ export default function Regrightside() {
     formData.append("Address", Address);
     formData.append("selectedOption", contentType);
     formData.append("idProof", idProof);
+    // formData.append("StudentFacultyOther", studentFacultyOther);
     // Alumni
     formData.append("RefFirstName", reffirstName);
     formData.append("RefLastName", reflastName);
@@ -161,8 +163,8 @@ export default function Regrightside() {
 
     formData.append("registerOption", registerOptn);
 
-    console.log(formData);
-    console.log(formData.entries());
+    console.log("Form data to be submitted to database : ",formData);
+    console.log("Form data entries to be submitted to database : ",formData.entries());
 
     fetch(import.meta.env.VITE_API_URL + "/register", {
       method: "POST",
@@ -186,6 +188,7 @@ export default function Regrightside() {
 
     console.log("registered");
   };
+
   const handlepopup = (val, message) => {
     console.log(message);
 
@@ -222,7 +225,7 @@ export default function Regrightside() {
             {/* <button > back</button> */}
         {/* </NavLink> */}
         <NavLink className="nav-tohome" to="/login">
-          <span><button className="btn btn-primary "> back</button></span>
+          <span><button className="btn btn-primary "> Back</button></span>
         </NavLink>
         {/* </div> */}
         <form action="/register" onSubmit={setSubmit}>
@@ -256,7 +259,7 @@ export default function Regrightside() {
               </div>
 
               <div tabIndex="0" onClick={() => {
-                setRegisteroptn(3), setRegisterclass(true);
+                 setRegisteroptn(3), setRegisterclass(true);
               }} className="college-official-optn">
                 <Icon icon="iconamoon:profile" width={'80'} height={'80'} color="#007bff" />  <p>Others</p>
               </div>
@@ -351,6 +354,20 @@ export default function Regrightside() {
                     />
                   </div>
 
+                  <div className="form-group">
+                    <label>Department:</label>
+                    {/* <input
+                      required
+                      type="text"
+                      value={department}
+                      onChange={(e) => {
+                        setDepartment(e.target.value);
+                      }}
+                      className="college-official-username"
+                    /> */}
+                    <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
+                  </div>
+
 
                   <div className="form-group">
                     <label>Password:</label>
@@ -362,7 +379,6 @@ export default function Regrightside() {
                       className="college-official-password"
                     />
                   </div>
-
                   <div className="form-group">
                     <h2 className="govt-id-heading">Upload Govt/College ID</h2>
                   </div>
@@ -440,8 +456,6 @@ export default function Regrightside() {
                     </div>
                   </div>
 
-
-
                   <div className="form-group">
                     <label>Firstname:</label>
                     <input
@@ -463,7 +477,22 @@ export default function Regrightside() {
                       }}
                       className="college-official-username"
                     />
+                   </div> 
+
+                  <div className="form-group">
+                    <label>Department:</label>
+                    {/* <input
+                      required
+                      type="text"
+                      value={department}
+                      onChange={(e) => {
+                        setDepartment(e.target.value);
+                      }}
+                      className="college-official-username"
+                    /> */}
+                    <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
                   </div>
+
                   {/* <div className="form-group"> */}
                   {/* <label>Branch</label> */}
                   {/* <input
@@ -530,10 +559,6 @@ export default function Regrightside() {
                       placeholder="First Name"
                     />
                   </div>
-
-
-
-
 
                   <div className="form-group">
                     <label>Lastname:</label>
@@ -746,12 +771,12 @@ export default function Regrightside() {
                         reffirstName,
                         reflastName,
                         refphoneNumber,
-                        Branch,
+                        department,
                         studrollNumber,
                         setReffirstName,
                         setReflastName,
                         setRefphoneNumber,
-                        setBranch,
+                        setDepartment,
                         setSrollNumber,
                         messageHead_m,
                         para1_m,

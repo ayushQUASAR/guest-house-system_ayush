@@ -164,9 +164,9 @@ const handleRoomsChange = (e) => {
       </div>
       <div className="form-group">
         <label className="booking-label" htmlFor="checkin">
-          CHECK IN
+          CHECK IN :12:00 PM
         </label>
-        <input
+        {/* <input
           type="date"
           className="form-control inputs"
           style={inputStyle}
@@ -176,13 +176,13 @@ const handleRoomsChange = (e) => {
           onChange={handleCheckinChange}
           min={todayDateString} // Set the minimum date to today
           max={maxAllowedCheckInDate.toISOString().split('T')[0]}
-        />
+        /> */}
       </div>
       <div className="form-group">
         <label className="booking-label" htmlFor="checkout">
-          CHECK OUT
+          CHECK OUT:11:00 am
         </label>
-        <input
+        {/* <input
           type="date"
           className="form-control inputs"
           style={inputStyle}
@@ -192,7 +192,7 @@ const handleRoomsChange = (e) => {
           onChange={handleCheckoutChange}
           min={checkinDate} // Set the minimum date to the check-in date
           max={maxAllowedCheckoutDate.toISOString().split("T")[0]}
-        />
+        /> */}
       </div>
       <div className="form-group">
         <label className="booking-label" htmlFor="stayduration">

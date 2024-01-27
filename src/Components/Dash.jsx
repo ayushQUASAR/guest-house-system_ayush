@@ -69,14 +69,30 @@ const Dash = ({ admin, isMainAdmin }) => {
       method: "GET",
       credentials: "include",
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log("logout");
+  
+        // Clear local storage
+        localStorage.clear();
+  
+        document.cookie.split(";").forEach((c) => {
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+  
+        return res.json();
+      })
       .then((data) => {
         if (data.message === "Logged out successfully") {
           setIsLogged(false);
           navigate("/login");
+          // Reload the page after navigating to /login
+          window.location.reload();
         } else {
           console.error("Error logging out");
         }
+      })
+      .catch((error) => {
+        console.error("Error during logout:", error);
       });
   };
 

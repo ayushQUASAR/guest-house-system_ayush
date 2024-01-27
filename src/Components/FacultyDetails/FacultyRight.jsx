@@ -46,7 +46,7 @@ export default function FacultyRight({ prop }) {
         <h1 className="rheading">Enter Faculty Details</h1>
       </div>
       {/* <div className="row input"> */}
-      <div className="form-group">
+      <div className="form-group regform-group-custom">
         <label>First-Name:</label>
         <input
           type="text"
@@ -56,7 +56,7 @@ export default function FacultyRight({ prop }) {
           onChange={(e) => handleInputChange(e, setReffirstName)}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group regform-group-custom">
         <label>Last-Name:</label>
         <input
           type="text"
@@ -68,7 +68,7 @@ export default function FacultyRight({ prop }) {
       </div>
       {/* </div> */}
       {/* <div className="row input"> */}
-      <div className="form-group">
+      <div className="form-group regform-group-custom">
         <label>Faculty-Email:</label>
         <input
           type="email"
@@ -80,7 +80,7 @@ export default function FacultyRight({ prop }) {
       </div>
       {/* </div> */}
       {/* <div className="row input"> */}
-      {/* <div className="form-group">
+      {/* <div className="form-group regform-group-custom">
         <label>Department:</label>
         <input
           type="text"
@@ -91,7 +91,7 @@ export default function FacultyRight({ prop }) {
         />
       </div> */}
 
-      <div className="form-group">
+      <div className="form-group regform-group-custom">
         {/* <input
               type="text"
               className="form-control"
@@ -100,31 +100,41 @@ export default function FacultyRight({ prop }) {
               onChange={(e) => handleInputChange(e, setSbranch)}
             /> */}
         <label>Branch:</label>
-        <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Branch'} Branch={department} setBranch={setDepartment} />
+        <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics', 'Humanities and Management']} placeholder={'Branch'} Branch={department} setBranch={setDepartment} />
       </div>
 
       {/* </div> */}
-      <div className="form-group">
+      <div className="form-group regform-group-custom">
         <label>Phone No:</label>
-        <div className="col-md-3 col-sm-12">
-          <div className="input-group">
-            <input type="text" className="form-control" value="+91" readOnly />
+     
+        <div style={{ display: 'flex' }}>
+
+          <div style={{ width: '20%' }} className="input-group">
+            <input
+              required
+              type="text"
+              className="form-control"
+              value="+91"
+              readOnly
+            />
           </div>
-        </div>
-        <div className="col-md-9 col-sm-12">
-          <input
+
+
+          <input style={{ width: '70%', letterSpacing: '0.10rem' }}
+            required
             type="text"
             className="form-control"
             placeholder="Phone Number"
             value={refphoneNumber}
             onChange={(e) => handleInputChange(e, setRefphoneNumber)}
+          
           />
         </div>
-        
+
       </div>
       <button type="submit" className="btn btn-primary ">
-          Register
-        </button>
+        Register
+      </button>
       {/* <div className="mt-auto justify-content-end d-flex">
         <button type="submit" className="btn btn-primary btn-lg rounded register-btn">
           Register

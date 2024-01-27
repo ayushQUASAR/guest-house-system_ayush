@@ -11,6 +11,7 @@ import Dropdown from "./Dropdown/Dropdown";
 import { Icon } from '@iconify/react';
 
 import Popup from "./PopUp/Popup";
+import usePasswordToggle from "./Passwordvisible/usePasswordToggle";
 
 export default function Regrightside() {
   const navigate = useNavigate();
@@ -36,7 +37,9 @@ export default function Regrightside() {
   const [rightValue, setRightValue] = useState(-1300);
   const [registerrightval, setRegisterrightval] = useState(0);
   const [leftval, setLeft] = useState();
-  const[ConfirmPassword,setConfirmPassword]=useState("");
+  const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [PasswordInputType, ToggleIcon] = usePasswordToggle();
+  const [PasswordInputType2, ToggleIcon2] = usePasswordToggle();
   // const [studentFacultyOther, setStudentFacultyOther] = useState("");
 
   // Alumni
@@ -122,23 +125,20 @@ export default function Regrightside() {
   const handleback = () => {
     window.back();
   }
-  useEffect(()=>{
-    if(ConfirmPassword.length!=0)
-    {
-      if(ConfirmPassword!=Password)
-      {
+  useEffect(() => {
+    if (ConfirmPassword.length != 0) {
+      if (ConfirmPassword != Password) {
         setMatchmessage("Passwords do not match! ")
       }
-      else
-      {
+      else {
         setMatchmessage("")
       }
     }
     console.log("passs")
-  },[ConfirmPassword])
-  const Handleconfirmpass=(e)=>{
+  }, [ConfirmPassword])
+  const Handleconfirmpass = (e) => {
     setConfirmPassword(e.target.value)
-   
+
   }
 
   const setSubmit = (e) => {
@@ -183,8 +183,8 @@ export default function Regrightside() {
 
     formData.append("registerOption", registerOptn);
 
-    console.log("Form data to be submitted to database : ",formData);
-    console.log("Form data entries to be submitted to database : ",formData.entries());
+    console.log("Form data to be submitted to database : ", formData);
+    console.log("Form data entries to be submitted to database : ", formData.entries());
 
     fetch(import.meta.env.VITE_API_URL + "/register", {
       method: "POST",
@@ -279,7 +279,7 @@ export default function Regrightside() {
               </div>
 
               <div tabIndex="0" onClick={() => {
-                 setRegisteroptn(3), setRegisterclass(true);
+                setRegisteroptn(3), setRegisterclass(true);
               }} className="college-official-optn">
                 <Icon icon="iconamoon:profile" width={'80'} height={'80'} color="#007bff" />  <p>Others</p>
               </div>
@@ -305,7 +305,7 @@ export default function Regrightside() {
               <div className="college-official-form-wrapper" style={{ left: `${rightValue}px ` }}>
                 <div className="college-official-form">
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Email:</label>
                     <input
                       required
@@ -320,11 +320,12 @@ export default function Regrightside() {
                     )}
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Phone No:</label>
-                    {/* <div className="row input"> */}
-                    <div className="col-md-3 col-sm-12">
-                      <div className="input-group">
+
+                    <div style={{ display: 'flex' }}>
+
+                      <div style={{ width: '20%' }} className="input-group">
                         <input
                           required
                           type="text"
@@ -332,24 +333,23 @@ export default function Regrightside() {
                           value="+91"
                           readOnly
                         />
-                        {/* </div> */}
                       </div>
-                      <div className="col-md-9 col-sm-12">
-                        <input
-                          required
-                          type="text"
-                          value={Phnnumber}
-                          onChange={(e) => setPhnnumber(e.target.value)}
-                          className="form-control"
-                          placeholder="Phone Number"
-                        />
-                      </div>
+
+
+                      <input style={{ width: '70%', letterSpacing: '0.10rem' }}
+                        required
+                        type="text"
+                        value={Phnnumber}
+                        onChange={(e) => setPhnnumber(e.target.value)}
+                        className="form-control"
+                        placeholder="Phone Number"
+                      />
                     </div>
                   </div>
 
 
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Firstname:</label>
                     <input
                       required
@@ -361,7 +361,7 @@ export default function Regrightside() {
                   </div>{" "}
 
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Lastname:</label>
                     <input
                       required
@@ -374,7 +374,7 @@ export default function Regrightside() {
                     />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Department:</label>
                     {/* <input
                       required
@@ -385,41 +385,44 @@ export default function Regrightside() {
                       }}
                       className="college-official-username"
                     /> */}
-                    <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
+                    <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics', 'Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
                   </div>
 
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Password:</label>
                     <input
                       required
-                      type="password"
+                      type={PasswordInputType}
                       value={Password}
                       onChange={handlePasswordChange}
                       className="college-official-password"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Confirm Password:</label>
-                    <span className="input-group-text">
-                      {/* <img src="password-icon.png" alt="Password Icon" /> */}
-                    </span>
-                    <input
-                      required
-                      onChange={(e) => {Handleconfirmpass(e)}}
-                      value={ConfirmPassword}
-                      type="password"
-                      className="form-control"
                       placeholder="Password"
                     />
+                    <span>{ToggleIcon}</span>
+                  </div>
+                  <div className="form-group regform-group-custom">
+                    <label>Confirm Password:</label>
+                    {/* <span className="input-group-text">
+                      <img src="password-icon.png" alt="Password Icon" />
+                    </span> */}
+                    <input
+                      required
+                      onChange={(e) => { Handleconfirmpass(e) }}
+                      value={ConfirmPassword}
+                      type={PasswordInputType2}
+                      className="college-official-password"
+                      placeholder="Password"
+                    />
+                    <span>{ToggleIcon2}</span>
                     <p className="password-match-msg">{PasswordMatch}</p>
                   </div>
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <h2 className="govt-id-heading">Upload Govt/College ID</h2>
                   </div>
 
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <input
                       required
                       type="file"
@@ -430,7 +433,7 @@ export default function Regrightside() {
                   </div>
 
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <button
                       type="submit"
                       className="btn btn-primary btn-lg rounded"
@@ -448,7 +451,7 @@ export default function Regrightside() {
               <div className="college-official-form-wrapper" style={{ left: `${rightValue}px ` }}>
                 <div className="college-official-form">
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Email:</label>
                     <input
                       required
@@ -464,11 +467,12 @@ export default function Regrightside() {
                   </div>
 
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Phone No:</label>
                     {/* <div className="row input"> */}
-                    <div className="col-md-3 col-sm-12">
-                      <div className="input-group">
+                    <div style={{ display: 'flex' }}>
+
+                      <div style={{ width: '20%' }} className="input-group">
                         <input
                           required
                           type="text"
@@ -476,22 +480,21 @@ export default function Regrightside() {
                           value="+91"
                           readOnly
                         />
-                        {/* </div> */}
                       </div>
-                      <div className="col-md-9 col-sm-12">
-                        <input
-                          required
-                          type="text"
-                          value={Phnnumber}
-                          onChange={(e) => setPhnnumber(e.target.value)}
-                          className="form-control"
-                          placeholder="Phone Number"
-                        />
-                      </div>
+
+
+                      <input style={{ width: '70%', letterSpacing: '0.10rem' }}
+                        required
+                        type="text"
+                        value={Phnnumber}
+                        onChange={(e) => setPhnnumber(e.target.value)}
+                        className="form-control"
+                        placeholder="Phone Number"
+                      />
                     </div>
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Firstname:</label>
                     <input
                       required
@@ -501,7 +504,7 @@ export default function Regrightside() {
                       className="college-official-username"
                     />
                   </div>{" "}
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Lastname:</label>
                     <input
                       required
@@ -512,9 +515,9 @@ export default function Regrightside() {
                       }}
                       className="college-official-username"
                     />
-                   </div> 
+                  </div>
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Department:</label>
                     {/* <input
                       required
@@ -525,10 +528,10 @@ export default function Regrightside() {
                       }}
                       className="college-official-username"
                     /> */}
-                    <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
+                    <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics', 'Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
                   </div>
 
-                  {/* <div className="form-group"> */}
+                  {/* <div className="form-group regform-group-custom"> */}
                   {/* <label>Branch</label> */}
                   {/* <input
                       required
@@ -541,36 +544,40 @@ export default function Regrightside() {
                     /> */}
 
                   {/* </div> */}
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Password:</label>
                     <input
                       required
-                      type="password"
+                      type={PasswordInputType}
                       value={Password}
                       onChange={handlePasswordChange}
                       className="college-official-password"
+                      placeholder="Password"
+
                     />
+                    <span>{ToggleIcon}</span>
                   </div>
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Confirm Password:</label>
-                    <span className="input-group-text">
-                      {/* <img src="password-icon.png" alt="Password Icon" /> */}
-                    </span>
+                    {/* <span className="input-group-text">
+                      <img src="password-icon.png" alt="Password Icon" />
+                    </span> */}
                     <input
                       required
-                      onChange={(e) => {Handleconfirmpass(e)}}
+                      onChange={(e) => { Handleconfirmpass(e) }}
                       value={ConfirmPassword}
-                      type="password"
-                      className="form-control"
+                      type={PasswordInputType2}
+                      className="college-official-password"
                       placeholder="Password"
                     />
+                    <span>{ToggleIcon2}</span>
                     <p className="password-match-msg">{PasswordMatch}</p>
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <h2 className="govt-id-heading">Upload Govt/College ID</h2>
                   </div>
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <input
                       required
                       type="file"
@@ -579,7 +586,7 @@ export default function Regrightside() {
                       id="fileInput"
                     />
                   </div>
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <button
                       type="submit"
                       className="btn btn-primary btn-lg rounded"
@@ -598,7 +605,7 @@ export default function Regrightside() {
 
 
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Firstname:</label>
                     <input
                       required
@@ -610,7 +617,7 @@ export default function Regrightside() {
                     />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Lastname:</label>
                     <input
                       required
@@ -622,11 +629,12 @@ export default function Regrightside() {
                     />
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Phone No:</label>
                     {/* <div className="row input"> */}
-                    <div className="col-md-3 col-sm-12">
-                      <div className="input-group">
+                    <div style={{ display: 'flex' }}>
+
+                      <div style={{ width: '20%' }} className="input-group">
                         <input
                           required
                           type="text"
@@ -634,22 +642,21 @@ export default function Regrightside() {
                           value="+91"
                           readOnly
                         />
-                        {/* </div> */}
                       </div>
-                      <div className="col-md-9 col-sm-12">
-                        <input
-                          required
-                          type="text"
-                          value={Phnnumber}
-                          onChange={(e) => setPhnnumber(e.target.value)}
-                          className="form-control"
-                          placeholder="Phone Number"
-                        />
-                      </div>
+
+
+                      <input style={{ width: '70%', letterSpacing: '0.10rem' }}
+                        required
+                        type="text"
+                        value={Phnnumber}
+                        onChange={(e) => setPhnnumber(e.target.value)}
+                        className="form-control"
+                        placeholder="Phone Number"
+                      />
                     </div>
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
 
                     <label>Address:</label>
                     <input
@@ -663,7 +670,7 @@ export default function Regrightside() {
 
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     {/* <div className="col-12"> */}
                     <label>Email:</label>
                     <input
@@ -677,7 +684,7 @@ export default function Regrightside() {
                     {/* </div> */}
                   </div>
 
-                  {/* <div className="form-group"> */}
+                  {/* <div className="form-group regform-group-custom"> */}
                   {/* <div className="col-12"> */}
                   {/* <label>Branch:</label>
                     <input
@@ -690,35 +697,37 @@ export default function Regrightside() {
                     /> */}
                   {/* </div> */}
                   {/* </div> */}
-                  {/* <div className="form-group"> */}
+                  {/* <div className="form-group regform-group-custom"> */}
                   {/* <div className="col-12"> */}
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Password:</label>
-                    <span className="input-group-text">
+                    {/* <span className="input-group-text">
                       <img src="password-icon.png" alt="Password Icon" />
-                    </span>
+                    </span> */}
                     <input
                       required
                       onChange={(e) => setPassword(e.target.value)}
                       value={Password}
-                      type="password"
-                      className="form-control"
+                      type={PasswordInputType}
+                      className="college-official-password"
                       placeholder="Password"
                     />
+                    <span>{ToggleIcon}</span>
                   </div>
-                   <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     <label>Confirm Password:</label>
-                    <span className="input-group-text">
+                    {/* <span className="input-group-text">
                       <img src="password-icon.png" alt="Password Icon" />
-                    </span>
+                    </span> */}
                     <input
                       required
-                      onChange={(e) => {Handleconfirmpass(e)}}
+                      onChange={(e) => { Handleconfirmpass(e) }}
                       value={ConfirmPassword}
-                      type="password"
-                      className="form-control"
+                      type={PasswordInputType2}
+                      className="college-official-password"
                       placeholder="Password"
                     />
+                    <span>{ToggleIcon2}</span>
                     <p className="password-match-msg">{PasswordMatch}</p>
                   </div>
                   {/* </div> */}
@@ -730,7 +739,7 @@ export default function Regrightside() {
                     {/* </div> */}
                     {/* </div> */}
                   </div>
-                  <div className="form-group">
+                  <div className="form-group regform-group-custom">
                     {/* <div className="col-12"> */}
                     {/* <div className="input-group"> */}
                     <input

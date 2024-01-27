@@ -85,6 +85,10 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
   
   box-shadow: 2px 2px 2px 2px rgb(128, 125, 125);
 }
+.regform-group-custom
+{
+  width:400px ;
+}
 .centered-box-row{
   min-height: 85vh;
 }
@@ -286,13 +290,15 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
 }
 
 .college-official-form input {
-  width: 400px;
+  width: 90%;
 
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-
+.dropdown-dept div{
+  margin: 0 !important;
+}
 .college-official-email {
   border-color: #3498db;
 }

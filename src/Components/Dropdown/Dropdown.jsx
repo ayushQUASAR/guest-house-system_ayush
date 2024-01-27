@@ -54,8 +54,8 @@ export default function Dropdown({placeholder,names,Branch,setBranch}) {
   };
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, width: 380, mt: 3 }}>
+    <div className='dropdown-dept'>
+      <FormControl sx={{ m: 1, width: '90%', mt: 3 }}>
         <Select
          
           displayEmpty

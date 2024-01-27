@@ -20,7 +20,7 @@ export default function StudentRight({ prop }) {
   };
 
   return (
-    <>
+    <div>
       <div className="r">
         <h1 className="rheading">Enter Student Details</h1>
       </div>
@@ -93,6 +93,6 @@ export default function StudentRight({ prop }) {
       </div>
       {/* </form> */}
       {popup && <Popup setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
-    </>
+    </div>
   );
 }

@@ -4,12 +4,7 @@
     align-items: center;
     min-height: 100vh;
   }
-  .centered-box {
-    border-radius: 10px;
-    padding: 50px;
-    width:100%;
-    box-shadow:2px 2px 2px 2px rgb(128, 125, 125);
-  }
+
 
 .Parent {
     padding: 20px;

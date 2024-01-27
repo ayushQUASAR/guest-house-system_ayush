@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../style/regform.css";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { Link, NavLink } from "react-router-dom";
@@ -25,6 +25,7 @@ export default function Regrightside() {
   const [Address, setAddress] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const [PasswordMatch, setMatchmessage] = useState("");
   const [contentType, setContentType] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
   const [data, setData] = useState([]);
@@ -35,6 +36,7 @@ export default function Regrightside() {
   const [rightValue, setRightValue] = useState(-1300);
   const [registerrightval, setRegisterrightval] = useState(0);
   const [leftval, setLeft] = useState();
+  const[ConfirmPassword,setConfirmPassword]=useState("");
   // const [studentFacultyOther, setStudentFacultyOther] = useState("");
 
   // Alumni
@@ -119,6 +121,24 @@ export default function Regrightside() {
   }
   const handleback = () => {
     window.back();
+  }
+  useEffect(()=>{
+    if(ConfirmPassword.length!=0)
+    {
+      if(ConfirmPassword!=Password)
+      {
+        setMatchmessage("Passwords do not match! ")
+      }
+      else
+      {
+        setMatchmessage("")
+      }
+    }
+    console.log("passs")
+  },[ConfirmPassword])
+  const Handleconfirmpass=(e)=>{
+    setConfirmPassword(e.target.value)
+   
   }
 
   const setSubmit = (e) => {
@@ -380,6 +400,21 @@ export default function Regrightside() {
                     />
                   </div>
                   <div className="form-group">
+                    <label>Confirm Password:</label>
+                    <span className="input-group-text">
+                      {/* <img src="password-icon.png" alt="Password Icon" /> */}
+                    </span>
+                    <input
+                      required
+                      onChange={(e) => {Handleconfirmpass(e)}}
+                      value={ConfirmPassword}
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                    />
+                    <p className="password-match-msg">{PasswordMatch}</p>
+                  </div>
+                  <div className="form-group">
                     <h2 className="govt-id-heading">Upload Govt/College ID</h2>
                   </div>
 
@@ -515,6 +550,21 @@ export default function Regrightside() {
                       onChange={handlePasswordChange}
                       className="college-official-password"
                     />
+                  </div>
+                  <div className="form-group">
+                    <label>Confirm Password:</label>
+                    <span className="input-group-text">
+                      {/* <img src="password-icon.png" alt="Password Icon" /> */}
+                    </span>
+                    <input
+                      required
+                      onChange={(e) => {Handleconfirmpass(e)}}
+                      value={ConfirmPassword}
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                    />
+                    <p className="password-match-msg">{PasswordMatch}</p>
                   </div>
 
                   <div className="form-group">
@@ -655,6 +705,21 @@ export default function Regrightside() {
                       className="form-control"
                       placeholder="Password"
                     />
+                  </div>
+                   <div className="form-group">
+                    <label>Confirm Password:</label>
+                    <span className="input-group-text">
+                      <img src="password-icon.png" alt="Password Icon" />
+                    </span>
+                    <input
+                      required
+                      onChange={(e) => {Handleconfirmpass(e)}}
+                      value={ConfirmPassword}
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                    />
+                    <p className="password-match-msg">{PasswordMatch}</p>
                   </div>
                   {/* </div> */}
                   {/* </div> */}

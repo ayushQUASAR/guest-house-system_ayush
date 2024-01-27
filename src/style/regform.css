@@ -88,6 +88,12 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
 .centered-box-row{
   min-height: 85vh;
 }
+.password-match-msg{
+  margin: 10px;
+  color: red;
+  font-size: 15px;
+  /* text-transform: capitalize; */
+}
 .nav-tohome {
   color: #007bff;
   display: flex;

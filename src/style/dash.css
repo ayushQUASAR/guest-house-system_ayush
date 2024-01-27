@@ -1,13 +1,13 @@
 
 .dash-menu {
     width: 100%;
-    min-height: 100vh;
+    min-height: 84vh;
     display: flex;
     font-family: 'Poppins' !important;
 }
 
 .dash-sidebar {
-    min-height: 100vh;
+    min-height: 80vh;
     width: 400px;
     position: sticky;
     top: 0;
@@ -15,7 +15,7 @@
 }
 
 .dash-wrapper {
-    padding: 20px;
+    padding: 10px;
 }
 
 .dash-area {
@@ -48,9 +48,9 @@
 }
 
 .dash-optn {
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
-    margin: 10px 0;
+    margin: 10px 0px;
     color: white;
     background-color: #032c61;
 }
@@ -61,7 +61,7 @@
 
 .side-title {
     background-color: #b9b9b900;
-    padding: 10px;
+    padding: 0px;
     text-align: left;
     color: #c7c7c7;
     font-size: 25px;
@@ -92,7 +92,7 @@
 .admin-title span {
     display: flex;
     align-items: center;
-    margin-top:20px;
+    margin-top:10px;
 }
 
 .admin-title span svg {

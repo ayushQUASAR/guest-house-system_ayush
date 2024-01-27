@@ -27,7 +27,7 @@ const BookingPopup = ({ isOpen, onClose }) => {
     <div className="popup-overlay">
       <div className="popup" onClick={(e) => e.stopPropagation}>
         <img className="sucessIcon" src={sucessIcon} alt="Success Icon" />
-        <h2 className="popup-heading">Booking Successful</h2>
+        <h2 className="popup-heading">Booking sent for Admin approval</h2>
         {!isAdmin && (
           <>
             <p className="popup-para">Please wait for your Approval from Institute.</p>

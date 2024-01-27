@@ -29,7 +29,8 @@ import { useLoginContext } from "./ContextHooks/LoginContext";
 import Container from "./BookingForm/Container";
 import { useUserContext } from "./ContextHooks/UserContext";
 import ManageAdmin from "./ManageAdmin";
-
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import AdminReport from "./AdminReports/AdminReport";
 const Dash = ({ admin, isMainAdmin }) => {
   // console.log(admin);
   const [sideState, setSidestate] = useState(true);
@@ -91,6 +92,7 @@ const Dash = ({ admin, isMainAdmin }) => {
     approve: <Approve />,
     approvebooking: <ApproveBooking />,
     manageAdmins: <ManageAdmin />,
+    adminReports:<AdminReport/>
   };
 
   const selectedContent = contentComponents[contentType];
@@ -173,7 +175,15 @@ const Dash = ({ admin, isMainAdmin }) => {
                     Registered Users
                   </span>
                 </div>
-
+                <div
+                  onClick={() => selectContent("adminReports")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <AssessmentIcon />
+                    Report
+                  </span>
+               </div>
 
                 {isGodAdmin ? (
                   <div
@@ -215,7 +225,9 @@ const Dash = ({ admin, isMainAdmin }) => {
                 </div>
               </li>
             </div>{" "}
+          
           </div>
+          
         )}
         <div className="dash-area">
           <div className="dash-box">{selectedContent}</div>

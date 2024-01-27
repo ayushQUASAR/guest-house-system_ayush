@@ -2,9 +2,10 @@ import { useState } from 'react';
 import '../../style/facultyalumni.css'
 import '../../style/MainContainer.css'
 import Popup from '../PopUp/Popup';
+import Dropdown from '../Dropdown/Dropdown';
 
 export default function FacultyRight({ prop }) {
-  const { reffirstName, reflastName, refphoneNumber, department, facultyemail, setReffirstName, setReflastName, setRefphoneNumber, setFacultyemail, setDepartment,messageHead_m,para1_m,para2_m,setPopup,popup } = prop;
+  const { reffirstName, reflastName, refphoneNumber, department, facultyemail, setReffirstName, setReflastName, setRefphoneNumber, setFacultyemail, setDepartment, messageHead_m, para1_m, para2_m, setPopup, popup } = prop;
 
 
   // State variables for form fields
@@ -40,53 +41,71 @@ export default function FacultyRight({ prop }) {
   };
 
   return (
-    <div>
+    <>
       <div className="r">
         <h1 className="rheading">Enter Faculty Details</h1>
       </div>
-      <div className="row input">
-        <div className="col-md-6 col-sm-12">
-          <input
-            type="text"
-            className="form-control mb-3"
-            placeholder="First Name"
-            value={reffirstName}
-            onChange={(e) => handleInputChange(e, setReffirstName)}
-          />
-        </div>
-        <div className="col-md-6 col-sm-12">
-          <input
-            type="text"
-            className="form-control mb-3"
-            placeholder="Last Name"
-            value={reflastName}
-            onChange={(e) => handleInputChange(e, setReflastName)}
-          />
-        </div>
+      {/* <div className="row input"> */}
+      <div className="form-group">
+        <label>First-Name:</label>
+        <input
+          type="text"
+          className="form-control mb-3"
+          placeholder="First Name"
+          value={reffirstName}
+          onChange={(e) => handleInputChange(e, setReffirstName)}
+        />
       </div>
-      <div className="row input">
-        <div className="col-12">
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Email Address"
-            value={facultyemail}
-            onChange={(e) => handleInputChange(e, setFacultyemail)}
-          />
-        </div>
+      <div className="form-group">
+        <label>Last-Name:</label>
+        <input
+          type="text"
+          className="form-control mb-3"
+          placeholder="Last Name"
+          value={reflastName}
+          onChange={(e) => handleInputChange(e, setReflastName)}
+        />
       </div>
-      <div className="row input">
-        <div className="col-12">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Department"
-            value={department}
-            onChange={(e) => handleInputChange(e, setDepartment)}
-          />
-        </div>
+      {/* </div> */}
+      {/* <div className="row input"> */}
+      <div className="form-group">
+        <label>Faculty-Email:</label>
+        <input
+          type="email"
+          className="form-control"
+          placeholder="Email Address"
+          value={facultyemail}
+          onChange={(e) => handleInputChange(e, setFacultyemail)}
+        />
       </div>
-      <div className="row input">
+      {/* </div> */}
+      {/* <div className="row input"> */}
+      {/* <div className="form-group">
+        <label>Department:</label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Department"
+          value={department}
+          onChange={(e) => handleInputChange(e, setDepartment)}
+        />
+      </div> */}
+
+      <div className="form-group">
+        {/* <input
+              type="text"
+              className="form-control"
+              placeholder="Branch"
+              value={studbranch}
+              onChange={(e) => handleInputChange(e, setSbranch)}
+            /> */}
+        <label>Branch:</label>
+        <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Branch'} Branch={department} setBranch={setDepartment} />
+      </div>
+
+      {/* </div> */}
+      <div className="form-group">
+        <label>Phone No:</label>
         <div className="col-md-3 col-sm-12">
           <div className="input-group">
             <input type="text" className="form-control" value="+91" readOnly />
@@ -101,13 +120,17 @@ export default function FacultyRight({ prop }) {
             onChange={(e) => handleInputChange(e, setRefphoneNumber)}
           />
         </div>
+        
       </div>
-      <div className="mt-auto justify-content-end d-flex">
+      <button type="submit" className="btn btn-primary ">
+          Register
+        </button>
+      {/* <div className="mt-auto justify-content-end d-flex">
         <button type="submit" className="btn btn-primary btn-lg rounded register-btn">
           Register
         </button>
-      </div>
-      {popup&&     <Popup  setPopup={setPopup}messageHead={messageHead_m} para1={para1_m} para2={para2_m}/>}
-    </div>
+      </div> */}
+      {popup && <Popup setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
+    </>
   );
 }

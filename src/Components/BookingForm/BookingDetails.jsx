@@ -15,7 +15,7 @@ const guestHouseOptions = [
   "SAC Guest House",
   "Mega Guest House",
 ];
-const maxRooms = [10, 8, 10];
+const maxRooms = [2, 2, 2];
 
 const BookingDetails = ({ setDateDetails }) => {
   // Get today's date in India's time zone.
@@ -114,27 +114,20 @@ const BookingDetails = ({ setDateDetails }) => {
   };
 
   // Generate room options based on the selected guest house's maximum limit
-  const roomOptions = Array.from(
-    { length: maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)] },
-    (_, i) => i + 1
-  );
+  // Generate room options with a maximum limit of 3
+const roomOptions = Array.from({ length: 3 }, (_, i) => i + 1);
 
-  const handleRoomsChange = (e) => {
-    const selectedRooms = parseInt(e.target.value, 10);
-    if (selectedRooms < 1) {
-      alert("Minimum 1 room should be selected.");
-    } else if (
-      selectedRooms > maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)]
-    ) {
-      alert(
-        `Maximum ${
-          maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)]
-        } rooms are allowed for this guest house.`
-      );
-    } else {
-      setRoomsSelected(selectedRooms);
-    }
-  };
+
+const handleRoomsChange = (e) => {
+  const selectedRooms = parseInt(e.target.value, 10);
+  if (selectedRooms < 1) {
+    alert("Minimum 1 room should be selected.");
+  } else if (selectedRooms > 3) {
+    alert("Maximum 3 rooms are allowed.");
+  } else {
+    setRoomsSelected(selectedRooms);
+  }
+};
 
   const handleReset = () => {
     setCheckinDate(todayDateString);
@@ -171,7 +164,7 @@ const BookingDetails = ({ setDateDetails }) => {
       </div>
       <div className="form-group">
         <label className="booking-label" htmlFor="checkin">
-          CHECK IN
+          CHECK IN :12:00 PM
         </label>
         <input
           type="date"
@@ -187,7 +180,7 @@ const BookingDetails = ({ setDateDetails }) => {
       </div>
       <div className="form-group">
         <label className="booking-label" htmlFor="checkout">
-          CHECK OUT
+          CHECK OUT:11:00 am
         </label>
         <input
           type="date"
@@ -231,6 +224,7 @@ const BookingDetails = ({ setDateDetails }) => {
               {option}
             </option>
           ))}
+
         </select>
       </div>
       <button

@@ -12,48 +12,58 @@ import { Link } from "react-scroll";
 import { NavLink } from "react-router-dom";
 import HomeHeader from "./Components/Homeheader";
 import Calendar from "./Components/CalendarHome/Calendar";
+import Contact from "./Components/Contact";
+import EmbeddedMap from './Components/EmbeddedMap';
+import ImageGallery from "./Components/ImageGallery";
 function Login() {
   const houses = [
     {
-      name: "Guest House ",
+      name: "Institute Guest House ",
       roomsCount: 10,
-      loaction: "blah blah",
+      location: "Near Director's Bungalow",
       facilities: [
-        "24 hours running hot and cold water",
-        "Free Wi-Fi",
-        "TV with cable",
-        "Telephone service",
-
-        "Big sized rooms",
+        "Free Wi-Fi access throughout the premises",
+        "Cable TV provided",
+        "In-room telephone services",
+        "Facilities for making tea in rooms",
+        "Complimentary toiletries provided",
+        "Daily housekeeping services to ensure cleanliness and comfort",
+        "On-site parking for guests",
+        "Access to a fitness center facilities"
       ],
     },
     {
       name: "SAC Guest House",
       roomsCount: 8,
-      loaction: "blah blah",
+      location: "Student Activities Center",
       facilities: [
-        "24 hours running hot and cold water",
-        "Free Wi-Fi",
-        "TV with cable",
-        "Telephone service",
-
-        "Big sized rooms",
+        "Free Wi-Fi access throughout the premises",
+        "Cable TV provided",
+        "In-room telephone services",
+        "Facilities for making tea in rooms",
+        "Complimentary toiletries provided",
+        "Daily housekeeping services to ensure cleanliness and comfort",
+        "On-site parking for guests",
+        "Access to a fitness center facilities"
       ],
     },
     {
       name: "Mega Guest House",
-      roomsCount: 10,
-      loaction: "blah blah",
+      roomsCount: 12,
+      location: "Near Mega Boys Hostel",
       facilities: [
-        "24 hours running hot and cold water",
-        "Free Wi-Fi",
-        "TV with cable",
-        "Telephone service",
-
-        "Big sized rooms",
+        "Free Wi-Fi access throughout the premises",
+        "Cable TV provided",
+        "In-room telephone services",
+        "Facilities for making tea in rooms",
+        "Complimentary toiletries provided",
+        "Daily housekeeping services to ensure cleanliness and comfort",
+        "On-site parking for guests",
+        "Access to a fitness center facilities"
       ],
     },
   ];
+  
 
   const [cardRotations, setCardRotations] = useState(
     Array(houses.length).fill(false)
@@ -73,8 +83,8 @@ function Login() {
   };
 
   return (
-    <>
-      <HomeHeader />
+    
+     <div> <HomeHeader />
       {/* <nav className="stickyNav">
         <a href="https://www.nitj.ac.in/" target="_blank">
           <img
@@ -158,7 +168,8 @@ function Login() {
       <div className="backgroundImage" >
         <div className="description">
           <h1 id="Welcome">
-            Dr. B R Ambedkar<br /> National Institute of Technology Jalandhar <br /> Guest Room Booking System
+            <br/>
+            Welcome to <br/>Dr. B R Ambedkar <br/> National Institute of Technology Jalandhar <br />Guest Room Booking System
           </h1>
         </div>
 
@@ -186,14 +197,16 @@ function Login() {
                   />
                   <div className="cardContent">
                     <p className="houseName" >{house.name}</p>
-                    <p className="roomCount">{house.roomsCount} Deluxe Rooms</p>
+                    <p className="roomCount">{house.roomsCount} Standard Rooms</p>
                   </div>
                 </React.Fragment>
               )}
               {showBackface[index] && (
                 <div className="houseCardBackface">
                   <h1 className="headerBackface">{house.name}</h1>
-                  <h2 className="backFacehouseCardLoc">{house.location}</h2>
+                  <h2 className="backFacehouseCardLoc" style = {{fontSize : '1.2rem', textAlign : 'center', paddingBottom : '1rem'}}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"> <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                    <span className="mx-2">{house.location}</span></h2>
                   <ul className="facilitiesList">
                     {house.facilities.map((facility, index) => (
                       <li key={index}>{facility}</li>
@@ -202,39 +215,33 @@ function Login() {
                 </div>
               )}
             </div>
-          ))}
-        </div>
+          ))} 
+        </div> 
       </div>
-
-
+      
 
       <div className="aboutSection" id="AboutUs">
         <h1 className="aboutUs"><strong>About Us</strong></h1>
         <p className="aboutUsPara" style={{ textAlign: 'justify', justifyContent: 'center' }}>
-          NIT Jalandhar strongly believes in the old Indian adage "Athithi Devo
-          Bhava". We give our visitors the best facilities be it in terms of
-          service, ambience or food. It is common practice in Indian institutes
-          to create on-campus guest houses to host official guests. NIT
-          Jalandhar has created a guest house to meet its needs. The campus has
-          three guest houses to accommodate the guests and delegates who visit
-          the campus, the Guest House 1 with 15 Delux rooms, the Guest House 2
-          with 15 Deluxe Rooms and the Guest House 3 with 28 Standard rooms, all
-          rooms are air conditioned. The rooms have double beds and other
-          amenities. The Guest House 1 also provides a meeting room.
-        </p>
-        <h2 id="delxroom">Deluxe Room Facilities</h2>
+        At NIT Jalandhar, we follow  the Indian ethos of "Athithi Devo Bhava" which means treating guests with great respect. We make sure our guests have the best experience, from good service to a nice setting and great food. Like many Indian Institutions, we have built guest houses on our campus for visitors. We have three guest houses namely Institute Guest House, SAC Guest House, and Mega Guest House. Institute Guest House has 10 standard rooms, SAC Guest House also has 8 standard rooms, and Mega Guest House has 12 standard rooms. All the rooms have air conditioning, double beds, and other comforts. The available facilities are as follows:
+        </p> 
+                {/* <h2 id="delxroom">Standard Room Facilities</h2> */}
         <div className="facilitiesHolder">
 
           <div id="content1">
 
             <ul className="listItem">
-              <li>24 hours running hot and cold water</li>
-              <li>Free Wi-Fi</li>
-              <li>TV with cable</li>
-              <li>Telephone service</li>
-              {/* <li>Laundry service</li> */}
-              <li>Big sized rooms</li>
-              <li>Tea making(in Room) facilities.</li>
+              <li>24/7 availability of hot and cold water</li>
+              <li>Free Wi-Fi access throughout the premises</li>
+              <li>Cable TV provided</li>
+              <li>In-room telephone services</li>
+              <li>Facilities for making tea in rooms</li>
+              <li>Complimentary toiletries provided</li>
+              <li>Daily housekeeping services to ensure cleanliness and comfort</li>
+              <li>On-site parking for guests</li>
+              <li>24-hour front desk service for assistance and inquiries</li>
+              <li>Room service for convenient dining in the comfort of your room</li>
+              <li>Access to a fitness center facilities</li>
             </ul>
           </div>
           {/* <div id="content2">
@@ -249,57 +256,47 @@ function Login() {
           </div> */}
         </div>
       </div>
-      <div className="guidelinesDiv">
+      <div className="guidelinesDiv"style = {{
+    backgroundColor: 'rgba(185, 194, 255, 0.225)'}}>
         <h1 id="guidelinesHeader"><strong>Guidelines</strong></h1>
         <div className="guidelinesList">
           <ul>
-            <li>
-              <b>Check-in Time: 12:00 PM</b>
-            </li>
-            <li>
-              <b>Check-out time: 11:00 AM</b>
-            </li>
-            <li>
-              Maximum booking period is seven days. For extension, please seek
-              the approval from Registrar/ Coordinator Guest House.
-            </li>
-            <li>
-              Person who has booked the guest room has to collect the key on the
-              first day of booking period; otherwise booking will be
-              automatically cancelled for subsequent days.
-            </li>
-            <li>
-              NIT Jalandhar guests are kindly requested to observe the rules, so
-              that their stay will be comfortable and safe.
-            </li>
-            <li>Consuming Alcohol is prohibited in the Guest House.</li>
-            <li>
-              The booking will stand automatically canceled if this
-              accommodation is needed by the institute for emergent official
-              purpose.
-            </li>
-            <li>
-              Alumni can book rooms in NIT guest house for themselves and their
-              immediate family members i.e. parents and children but not for
-              their other relatives, friends, or colleagues.
-            </li>
-            <li>
-              <b>Payment Detail:</b> Payment for guest room service should be
-              made at Institute Account.
-            </li>
+            <li>Check-in time is at <strong>12:00 PM</strong> and check-out time is at <strong>11:00 AM</strong>.</li>
+            <li>Guests are welcome to book their stay up to 15 days prior to their arrival date.</li>
+            <li>Bookings can be made for up to three days. Extensions require approval from the Registrar or Guest House Coordinator.</li>
+            <li>The person who books must collect the room key on the first day of the booking. If not collected, the booking for subsequent days will be cancelled.</li>
+            <li>Guests are requested to follow all rules for a comfortable and safe stay.</li>
+            <li>Alcohol consumption is not allowed in the Guest House.</li>
+            <li>The booking may be cancelled by the institute in case of urgent official needs.</li>
+            <li>Alumni may book rooms for themselves and their immediate family (parents and children) only, not for other relatives, friends, or colleagues.</li>
+            <li>The NITJ Institute Guest House provides a delightful breakfast, lunch, and dinner, available on payment. Please note, we exclusively offer vegetarian cuisine.</li>
+            <li>The daily accommodation charges for the Institute Guest House are set at <strong>₹1000</strong> per room, while the SAC Guest House and Mega Guest House are charged at <strong>₹600</strong> per room.</li>
+            <li><ul style = {{padding : '0px'}}><strong>Cancellation Charges:</strong>
+            <li style = {{marginLeft : '32px'}}>A charge of 25% of the total rent will apply if the cancellation is made between seven and three days (7-3 days) before the date of arrival.</li>
+            <li style = {{marginLeft : '32px'}}>A charge of 50% of the total rent will apply if the cancellation is made within 24 hours before the date of arrival.</li>
+            </ul></li>
           </ul>
         </div>
       </div>
 
-      {/* <div className="availabilitySection">
+      <div className="availabilitySection" >
         <h1 id="availabilityHeader"><strong>Room Availability</strong></h1>
         <Calendar />
-      </div> */}
-      <div className="contactUsDi">
-        <h1 id="contactHeader"><strong>Contact</strong></h1>
+      </div>
+      <div className = "imageGallery" id = "imageGallery">
+        <h1 className = "imageheader"><strong>Image Gallery</strong></h1>
+          <ImageGallery/>
+      </div>
+
+      <div className="contactUsDiv">
+        <h1 id="contactHeader"><strong>Contact Us</strong></h1> 
+        <div style = {{textAlign : 'center', alignItems : 'center'}}>
+        <EmbeddedMap/>
+        <Contact/>
+        </div>
       </div>
       <Footer />
-    </>
+      </div>
   );
 }
 

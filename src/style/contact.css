@@ -1,0 +1,29 @@
+.outer-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between; 
+}
+.box{
+    width : 15rem;
+    height : 8rem;
+    box-shadow: 2px 5px 10px rgb(56, 56, 56);
+    border-radius: 5%;
+    background-color:  rgba(185, 194, 255, 0.225);
+    padding : 2%;
+    margin-bottom  : 5%;
+    margin-left: 5%; 
+    /* display: flex; */
+    overflow: hidden;
+}
+.box:hover{
+    background-color: rgb(218, 232, 239);
+}
+.h2{
+    font-size: 10px;
+}
+.p{
+    font-size: 5px;
+}
+.h2{
+    color : #008cff;  
+}

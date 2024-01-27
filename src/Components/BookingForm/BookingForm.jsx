@@ -148,7 +148,8 @@ const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
             />
           </div>
           <div className="col-md-4">
-            <input type="time" className="form-control" placeholder="Time of Arrival" name="arrivalTime" onChange={handleInputChange} required />
+            <input type="text" className="form-control" placeholder="Check in timing : 12:00 pm" name="arrivalTime"  readOnly />
+            {/* <p>Check in timing : 12:00 pm</p> */}
           </div>
           {/* <h6 className="head-six">Departure Details*</h6> */}
           <label htmlFor="" className="form-label">Departure Details<span className="asterisk">*</span></label>
@@ -163,7 +164,8 @@ const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
             />
           </div>
           <div className="col-md-4">
-            <input type="time" className="form-control" placeholder="Time of Departure" name="departureTime" onChange={handleInputChange} required />
+            <input type="text" className="form-control" placeholder="Check out timing : 11:00 am" readOnly />
+            {/* <p>Check out timing : 11:00 am</p> */}
           </div>
           <div className="col-12">
             <label htmlFor="purpose" className="form-label">

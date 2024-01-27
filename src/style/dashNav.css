@@ -3,7 +3,7 @@
     background-color: #9D9C9C;
     display: flex;
     align-items:flex-start;
-    width: 100%; 
+    /* width: 100%;  */
     position: relative;
     z-index: 1000;
     color: white;
@@ -13,9 +13,80 @@
     z-index: 10001;
     position: absolute;
     left: 200px;
-    font-size: 40px; 
+    font-size: 2rem; 
 }
+.menu-icon {
+    display: none;
+  }
 
+  .nav-elements ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+  
+  .nav-elements ul Link {
+    font-size: 16px;
+    font-weight: 400;
+    color: #2f234f;
+    text-decoration: none;
+  }
+  
+  .nav-elements ul Link.active {
+    color: #574c4c;
+    font-weight: 500;
+    position: relative;
+  }
+  
+  .nav-elements ul Link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #574c4c;
+  }
+
+  
+  @media (max-width: 1350px) {
+    .menu-icon {
+      display: block;
+      cursor: pointer;
+      background-color: #0073cf;
+      color : #ffffff;
+    }
+  
+    .nav-elements {
+      position: absolute;
+      right: 0;
+      top: 100px;
+      background-color: #0073cf;
+      color : #ffffff;
+      width: 0;
+      height: auto;
+      transition: all 0.3s ease-in;
+      overflow:hidden;
+    }
+  
+    .nav-elements.active {
+      /* width: 270px; */
+      right:0;
+      width : 100%;
+      height : auto;
+
+    }
+  
+    .nav-elements ul {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .nav-elements ul li {
+      margin-right: unset;
+      margin-top: 20px;
+    }
+  }
 .bg-nav li{
     list-style: none;
     display: flex;
@@ -32,10 +103,11 @@
     display: flex;
     text-decoration: none;
     color: white;
-    padding: 0 10px;
+    padding: 0 10px; 
 }
 .optn-name{
     padding-left: 5px;
+    font-size : 1rem;
 }
 .nav-optn:hover{
     color: #aeaeae;
@@ -45,10 +117,10 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    height: 90%;
+    height: 100%;
     position: relative;
     align-items: center;
-    background-color: #0073cf;
+    background-color: #0073cf;  
 }
 .h-navlogo{
     width: 120px;
@@ -57,26 +129,59 @@
     left: 40px;
     align-items: center;
     justify-content: center;
-    bottom: -30px;
+    bottom: -10px;
     display: flex;
-    box-shadow: 2px 5px 10px rgb(56, 56, 56);
-    border-radius: 50%;
-    background-color:#ffffff ;
+    z-index: 1000;
+    /* box-shadow: 2px 5px 10px rgb(56, 56, 56);
+    border-radius: 50%; */
+    /* background-color:#ffffff ; */
 }
 .h-navlogo img{
     width: 100px;
     transform: translateY(3px);
-    
 }
 
 @media screen and (max-width:1700px) {
     .colg-name{
-        font-size: 35px;
+        font-size: 1.5rem;
         left: 175px;
+    }
+    .h-navlogo{
+        height: 120px;
+        width : 120px;
+        position: absolute;
+        left: 40px;
+        align-items: center;
+        justify-content: center;
+        bottom: -10px;
+        display: flex; 
     }
 }@media screen and (max-width:1580px) {
     .colg-name{
-        font-size: 30px;
+        font-size: 1.5rem;
         left: 175px;
+    }
+    .optn-name{
+        font-size: 1rem;
+        display: inline-table;
+    }
+}@media screen and (max-width:1200px) {
+    .colg-name{
+        font-size: 1.5rem;
+        left: 175px; 
+    }
+}
+@media screen and (max-width:1000px) {
+    .colg-name{
+        font-size: 1.5rem;
+        left: 175px; 
+    }
+}
+@media screen and (max-width:640px) {
+    .colg-name{
+        font-size: 1.1rem;
+        left: 175px;
+        position : relaive;
+        bottom : 40px;
     }
 }

@@ -26,6 +26,7 @@ const BookingComponent = (pram) => {
   const rooms = pram.rooms;
   const id = pram.id;
   const handleBack = pram.onBack;
+  const updateBooking = pram.updateBooking;
 
   const startDate = pram.startDate;
   const endDate = pram.endDate;
@@ -114,7 +115,7 @@ const BookingComponent = (pram) => {
 
           setMessagehead('Booking Successful')
           console.log()
-          setPopup(true)
+          setPopup(true);
           console.log(data)
 
         })
@@ -158,7 +159,7 @@ const BookingComponent = (pram) => {
         </div>
 
         <div className="flex-containerTY">
-          <div id="gh1"  >Guest House </div>
+          <div id="gh1"  >Main Guest House </div>
           <div id="gh2"  >Mega Guest House </div>
           <div id="gh3" >   SAC Guest House</div>
         </div>
@@ -179,17 +180,17 @@ const BookingComponent = (pram) => {
         {
           selectedGuestHouse === 1 ?
             <div style={{ marginTop: '20px' }} id="sacg1">
-              Main Guest House  (A.C)
+              Main Guest House  
                 <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} userStartDate={startDate} userEndDate={endDate} maxRooms={rooms} n={10} />
             </div>
             : selectedGuestHouse === 2 ?
               <div style={{ marginTop: '10px' }} id="sacg2">
-                     Mega Guest House (Non A.C)
+                     Mega Guest House 
                 <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} userStartDate={startDate} userEndDate={endDate} maxRooms={rooms} n={12} />
                
           </div>
               : <div style={{ marginTop: '10px' }} id="sacg3">
-            SAC Guest House (Non A.C)
+            SAC Guest House
               <MyComponent onDataChange={handleDataChange} setRooms={handleRooms} guesthouseid={guesthouseno} userStartDate={startDate} userEndDate={endDate} maxRooms={rooms} n={8} />
               </div>
         }

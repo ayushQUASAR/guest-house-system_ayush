@@ -24,6 +24,7 @@ export default function AdminUserProfile() {
         fetch(`${url}`)
             .then((res) => res.json())
             .then((data) => {
+                console.log(data);
                 setUserDetails(data);
             }
             )
@@ -66,11 +67,11 @@ export default function AdminUserProfile() {
                         </div>
                         <div className='row'>
                             <div className='col-4' style={{ overflow: 'auto', fontSize: '150%' }}><strong>Email:</strong></div>
-                            <div style={{ overflow: 'auto', fontSize: '150%'  }} className='col-8' > {user?.email}</div>
+                            <div style={{ overflow: 'auto', fontSize: '150%'  }} className='col-8' > {user[0]?.email}</div>
                         </div>
                         <div className='row'>
                             <div className='col-4' style={{ overflow: 'auto', fontSize: '150%'  }}><strong>Role :</strong></div>
-                            <div className='col-8' style={{ overflow: 'auto', fontSize: '150%'   }}>{user?.isMainAdmin ? "Main Admin" : "Admin"}</div>
+                            <div className='col-8' style={{ overflow: 'auto', fontSize: '150%'   }}>{user[0]?.isMainAdmin ? "Main Admin" : "Admin"}</div>
                         </div>
                         {/* <div className = 'row'>
                             <div className = 'col-6' style = {{overflow :'auto'}}><strong>DOJ :</strong></div>

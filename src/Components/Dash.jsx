@@ -33,11 +33,14 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import AdminReport from "./AdminReports/AdminReport";
 const Dash = ({ admin, isMainAdmin }) => {
   // console.log(admin);
+  const {isAdm} = useLoginContext();
+  console.log("admin context", isAdm);
   const [sideState, setSidestate] = useState(true);
   const [contentType, setContentType] = useState("dashboard");
   const [isGodAdmin, setGodAdmin] = useState(false);
   // useEffect for the data fetch for the curr user if curruser == "ghadmin@nitj.ac.in" setGodAdmin(true) by default false
 
+  
   useEffect(() => {
     if (isMainAdmin === true) {
       setGodAdmin(true);
@@ -99,11 +102,11 @@ const Dash = ({ admin, isMainAdmin }) => {
   const contentComponents = {
     dashboard: <DashboardContent />,
     adminRoomBooking: (
-      <Container adminId={userId} isAdmin={admin ? true : false} />
+      <Container adminId={userId} isAdmin={isAdm} />
     ),
     bookedRooms: <BookedRooms />,
     registeredUsers: <RegisteredUsers />,
-    adminuserProfile: <AdminUserProfile />,
+    adminuserProfile: <AdminUserProfile  />,
     settings: <DashboardSettings />,
     approve: <Approve />,
     approvebooking: <ApproveBooking />,
@@ -254,3 +257,5 @@ const Dash = ({ admin, isMainAdmin }) => {
 };
 
 export default Dash;
+
+

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUserContext } from '../ContextHooks/UserContext';
 import CancelPopUp from './CancelPopUp'; 
+import CancelForm from './CancelForm';
 const UpcomingBooking = () => {
 
   const [showPopup, setShowPopup] = useState(false);
@@ -20,7 +21,8 @@ const UpcomingBooking = () => {
   }, [userId]);
 
   
-  function formatDateToISO(date) {
+  function formatDateToISO(input_date) {
+    let date = new Date(input_date);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so we add 1
     const day = String(date.getDate()).padStart(2, '0');
@@ -28,9 +30,10 @@ const UpcomingBooking = () => {
   }
 
   const formatRoomData = (room) => {
+    console.log("room: ", room)
     let str = "Room No. ";
     if(room.length == 1) {
-      return str + room[0];
+       return `Room No. ${room[0]}`;
     }
     for(let i = 0;i<room.length-1;i++) {
         str+= `${room[i]}, `;
@@ -94,7 +97,7 @@ const UpcomingBooking = () => {
         {bookings !== null && bookings.length > 0 && bookings.map((booking, index) => (
           <tr key={booking._id}>
             <td>{index+1}</td>
-            <td>{booking.status === 'approved' ? formatRoomData(booking.roomsSelected) : "NOT ALLOTTED"}</td>
+            <td>{booking.status === 'approved' ? formatRoomData(booking.roomsAllotted) : "NOT ALLOTTED"}</td>
             <td>{booking.status === 'approved' ? (booking.guestHouseSelected === 1 ? "Guest House 1" : booking.guestHouseSelected === 2 ? "Guest House 2"  :"Guest House 3") : "NOT ALLOTTED"}</td>
             <td>{formatDateToISO(booking.createdAt)}</td>
             <td>{formatDateToISO(booking.startDate)}</td>

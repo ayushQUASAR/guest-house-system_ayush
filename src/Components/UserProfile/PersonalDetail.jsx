@@ -19,7 +19,7 @@ const PersonalDetail = () => {
       }
       )
       .catch((err) => console.log(err.message));
-  }, []);
+  }, [userId]);
 
      
     const[saveButton, setSaveButton] = useState(false);
@@ -100,10 +100,23 @@ const PersonalDetail = () => {
                         <div className='col-6'> Contact Number</div>
                         <div className='col-6'>{user?.userDetails?.phone?user?.userDetails?.phone:"XXXXXXXXXX"}</div>
                     </div>
-                    <div className = 'row mx-4' style = {{borderBottom: '1px solid #ccc'}}>
+                    
+                    {
+                        user?.userDetails?.address ?  <div className = 'row mx-4' style = {{borderBottom: '1px solid #ccc'}}>
+
                         <div className='col-6'> Address</div>
-                        <div className='col-6'>{user?.userDetails?.address?user?.userDetails?.address:"No address"}</div>
-                    </div>
+                        <div className='col-6'>{user?.userDetails?.address}</div>
+                    </div> : <></>
+                    }
+
+{
+                        user?.userDetails?.registerOption ?  <div className = 'row mx-4' style = {{borderBottom: '1px solid #ccc'}}>
+
+                        <div className='col-6'> Registered as </div>
+                        <div className='col-6'>{Number(user?.userDetails?.registerOption) === 1? "Faculty" : Number(user?.userDetails?.registerOption) === 2 ? "Student" : "Non Nit User" }</div>
+                    </div> : <></>
+                    }
+                   
                     <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Govt approved proof attached</div>
                         <div className = 'col-6'>
@@ -121,20 +134,66 @@ const PersonalDetail = () => {
                     </div>
                 </div>
 
-                {user?.userDetails?.registerOption === 2 && <div className = 'my-4'>
-                    <h2>Reference Details (for {user?.userDetails?.refInfo})</h2>
+                {user?.userDetails?.registerOption === 3 && 
+                <div className = 'my-4'>
+                    <h2>Reference Details</h2>
                     <div className = 'row mx-4 ' style = {{borderBottom: '1px solid #ccc'}}>
-                        <div className='col-6'> Name</div>
-                        <div className='col-6'> {user?.referenceDetails?.refTo?.name}</div>
+                        <div className='col-6'> <strong>Name</strong></div>
+                        <div className='col-6'><strong>{user?.referenceDetails?.refTo?.name}</strong> </div>
                     </div>
-                    {/* <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
+                    <div className = 'row mx-4 ' style = {{borderBottom: '1px solid #ccc'}}>
+                        <div className='col-6'> Reference Type</div>
+                        <div className='col-6'> {user?.referenceDetails?.refType}</div>
+                    </div>
+                    
+                    {
+                        user?.referenceDetails?.refType === 'student' && <>
+                          <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Roll Number</div>
-                        <div className='col-6'> {rollNumber}</div>
-                    </div> */}
+                        <div className='col-6'> {user?.referenceDetails?.refTo?.roll}</div>
+                    </div>
                     <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
+                        <div className='col-6'> Department</div>
+                        <div className='col-6'> {user?.referenceDetails?.refTo?.branch}</div>
+                    </div>
+                        </>
+                    }
+
+                    {
+                        user?.referenceDetails?.refType === 'faculty' && <>
+                            <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Contact Number</div>
                         <div className='col-6'> {user?.referenceDetails?.refTo?.phone}</div>
                     </div>
+                    <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
+                        <div className='col-6'> Department</div>
+                        <div className='col-6'> {user?.referenceDetails?.refTo?.dept}</div>
+                    </div>
+                        </>
+                    }
+
+                    {
+                        user?.referenceDetails?.refType === 'alumni' && <>
+                              <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
+                        <div className='col-6'> Contact Number</div>
+                        <div className='col-6'> {user?.referenceDetails?.refTo?.phone}</div>
+                    </div>
+                    <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
+                        <div className='col-6'> Department</div>
+                        <div className='col-6'> {user?.referenceDetails?.refTo?.branch}</div>
+                    </div>
+                    <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
+                        <div className='col-6'> Batch</div>
+                        <div className='col-6'> {user?.referenceDetails?.refTo?.batch}</div>
+                    </div>
+                    <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
+                        <div className='col-6'> Current Job</div>
+                        <div className='col-6'> {user?.referenceDetails?.refTo?.currentJob}</div>
+                    </div>
+                        </>
+                    }
+                  
+                   
                     {/* <div className = 'row mx-4'style = {{borderBottom: '1px solid #ccc'}}>
                         <div className='col-6'> Branch</div>
                         <div className='col-6'> {branch}</div>

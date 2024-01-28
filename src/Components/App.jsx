@@ -49,6 +49,7 @@ function App() {
                 <Route path="/Alumni" element={<Alumni />} />
                 <Route
                   path="/Dashboard"
+                  
                   element={
                     <RequireAuth>
                       <Dash />

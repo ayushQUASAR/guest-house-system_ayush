@@ -13,6 +13,12 @@ const Approvaltable = ({ onSecondPage }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isCustomPromptOpen, setCustomPromptOpen] = useState(false);
   const [customPromptReason, setCustomPromptReason] = useState('');
+  const [dialog, setDialog] = useState(false);
+
+
+  const toggleDialog = () => {
+    setDialog((prev) => !prev);
+  }
 
 
   // const openPopup = () => {
@@ -60,19 +66,14 @@ const Approvaltable = ({ onSecondPage }) => {
     setIsFirstPage(true);
     console.log('clicked');
   }
-  // useEffect(()=> {
-  //     fetch("${import.meta.env.VITE_API_URL}/booking/approved/pending")
-  //     .then((res) => res.json())
-  //    .then((data) => setRequests(() => {
-  //       const dataSet = data.map((eachData) => {
-  //        return {...eachData, accepting: false}
-  //       })
+ 
 
   const handleSubmit = () => {
 
   }
   const handleApproval = (id, status,reason) => {
-    const confirm =  window.confirm(`Are you sure you want to accept this booking?`);
+    const confirm =  window.confirm(`Are you sure you want to ${status} this booking?`);
+
 
     if (confirm === true) {
     if (status === 'accept') {
@@ -100,12 +101,12 @@ const Approvaltable = ({ onSecondPage }) => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          window.alert(data.message);
+          console.log(data.message);
 
           setPendingBooking((prev) => {
             const selectedUsers = prev.filter((user) => user._id !== id);
             return selectedUsers;
-          })
+          });
 
         })
         .catch((err) => console.log(err));
@@ -116,16 +117,6 @@ const Approvaltable = ({ onSecondPage }) => {
 
 
 
-  // pendingUsers.map((user, index) => {
-  // return  <tr key={user._id}>
-  //                <td scope="row">{index+1}</td>
-  //             <td>{user.name}</td> 
-  //             <td>{user.email}</td>
-  //             <td>{user.phone}</td>
-  //             <td>{user.refInfo}</td> 
-  //             <td><button type="button" class="btn btn-success btn-sm">Accept</button> <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
-  //   </tr>
-  // })
 
 
   return (
@@ -143,11 +134,11 @@ const Approvaltable = ({ onSecondPage }) => {
             <th>Guest House</th>
             <th>No. of Rooms</th>
             <th>Email</th>
-            <th>Contact Number</th>
+            <th>Contact No.</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th>Reason of Booking</th>
-            <th>Reference</th>
+           <th>Govt/College ID</th>
             <th>Approval</th>
             </tr>
         </thead>
@@ -165,7 +156,21 @@ const Approvaltable = ({ onSecondPage }) => {
           <td>{new Date(user.startDate).toLocaleDateString()}</td>
   <td>{new Date(user.endDate).toLocaleDateString()}</td>
           <td>{user.purpose}</td>
-          <td>{user.roomBooker.isAdmin ? "Admin" : user.roomBooker.name}</td>
+          {
+            user.roomBooker.isAdmin ? <td>-</td> : 
+            <td>
+            <button className="popup-button" onClick={toggleDialog}>View</button>
+                          {dialog && (
+                              <div className="dialog">
+                              <div className="dialog-content">
+                                  <button className="close-icon" onClick={toggleDialog}>&#10005;</button>
+                                  <img className="popup-image" src={user.roomBooker.idProof} alt="Popup Image" />
+                              </div>
+                              </div>
+                          )}
+            </td>
+          }
+          
           
           <td>
             <button
@@ -192,27 +197,8 @@ const Approvaltable = ({ onSecondPage }) => {
         </table>
       </div>
 
-          {/* <div className="table-content">
-        {
-         pendingBooking && pendingBooking.length > 0 &&  pendingBooking.map((user, index) => {
-            return  <div className="d-flex flex-row justify-content-between" key={user._id}>
-                           <div>{index+1}</div>
-                        <div>{user.name}</div> 
-                        <div>{user.guestHouseSelected}</div>
-                        <div>{user.roomsSelected}</div>
-                        <div>{user.email}</div>
-                        <div>{user.phone}</div>
-                        <div>{user.roomBooker.name}</div> 
-                        <div>{user.purpose}</div>
-                        <div><button type="button" class="btn btn-success btn-sm mr-3" onClick={()=> {console.log(user);setCurrentUser(user);handleApproval(user._id, 'accept')}}>Accept</button> <button type="button" class="btn btn-danger btn-sm" onClick={() => handleApproval(user._id, 'reject')}>Reject</button></div>
-              </div>
-            })
-        }
-
-
-       
-      </div> */}
-        </div> : <BookingComponent guesthouseno={currentUser.guestHouseSelected} id={currentUser._id} rooms={currentUser.roomsSelected} startDate={currentUser.startDate} endDate={currentUser.endDate} onBack={handleBack} />
+         
+        </div> : <BookingComponent  updateBooking={setPendingBooking} guesthouseno={currentUser.guestHouseSelected} id={currentUser._id} rooms={currentUser.roomsSelected} startDate={currentUser.startDate} endDate={currentUser.endDate} onBack={handleBack} />
       }
        <CustomPrompt
         isOpen={isCustomPromptOpen}

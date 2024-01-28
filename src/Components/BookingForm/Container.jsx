@@ -10,7 +10,7 @@ import { FormProvider, FormContext } from '../ContextHooks/FormContext';
 import BookingComponent1 from "../BOOKING1/BookingComponent1";
 import { useUserContext } from "../ContextHooks/UserContext";
 import BookingPopup from "./BookingPopup";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLoaderData, useRouteLoaderData } from "react-router-dom";
 import Booking from "./BookingDetails";
 
 const Container = ({isAdmin, adminId}) => {
@@ -20,6 +20,8 @@ const Container = ({isAdmin, adminId}) => {
   const [dateDetails, setDateDetails] = useState(null);
   const [isFormValid, setFormValid] = useState(false); // Form validation state
 
+
+ 
   const openPopup = () => {
     setPopupOpen(true);
   };
@@ -34,10 +36,13 @@ console.log("admin Id in container.jsx", adminId);
 console.log("user id from user context: ", userId);
   } ,[]);
 
+  
+
   // on initial render, Person Booking Details get saved
   useEffect(() => {
     let URL = isAdmin ? `${import.meta.env.VITE_API_URL}/login/admin/${userId}` :  `${import.meta.env.VITE_API_URL}/users/${userId}`;
-    fetch(`${URL}`)
+    if(formData) {
+      fetch(`${URL}`)
       .then((res) => res.json())
       .then((data) =>
       {
@@ -49,10 +54,21 @@ console.log("user id from user context: ", userId);
           AdminEmail: data[0].email
          })
         }
-        else {
+        else if(!isAdmin) {
+          let registerOptionSpecificFields = {};
+if(data.userDetails) {
+  const details = data.userDetails;
+   registerOptionSpecificFields =  {
+        isStudent : details.registerOption === 2,
+        PersonDept: JSON.parse(details.isNitUser) ? details.nitUserDept : ""
+  }
+}
+          
           setUserDetails({
             ...formData,
             isAdmin: false,
+            ...registerOptionSpecificFields,
+            PersonID: data.userDetails.idProof.data,
             PersonName: data.userDetails.name,
             PersonEmail: data.userDetails.email,
             PersonPhone: data.userDetails.phone,
@@ -61,6 +77,8 @@ console.log("user id from user context: ", userId);
         }
       })
       .catch((err) => console.log(err.message));
+    }
+   
   }, [formData]);
 
   const handleDateDetails = (data) => {
@@ -70,6 +88,10 @@ console.log("user id from user context: ", userId);
   const handleFormValidChange = (valid) => {
     setFormValid(valid);
   };
+
+
+  console.log("body details: ", userDetails);
+  console.log("admin details: ", adminDetails)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -142,7 +164,7 @@ console.log("user id from user context: ", userId);
         </div>
       </div>
 
-      <BookingPopup isOpen={isPopupOpen} onClose={closePopup} />
+      <BookingPopup isAdmin={isAdmin} isOpen={isPopupOpen} onClose={closePopup} />
     </>
   );
 };

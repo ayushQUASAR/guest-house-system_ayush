@@ -194,11 +194,27 @@ export default function Regrightside() {
       .then((res) => res.json())
       .then((data) => {
         console.log("data:", data);
+        if(!data.status) {
+          window.alert(data.message);
+          
+        }
         handlepopup(true, data.status);
-        window.alert(
-          "Registered Successfully. \n \nA verification link has been sent to you on your email and you will be able to login after verification"
-        );
-        navigate("/login");
+
+
+        // if(data.status === 'accepted') {
+        //   window.alert("User already registered...\nPlease continue Login from the Login Page");
+        // }
+
+        // if(data.status === "pending") {
+        //   window.alert("Please Wait for Approval from the Institute");
+        // }
+        // if(data.status === 'success') {
+        //   window.alert(
+        //     "Registered Successfully. \n \nA verification link has been sent to you on your email and you will be able to login after verification"
+        //   );
+        //   navigate("/login");
+        // }
+       
       })
       .catch((err) => {
         setError(err);
@@ -212,6 +228,11 @@ export default function Regrightside() {
   const handlepopup = (val, message) => {
     console.log(message);
 
+    if(message === 'success') {
+      setMessagehead("Registered Successfully.");
+      setPara1("verification link has been sent to you on your email and you will be able to login after verification");
+      setPara2("");
+    }
     if (message === "accepted") {
       setMessagehead("User Already Registered.");
       setPara1("Please continue Login from the Login Page");
@@ -248,6 +269,7 @@ export default function Regrightside() {
           <span><button className="btn btn-primary "> Back</button></span>
         </NavLink>
         {/* </div> */}
+        {popup && <Popup isRegPopup={true} setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
         <form action="/register" onSubmit={setSubmit}>
           <div className="register-optn-wrapper">
 
@@ -595,11 +617,10 @@ export default function Regrightside() {
                       Register
                     </button>
                   </div>
-                  {popup && <Popup setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
                 </div>
               </div>
             ) : registerOptn == 3 ? (
-
+              
               <div className="college-official-form-wrapper" style={{ left: `${rightValue}px ` }}>
                 <div className="college-official-form">
 
@@ -626,7 +647,7 @@ export default function Regrightside() {
                       onChange={(e) => setLastname(e.target.value)}
                       value={Lastname}
                       placeholder="Last Name"
-                    />
+                      />
                   </div>
 
                   <div className="form-group regform-group-custom">
@@ -641,7 +662,7 @@ export default function Regrightside() {
                           className="form-control"
                           value="+91"
                           readOnly
-                        />
+                          />
                       </div>
 
 
@@ -654,6 +675,7 @@ export default function Regrightside() {
                         placeholder="Phone Number"
                       />
                     </div>
+                    
                   </div>
 
                   <div className="form-group regform-group-custom">

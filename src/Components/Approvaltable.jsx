@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "../style/Approvaltable.css";
+import { useNavigate } from "react-router-dom";
 
 const Approvaltable = () => {
   const [pendingUsers, setPendingUsers] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + "/admin/approveRegistration")
+    fetch(import.meta.env.VITE_API_URL + "/users/approved/pending")
       .then((res) => res.json())
       .then((data) => {
         setPendingUsers(data);
@@ -36,27 +38,16 @@ const Approvaltable = () => {
       .then((data) => {
         console.log(data);
         window.alert(data.message);
-
-        setPendingUsers((prev) => {
-          const selectedUsers = prev.filter((user) => user.user?._id !== id);
-          return selectedUsers;
-        });
+      //  navigate(0);
+      setPendingUsers((prev) => {
+        return  prev.filter((user) => user.user._id !== id);
       })
-      .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));  
   };
 }
 
-  // pendingUsers.map((user, index) => {
-  // return  <tr key={user?._id}>
-  //                <td scope="row">{index+1}</td>
-  //             <td>{user.name}</td>
-  //             <td>{user.email}</td>
-  //             <td>{user.phone}</td>
-  //             <td>{user.refInfo}</td>
-  //             <td><button type="button" class="btn btn-success btn-sm">Accept</button> <button type="button" class="btn btn-danger btn-sm">Reject</button></td>
-  //   </tr>
-  // })
-
+  
   return (
     <>
       <div>

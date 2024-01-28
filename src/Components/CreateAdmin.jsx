@@ -30,7 +30,7 @@ function CreateAdmin() {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/login/admin', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/login/admin`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
@@ -43,11 +43,23 @@ function CreateAdmin() {
       }
 
       const result = await response.json();
-       window.confirm(result.message);
-      // console.log('Response from server:', result);
-    } catch (error) {
-      console.error('Error sending data to server:', error.message);
-    }
+       window.alert(result.message);
+      //  console.log('Response from server:', result);
+      setNewAdmin({
+        email: "",
+        password: "",
+        confirmPass: "",
+      });
+      
+      } catch (error) {
+        console.error('Error sending data to server:', error.message);
+      }
+
+     
+       
+      
+
+      
   };
   return (
     <>
@@ -97,6 +109,7 @@ function CreateAdmin() {
             <TextField
               id="email"
               label="Email"
+              value={newAdmin.email}
               variant="outlined"
               onChange={handleChangeOfFields}
             />
@@ -120,6 +133,7 @@ function CreateAdmin() {
             <TextField
               id="password"
               label="Set pass"
+              value={newAdmin.password}
               variant="outlined"
               onChange={handleChangeOfFields}
             />
@@ -144,6 +158,7 @@ function CreateAdmin() {
               id="confirmPass"
               label="Confirm pass"
               variant="outlined"
+              value={newAdmin.confirmPass}
               onChange={handleChangeOfFields}
             />
           </Box>

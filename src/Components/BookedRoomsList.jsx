@@ -13,24 +13,14 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const selectedGuestHouse = guestHouse;
 
-  // useEffect(() => {
-  //   fetch(import.meta.env.VITE_API_URL + "/guestHouse")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data[index].rooms);
-  //       setRoomStatus(data[index].rooms);
-  //     })
-  //     .catch((err) => console.error(err.message));
-  // }, [guestHouse]);
-
   const noOfRooms = {
-    "GUEST HOUSE": 10,
-    "SAC GUEST HOUSE": 8,
-    "MEGA GUEST HOUSE": 10,
+    "MAIN GUEST HOUSE": 10,
+    "MEGA GUEST HOUSE": 12,
+    "SAC GUEST HOUSE": 8
   };
 
   let index = 0;
-  if (guestHouse === "GUEST HOUSE") {
+  if (guestHouse === "MAIN GUEST HOUSE") {
     index = 0;
   } else if (guestHouse === "MEGA GUEST HOUSE") {
     index = 1;
@@ -39,30 +29,32 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
   }
 
   useEffect(() => {
+
+    const fetchGuestHouseData = async (index) => {
+      try {
+        const response = await fetch( 
+          import.meta.env.VITE_API_URL +
+          `/booking/approved/approved?guestHouse=${index + 1}`
+        );
+        const data = await response.json();
+        const roomStatus = Array(noOfRooms[guestHouse]).fill(false);
+        data.forEach((booking) => {
+          const checkInDate = new Date(booking.checkInDate);
+          const checkOutDate = new Date(booking.checkOutDate);
+          if (selectedDate >= checkInDate && selectedDate <= checkOutDate) {
+            roomStatus[booking.roomId - 1] = true;
+          }
+        });
+        setRoomStatus(roomStatus);
+      } catch (error) {
+        console.error('Failed to fetch guest house data:', error);
+      }
+    };
+  
     fetchGuestHouseData(index);
   }, [index, selectedDate]);
 
-  const fetchGuestHouseData = async (index) => {
-    try {
-      const response = await fetch(
-        import.meta.env.VITE_API_URL +
-        `/booking/approved/approved?guestHouse=${index + 1}`
-      );
-      const data = await response.json();
-      const roomStatus = Array(noOfRooms[guestHouse]).fill(false);
-      data.forEach((booking) => {
-        const checkInDate = new Date(booking.checkInDate);
-        const checkOutDate = new Date(booking.checkOutDate);
-        if (selectedDate >= checkInDate && selectedDate <= checkOutDate) {
-          roomStatus[booking.roomId - 1] = true;
-        }
-      });
-      setRoomStatus(roomStatus);
-    } catch (error) {
-      console.error('Failed to fetch guest house data:', error);
-    }
-  };
-
+ 
   const handleRoomClick = async (roomIndex) => {
     if (!roomStatus[roomIndex]) {
       setSelectedRooms((prevSelectedRooms) => {

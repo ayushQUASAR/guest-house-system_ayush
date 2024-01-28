@@ -7,8 +7,9 @@ import { ContentCutOutlined } from '@mui/icons-material';
 function MyComponent({ onDataChange, n, maxRooms, guesthouseid, setRooms, userStartDate, userEndDate}) {
   const [selectedDivs, setSelectedDivs] = useState([]);
   const [roomStatus, setRoomStatus] = useState([]);
-
+  
   console.log("gno" + guesthouseid);
+  const noOfRooms = [10, 12, 8];
 
   useEffect(() => {
     setRooms(selectedDivs);
@@ -19,32 +20,26 @@ function MyComponent({ onDataChange, n, maxRooms, guesthouseid, setRooms, userSt
   onDataChange(selectedDivs.length);
 
 
-  // useEffect(() => {
-  //   fetch(import.meta.env.VITE_API_URL + "/guestHouse")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // console.log(data)
-  //       setRoomStatus(data[guesthouseid - 1].rooms)
-  //       console.log('data', data[guesthouseid - 1].rooms)
-  //     })
-  //     .catch((err) => console.error(err.message));
-  // }, []);
 
-  const noOfRooms = {
-    "GUEST HOUSE": 10,
-    "SAC GUEST HOUSE": 8,
-    "MEGA GUEST HOUSE": 10,
-  };
+
+  // const noOfRooms = {
+  //   "MAIN GUEST HOUSE": 10,
+  //   "MEGA GUEST HOUSE": 12,
+  //   "SAC GUEST HOUSE": 8,
+  // };
+
 
   useEffect(() => {
     const fetchGuestHouseData = async () => {
       try {
         const response = await fetch(import.meta.env.VITE_API_URL + "/guestHouse");
         const data = await response.json();
-        let roomStatus = data[guesthouseid - 1].rooms;
-    
+        
+    let rooms = new Array(noOfRooms[guesthouseid]).fill(false);
+    console.log(rooms);
         const bookingResponse = await fetch(import.meta.env.VITE_API_URL + '/admin/bookingApproval');
         const bookingData = await bookingResponse.json();
+        
     
         bookingData.forEach((bookingApproval) => {
           if (bookingApproval.status === 'reject') {
@@ -52,27 +47,31 @@ function MyComponent({ onDataChange, n, maxRooms, guesthouseid, setRooms, userSt
           }
           const startDate = bookingApproval.booking.startDate;
           const endDate = bookingApproval.booking.endDate;
-
-          console.log("userStartDate :"+userStartDate);
-          console.log("userEndDate :"+userEndDate);
-          console.log("startDate :"+startDate);
-          console.log("endDate :"+endDate);
-
-          if (startDate <= userEndDate && endDate >= userStartDate) {
+  
+       
+  
+          if (bookingApproval.guestHouseAllotted === guesthouseid && startDate >= userStartDate && endDate <= userEndDate) {
+            console.log("rooms allotted: ", bookingApproval.roomsAllotted)
             bookingApproval.roomsAllotted.forEach((roomId) => {
-              roomStatus[roomId - 1] = false;
+
+              // setRoomStatus((prev) => {
+              //   const new_state = prev;
+              //   new_state[roomId-1] = true;
+              // })
+              rooms[roomId - 1] = true;
             });
           }
         });
     
-        setRoomStatus(roomStatus);
+        console.log(rooms);
+        setRoomStatus(rooms);
       } catch (error) {
         console.error('Failed to fetch guest house data:', error);
       }
     };
-    
     fetchGuestHouseData();
   }, [guesthouseid]);
+  
   
   // const fetchGuestHouseData = async () => {
   //   try {

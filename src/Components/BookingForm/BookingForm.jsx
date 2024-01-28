@@ -25,6 +25,8 @@ const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
   };
 
   const handleNumCompanionsChange = (event) => {
+handleInputChange(event);  
+
     const num = Math.max(0, Math.min(10, parseInt(event.target.value, 10))) || 0;
     setNumCompanions(num);
 
@@ -59,8 +61,8 @@ const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
       "address",
       "phNumber",
       "designation",
-      "arrivalTime",
-      "departureTime",
+      // "arrivalTime",
+      // "departureTime",
       "purpose",
     ];
 

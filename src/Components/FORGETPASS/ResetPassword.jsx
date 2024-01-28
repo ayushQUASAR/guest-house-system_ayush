@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './ResetPassword.css';
+import { useUserContext } from '../ContextHooks/UserContext';
 
 
 const ResetPassword = () => {
@@ -7,6 +8,20 @@ const ResetPassword = () => {
   const [confirmPass, setConfirmPass] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
+  const [user, setUserDetails] = useState([]);
+const {userId} = useUserContext();
+
+  useEffect(() => {
+    let url = `${import.meta.env.VITE_API_URL}/login/admin/${userId}`;
+    fetch(`${url}`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            setUserDetails(data);
+        }
+        )
+        .catch((err) => console.log(err.message));
+}, []);
 
 useEffect(()=> {
 
@@ -45,7 +60,7 @@ const handleClick = ()=> {
         <form className="resetform1">
         <label htmlFor="registeredemail">Enter Registered Email:</label>
           <br className="resetbreaker" />
-          <input type="text" id="registeredemail" name="emailid" className="forgetinputbox" onChange={(e) => {setEmail(e.target.value)}}/>
+          <input type="text" id="registeredemail" value={user[0]?.email} name="emailid" className="forgetinputbox" onChange={(e) => {setEmail(e.target.value)}}/>
           <label htmlFor="newpassword">Enter New Password :</label>
           <br className="resetbreaker" />
           <input type="password" id="newpass" name="newpass" className="resetinputbox"  onChange={(e) => {setPass(e.target.value)}}/><br /><br />

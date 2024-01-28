@@ -9,8 +9,6 @@ const SideBar = ({ view }) => {
   useEffect(() => {
     if(view!== null) {
       console.log("its' working");
-      //http://localhost:4000/users/6545eecab7f0c070a5456b17/bookingHistory
-
       fetch(`${import.meta.env.VITE_API_URL}/users/${view._id}`)
       .then((res) => res.json())
       .then((data) =>{console.log("this is data", data)
@@ -51,51 +49,105 @@ const SideBar = ({ view }) => {
       <div className="tables-container">
 
         {/* ## COMMENTED BY MRIDUL:   IMAGE WILL NOT WORK WITH RENDER, WILL HAVE TO WAIT FOR API TO HOSTED TO ANOTHER SERVICE */}
-        {/* <div  >
+        <div  >
           {renderIdProofContent(userdata)}
-        </div> */}
+        </div>
         <hr style={{ border: '1px rgb(44, 42, 42) dotted' }} />
      <div>{userdata && <><table className="table">
 
           <tbody>
             <tr>
-              <th scope="row">Name:</th>
+              <th scope="row">Name</th>
               <td>{userdata.userDetails.name}</td>
             </tr>
-            <tr>
-              <th scope="row">Address:</th>
+            {
+              userdata.userDetails.address &&  <tr>
+              <th scope="row">Address</th>
               <td>{userdata.userDetails.address}</td>
             </tr>
+            }
             <tr>
-              <th scope="row">Contact Number:</th>
+              <th scope="row">Registered as</th>
+               <td>{userdata.userDetails.registerOption === 1 ? "Faculty" : userdata.userDetails.registerOption === 2 ? "Student" : "Non Nit User"}</td>
+            </tr>
+           
+            <tr>
+              <th scope="row">Contact Number</th>
               <td>{userdata.userDetails.phone}</td>
             </tr>
             <tr>
-              <th scope="row">Email ID:</th>
+              <th scope="row">Email ID</th>
               <td>{userdata.userDetails.email}</td>
             </tr>
           </tbody>
         </table>
         <table className="table">
+
+        
+         { userdata?.userDetails?.registerOption === 3 && <>
           <h4>Reference:</h4>
           <tbody>
             <tr>
               <th scope="row"> Reference Name</th>
-              {/* <td>{userdata.referenceDetails.refInfo}</td> */}
+              <td>{userdata.referenceDetails.refTo.name}</td>
             </tr>
-
-
-    {/* ##COMMENTED BY MRIDUL: EMAIL IS NOT AVAILABLE TO ALL TYPE OF REFERNCE, CHANGE FIELDS ACCORDING TO THE REFERENCE TYPE  */}
-            {/* <tr>
-              <th scope="row"> Reference Email</th>
-              <td>{userdata.referenceDetails.refTo.email}</td>
-            </tr> */}
             <tr>
-              <th scope="row">Contact</th>
-              {/* <td>{userdata.referenceDetails.refTo.phone}</td> */}
+              <th scope="row">Reference Type</th>
+              <td>{userdata.referenceDetails.refType}</td>
             </tr>
+            {
+             userdata.referenceDetails.refType === 'student'  && <>
+                <tr>
+              <th scope="row">Roll No.</th>
+              <td>{userdata.referenceDetails.refTo.roll}</td>
+            </tr>
+            <tr>
+              <th scope="row">Branch</th>
+              <td>{userdata.referenceDetails.refTo.branch}</td>
+            </tr>
+             </>
+            }
+
+            {
+              userdata.referenceDetails.refType === 'faculty' && <>
+                <tr>
+              <th scope="row">Contact Number.</th>
+              <td>{userdata.referenceDetails.refTo.phone}</td>
+            </tr>
+            <tr>
+              <th scope="row">Department</th>
+              <td>{userdata.referenceDetails.refTo.dept}</td>
+            </tr>
+              </>
+            }
+
+            {
+              userdata.referenceDetails.refType === 'alumni' && <>
+                 <tr>
+              <th scope="row">Branch</th>
+              <td>{userdata.referenceDetails.refTo.branch}</td>
+            </tr>
+            <tr>
+              <th scope="row">Contact No.</th>
+              <td>{userdata.referenceDetails.refTo.phone}</td>
+            </tr>
+            <tr>
+              <th scope="row">Batch</th>
+              <td>{userdata.referenceDetails.refTo.batch}</td>
+            </tr>
+            <tr>
+              <th scope="row">Current Job</th>
+              <td>{userdata.referenceDetails.refTo.currentJob}</td>
+            </tr>
+
+              </>
+            }
           </tbody>
-        </table></> }</div>
+         </>}
+        </table>
+        </>
+        
+        }</div>
 
 
       </div>

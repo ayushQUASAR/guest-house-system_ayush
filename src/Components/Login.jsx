@@ -20,7 +20,7 @@ const Login = () => {
   const [Password, setPassword] = useState("");
   const [loginData, setLoginData] = useState(null);
   // const [isLogged, setIsLogged] = useState(false);
-  const { isLogged, setIsLogged } = useLoginContext();
+  const { isLogged, setIsLogged,  setIsAdm } = useLoginContext();
   const [isAdmin, setIsAdmin] = useState();
   const [isMainAdmin, setIsMainAdmin] = useState(false);
   // console.log(loginData);
@@ -42,8 +42,10 @@ const Login = () => {
           updateUserId(data.id);
           setIsAdmin(data.isAdmin);
           if (data.isAdmin) {
+            setIsAdm(true);
             navigate('/Dashboard');
           } else {
+            setIsAdm(false);
             navigate('/UserDetails');
           }
         }
@@ -81,7 +83,7 @@ const Login = () => {
         }
         if (data.isAdmin) {
           setIsAdmin(true);
-
+          setIsAdm(true);
           console.log("islog ADMIN", isLogged)
 
 

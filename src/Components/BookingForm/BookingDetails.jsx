@@ -12,8 +12,8 @@ const inputStyle = {
 
 const guestHouseOptions = [
   "Main Guest House",
-  "SAC Guest House",
   "Mega Guest House",
+  "SAC Guest House",
 ];
 const maxRooms = [2, 2, 2];
 
@@ -68,7 +68,7 @@ const BookingDetails = ({ setDateDetails }) => {
     const finalGuestHouse =
       selectedGuestHouse === "Main Guest House"
         ? 1
-        : selectedGuestHouse === "SAC Guest House"
+        : selectedGuestHouse === "Mega Guest House"
         ? 2
         : 3;
     updateFormData("guestHouseSelected", finalGuestHouse);

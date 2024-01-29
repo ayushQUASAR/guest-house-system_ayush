@@ -6,6 +6,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import HowToRegRoundedIcon from "@mui/icons-material/HowToRegRounded";
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import BedroomParentRoundedIcon from "@mui/icons-material/BedroomParentRounded";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
@@ -126,14 +127,14 @@ const Dash = ({ admin, isMainAdmin }) => {
         {sideState && (
           <div className="dash-sidebar">
             <div className="admin-title">
-              <span>
+              <span style={{cursor:'pointer'}}> 
                 <AdminPanelSettingsIcon />
                 Admin Panel
               </span>
             </div>
             <div className="dash-wrapper">
               {/* <div className='side-title'> Administration</div> */}
-              <li>
+              <li style={{cursor:'pointer'}}>
                 <div
                   onClick={() => selectContent("dashboard")}
                   className="dash-optn"
@@ -216,8 +217,13 @@ const Dash = ({ admin, isMainAdmin }) => {
                   </div>
                 ) : null}
               </li>
-              <div className="side-title">Admin</div>
-              <li>
+              <div className="admin-title">
+              <span style={{cursor:'pointer'}}> 
+                <SupervisorAccountIcon />
+                Admin 
+              </span>
+              </div>
+              <li style={{cursor:'pointer'}}>
                 <div
                   onClick={() => selectContent("adminuserProfile")}
                   className="dash-optn"

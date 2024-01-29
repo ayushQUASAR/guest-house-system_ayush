@@ -10,6 +10,7 @@ import PersonPinIcon from '@mui/icons-material/PersonPin';
 import BedroomParentRoundedIcon from '@mui/icons-material/BedroomParentRounded';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { NavLink } from 'react-router-dom';
@@ -108,19 +109,26 @@ useEffect(() => {
       {sideState &&
       <div className="dash-sidebar">
          <div className="admin-title">
-          <span>
+          <span style={{cursor:'pointer'}}>
             <AdminPanelSettingsIcon />
-            User Panel</span></div>
+            User Panel
+          </span>
+          </div>
         <div className="dash-wrapper">
         {/* <div className='side-title'> Administration</div> */}
-        <li>
+        <li style={{cursor:'pointer'}}>
           {/* <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div> */}
           <div  onClick={() => selectContent('UpcomingBooking')} className="dash-optn"><span><PersonAddIcon />Upcoming Booking</span></div> 
           <div onClick={() => selectContent('Booking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Booking</span></div>
           <div  onClick={() => selectContent('bookingHistory')} className="dash-optn"><span><AssignmentTurnedInIcon />Booking History</span></div>
         </li>
-        <div className='side-title'>User</div>
-        <li>
+        <div className="admin-title">
+          <span style={{cursor:'pointer'}}>
+            <PersonIcon />
+            User
+          </span>
+          </div>
+        <li style={{cursor:'pointer'}}>
           <div  onClick={() => selectContent('UserProfile')} className="dash-optn"><span><PersonPinIcon />Profile</span></div>
           <div onClick={() => selectContent('settings')} className="dash-optn"><span><SettingsIcon />Settings</span></div>
           <div onClick={handleLogout} className="dash-optn"><span><LogoutIcon />Logout</span></div>

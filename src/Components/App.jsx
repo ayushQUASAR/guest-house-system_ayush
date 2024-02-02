@@ -19,6 +19,8 @@ import UserDash from "./UserDash";
 import ForgetPassword from "./FORGETPASS/ForgetPassword";
 import ResetPassword from "./FORGETPASS/ResetPassword";
 import Receipt from "./Receipt/Receipt";
+import TestGate from "./Receipt/TestGate";
+
 
 function App() {
   return (
@@ -66,6 +68,8 @@ function App() {
                 />
                 <Route path="/login" element={<Login />} />
                 <Route path="/receipt" element={<Receipt />} />
+                <Route path="/testgate" element={<TestGate />} />
+
               </Routes>
             </FormProvider>
           </UserContextProvider>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useUserContext } from '../ContextHooks/UserContext';
 import CancelPopUp from './CancelPopUp'; 
 import CancelForm from './CancelForm';
+import {Link} from "react-router-dom"
 const UpcomingBooking = () => {
 
   const [showPopup, setShowPopup] = useState(false);
@@ -103,14 +104,18 @@ const UpcomingBooking = () => {
             <td>{formatDateToISO(booking.startDate)}</td>
             <td>{formatDateToISO(booking.endDate)}</td>
             <td>{booking.status}</td>
+            
             {booking.status === 'pending' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking._id)} disabled>Cancel</button>
           </td>)}
             {booking.status === 'approved' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking._id)}>Cancel</button>
           </td>)}
-            
-          {booking.status === 'approved' && <td> <button className='btn' style = {{backgroundColor : 'green', color : 'white'}} onClick={()=>handlePayment()} disabled>Pay Now</button>
+    
+          {booking.status === 'approved' && <td><Link to="/testGate"><button className='btn' style = {{backgroundColor : 'green', color : 'white'}} disabled>Pay Now</button></Link> 
+         
           </td>}
-          {booking.status === 'pending' && <td> <button className='btn' style = {{backgroundColor : 'green', color : 'white'}} onClick={()=>handlePayment()}>Pay Now</button>
+          
+          
+          {booking.status === 'pending' && <td> <button className='btn' style = {{backgroundColor : 'green', color : 'white'}} disabled >Pay Now</button>
           </td>}
           </tr>
         ))}

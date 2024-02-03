@@ -271,13 +271,14 @@ export default function Regrightside() {
         {/* </div> */}
         {popup && <Popup isRegPopup={true} setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
         <form action="/register" onSubmit={setSubmit}>
+          <div className="reg-form-wrapper">
           <div className="register-optn-wrapper">
 
             {/* <div className="r">
               <h1 className="rheading">Create an Account</h1>
             </div> */}
-
-            <div className="registration-optn" style={{ left: `${registerrightval}px` }}>
+          <div className="registration-optn" style={{ left: `${registerrightval}px` ,height:'500px'}}>
+            <div style={{display:'flex'}} >
               {/* <div
                 onClick={() => {
                   setRegisteroptn(1), setRegisterclass(true);
@@ -306,7 +307,9 @@ export default function Regrightside() {
                 <Icon icon="iconamoon:profile" width={'80'} height={'80'} color="#007bff" />  <p>Others</p>
               </div>
 
-
+              {registerOptn && <div onClick={() => { onView(), regOnview() }} className="form-next-btn" >
+              <Icon width="30" icon="material-symbols:arrow-forward-ios-rounded" color="blue" />
+            </div>}
               {/*                     
               <div
                 onClick={() => {
@@ -320,9 +323,8 @@ export default function Regrightside() {
                 Others
               </div> */}
             </div>
-            {registerOptn && <div onClick={() => { onView(), regOnview() }} className="form-next-btn" style={{ left: `${leftval}px ` }}>
-              <Icon width="30" icon="material-symbols:arrow-forward-ios-rounded" color="blue" />
-            </div>}
+            </div>
+          
             {registerOptn == 1 ? (
               <div className="college-official-form-wrapper" style={{ left: `${rightValue}px ` }}>
                 <div className="college-official-form">
@@ -999,6 +1001,7 @@ export default function Regrightside() {
                 }}
               />
                )} */}
+          </div>
           </div>
         </form >
       </div >

@@ -4,9 +4,6 @@ import sucessIcon from "../../images/check2.png"
 import { NavLink } from 'react-router-dom';
 const BookingPopup = ({ isOpen, onClose, isAdmin }) => {
   if (!isOpen) return null;
-  const handleClose = () => {
-    onClose();
-  };
 
   // const [isAdmin, setIsAdmin] = useState(false);
 
@@ -24,15 +21,15 @@ const BookingPopup = ({ isOpen, onClose, isAdmin }) => {
   // }, []);
 
   return (
-    <div className="popup-overlay">
-      <div className="popup" onClick={(e) => e.stopPropagation}>
-        <img className="sucessIcon" src={sucessIcon} alt="Success Icon" />
-        <h2 className="popup-heading">Booking sent for Admin approval</h2>
+    <div className="popup-overlay-booking">
+      <div className="popup-booking" onClick={(e) => e.stopPropagation()}>
+        <img className="sucessIcon-booking" src={sucessIcon} alt="Success Icon" />
+        <h2 className="popup-heading-booking">Booking sent for Admin approval</h2>
         {!isAdmin && (
           <>
-            <p className="popup-para">Please wait for your Approval from Institute.</p>
+            <p className="popup-para-booking">Please wait for your Approval from Institute.</p>
             <NavLink to="/UserDetails">
-              <button className="btn btn-primary btn-sm popupClose" onClick={onClose}>
+              <button className="btn btn-primary btn-sm popupClose-booking" onClick={onClose}>
                 Close
               </button>
             </NavLink>
@@ -40,9 +37,9 @@ const BookingPopup = ({ isOpen, onClose, isAdmin }) => {
         )}
         {isAdmin && (
             <>
-              <p className="popup-para">Kindly approve this booking from Approve Booking tab.</p>
+              <p className="popup-para-booking">Kindly approve this booking from Approve Booking tab.</p>
               <NavLink to="/Dashboard">
-                <button className="btn btn-primary btn-sm popupClose" onClick={onClose}>
+                <button className="btn btn-primary btn-sm popupClose-booking" onClick={onClose}>
                   Close
                 </button>
               </NavLink>

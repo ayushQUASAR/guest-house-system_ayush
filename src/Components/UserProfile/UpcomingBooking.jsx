@@ -19,7 +19,7 @@ const UpcomingBooking = () => {
         setBookings(data); // Update the state with fetched data
       })
       .catch((err) => console.log("Error while retrieving booking data of user :", err.message));
-  }, [userId]);
+  }, [userId,bookings]);
 
   
   function formatDateToISO(input_date) {

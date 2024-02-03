@@ -63,7 +63,7 @@ function Login() {
       ],
     },
   ];
-  
+
 
   const [cardRotations, setCardRotations] = useState(
     Array(houses.length).fill(false)
@@ -83,8 +83,8 @@ function Login() {
   };
 
   return (
-    
-     <div> <HomeHeader />
+
+    <div> <HomeHeader />
       {/* <nav className="stickyNav">
         <a href="https://www.nitj.ac.in/" target="_blank">
           <img
@@ -168,8 +168,8 @@ function Login() {
       <div className="backgroundImage" >
         <div className="description">
           <h1 id="Welcome">
-            <br/>
-            Welcome to <br/>Dr. B R Ambedkar <br/> National Institute of Technology Jalandhar <br />Guest Room Booking System
+            <br />
+            Welcome to <br />Dr. B R Ambedkar <br /> National Institute of Technology Jalandhar <br />Guest Room Booking System
           </h1>
         </div>
 
@@ -204,8 +204,8 @@ function Login() {
               {showBackface[index] && (
                 <div className="houseCardBackface">
                   <h1 className="headerBackface">{house.name}</h1>
-                  <h2 className="backFacehouseCardLoc" style = {{fontSize : '1.2rem', textAlign : 'center', paddingBottom : '1rem'}}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"> <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg>
+                  <h2 className="backFacehouseCardLoc" style={{ fontSize: '1.2rem', textAlign: 'center', paddingBottom: '1rem' }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16"> <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" /></svg>
                     <span className="mx-2">{house.location}</span></h2>
                   <ul className="facilitiesList">
                     {house.facilities.map((facility, index) => (
@@ -215,17 +215,17 @@ function Login() {
                 </div>
               )}
             </div>
-          ))} 
-        </div> 
+          ))}
+        </div>
       </div>
-      
+
 
       <div className="aboutSection" id="AboutUs">
         <h1 className="aboutUs"><strong>About Us</strong></h1>
         <p className="aboutUsPara" style={{ textAlign: 'justify', justifyContent: 'center' }}>
-        At NIT Jalandhar, we follow  the Indian ethos of "Athithi Devo Bhava" which means treating guests with great respect. We make sure our guests have the best experience, from good service to a nice setting and great food. Like many Indian Institutions, we have built guest houses on our campus for visitors. We have three guest houses namely Institute Guest House, SAC Guest House, and Mega Guest House. Institute Guest House has 10 standard rooms, SAC Guest House also has 8 standard rooms, and Mega Guest House has 12 standard rooms. All the rooms have air conditioning, double beds, and other comforts. The available facilities are as follows:
-        </p> 
-                {/* <h2 id="delxroom">Standard Room Facilities</h2> */}
+          At NIT Jalandhar, we follow  the Indian ethos of "Athithi Devo Bhava" which means treating guests with great respect. We make sure our guests have the best experience, from good service to a nice setting and great food. Like many Indian Institutions, we have built guest houses on our campus for visitors. We have three guest houses namely Institute Guest House, SAC Guest House, and Mega Guest House. Institute Guest House has 10 standard rooms, SAC Guest House also has 8 standard rooms, and Mega Guest House has 12 standard rooms. All the rooms have air conditioning, double beds, and other comforts. The available facilities are as follows:
+        </p>
+        {/* <h2 id="delxroom">Standard Room Facilities</h2> */}
         <div className="facilitiesHolder">
 
           <div id="content1">
@@ -256,8 +256,9 @@ function Login() {
           </div> */}
         </div>
       </div>
-      <div className="guidelinesDiv"style = {{
-    backgroundColor: 'rgba(185, 194, 255, 0.225)'}}>
+      <div className="guidelinesDiv" style={{
+        backgroundColor: 'rgba(185, 194, 255, 0.225)'
+      }}>
         <h1 id="guidelinesHeader"><strong>Guidelines</strong></h1>
         <div className="guidelinesList">
           <ul>
@@ -271,9 +272,9 @@ function Login() {
             <li>Alumni may book rooms for themselves and their immediate family (parents and children) only, not for other relatives, friends, or colleagues.</li>
             <li>The NITJ Institute Guest House provides a delightful breakfast, lunch, and dinner, available on payment. Please note, we exclusively offer vegetarian cuisine.</li>
             <li>The daily accommodation charges for the Institute Guest House are set at <strong>₹1000</strong> per room, while the SAC Guest House and Mega Guest House are charged at <strong>₹600</strong> per room.</li>
-            <li><ul style = {{padding : '0px'}}><strong>Cancellation Charges:</strong>
-            <li style = {{marginLeft : '32px'}}>A charge of 25% of the total rent will apply if the cancellation is made between seven and three days (7-3 days) before the date of arrival.</li>
-            <li style = {{marginLeft : '32px'}}>A charge of 50% of the total rent will apply if the cancellation is made within 24 hours before the date of arrival.</li>
+            <li><ul style={{ padding: '0px' }}><strong>Cancellation Charges:</strong>
+              <li style={{ marginLeft: '32px' }}>A charge of 25% of the total rent will apply if the cancellation is made between seven and three days (7-3 days) before the date of arrival.</li>
+              <li style={{ marginLeft: '32px' }}>A charge of 50% of the total rent will apply if the cancellation is made within 24 hours before the date of arrival.</li>
             </ul></li>
           </ul>
         </div>
@@ -283,20 +284,21 @@ function Login() {
         <h1 id="availabilityHeader"><strong>Room Availability</strong></h1>
         <Calendar />
       </div>
-      <div className = "imageGallery" id = "imageGallery">
-        <h1 className = "imageheader"><strong>Image Gallery</strong></h1>
-          <ImageGallery/>
+      <div className="imageGallery" id="imageGallery">
+        <h1 className="imageheader"><strong>Image Gallery</strong></h1>
+        <ImageGallery />
       </div>
 
-      <div className="contactUsDiv">
-        <h1 id="contactHeader"><strong>Contact Us</strong></h1> 
-        <div style = {{textAlign : 'center', alignItems : 'center'}}>
-        <EmbeddedMap/>
-        <Contact/>
+      <div style={{backgroundColor:""}}>
+        <h1 id="contactHeader"><strong>Contact Us</strong></h1>
+        <div style={{ textAlign: 'center', alignItems: 'center' }}>
+          <EmbeddedMap />
+
         </div>
-      </div>
+
+        <Contact /></div>
       <Footer />
-      </div>
+    </div>
   );
 }
 

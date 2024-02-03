@@ -17,9 +17,8 @@ const Popup = ({
         <img className="sucessIcon" src={sucessIcon} alt="Success Icon" />
 
         <h2 className="popup-heading">{messageHead}</h2>
-        <p className="popup-para">{para1}</p>
-
-        <p>{para2}</p>
+      {para1!="" && <p className="popup-para">{para1}</p>}
+      {para2!="" && <p className="popup-para">{para2}</p>}
 
         <button
           className="btn btn-primary btn-lg rounded"

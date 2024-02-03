@@ -1,25 +1,13 @@
-  .user-image{
-    margin : 20px; 
-  }
-  label span{
-    margin-left :20px;
-    font-size: 20px;
-  }
-  .topbars{
-    padding-top: 20px;
+  .user-profile{
+    padding: 20px 40px;
     margin-top: 0px;
     margin-bottom : 20px;
-    border-top-right-radius: 1cm;
-    border-top-left-radius: 1cm;
+    border-top-right-radius: .25cm;
+    border-top-left-radius: .25cm;
     background-color: #0275d8;
     border:1px solid #0275d8;
-  }
-  .top-container{  
-    border : 1px solid #0275d8;
-    border-radius:1cm;
-    padding : 0px;
-    margin: 2% 10%;
-  }
+    color:#ffffff;
+  } 
   
   h1 {
     font-size: 25px;
@@ -36,14 +24,14 @@
     border-spacing: 10px; 
     padding: 10px; 
   }  
-  .empty-container{
+  /* .empty-container{
     width : 40%;
     height : 50px;
     border : 1px solid #0275d8;
     border-radius:1em;
     position : relative;
     margin-left: 2%;
-  }
+  } */
   .row-underline{
     border-bottom: 1px solid #ccc;
   }

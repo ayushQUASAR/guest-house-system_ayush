@@ -43,7 +43,7 @@ const HomeHeader = () => {
             <div className="menu-icon" onClick={handleShowNavbar}>
                 <img src={menu} alt="" style = {{width : '30px', height : '30px', marginRight : '20px'}} />
             </div>
-            <div   className={`nav-elements  ${showNavbar && 'active'}`}>
+            <div className={`nav-elements  ${showNavbar && 'active'}`}>
               <ul>
                 {/* <Link to="/" smooth={true} duration={50}>
                   <div className="nav-optn">

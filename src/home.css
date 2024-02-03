@@ -384,9 +384,9 @@ nav {
     }
 
     .backgroundImage {
-        background-image: url("/1547015099phpOoPsAO.jpeg");
+        background-image: url("./images/ImageGallery/guest-house-front.jpeg");
         position: relative; 
-        height: 30vh;
+        height: 80vh;
         width: 100%;
         margin: 0;
         padding: 0;
@@ -398,10 +398,12 @@ nav {
     .description {
         position: relative;
         z-index: 1;
+        font-size: 20%;
         color: white;
         /* font-size: small; */
         padding-top: 0 px; 
         grid-row: 2;
+
     }
     
 

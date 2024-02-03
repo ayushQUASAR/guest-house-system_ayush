@@ -34,26 +34,26 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import AdminReport from "./AdminReports/AdminReport";
 const Dash = ({ admin, isMainAdmin }) => {
   // console.log(admin);
-  const {isAdm} = useLoginContext();
+  const { isAdm } = useLoginContext();
   console.log("admin context", isAdm);
   const [sideState, setSidestate] = useState(true);
   const [contentType, setContentType] = useState("dashboard");
   const [isGodAdmin, setGodAdmin] = useState(false);
   // useEffect for the data fetch for the curr user if curruser == "ghadmin@nitj.ac.in" setGodAdmin(true) by default false
 
-  
+
   useEffect(() => {
     if (isMainAdmin === true) {
       setGodAdmin(true);
     }
   }, [isMainAdmin]);
-  
+
   // useEffect(() => {
   //   localStorage.setItem('isGodAdmin', JSON.stringify(isGodAdmin));
   // }, [isGodAdmin]);
-  
+
   console.log(isGodAdmin);
-  
+
   const ToggleSidestate = () => {
     setSidestate(!sideState);
   };
@@ -75,14 +75,14 @@ const Dash = ({ admin, isMainAdmin }) => {
     })
       .then((res) => {
         console.log("logout");
-  
+
         // Clear local storage
         localStorage.clear();
-  
+
         document.cookie.split(";").forEach((c) => {
           document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
         });
-  
+
         return res.json();
       })
       .then((data) => {
@@ -107,34 +107,33 @@ const Dash = ({ admin, isMainAdmin }) => {
     ),
     bookedRooms: <BookedRooms />,
     registeredUsers: <RegisteredUsers />,
-    adminuserProfile: <AdminUserProfile  />,
+    adminuserProfile: <AdminUserProfile />,
     settings: <DashboardSettings />,
     approve: <Approve />,
     approvebooking: <ApproveBooking />,
     manageAdmins: <ManageAdmin />,
-    adminReports:<AdminReport/>
+    adminReports: <AdminReport />
   };
 
   const selectedContent = contentComponents[contentType];
   return (
     <>
       <Header Toggle={ToggleSidestate} />
-      <div className="dash-menu">
-        {/* <div className="admin-header" onClick={ToggleSidestate}>
-     
-       
+       <div className="dash-menu">
+      {/*  <div className="admin-header" onClick={ToggleSidestate}>       
       </div> */}
         {sideState && (
+          
           <div className="dash-sidebar">
             <div className="admin-title">
-              <span style={{cursor:'pointer'}}> 
+              <span style={{ cursor: 'pointer' }}>
                 <AdminPanelSettingsIcon />
                 Admin Panel
               </span>
             </div>
             <div className="dash-wrapper">
               {/* <div className='side-title'> Administration</div> */}
-              <li style={{cursor:'pointer'}}>
+              <li style={{ cursor: 'pointer' }}>
                 <div
                   onClick={() => selectContent("dashboard")}
                   className="dash-optn"
@@ -164,7 +163,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                 </div>
 
                 <div
-               
+
                   onClick={() => selectContent("approve")}
                   className="dash-optn"
                 >
@@ -173,7 +172,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                     Approve Registrations
                   </span>
                 </div>
-                
+
                 <div
                   // onClick={() => selectContent("approve")}
                   onClick={() => selectContent("bookedRooms")}
@@ -203,7 +202,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                     <AssessmentIcon />
                     Report
                   </span>
-               </div>
+                </div>
 
                 {isGodAdmin ? (
                   <div
@@ -218,12 +217,12 @@ const Dash = ({ admin, isMainAdmin }) => {
                 ) : null}
               </li>
               <div className="admin-title">
-              <span style={{cursor:'pointer'}}> 
-                <SupervisorAccountIcon />
-                Admin 
-              </span>
+                <span style={{ cursor: 'pointer' }}>
+                  <SupervisorAccountIcon />
+                  Admin
+                </span>
               </div>
-              <li style={{cursor:'pointer'}}>
+              <li style={{ cursor: 'pointer' }}>
                 <div
                   onClick={() => selectContent("adminuserProfile")}
                   className="dash-optn"
@@ -250,9 +249,9 @@ const Dash = ({ admin, isMainAdmin }) => {
                 </div>
               </li>
             </div>{" "}
-          
+
           </div>
-          
+
         )}
         <div className="dash-area">
           <div className="dash-box">{selectedContent}</div>

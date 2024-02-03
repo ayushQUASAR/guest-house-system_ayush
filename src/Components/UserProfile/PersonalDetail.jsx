@@ -45,12 +45,12 @@ const PersonalDetail = () => {
         <div className='container-fluid'>
             <div>
                 <div className = "user-profile"> 
-                <div>
+                    <div>
                         <UserIcon username = {user?.userDetails?.name}/>
-                </div>
-                <div>
-                    <h2 style = {{fontSize : '40px', paddingLeft : '10px', justifyContent: 'center', alignItems : 'center'}}>User Profile</h2>
-                </div>
+                    </div>
+                    <div>
+                        <h2 style = {{fontSize : '40px', paddingLeft : '10px', justifyContent: 'center', alignItems : 'center'}}>User Profile</h2>
+                    </div>
                 </div>
                 <div className='row mx-4' style={{ borderBottom: '1px solid #ccc' }}>
                     <div className='col-6'> <strong>Name</strong></div>

@@ -20,9 +20,13 @@
 .approval-table
 {
     width: 100%;
+    height: auto;
+    overflow-y: scroll;
 }
 td{
     text-align: center;
+    
+    border : .5px white;
 }
 .grid-table-content div{
     display: flex;

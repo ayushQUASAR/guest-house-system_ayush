@@ -220,4 +220,7 @@
         color: white;
         font-weight: 700;
     } 
+    .nav-elements { 
+        top: 60px;
+      }
 }

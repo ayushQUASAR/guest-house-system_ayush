@@ -369,4 +369,8 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
   .regform-group-custom{
     width: 330px;
   }
+}@media screen and (max-width:400px) {
+  .regform-group-custom{
+    width: 300px;
+  }
 }

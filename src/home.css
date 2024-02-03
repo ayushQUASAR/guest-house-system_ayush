@@ -433,4 +433,7 @@ nav {
     .availabilitySection {
         padding: 3px;
     }
+    #availabilityHeader {
+        font-size: 30px;
+}
 }

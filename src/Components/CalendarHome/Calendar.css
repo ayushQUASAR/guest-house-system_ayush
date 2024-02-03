@@ -62,14 +62,132 @@ th {
   flex-direction: column;
   justify-content: space-evenly;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #0072cfe4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #2284b2;
+}
+
+.month-year {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.calendar-table {
+  width: 100%;
+}
+
+th {
+  text-align: center;
+  background-color: #0072cfe4;
+  color: #fff;
+  padding: 10px;
+  border: 1px solid #0072cfe4;
+  font-weight: bolder;
+  height: 4px;
+}
+
+.curdate-calendar {
+  color: #0072cfe4;
+  margin: 4px;
+}
+
+.div-td {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+}
 
 .acCount {
-  color: #12f368;
-  background-color: #12f37725;
-  border: 1px solid #16b64e;
+  color: #f38a12;
+  background-color: #f38a1220;
+  border: 1px solid #f38a12;
   text-align: center;
   border-radius: 10px;
+  font-size: medium;
 }
+
+td {
+  
+  height: 40px;
+  padding: 2px;
+}
+
+.empty-cell {
+  background-color: #eee;
+}
+
+td.today {
+  background-color: #0072cfe4;
+  color: #fff;
+}
+
+td:hover {
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+  #calendar-root {
+    padding: 5px;
+    overflow: auto;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hiddenTxt {
+    display: none;
+  }
+  .btn {
+    margin: 2px;
+  }
+
+  .month-year {
+    font-size: 1.2rem;
+  }
+
+  .calendar-table {
+    font-size: 0.8rem;
+  }
+
+  th {
+    font-size: 0.7rem;
+    padding: 5px;
+    height: 3px;
+  }
+
+  .curdate-calendar {
+    font-size: 0.7rem;
+  }
+
+  .acCount,
+  .nonCount {
+    font-size: 0.8rem;
+    padding: 1px;
+  }
+
+  td {
+    height: 15px;
+    width: 4px;
+  }
+}
+
 .acCount, .nonCount {
   cursor: pointer;
 }
@@ -90,6 +208,7 @@ td {
  .calendar-cell {
   width: 1000px;
   height: 100px;
+  border: 1px solid #ccc;
  }
  .calendar-cell:hover {
   background-color: rgba(172, 172, 172, 0.184);

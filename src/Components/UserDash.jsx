@@ -36,6 +36,9 @@ import  Container  from './BookingForm/Container';
 import UpcomingBooking from './UserProfile/UpcomingBooking';
 import { useUserContext } from './ContextHooks/UserContext';
 import UserResetPassword from './FORGETPASS/UserResetPassword';
+import ClearIcon from '@mui/icons-material/Clear';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 
 
 const UserDash = () => {
@@ -58,6 +61,18 @@ useEffect(() => {
    }
    )
    .catch((err) => console.log(err.message));
+}, []);
+
+useEffect(() => {
+  const handleResize = () => {
+    setX(window.innerWidth);
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
 }, []);
 
   const ToggleSidestate = () => {
@@ -97,15 +112,27 @@ useEffect(() => {
     UserProfile: <PersonalDetail user={user} />,
     settings: <UserResetPassword />,
   };
+  const [x, setX] = useState(window.innerWidth);
 
   const selectedContent = contentComponents[contentType];
   return (
   
     <>
-        <Header Toggle={ToggleSidestate}/>
+        <Header/>
+        <div className="reponsive-sidepanel-header">
+        {x < 1000 ? (
+          <div className='burger' >
+            <div className="btn-div">
+              <IconButton onClick={ToggleSidestate}>
+                {!sideState ? <MenuIcon style={{ color: 'white' }} />
+                  : <ClearIcon style={{ color: 'white' }} />}
+              </IconButton>
+            </div>
+          </div>
+        ) : null}
+      </div>
     <div className='dash-menu'>
-      {/* <div className="admin-header" onClick={ToggleSidestate}>
-      </div> */}
+     
       {sideState &&
       <div className="dash-sidebar">
          <div className="admin-title">

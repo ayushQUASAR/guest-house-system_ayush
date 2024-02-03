@@ -16,8 +16,10 @@
   position: absolute;
   bottom: 40%;
   align-items: center;
-  flex-wrap: wrap;
   
+}
+.reg-form-wrapper{
+  position: relative;
 }
 .register-optn-wrapper {
   
@@ -51,7 +53,7 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
 }
 .college-official-form-wrapper{
   position: absolute;
-  transition: right 0.8s;
+  transition: all 1s;
   margin: auto;
   /* top: 0; */
   /* flex-direction: column; */
@@ -241,8 +243,11 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
 
   .leftSide {
     border-radius: 10px;
+    height: 30vh;
   }
-
+.LeftImage{
+  max-width: 40% !important;
+}
   .rightSide {
     margin-left: 0;
   }
@@ -322,25 +327,41 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
   margin-top: 5px;
   font-size: 14px;
 }
-.registration-optn {
-  display: flex;
-  justify-content: space-evenly;
-  transition: all 0.5s;
 
-  margin: 5vw 3vw;
-  border-radius: 10px;
-  padding: 2vw 4vw; 
-  position: absolute;
-  bottom: 20%;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.registration-optn img {
-  width: 30%; 
-  max-width: 100px; 
-}
-
-.registration-optn button {
-  font-size: 2vw; 
+@media screen and (max-width:1000px) {
+  .registration-optn{
+    flex-direction: column;
+  }
+  .LeftContainer{
+    height: 20vh;
+    min-height: 100%;
+  }
+  .college-official-optn{
+    width: 95px;
+    height: 95px;
+  }
+  .centered-box-row{
+    width: 100vw;
+  }
+  .centered-box{
+    width: auto;
+    padding: 20px 10px;
+  }
+  .container{
+    overflow: hidden;
+  }
+  .registration-optn{
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .register-optn-wrapper{
+    height: 50vh;
+  }
+  .regform-group-custom{
+    width: 350px;
+  }
+  .college-official-form input{
+    width: 91%;
+  }
 }

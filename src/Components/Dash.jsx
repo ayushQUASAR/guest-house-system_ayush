@@ -15,10 +15,12 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import { NavLink } from "react-router-dom";
+import ClearIcon from '@mui/icons-material/Clear';
 import Header from "./Header";
 import Approve from "./Approve";
 import DashboardContent from "./DashboardContent";
 import AdminUserProfile from "./AdminUserProfile";
+import Button from '@mui/material/Button';
 import AdminRoomBooking from "./AdminRoomBooking";
 import BookedRooms from "./BookedRooms";
 import ApproveBooking from "./BookingApproval/ApproveBooking";
@@ -32,6 +34,8 @@ import { useUserContext } from "./ContextHooks/UserContext";
 import ManageAdmin from "./ManageAdmin";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import AdminReport from "./AdminReports/AdminReport";
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 const Dash = ({ admin, isMainAdmin }) => {
   // console.log(admin);
   const { isAdm } = useLoginContext();
@@ -41,7 +45,22 @@ const Dash = ({ admin, isMainAdmin }) => {
   const [isGodAdmin, setGodAdmin] = useState(false);
   // useEffect for the data fetch for the curr user if curruser == "ghadmin@nitj.ac.in" setGodAdmin(true) by default false
 
+  const [x, setX] = useState(window.innerWidth);
 
+
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setX(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   useEffect(() => {
     if (isMainAdmin === true) {
       setGodAdmin(true);
@@ -54,7 +73,7 @@ const Dash = ({ admin, isMainAdmin }) => {
 
   console.log(isGodAdmin);
 
-  const ToggleSidestate = () => {
+  const ToggleSide = () => {
     setSidestate(!sideState);
   };
   const selectContent = (content) => {
@@ -118,12 +137,24 @@ const Dash = ({ admin, isMainAdmin }) => {
   const selectedContent = contentComponents[contentType];
   return (
     <>
-      <Header Toggle={ToggleSidestate} />
-       <div className="dash-menu">
-      {/*  <div className="admin-header" onClick={ToggleSidestate}>       
+      <Header />
+      <div className="reponsive-sidepanel-header">
+        {x < 1000 ? (
+          <div className='burger' >
+            <div className="btn-div">
+              <IconButton onClick={ToggleSide}>
+                {!sideState ? <MenuIcon style={{ color: 'white' }} />
+                  : <ClearIcon style={{ color: 'white' }} />}
+              </IconButton>
+            </div>
+          </div>
+        ) : null}
+      </div>
+      <div className="dash-menu">
+        {/*  <div className="admin-header" onClick={ToggleSidestate}>       
       </div> */}
         {sideState && (
-          
+
           <div className="dash-sidebar">
             <div className="admin-title">
               <span style={{ cursor: 'pointer' }}>

@@ -23,6 +23,7 @@
 .guestHouseDivs{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .noOfGuestHouse{
     background-color: #0275d8;

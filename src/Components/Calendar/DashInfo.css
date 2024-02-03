@@ -98,15 +98,23 @@ font-size: 26px;
     }
     
     .DashCard, .DashCard2 {
-        width: 90%;
+        width: 100%;
         margin: 2% auto;
     }
     
     .DashBigCards {
-        width: 90%;
-        margin: 2% auto;
+        width: 100%;
+        flex-direction: column;
+        /* margin: 2% auto; */
+    
+    .Dashtext2{
+        display: flex;
+  justify-content: center;
+  text-align: center;
+}
     }
 }
+
 .DashCard .css-i4bv87-MuiSvgIcon-root{
 
     font-size:3.5rem;

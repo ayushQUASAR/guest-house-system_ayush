@@ -190,7 +190,8 @@ const Calendar = () => {
                         className="acCount"
                         onClick={() => handleACClick(day, acCount)}
                       >
-                        Available : {totalCount}
+                        <span className="hiddenTxt"> Available :</span>{" "}
+                        {totalCount}
                       </span>
                       {/* <span
                         className="nonCount"

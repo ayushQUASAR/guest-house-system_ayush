@@ -430,5 +430,7 @@ nav {
         font-size: 25px;
         margin: 0px 0px ;
     }
-    
+    .availabilitySection {
+        padding: 3px;
+    }
 }

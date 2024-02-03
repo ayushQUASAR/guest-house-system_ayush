@@ -6,9 +6,12 @@
     border-top-left-radius: .25cm;
     background-color: #0275d8;
     border:1px solid #0275d8;
-    color:#ffffff;
+    color:#ffffff;  
+    display: flex;
   } 
-  
+  /* .user-icon{
+    padding-left:30px;
+  } */
   h1 {
     font-size: 25px;
     color: aliceblue; 

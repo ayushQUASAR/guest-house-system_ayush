@@ -16,6 +16,8 @@
   position: absolute;
   bottom: 40%;
   align-items: center;
+  flex-wrap: wrap;
+  
 }
 .register-optn-wrapper {
   
@@ -77,13 +79,13 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
   border-radius: 50%;
   letter-spacing: 0.104rem;
   text-align: center;
-}
+}  
 .centered-box {
   border-radius: 10px;
   padding: 50px;
   width: 100%;
   
-  box-shadow: 2px 2px 2px 2px rgb(128, 125, 125);
+  box-shadow: 2px 2px 2px 2px rgb(51, 114, 250);
 }
 .regform-group-custom
 {
@@ -91,6 +93,9 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
 }
 .centered-box-row{
   min-height: 85vh;
+  display: flex;
+  flex-wrap: wrap;
+
 }
 .password-match-msg{
   margin: 10px;
@@ -229,7 +234,7 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
 }
 
 /* Media queries for responsiveness */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .Parent {
     padding: 10px;
   }
@@ -258,6 +263,7 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
     margin-top: 2rem;
   }
 }
+
 
 /* Adjust the font size for the heading and label */
 .govt-id-heading,
@@ -315,4 +321,26 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
   color: #e74c3c;
   margin-top: 5px;
   font-size: 14px;
+}
+.registration-optn {
+  display: flex;
+  justify-content: space-evenly;
+  transition: all 0.5s;
+
+  margin: 5vw 3vw;
+  border-radius: 10px;
+  padding: 2vw 4vw; 
+  position: absolute;
+  bottom: 20%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.registration-optn img {
+  width: 30%; 
+  max-width: 100px; 
+}
+
+.registration-optn button {
+  font-size: 2vw; 
 }

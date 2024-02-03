@@ -2,6 +2,7 @@ import React from 'react';
 import '../../style/userprofile.css';
 import { useUserContext } from "../ContextHooks/UserContext";
 import { useState, useEffect } from 'react';
+import UserIcon from '../UserIcon';
 const PersonalDetail = () => {
     const [user, setUserDetails] = useState([]);
     const { userId } = useUserContext();
@@ -43,10 +44,14 @@ const PersonalDetail = () => {
     return (
         <div className='container-fluid'>
             <div>
-                <div className = "user-profile">
-                <h2>User Profile</h2>
+                <div className = "user-profile"> 
+                <div>
+                        <UserIcon username = {user?.userDetails?.name}/>
                 </div>
-
+                <div>
+                    <h2 style = {{fontSize : '40px', paddingLeft : '10px', justifyContent: 'center', alignItems : 'center'}}>User Profile</h2>
+                </div>
+                </div>
                 <div className='row mx-4' style={{ borderBottom: '1px solid #ccc' }}>
                     <div className='col-6'> <strong>Name</strong></div>
                     <div className='col-6'> <strong>{user?.userDetails?.name}</strong></div>
@@ -80,7 +85,7 @@ const PersonalDetail = () => {
                     <div className='col-6'> Govt approved proof attached</div>
                     <div className='col-6'>
 
-                        <button className="popup-button" onClick={toggleDialog}>View</button>
+                        <button className="popup-button button-outline-dark" onClick={toggleDialog}>View</button>
                         {dialog && (
                             <div className="dialog">
                                 <div className="dialog-content">

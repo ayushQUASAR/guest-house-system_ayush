@@ -7,6 +7,7 @@ import Alumni from "./AlumniDetails/AlumniRight";
 import Faculty from "./FacultyDetails/FacultyRight";
 import Student from "./StudentDetails/StudentRight";
 import Dropdown from "./Dropdown/Dropdown";
+import  "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 import { Icon } from '@iconify/react';
 
@@ -40,7 +41,6 @@ export default function Regrightside() {
   const [ConfirmPassword, setConfirmPassword] = useState("");
   const [PasswordInputType, ToggleIcon] = usePasswordToggle();
   const [PasswordInputType2, ToggleIcon2] = usePasswordToggle();
-  // const [studentFacultyOther, setStudentFacultyOther] = useState("");
 
   // Alumni
   const [batch, setBatch] = useState("");
@@ -164,8 +164,7 @@ export default function Regrightside() {
     formData.append("Address", Address);
     formData.append("selectedOption", contentType);
     formData.append("idProof", idProof);
-    // formData.append("StudentFacultyOther", studentFacultyOther);
-    // Alumni
+  
     formData.append("RefFirstName", reffirstName);
     formData.append("RefLastName", reflastName);
     formData.append("RefPhoneNumber", refphoneNumber);
@@ -201,19 +200,6 @@ export default function Regrightside() {
         handlepopup(true, data.status);
 
 
-        // if(data.status === 'accepted') {
-        //   window.alert("User already registered...\nPlease continue Login from the Login Page");
-        // }
-
-        // if(data.status === "pending") {
-        //   window.alert("Please Wait for Approval from the Institute");
-        // }
-        // if(data.status === 'success') {
-        //   window.alert(
-        //     "Registered Successfully. \n \nA verification link has been sent to you on your email and you will be able to login after verification"
-        //   );
-        //   navigate("/login");
-        // }
        
       })
       .catch((err) => {
@@ -257,14 +243,7 @@ export default function Regrightside() {
     <>
       <div className="reg-rightside">
         {" "}
-        {/* <div style={{"display":"flex","flexDirection":"row"}}> */}
-        {/* <NavLink className="nav-tohome" to="/">
-            <div className="nav-tohome">
-              <HomeRoundedIcon color="white" />
-              <div className="optn-name">Home</div>
-            </div>
-            {/* <button > back</button> */}
-        {/* </NavLink> */}
+       
         <NavLink className="nav-tohome" to="/login">
           <span><button className="btn btn-primary "> Back</button></span>
         </NavLink>
@@ -273,22 +252,9 @@ export default function Regrightside() {
         <form action="/register" onSubmit={setSubmit}>
           <div className="register-optn-wrapper">
 
-            {/* <div className="r">
-              <h1 className="rheading">Create an Account</h1>
-            </div> */}
 
             <div className="registration-optn" style={{ left: `${registerrightval}px` }}>
-              {/* <div
-                onClick={() => {
-                  setRegisteroptn(1), setRegisterclass(true);
-                }}
-                className={`college-official-optn ${registeractiveclass && registerOptn == 1
-                    ? "registerclass"
-                    : ""
-                  }`}
-              >
-                Student/Faculty
-              </div> */}
+              
 
               <div tabIndex="0" onClick={() => {
                 setRegisteroptn(1), setRegisterclass(true);
@@ -307,18 +273,7 @@ export default function Regrightside() {
               </div>
 
 
-              {/*                     
-              <div
-                onClick={() => {
-                  setRegisteroptn(2), setRegisterclass(true);
-                }}
-                className={`college-official-optn ${registeractiveclass && registerOptn == 2
-                    ? "registerclass"
-                    : ""
-                  }`}
-              >
-                Others
-              </div> */}
+              
             </div>
             {registerOptn && <div onClick={() => { onView(), regOnview() }} className="form-next-btn" style={{ left: `${leftval}px ` }}>
               <Icon width="30" icon="material-symbols:arrow-forward-ios-rounded" color="blue" />
@@ -398,15 +353,7 @@ export default function Regrightside() {
 
                   <div className="form-group regform-group-custom">
                     <label>Department:</label>
-                    {/* <input
-                      required
-                      type="text"
-                      value={department}
-                      onChange={(e) => {
-                        setDepartment(e.target.value);
-                      }}
-                      className="college-official-username"
-                    /> */}
+               
                     <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics', 'Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
                   </div>
 
@@ -425,9 +372,7 @@ export default function Regrightside() {
                   </div>
                   <div className="form-group regform-group-custom">
                     <label>Confirm Password:</label>
-                    {/* <span className="input-group-text">
-                      <img src="password-icon.png" alt="Password Icon" />
-                    </span> */}
+                    
                     <input
                       required
                       onChange={(e) => { Handleconfirmpass(e) }}
@@ -541,31 +486,10 @@ export default function Regrightside() {
 
                   <div className="form-group regform-group-custom">
                     <label>Department:</label>
-                    {/* <input
-                      required
-                      type="text"
-                      value={department}
-                      onChange={(e) => {
-                        setDepartment(e.target.value);
-                      }}
-                      className="college-official-username"
-                    /> */}
+                   
                     <Dropdown names={['Computer Science and Technology', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics', 'Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
                   </div>
 
-                  {/* <div className="form-group regform-group-custom"> */}
-                  {/* <label>Branch</label> */}
-                  {/* <input
-                      required
-                      type="text"
-                      value={Lastname}
-                      onChange={(e) => {
-                        setLastname(e.target.value);
-                      }}
-                      className="college-official-username"
-                    /> */}
-
-                  {/* </div> */}
                   <div className="form-group regform-group-custom">
                     <label>Password:</label>
                     <input
@@ -581,9 +505,7 @@ export default function Regrightside() {
                   </div>
                   <div className="form-group regform-group-custom">
                     <label>Confirm Password:</label>
-                    {/* <span className="input-group-text">
-                      <img src="password-icon.png" alt="Password Icon" />
-                    </span> */}
+                  
                     <input
                       required
                       onChange={(e) => { Handleconfirmpass(e) }}
@@ -703,29 +625,12 @@ export default function Regrightside() {
                       className="form-control"
                       placeholder="Email"
                     />
-                    {/* </div> */}
                   </div>
 
-                  {/* <div className="form-group regform-group-custom"> */}
-                  {/* <div className="col-12"> */}
-                  {/* <label>Branch:</label>
-                    <input
-                      required
-                      type="text"
-                      value={Branch}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="form-control"
-                      placeholder="Email"
-                    /> */}
-                  {/* </div> */}
-                  {/* </div> */}
-                  {/* <div className="form-group regform-group-custom"> */}
-                  {/* <div className="col-12"> */}
+                 
                   <div className="form-group regform-group-custom">
                     <label>Password:</label>
-                    {/* <span className="input-group-text">
-                      <img src="password-icon.png" alt="Password Icon" />
-                    </span> */}
+                 
                     <input
                       required
                       onChange={(e) => setPassword(e.target.value)}
@@ -752,18 +657,14 @@ export default function Regrightside() {
                     <span>{ToggleIcon2}</span>
                     <p className="password-match-msg">{PasswordMatch}</p>
                   </div>
-                  {/* </div> */}
-                  {/* </div> */}
+                 
                   <div className="row input">
-                    {/* <div className="col-12"> */}
-                    {/* <div className="input-group"> */}
+                  
                     <h2 className="govt-id-heading">Upload Govt ID</h2>
-                    {/* </div> */}
-                    {/* </div> */}
+                 
                   </div>
                   <div className="form-group regform-group-custom">
-                    {/* <div className="col-12"> */}
-                    {/* <div className="input-group"> */}
+             
                     <input
                       required
                       type="file"
@@ -771,77 +672,61 @@ export default function Regrightside() {
                       className="form-control"
                       id="fileInput"
                     />
-                    {/* </div> */}
-                    {/* </div> */}
+                 
                   </div>
 
                   <div className="row input align-items-center">
                     <div className="col-md-3 col-sm-6 col-12">
                       <h2 className="reference-heading">Reference</h2>
                     </div>
-                    <div className="col-md-3 col-sm-6 col-12">
-                      <label>
-                        {/* <input  required
-                type="radio"
-                value="student"
-                onClick={()=>setContentType('student')}
-                checked={selectedOption === 'student'}
-                onChange={handleOptionChange}
-              /> */}
-                        <button
-                          type="button"
-                          onClick={() => setContentType("student")}
-                          className={` ${contentType === "student"
-                            ? clickedButtonClass
-                            : defaultButtonClass
-                            } `}
-                        >
-                          <img
-                            src="student-icon.png"
-                            alt="Icon"
-                            style={{ marginRight: "10px" }}
-                          />
-                          Student
-                        </button>
-                      </label>
                     </div>
+                    <div className="d-flex flex-column flex-sm-row flex-md-row justify-content-center align-items-center">
+  <div className="col-sm-12 col-md-6 col-lg-3 mb-3">
+    <label>
+      <button
+        type="button"
+        onClick={() => setContentType("student")}
+        className={` ${contentType === "student"
+          ? clickedButtonClass
+          : defaultButtonClass
+          } `}
+      >
+        <img
+          src="student-icon.png"
+          alt="Icon"
+          style={{ marginRight: "10px" }}
+        />
+        Student
+      </button>
+    </label>
+  </div>
 
-                    <div className="col-md-3 col-sm-6 col-12">
-                      <label>
-                        {/* <input  required
-              onClick={()=>setContentType('faculty')}
-                type="radio"
-                value="faculty"
-                checked={selectedOption === 'faculty'}
-                onChange={handleOptionChange}
-              /> */}
-                        <button
-                          type="button"
-                          onClick={() => setContentType("faculty")}
-                          className={` ${contentType === "faculty"
-                            ? clickedButtonClass
-                            : defaultButtonClass
-                            } `}
-                        >
-                          <img
-                            src="faculty-icon.png"
-                            alt="Icon"
-                            style={{ marginRight: "10px" }}
-                          />
-                          Faculty
-                        </button>
-                      </label>
-                    </div>
+  <div className="col-sm-12 col-md-6 col-lg-3 mb-3">
+    <label>
+      <button
+        type="button"
+        onClick={() => setContentType("faculty")}
+        className={` ${contentType === "faculty"
+          ? clickedButtonClass
+          : defaultButtonClass
+          } `}
+      >
+        <img
+          src="faculty-icon.png"
+          alt="Icon"
+          style={{ marginRight: "10px" }}
+        />
+        Faculty
+      </button>
+    </label>
+  </div>
 
-                    <div className="col-md-3 col-sm-6 col-12">
+
+
+
+                    <div className="col-md-3 col-sm-6 col-lg-3 mb-3">
                       <label>
-                        {/* <input
-                type="radio"  required
-                onClick={()=>setContentType('alumni')}
-                value="alumni"
-                checked={selectedOption === 'alumni'}
-                onChange={handleOptionChange}
-              /> */}
+              
                         <button
                           type="button"
                           onClick={() => setContentType("alumni")}
@@ -860,6 +745,7 @@ export default function Regrightside() {
                       </label>
                     </div>
                   </div>
+                  
 
                   {contentType == "student" && (
                     <Student
@@ -934,71 +820,7 @@ export default function Regrightside() {
             ) : (
               <div></div>
             )}
-            {/* {contentType == "student" && (
-              <Student
-                prop={{
-                  reffirstName,
-                  reflastName,
-                  refphoneNumber,
-                  studbranch,
-                  studrollNumber,
-                  setReffirstName,
-                  setReflastName,
-                  setRefphoneNumber,
-                  setSbranch,
-                  setSrollNumber,
-                  messageHead_m,
-                  para1_m,
-                  para2_m,
-                  setPopup,
-                  popup,
-                }}
-              />
-            )}
-            {contentType == "faculty" && (
-              <Faculty
-                prop={{
-                  reffirstName,
-                  reflastName,
-                  refphoneNumber,
-                  department,
-                  facultyemail,
-                  setReffirstName,
-                  setReflastName,
-                  setRefphoneNumber,
-                  setFacultyemail,
-                  setDepartment,
-                  messageHead_m,
-                  para1_m,
-                  para2_m,
-                  setPopup,
-                  popup,
-                }}
-              />
-            )}
-            {contentType == "alumni" && (
-              <Alumni
-                prop={{
-                  reffirstName,
-                  reflastName,
-                  refphoneNumber,
-                  batch,
-                  branch,
-                  jobProfile,
-                  setReffirstName,
-                  setReflastName,
-                  setRefphoneNumber,
-                  setBatch,
-                  setBranch,
-                  setJobProfile,
-                  messageHead_m,
-                  para1_m,
-                  para2_m,
-                  setPopup,
-                  popup,
-                }}
-              />
-               )} */}
+          
           </div>
         </form >
       </div >

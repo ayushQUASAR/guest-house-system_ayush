@@ -14,7 +14,7 @@ export default function RegisteredUsers() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
-  const usersPerPage = 2; // Number of users to display per page
+  const usersPerPage = 6; // Number of users to display per page
   const [filteredUsers, setFilteredUsers] = useState([]);
   // const [newUser, setNewUser] = useState({
   //   name: "",

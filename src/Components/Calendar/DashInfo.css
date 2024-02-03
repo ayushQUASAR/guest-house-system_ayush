@@ -1,126 +1,125 @@
 /* Base styles */
- .DashCard2 {
-    /* margin-left: 8%; */
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-   
-    box-shadow: 3px 3px 3px 3px rgb(134, 194, 243);
-}
+.DashCard2 {
+  /* margin-left: 8%; */
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
 
+  box-shadow: 3px 3px 3px 3px rgb(134, 194, 243);
+}
 
 /* Updated .DashCard style for horizontal rectangles */
 .DashCard {
-    width: 180px; /* Set your desired width for the rectangle */
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    /* margin-left: 20px; Adjust the margin as needed */
-    margin-top: 0.5vw;
-    margin-bottom: 0.5vw;
-    border-radius: 10px;
-    box-shadow: 3px 3px 3px 3px rgb(134, 194, 243);
+  width: 180px; /* Set your desired width for the rectangle */
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  /* margin-left: 20px; Adjust the margin as needed */
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px rgb(134, 194, 243);
 }
 
 /* Add this CSS to maintain the aspect ratio for the images within the rectangles */
 .Dashimage img {
-    width: 10px !important; /* Make the image fill its container */
-    height: 10px !important; /* Maintain the aspect ratio */
+  width: 10px !important; /* Make the image fill its container */
+  height: 10px !important; /* Maintain the aspect ratio */
 }
 
-
 .MainDash {
-    width: 100%;
-    padding: 20px;
-    /* border: 1px solid black; */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  width: 100%;
+  padding: 20px;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .DashBigCards {
-    display: flex;
-    flex-direction: row;
-    /* flex-wrap: wrap; */
-    justify-content: space-evenly;
-    width: 100%;
-    
-    padding: 20px;
-    /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: space-evenly;
+  width: 100%;
+
+  padding: 20px;
+  /* border: 1px solid black; */
 }
 
 .Dashcircle {
-    width: 100px; /* Set your desired width and height for the circle */
-    height: 100px;
-    border: 15px solid transparent; /* Adjust the border thickness as needed */
-    border-top-color: red; /* Half the ring in red */
-    border-right-color: red;
-    border-bottom-color: blue; /* Half the ring in blue */
-    border-left-color: blue;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(0, 0, 0); /* Text color for the numbers in the ring */
-    font-size: 24px; /* Adjust font size as needed */
+  width: 100px; /* Set your desired width and height for the circle */
+  height: 100px;
+  border: 15px solid transparent; /* Adjust the border thickness as needed */
+  border-top-color: red; /* Half the ring in red */
+  border-right-color: red;
+  border-bottom-color: blue; /* Half the ring in blue */
+  border-left-color: blue;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0); /* Text color for the numbers in the ring */
+  font-size: 24px; /* Adjust font size as needed */
 }
 
-
-.Dashtext, .Dashtext2 {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-    width: 100%;
-    justify-content: center;
+.Dashtext,
+.Dashtext2 {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  width: 100%;
+  justify-content: center;
 }
-.DashCard svg{
-    color: rgb(134, 194, 243);
+.DashCard svg {
+  color: rgb(134, 194, 243);
 }
-.Dashtext p,h5{
-    text-align: center;
+.Dashtext p,
+h5 {
+  text-align: center;
 }
-.Dashtext2{
-    padding: 20px;
+.Dashtext2 {
+  padding: 20px;
 }
-.Dashtext h5{
-font-size: 26px;
+.Dashtext h5 {
+  font-size: 26px;
 }
-.Dashtext p{
-    font-size: 15px;
-    color: rgb(82, 82, 82);
+.Dashtext p {
+  font-size: 15px;
+  color: rgb(82, 82, 82);
 }
 /* Media queries for responsiveness */
 
 @media screen and (max-width: 768px) {
-    .MainDash {
-        flex-direction: column;
+  .MainDash {
+    flex-direction: column;
+  }
+
+  .DashCard,
+  .DashCard2 {
+    width: 100%;
+    margin: 2% auto;
+  }
+
+  .DashBigCards {
+    width: 100%;
+    flex-direction: column;
+    /* margin: 2% auto; */
+
+    .Dashtext2 {
+      display: flex;
+      justify-content: center;
+      text-align: center;
     }
-    
-    .DashCard, .DashCard2 {
-        width: 100%;
-        margin: 2% auto;
-    }
-    
-    .DashBigCards {
-        width: 100%;
-        flex-direction: column;
-        /* margin: 2% auto; */
-    
-    .Dashtext2{
-        display: flex;
+  }
+}
+
+.DashCard .css-i4bv87-MuiSvgIcon-root {
+  font-size: 3.5rem;
+}
+.DashIcon {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  text-align: center;
-}
-    }
-}
-
-.DashCard .css-i4bv87-MuiSvgIcon-root{
-
-    font-size:3.5rem;
-}
-.DashIcon{
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

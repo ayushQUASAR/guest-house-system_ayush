@@ -1,4 +1,4 @@
-.popup-overlay {
+.popup-overlay-cancel {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.popup-content {
+.popup-content-cancel {
   position: relative;
   background: #fff;
   width: 600px; /* Adjust the width as needed */
@@ -19,7 +19,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.close-btn {
+.close-btn-cancel {
   position: absolute;
   top: 10px;
   right: 10px;

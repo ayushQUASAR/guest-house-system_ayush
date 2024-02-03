@@ -1,5 +1,5 @@
 /* Popup Styles */
-.popup-overlay-booking {
+.popup-overlay-approval {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@
     z-index: 1000;
   }
   
-  .popup-booking {
+  .popup-approval {
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -20,24 +20,13 @@
     text-align: center;
     max-width: 400px;
   }
-  
-  
-  .popup-heading-booking {
+  .popup-heading-approval {
     color: #333;
     font-size: 24px;
   }
   
-  .popup-para-booking {
+  .popup-para-approval {
     color: #666;
     font-size: medium;
   }
   
-  .sucessIcon-booking{
-    height: 40px;
-    width: 40px;
-    margin-bottom: 7px;
-  }
-
-  .popupClose-booking{
-    margin-top: 5px;
-  }

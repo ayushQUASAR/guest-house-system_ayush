@@ -111,7 +111,7 @@ export default function RegisteredUsers() {
   };
   return (
     // <div className="registered-container my-5">
-    <div>
+    <div className = "registered-container">
       {view && (
         <div className="profile-popup">
           <div
@@ -148,19 +148,16 @@ export default function RegisteredUsers() {
         </div>
       )}
 
-      <div
-        className="card rounded-4 w-100"
-        style={{ backgroundColor: "#4c74b9", color: "white" }}
-      >
-        <div className="card-header mx-4">
-          <h3 style={{ fontWeight: "700" }} className="car">
+      <div className="data-container" >
+        <div className="registered-header">
+          <h3 style={{ fontWeight: "700", color : 'white' }} className="car">
             REGISTERED USERS
           </h3>
           <p style={{ color: "white" }}>
             Total number of Registration Users: {users.length}
           </p>
         </div>
-        <div className="card-body text-black bg-white rounded-bottom-4">
+        <div className="search-box">
           <div className="search-bar">
             <input
               className="border-3 rounded-2 border-primary-subtle"
@@ -176,16 +173,6 @@ export default function RegisteredUsers() {
             >
               Search
             </button>
-            <select
-              className="border-2 rounded-2 border-secondary"
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-            >
-              <option value="">Filter</option>
-              <option value="name">Name</option>
-              <option value="contactnumber">Contact Number</option>
-              <option value="email">Email ID</option>
-            </select>
           </div>
 
           <table className="table">

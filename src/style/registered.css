@@ -1,14 +1,36 @@
 .registered-container{
+  
+    border-radius: 10px;
+    width: 100%;
     display: flex;
-  justify-content: center;
-  align-items: center;
-
-  max-height: 100%;
-
+    height: 100%;
+    flex-direction: column;
+}
+.data-container{
+  padding: 20px;
+}
+.registered-header{
+  background-color: rgb(76, 116, 185);
+  margin: 10px;
+  padding: 10px 20px 10px 20px;
+}
+.search-bar{
+  padding: 20px;
 }
 .profile-popup{
     width: 60vw;
     height: 60vh;
     position:absolute;
     z-index: 200;
+}
+/* Responsive styles for smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .registered-container {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+  }
+
+  .profile-popup {
+      width: 80vw; /* Adjust the width for smaller screens */
+      height: 80vh; /* Adjust the height for smaller screens */
+  }
 }

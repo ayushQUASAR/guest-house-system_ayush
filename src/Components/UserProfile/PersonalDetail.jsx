@@ -90,7 +90,10 @@ const PersonalDetail = () => {
                             <div className="dialog">
                                 <div className="dialog-content">
                                     <button className="close-icon" onClick={toggleDialog}>&#10005;</button>
+                                    <div className = "popup" style ={{background : 'transparent'}} onClick={toggleDialog}>
+
                                     <img className="popup-image" src={user?.userDetails?.idProof?.data} alt="Popup Image" />
+                                    </div>
                                 </div>
                             </div>
                         )}

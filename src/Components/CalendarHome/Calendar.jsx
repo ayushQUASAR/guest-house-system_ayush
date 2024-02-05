@@ -18,7 +18,7 @@ const Calendar = () => {
   useEffect(() => {
     const fetchRoomDetails = async () => {
       try {
-        const response = await fetch("http://localhost:3000/calendar");
+        const response = await fetch("https://guest-house-backend.onrender.com/calendar/calendar");
         const data = await response.json();
 
         const filteredData = data.filter((detail) => {
@@ -136,9 +136,8 @@ const Calendar = () => {
               );
             }
 
-            const formattedDate = `${currentYear}-${
-              currentMonth < 10 ? "0" : ""
-            }${currentMonth}-${day < 10 ? "0" : ""}${day}T00:00:00.000Z`;
+            const formattedDate = `${currentYear}-${currentMonth < 10 ? "0" : ""
+              }${currentMonth}-${day < 10 ? "0" : ""}${day}T00:00:00.000Z`;
 
             console.log(formattedDate);
 
@@ -174,13 +173,11 @@ const Calendar = () => {
               <td
                 key={index}
                 id={formattedDate}
-                className={`calendar-cell ${
-                  day === currentDay && isCurrentMonth() ? "current-day" : ""
-                } ${
-                  isBooked && day < currentDay && isCurrentMonth()
+                className={`calendar-cell ${day === currentDay && isCurrentMonth() ? "current-day" : ""
+                  } ${isBooked && day < currentDay && isCurrentMonth()
                     ? "calendar-cell-booked"
                     : ""
-                }`}
+                  }`}
               >
                 <div className="div-td">
                   {day !== null && (

@@ -194,12 +194,13 @@ export default function Regrightside() {
       .then((res) => res.json())
       .then((data) => {
         console.log("data:", data);
+        
+        handlepopup(true, data.status);
+            
         if(!data.status) {
           window.alert(data.message);
           
         }
-        handlepopup(true, data.status);
-
 
         // if(data.status === 'accepted') {
         //   window.alert("User already registered...\nPlease continue Login from the Login Page");

@@ -11,6 +11,7 @@ const DashInfo = () => {
   const [guestHouses, setGuestHouses] = useState([]);
   const [availableRooms, setAvailableRooms] = useState(new Array(3).fill(0));
   const [bookedRooms, setBookedRooms] = useState(new Array(3).fill(0));
+  console.log(availableRooms, bookedRooms);
 
   useEffect(() => {
     if (guestHouses.length > 0) {

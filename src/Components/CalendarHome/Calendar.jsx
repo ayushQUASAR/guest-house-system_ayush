@@ -18,7 +18,7 @@ const Calendar = () => {
   useEffect(() => {
     const fetchRoomDetails = async () => {
       try {
-        const response = await fetch("https://guest-house-backend.onrender.com/calendar/calendar");
+        const response = await fetch("https://guest-house-backend.onrender.com/calendar");
         const data = await response.json();
 
         const filteredData = data.filter((detail) => {

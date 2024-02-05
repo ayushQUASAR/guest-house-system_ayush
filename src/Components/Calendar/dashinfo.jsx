@@ -71,7 +71,7 @@ const DashInfo = () => {
       .catch((err) => console.log(err.message));
   }, []);
   return (
-    <div>
+    <div className="maindash-wrapper">
       <div className=" MainDash">
         <div className="DashCard">
           <div className="DashIcon">

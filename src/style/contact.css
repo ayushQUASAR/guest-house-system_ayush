@@ -1,7 +1,8 @@
 .outer-container{
     display: flex;
     width: 100%;
-    justify-content: space-between; 
+    justify-content: space-between;
+    margin-top: 180px;
 }
 .box{
     width : 15rem;
@@ -12,7 +13,7 @@
     padding : 2%;
     margin-bottom  : 5%;
     margin-left: 5%; 
-    /* display: flex; */
+    text-align: center;
     overflow: hidden;
 }
 .box:hover{
@@ -26,4 +27,36 @@
 }
 .h2{
     color : #008cff;  
+}
+@media only screen and (max-width: 1200px) {
+    .outer-container{
+        display: flex;
+        width: 90%;
+       justify-content: center;
+    
+        /* margin-: 80px; */
+    }
+
+    .box{
+        width : 10%;
+        height : 12rem;
+        box-shadow: 2px 5px 10px rgb(56, 56, 56);
+        border-radius: 5%;
+        background-color:  rgba(185, 194, 255, 0.225);
+        /* padding : 2%; */
+        /* margin-bottom  : 5%; */
+        margin-left: 50px; 
+        font: 1em sans-serif;
+        text-align: center;
+        /* align-items: center; */
+        /* padding: auto; */
+        overflow: hidden;
+    }
+    .box p{
+
+        margin-top:10px;
+     }.box h2{
+     
+         margin-top:30px;
+      }
 }

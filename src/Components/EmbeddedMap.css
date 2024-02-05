@@ -3,4 +3,15 @@
     border-radius: 10px;
     box-shadow : 2px 5px 10px rgb(56, 56, 56);
     width : 80%;
+    margin-bottom: 80px;
+}
+@media only screen and (max-width: 1200px) {
+
+    .mapContact {
+        margin-left: 5px;
+        margin-bottom: 40px;
+        /* border-radius: 10px; */
+        /* box-shadow : 2px 5px 10px rgb(56, 56, 56);  */
+        width : 90%;
+    }
 }

@@ -51,7 +51,7 @@ const Approvaltable = () => {
   return (
     <>
       <div>
-        <table className="approval-table">
+        <table className="approval-table ">
           <thead>
             <tr>
               <th>S.No</th>

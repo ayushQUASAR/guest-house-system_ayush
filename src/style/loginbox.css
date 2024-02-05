@@ -5,15 +5,16 @@
 }
 .lleft-box,
 .lright-box {
-  position: relative; 
+  position: relative;
   width: 50vw;
-  height: 100vh; 
+  height: 100vh;
   justify-content: center;
 }
 .lleft-box {
   background-color: rgb(50, 115, 214);
   display: flex;
   align-items: center;
+  font-weight: 600;
   text-align: center;
   flex-direction: column;
   justify-content: center;
@@ -24,8 +25,14 @@
   font-size: 50px;
 }
 @keyframes name {
-  0% {top : 200px; opacity: 10%;}
-  100% {top : 0px; opacity : 100%;}
+  0% {
+    top: 200px;
+    opacity: 10%;
+  }
+  100% {
+    top: 0px;
+    opacity: 100%;
+  }
 }
 .lleft-box :nth-child(2) {
   color: white;
@@ -52,7 +59,7 @@
   justify-content: center;
 }
 .login-logo {
-  left: calc(20% );
+  left: calc(20%);
   top: 10%;
   z-index: 100;
   width: 220px;
@@ -67,4 +74,44 @@
 }
 .login-logo img {
   width: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+  .login-box {
+    flex-direction: column;
+    background-color: #c6c6c6;
+    overflow: hidden;
+  }
+  .lleft-box {
+    width: 100vw;
+    padding: 0;
+    height: 100vh;
+    display: block;
+    clip-path: polygon(100% 0, 0 0, 0 100%);
+    z-index: 1;
+    position: absolute;
+  }
+  .lright-box {
+    width: 100vw;
+    padding: 0;
+    background-color: transparent;
+    z-index: 1;
+    /* height: 100vh; */
+    /* position: absolute; */
+  }
+  .auth-box {
+    width: auto !important;
+  }
+  .login-logo img {
+    width: 130px;
+  }
+  .lleft-box :nth-child(2),.lleft-box :nth-child(3),.lleft-box :nth-child(4) {
+    font-size: 20px !important;
+
+  }
+  .login-logo {
+    margin: auto;
+    height: 193px;
+    width: auto;
+  }
 }

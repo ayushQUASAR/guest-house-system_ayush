@@ -5,15 +5,22 @@
     display: flex;
     font-family: 'Poppins' !important;
 }
-
 .dash-sidebar {
-    min-height: 80vh;
-    width: 400px;
+    height: 100vh;
+    width: 20vw;
     position: sticky;
     top: 0;
     background-color: rgb(39, 92, 182);
 }
-
+.burger
+{
+    width: 100vw;
+    background-color: rgb(134, 194, 243);
+}
+.btn-div
+{
+    padding: 10px;
+}
 .dash-wrapper {
     padding: 10px;
 }
@@ -116,7 +123,10 @@
     }
 
     .dash-sidebar {
-        width: 100%;
+        width: 40%;
+    }
+    .dash-area{
+        width: 100vw;
     }
 
     .dash-box {
@@ -136,4 +146,42 @@
     .admin-title {
         font-size: 20px;
     }
+}
+@media screen and (max-width:1000px) {
+    .dash-optn{
+        font-size: 15px;
+    }
+    .dash-sidebar {
+        width: 52vw;
+        z-index: 200;
+    }
+    .dash-area{
+        width: 100vw;
+    }
+
+    .dash-box {
+        width: 100%;
+    }
+    .dashcont{
+        width: 100%;
+    }
+    .maindash-wrapper{
+        width: 100%;
+    }
+}@media screen and (max-width:500px) {
+    .dash-optn{
+        font-size: 15px;
+    }
+    .dash-sidebar {
+        width: 73vw;
+        z-index: 200;
+    }
+    .dash-area{
+        width: 100vw;
+    }
+
+    .dash-box {
+        width: 100%;
+    }
+    
 }

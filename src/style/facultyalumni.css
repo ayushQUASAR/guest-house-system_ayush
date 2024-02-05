@@ -19,14 +19,7 @@
     
 }
  
-.LeftContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%; /* Fill the height of the LeftSide */
-    padding: 20px;
-  }
+
   
   .LeftImage {
     max-width: 100%; 

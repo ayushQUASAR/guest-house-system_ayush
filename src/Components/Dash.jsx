@@ -6,6 +6,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import HowToRegRoundedIcon from "@mui/icons-material/HowToRegRounded";
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import BedroomParentRoundedIcon from "@mui/icons-material/BedroomParentRounded";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
@@ -14,10 +15,12 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import { NavLink } from "react-router-dom";
+import ClearIcon from '@mui/icons-material/Clear';
 import Header from "./Header";
 import Approve from "./Approve";
 import DashboardContent from "./DashboardContent";
 import AdminUserProfile from "./AdminUserProfile";
+import Button from '@mui/material/Button';
 import AdminRoomBooking from "./AdminRoomBooking";
 import BookedRooms from "./BookedRooms";
 import ApproveBooking from "./BookingApproval/ApproveBooking";
@@ -31,29 +34,46 @@ import { useUserContext } from "./ContextHooks/UserContext";
 import ManageAdmin from "./ManageAdmin";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import AdminReport from "./AdminReports/AdminReport";
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 const Dash = ({ admin, isMainAdmin }) => {
   // console.log(admin);
-  const {isAdm} = useLoginContext();
+  const { isAdm } = useLoginContext();
   console.log("admin context", isAdm);
   const [sideState, setSidestate] = useState(true);
   const [contentType, setContentType] = useState("dashboard");
   const [isGodAdmin, setGodAdmin] = useState(false);
   // useEffect for the data fetch for the curr user if curruser == "ghadmin@nitj.ac.in" setGodAdmin(true) by default false
 
-  
+  const [x, setX] = useState(window.innerWidth);
+
+
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setX(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   useEffect(() => {
     if (isMainAdmin === true) {
       setGodAdmin(true);
     }
   }, [isMainAdmin]);
-  
+
   // useEffect(() => {
   //   localStorage.setItem('isGodAdmin', JSON.stringify(isGodAdmin));
   // }, [isGodAdmin]);
-  
+
   console.log(isGodAdmin);
-  
-  const ToggleSidestate = () => {
+
+  const ToggleSide = () => {
     setSidestate(!sideState);
   };
   const selectContent = (content) => {
@@ -74,14 +94,14 @@ const Dash = ({ admin, isMainAdmin }) => {
     })
       .then((res) => {
         console.log("logout");
-  
+
         // Clear local storage
         localStorage.clear();
-  
+
         document.cookie.split(";").forEach((c) => {
           document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
         });
-  
+
         return res.json();
       })
       .then((data) => {
@@ -106,34 +126,45 @@ const Dash = ({ admin, isMainAdmin }) => {
     ),
     bookedRooms: <BookedRooms />,
     registeredUsers: <RegisteredUsers />,
-    adminuserProfile: <AdminUserProfile  />,
+    adminuserProfile: <AdminUserProfile />,
     settings: <DashboardSettings />,
     approve: <Approve />,
     approvebooking: <ApproveBooking />,
     manageAdmins: <ManageAdmin />,
-    adminReports:<AdminReport/>
+    adminReports: <AdminReport />
   };
 
   const selectedContent = contentComponents[contentType];
   return (
     <>
-      <Header Toggle={ToggleSidestate} />
+      <Header />
+      <div className="reponsive-sidepanel-header">
+        {x < 1000 ? (
+          <div className='burger' >
+            <div className="btn-div">
+              <IconButton onClick={ToggleSide}>
+                {!sideState ? <MenuIcon style={{ color: 'white' }} />
+                  : <ClearIcon style={{ color: 'white' }} />}
+              </IconButton>
+            </div>
+          </div>
+        ) : null}
+      </div>
       <div className="dash-menu">
-        {/* <div className="admin-header" onClick={ToggleSidestate}>
-     
-       
+        {/*  <div className="admin-header" onClick={ToggleSidestate}>       
       </div> */}
         {sideState && (
+
           <div className="dash-sidebar">
             <div className="admin-title">
-              <span>
+              <span style={{ cursor: 'pointer' }}>
                 <AdminPanelSettingsIcon />
                 Admin Panel
               </span>
             </div>
             <div className="dash-wrapper">
               {/* <div className='side-title'> Administration</div> */}
-              <li>
+              <li style={{ cursor: 'pointer' }}>
                 <div
                   onClick={() => selectContent("dashboard")}
                   className="dash-optn"
@@ -163,7 +194,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                 </div>
 
                 <div
-               
+
                   onClick={() => selectContent("approve")}
                   className="dash-optn"
                 >
@@ -172,7 +203,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                     Approve Registrations
                   </span>
                 </div>
-                
+
                 <div
                   // onClick={() => selectContent("approve")}
                   onClick={() => selectContent("bookedRooms")}
@@ -202,7 +233,7 @@ const Dash = ({ admin, isMainAdmin }) => {
                     <AssessmentIcon />
                     Report
                   </span>
-               </div>
+                </div>
 
                 {isGodAdmin ? (
                   <div
@@ -216,8 +247,13 @@ const Dash = ({ admin, isMainAdmin }) => {
                   </div>
                 ) : null}
               </li>
-              <div className="side-title">Admin</div>
-              <li>
+              <div className="admin-title">
+                <span style={{ cursor: 'pointer' }}>
+                  <SupervisorAccountIcon />
+                  Admin
+                </span>
+              </div>
+              <li style={{ cursor: 'pointer' }}>
                 <div
                   onClick={() => selectContent("adminuserProfile")}
                   className="dash-optn"
@@ -244,9 +280,9 @@ const Dash = ({ admin, isMainAdmin }) => {
                 </div>
               </li>
             </div>{" "}
-          
+
           </div>
-          
+
         )}
         <div className="dash-area">
           <div className="dash-box">{selectedContent}</div>

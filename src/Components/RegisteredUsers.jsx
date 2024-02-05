@@ -10,36 +10,57 @@ import { useNavigate } from "react-router-dom";
 
 export default function RegisteredUsers() {
   const [users, setUsers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
-  const [newUser, setNewUser] = useState({
-    name: "",
-    contactNumber: "",
-    email: "",
-  });
+  const usersPerPage = 6; // Number of users to display per page
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  // const [newUser, setNewUser] = useState({
+  //   name: "",
+  //   contactNumber: "",
+  //   email: "",
+  // });
   const [view, setProfileview] = useState(null);
   const [isConfirmationPopupOpen, setConfirmationPopup] = useState(false);
   const viewUserProfile = (user) => {
     setProfileview(user);
   };
-  let namee;
 
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + "/users/approved/registered")
       .then((res) => res.json())
       .then((data) => {
-        setUsers(data);
+        setUsers(data); 
         console.log("regusers", data);
       })
       .catch((err) => console.error(err));
   }, []);
+  useEffect(() => {
+    filterUsers();
+  }, [search, filter, users]);
 
-  const addNewUser = () => {
-    setUsers([...users, newUser]);
-    setNewUser({ name: "", contactNumber: "", email: "" });
+  const filterUsers = () => {
+    let filteredList = [...users];
+
+    if (search) {
+      const searchLowerCase = search.toLowerCase();
+      filteredList = filteredList.filter(
+        (user) =>
+          user.user?.name.toLowerCase().includes(searchLowerCase) ||
+          user.user?.phone.includes(searchLowerCase) ||
+          user.user?.email.toLowerCase().includes(searchLowerCase)
+      );
+    }
+
+    if (filter) {
+      filteredList.sort((a, b) =>
+        a.user[filter].localeCompare(b.user[filter])
+      );
+    }
+
+    setFilteredUsers(filteredList);
   };
-
   const deleteUser = (user) => {
     const userId = user._id;
     console.log(userId);
@@ -56,10 +77,10 @@ export default function RegisteredUsers() {
         },
       })
         .then((res) => {
-          if (res.ok) { 
+          if (res.ok) {
             // If the deletion is successful, update the state or perform any necessary actions
             console.log("User deleted successfully");
-                navigate(0);
+            navigate(0);
             // Update the state or perform any necessary actions here
           } else {
             console.error("Failed to delete user");
@@ -70,9 +91,27 @@ export default function RegisteredUsers() {
     }
   };
 
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+  const pages = Math.ceil(filteredUsers.length / usersPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < pages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
   return (
     // <div className="registered-container my-5">
-    <div>
+    <div className = "registered-container">
       {view && (
         <div className="profile-popup">
           <div
@@ -82,7 +121,7 @@ export default function RegisteredUsers() {
             <CancelIcon style={{ fontSize: 50, color: "#275cb6" }} />
           </div>
           <div className="card rounded-4 w-100">
-            <div
+            {/* <div
               className="card-header rounded-4"
               style={{
                 backgroundColor: "#0275d8",
@@ -91,7 +130,7 @@ export default function RegisteredUsers() {
               }}
             >
               <h1>USER PROFILE</h1>
-            </div>
+            </div> */}
             <div className="card-body">
               <div className="d-flex flex-row bd-highlight mb-2">
                 <div className="p-2 bd-highlight">
@@ -109,19 +148,16 @@ export default function RegisteredUsers() {
         </div>
       )}
 
-      <div
-        className="card rounded-4 w-100"
-        style={{ backgroundColor: "#4c74b9", color: "white" }}
-      >
-        <div className="card-header mx-4">
-          <h3 style={{ fontWeight: "700" }} className="car">
+      <div className="data-container" >
+        <div className="registered-header">
+          <h3 style={{ fontWeight: "700", color : 'white' }} className="car">
             REGISTERED USERS
           </h3>
           <p style={{ color: "white" }}>
             Total number of Registration Users: {users.length}
           </p>
         </div>
-        <div className="card-body text-black bg-white rounded-bottom-4">
+        <div className="search-box">
           <div className="search-bar">
             <input
               className="border-3 rounded-2 border-primary-subtle"
@@ -137,16 +173,6 @@ export default function RegisteredUsers() {
             >
               Search
             </button>
-            <select
-              className="border-2 rounded-2 border-secondary"
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-            >
-              <option value="">Filter</option>
-              <option value="name">Name</option>
-              <option value="contactnumber">Contact Number</option>
-              <option value="email">Email ID</option>
-            </select>
           </div>
 
           <table className="table">
@@ -161,9 +187,9 @@ export default function RegisteredUsers() {
               </tr>
             </thead>
             <tbody>
-              {users &&
-                users.length > 0 &&
-                users.map((user, index) => (
+              {(!search || search === "") && currentUsers &&
+                currentUsers.length > 0 &&
+                currentUsers.map((user, index) => (
                   <tr key={user._id}>
                     <td>{index + 1}</td>
                     <td>{user.user?.name}</td>
@@ -191,12 +217,77 @@ export default function RegisteredUsers() {
                   </tr>
                 ))}
             </tbody>
-          </table>
 
-          {/* <button className="rounded-2 border-primary" style={{ backgroundColor: '#0275d8', color: 'white' }} onClick={addNewUser}>
-            Add New User
-          </button> */}
+            <tbody>
+              {(search && search !== "") && currentUsers &&
+                currentUsers.length > 0 &&
+                currentUsers.map((user, index) => (
+                  <tr key={user._id}>
+                    <td>{index + 1}</td>
+                    <td>{user.user?.name}</td>
+                    <td>{user.user?.phone}</td>
+                    <td>{user.user?.email}</td>
+                    <td>
+                      <button
+                        className="rounded-2 border-primary mx-3"
+                        style={{ backgroundColor: "#0275d8", color: "white" }}
+                        onClick={() => viewUserProfile(user.user)}
+                      >
+                        View Profile
+                      </button>
+                    </td>
 
+                    <td>
+                      <button
+                        className="rounded-2 border-danger mx-3"
+                        style={{ backgroundColor: "red", color: "white" }}
+                        onClick={() => deleteUser(user.user)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan="6">
+                <ul className="pagination justify-content-center">
+                  <li className="page-item">
+                    <button
+                      className="page-link"
+                      onClick={handlePreviousPage}
+                      disabled={currentPage === 1}
+                    >
+                              <span aria-hidden="true">&laquo;</span>
+                              <span className="sr-only">Previous</span>
+                    </button>
+                  </li>
+                  {Array.from({ length: pages }).map((_, index) => (
+                    <li key={index + 1} className="page-item">
+                      <button
+                        className={`page-link ${currentPage === index + 1 && "active"}`}
+                        onClick={() => paginate(index + 1)}
+                        >
+                        {index + 1}
+                      </button>
+                    </li>
+                  ))}
+                  <li className="page-item">
+                    <button
+                      className="page-link"
+                      onClick={handleNextPage}
+                      disabled={currentPage === pages}
+                      >
+                     <span aria-hidden="true">&raquo;</span>
+                     <span class="sr-only">Next</span>
+                    </button>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tfoot>
+         </table>
           {isConfirmationPopupOpen && (
             <ConfirmationPopup
               confirmationP={setConfirmationPopup}

@@ -10,6 +10,7 @@ import PersonPinIcon from '@mui/icons-material/PersonPin';
 import BedroomParentRoundedIcon from '@mui/icons-material/BedroomParentRounded';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { NavLink } from 'react-router-dom';
@@ -35,6 +36,9 @@ import  Container  from './BookingForm/Container';
 import UpcomingBooking from './UserProfile/UpcomingBooking';
 import { useUserContext } from './ContextHooks/UserContext';
 import UserResetPassword from './FORGETPASS/UserResetPassword';
+import ClearIcon from '@mui/icons-material/Clear';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 
 
 const UserDash = () => {
@@ -57,6 +61,18 @@ useEffect(() => {
    }
    )
    .catch((err) => console.log(err.message));
+}, []);
+
+useEffect(() => {
+  const handleResize = () => {
+    setX(window.innerWidth);
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
 }, []);
 
   const ToggleSidestate = () => {
@@ -96,31 +112,50 @@ useEffect(() => {
     UserProfile: <PersonalDetail user={user} />,
     settings: <UserResetPassword />,
   };
+  const [x, setX] = useState(window.innerWidth);
 
   const selectedContent = contentComponents[contentType];
   return (
   
     <>
-        <Header Toggle={ToggleSidestate}/>
+        <Header/>
+        <div className="reponsive-sidepanel-header">
+        {x < 1000 ? (
+          <div className='burger' >
+            <div className="btn-div">
+              <IconButton onClick={ToggleSidestate}>
+                {!sideState ? <MenuIcon style={{ color: 'white' }} />
+                  : <ClearIcon style={{ color: 'white' }} />}
+              </IconButton>
+            </div>
+          </div>
+        ) : null}
+      </div>
     <div className='dash-menu'>
-      {/* <div className="admin-header" onClick={ToggleSidestate}>
-      </div> */}
+     
       {sideState &&
       <div className="dash-sidebar">
          <div className="admin-title">
-          <span>
+          <span style={{cursor:'pointer'}}>
             <AdminPanelSettingsIcon />
-            User Panel</span></div>
+            User Panel
+          </span>
+          </div>
         <div className="dash-wrapper">
         {/* <div className='side-title'> Administration</div> */}
-        <li>
+        <li style={{cursor:'pointer'}}>
           {/* <div onClick={() => selectContent('dashboard')}v className="dash-optn"><span><DashboardIcon />Dashboard</span></div> */}
           <div  onClick={() => selectContent('UpcomingBooking')} className="dash-optn"><span><PersonAddIcon />Upcoming Booking</span></div> 
           <div onClick={() => selectContent('Booking')} className="dash-optn"><span><BedroomParentRoundedIcon/>Booking</span></div>
           <div  onClick={() => selectContent('bookingHistory')} className="dash-optn"><span><AssignmentTurnedInIcon />Booking History</span></div>
         </li>
-        <div className='side-title'>User</div>
-        <li>
+        <div className="admin-title">
+          <span style={{cursor:'pointer'}}>
+            <PersonIcon />
+            User
+          </span>
+          </div>
+        <li style={{cursor:'pointer'}}>
           <div  onClick={() => selectContent('UserProfile')} className="dash-optn"><span><PersonPinIcon />Profile</span></div>
           <div onClick={() => selectContent('settings')} className="dash-optn"><span><SettingsIcon />Settings</span></div>
           <div onClick={handleLogout} className="dash-optn"><span><LogoutIcon />Logout</span></div>

@@ -58,7 +58,7 @@ function MyComponent({ onDataChange, n, maxRooms, guesthouseid, setRooms, userSt
               //   const new_state = prev;
               //   new_state[roomId-1] = true;
               // })
-              rooms[roomId - 1] = false;
+              rooms[roomId - 1] = true;
             });
           }
         });

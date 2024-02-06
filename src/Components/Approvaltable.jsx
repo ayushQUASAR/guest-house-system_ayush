@@ -8,6 +8,11 @@ const Approvaltable = () => {
   const [pendingUsers, setPendingUsers] = useState("");
   const navigate = useNavigate();
 
+  const [dialog, setDialog] = useState(false);
+  
+  const toggleDialog = () => {
+    setDialog((prev) => !prev);
+  };
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + "/users/approved/pending")
       .then((res) => res.json())
@@ -58,6 +63,7 @@ const Approvaltable = () => {
               <th>Name</th>
               <th>Email id</th>
               <th>Contact Number</th>
+              <th>Govt/College ID</th>
               <th>Reference</th>
               <th>Approval</th>
             </tr>
@@ -72,6 +78,35 @@ const Approvaltable = () => {
                     <td>{user.user?.name}</td>
                     <td>{user.user?.email}</td>
                     <td>{user.user?.phone}</td>
+                    {user.roomBooker?.isAdmin ? (
+                        <td>-</td>
+                      ) : (
+                        <td>
+                          <button
+                            className="popup-button"
+                            onClick={toggleDialog}
+                          >
+                            View
+                          </button>
+                          {dialog && (
+                            <div className="dialog">
+                              <div className="dialog-content">
+                                <button
+                                  className="close-icon"
+                                  onClick={toggleDialog}
+                                >
+                                  &#10005;
+                                </button>
+                                <img
+                                  className="popup-image"
+                                  src={user.roomBooker?.idProof}
+                                  alt="Popup Image"
+                                />
+                              </div>
+                            </div>
+                          )}
+                        </td>
+                      )}
                     <td>{user.user?.refInfo}</td>
                     <td>
                       <button

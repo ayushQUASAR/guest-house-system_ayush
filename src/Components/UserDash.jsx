@@ -80,6 +80,9 @@ useEffect(() => {
   }
   const selectContent = (content) => {
     setContentType(content);
+    if(x < 1000){
+      setSidestate(!sideState);
+   }
     console.log(contentType)
    
   }
@@ -133,7 +136,7 @@ useEffect(() => {
       </div>
     <div className='dash-menu'>
      
-      {sideState &&
+      {(x > 1000 || sideState) &&
       <div className="dash-sidebar">
          <div className="admin-title">
           <span style={{cursor:'pointer'}}>

@@ -113,9 +113,9 @@ const Login = () => {
                 <img src={Logo} alt="NIT logo" />
               </div>
               {/* <div>NIT Jalandhar </div> */}
-              <div style={{color: '#0c1d59', fontSize: '30px',fontWeight:'900'}}>Welcome to NITJ </div>
-              <div style={{color: '#0c1d59', fontSize: '30px',fontWeight:'900'}}> Guest House</div>
-              <div style={{color: '#0c1d59', fontSize: '30px',fontWeight:'900'}}> Booking System
+              <div style={{color: '#ffffff', fontSize: '30px',fontWeight:'900'}}>Welcome to NITJ </div>
+              <div style={{color: '#ffffff', fontSize: '30px',fontWeight:'900'}}> Guest House</div>
+              <div style={{color: '#ffffff', fontSize: '30px',fontWeight:'900'}}> Booking System
               </div>
 
             </div>

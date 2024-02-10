@@ -52,8 +52,8 @@ const Table = ({userId}) => {
              return( <tr key={booking._id}>
                   <td scope="row">{index+1}</td>
                   <td>{formatDateToCustomFormat(new Date(booking.createdAt))}</td>
-                  <td>{booking.status === 'pending' || booking.status === 'rejected' ? "-" : (booking.guestHouse === 1 ? "Guest House 1" : booking.guestHouse === 2 ? "Guest House 2"  :"Guest House 3")}</td>
-                  <td>{booking.status === 'pending'  || booking.status === 'rejected' ? "-" : formatRoomData(booking.roomsAllotted)}</td>
+                  <td>{booking.status === 'pending' || booking.status === 'rejected' || booking.status === 'hodPending' ? "-" : (booking.guestHouse === 1 ? "Guest House 1" : booking.guestHouse === 2 ? "Guest House 2"  :"Guest House 3")}</td>
+                  <td>{booking.status === 'pending'  || booking.status === 'rejected' || booking.status === 'hodPending' ? "-" : formatRoomData(booking.roomsAllotted)}</td>
                   <td>{formatDateToCustomFormat(new Date(booking.startDate))}-{formatDateToCustomFormat(new Date(booking.endDate))}</td>
                    <td>{booking.status === 'approved' ? "Approved" : booking.status === 'pending' ? "Waiting for approval" : booking.status}</td>
               </tr>)

@@ -100,7 +100,7 @@ const UpcomingBooking = () => {
           <tr key={booking._id}>
             <td>{index+1}</td>
             <td>{booking.status === 'approved' ? formatRoomData(booking.roomsAllotted) : "NOT ALLOTTED"}</td>
-            <td>{booking.status === 'approved' ? (booking.guestHouseSelected === 1 ? "Guest House 1" : booking.guestHouseSelected === 2 ? "Guest House 2"  :"Guest House 3") : "NOT ALLOTTED"}</td>
+            <td>{booking.status === 'approved' ? (booking.guestHouseSelected === 1 ? "INSTITUTE GUEST HOUSE" : booking.guestHouseSelected === 2 ? "MEGA GUEST HOUSE"  :"SAC GUEST HOUSE") : "NOT ALLOTTED"}</td>
             <td>{formatDateToISO(booking.createdAt)}</td>
             <td>{formatDateToISO(booking.startDate)}</td>
             <td>{formatDateToISO(booking.endDate)}</td>

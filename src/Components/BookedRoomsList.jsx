@@ -41,7 +41,7 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
         data.forEach((booking) => {
           const checkInDate = new Date(booking.checkInDate);
           const checkOutDate = new Date(booking.checkOutDate);
-          if (selectedDate >= checkInDate && selectedDate <= checkOutDate) {
+          if (selectedDate >= checkInDate && selectedDate < checkOutDate) {
             roomStatus[booking.roomId - 1] = true;
           }
         });

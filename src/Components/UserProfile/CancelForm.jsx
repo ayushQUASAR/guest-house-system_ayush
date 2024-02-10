@@ -28,34 +28,34 @@ const CancelForm = ({ bookingId, onDeleteSuccess }) => {
           // Include the necessary form data in the request body
           booking:bookingId,
           name: formData.name,
-          bankname: formData.bankname,
+          bankName: formData.bankname,
           accountNumber: formData.accountNumber,
-          ifscCode: formData.ifscCode,
+          IFSC: formData.ifscCode,
         }),
       });
-
+      console.log("response : ",response);
       if (!response.ok) {
         throw new Error('Failed to save form data');
       }
 
-      // Assuming the server responds with JSON data containing the saved details
-      const savedData = await response.json();
-
       // Update the result state with the saved data
       setResult({
         guestHouse: 'booking.guestHouse',
-        name: savedData.name,
+        name: 'test name',
         branch: 'booking.branch',
-        accountNumber: savedData.accountNumber,
-        ifscCode: savedData.ifscCode,
-        arrivalDate: arrivalDate.toDateString(),
-        cancellationDate: cancellationDate.toDateString(),
-        numberOfDays,
-        amountDeducted,
-        amountReturned,
+        accountNumber: 'accountNumber',
+        ifscCode: 'ifscCode',
+        // arrivalDate: arrivalDate.toDateString(),
+        arrivalDate: 'arrivalDate.toDateString()',
+        cancellationDate: 'cancellationDate.toDateString()',
+        // cancellationDate: cancellationDate.toDateString(),
+        numberOfDays:'12',
+        amountDeducted:'12',
+        amountReturned:'12',
       });
 
       onDeleteSuccess()
+
     } catch (error) {
       console.error('Error saving form data:', error.message);
     }

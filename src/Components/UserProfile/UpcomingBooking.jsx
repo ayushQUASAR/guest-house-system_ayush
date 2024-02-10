@@ -19,7 +19,7 @@ const UpcomingBooking = () => {
         setBookings(data); // Update the state with fetched data
       })
       .catch((err) => console.log("Error while retrieving booking data of user :", err.message));
-  }, [userId]);
+  }, [userId,bookings]);
 
   
   function formatDateToISO(input_date) {
@@ -48,13 +48,19 @@ const UpcomingBooking = () => {
     window.confirm('Do you want to proceed for payment?')
   };
 
-  const handleCancel = (id) => {
+  const handleCancel = (id,status) => {
     console.log("booking id : ",id);
+    console.log("booking status : ",status);
     setBookingId(id);
     if (window.confirm('Are you sure you want to cancel this booking?')) {
-      setShowPopup(true);
-    }
-  };
+      // if(status == 'approved' || status == 'pending') {
+      if( status == 'pending') {
+        handleBookingDeletion(id);
+      } else {
+        setShowPopup(true);
+      }
+  }
+};
 
   const handleBookingDeletion = (id) => {
     // Assuming you have an API endpoint to delete the booking on the server
@@ -106,9 +112,14 @@ const UpcomingBooking = () => {
             <td>{formatDateToISO(booking.endDate)}</td>
             <td>{booking.status}</td>
             
-            {booking.status === 'pending' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking._id)} disabled>Cancel</button>
+            {booking.status === 'pending' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking._id,booking.status)} >Cancel</button>
           </td>)}
-            {booking.status === 'approved' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking._id)}>Cancel</button>
+            {booking.status === 'approved' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking._id,booking.status)}>Cancel</button>
+          </td>)}
+
+            {booking.status === 'paid' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking._id,booking.status)}>Cancel</button>
+          </td>)}
+            {booking.status === 'paid' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking._id)} disabled>Pay now</button>
           </td>)}
     
           {booking.status === 'approved' && <td><Link to="/testGate"><button className='btn' style = {{backgroundColor : 'green', color : 'white'}} disabled>Pay Now</button></Link> 

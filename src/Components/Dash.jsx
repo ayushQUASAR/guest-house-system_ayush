@@ -78,6 +78,9 @@ const Dash = ({ admin, isMainAdmin }) => {
   };
   const selectContent = (content) => {
     setContentType(content);
+    if(x < 1000){
+       setSidestate(!sideState);
+    }
     console.log(contentType);
   };
 

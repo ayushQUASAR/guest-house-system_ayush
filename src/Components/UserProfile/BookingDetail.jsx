@@ -85,10 +85,10 @@ const BookingDetails = ({ user }) => {
                     booking.status === "rejected"
                       ? "-"
                       : booking.guestHouse === 1
-                      ? "Guest House 1"
+                      ? "INSTITUTE GUEST HOUSE"
                       : booking.guestHouse === 2
-                      ? "Guest House 2"
-                      : "Guest House 3"}
+                      ? "MEGA GUEST HOUSE"
+                      : "SAC GUEST HOUSE"}
                   </td>
                   <td>{booking.bookingDate}</td>
                   <td>{`${booking.checkIn} / ${booking.checkOut}`}</td>

@@ -80,8 +80,9 @@ useEffect(() => {
   }
   const selectContent = (content) => {
     setContentType(content);
-    // {x < 1000 & ( setSidestate(!sideState));
-    // }
+    if(x < 1000){
+      setSidestate(!sideState);
+   }
     console.log(contentType)
    
   }

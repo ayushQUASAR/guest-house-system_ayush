@@ -19,7 +19,7 @@ const UpcomingBooking = () => {
         setBookings(data); // Update the state with fetched data
       })
       .catch((err) => console.log("Error while retrieving booking data of user :", err.message));
-  }, [userId,bookings]);
+  }, [userId]);
 
   
   function formatDateToISO(input_date) {
@@ -31,7 +31,7 @@ const UpcomingBooking = () => {
   }
 
   const formatRoomData = (room) => {
-    console.log("room: ", room)
+    // console.log("room: ", room)
     let str = "Room No. ";
     if(room.length == 1) {
        return `Room No. ${room[0]}`;
@@ -49,10 +49,11 @@ const UpcomingBooking = () => {
   };
 
   const handleCancel = (id) => {
+    console.log("booking id : ",id);
+    setBookingId(id);
     if (window.confirm('Are you sure you want to cancel this booking?')) {
       setShowPopup(true);
     }
-    setBookingId(id);
   };
 
   const handleBookingDeletion = (id) => {

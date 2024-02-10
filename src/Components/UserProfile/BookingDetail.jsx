@@ -76,13 +76,15 @@ const BookingDetails = ({ user }) => {
                   <td>{index + 1}</td>
                   <td>
                     {booking.status === "pending" ||
-                    booking.status === "rejected"
+                    booking.status === "rejected" || 
+                    booking.status === "hodPending"
                       ? "-"
                       : formatRoomData(booking.rooms)}
                   </td>
                   <td>
                     {booking.status === "pending" ||
-                    booking.status === "rejected"
+                    booking.status === "rejected"  || 
+                    booking.status === 'hodPending'
                       ? "-"
                       : booking.guestHouse === 1
                       ? "INSTITUTE GUEST HOUSE"

@@ -53,8 +53,8 @@ const UpcomingBooking = () => {
     console.log("booking status : ",status);
     setBookingId(id);
     if (window.confirm('Are you sure you want to cancel this booking?')) {
-      // if(status == 'approved' || status == 'pending') {
-      if( status == 'pending') {
+      if(status == 'approved' || status == 'pending') {
+      // if( status == 'pending') {
         handleBookingDeletion(id);
       } else {
         setShowPopup(true);

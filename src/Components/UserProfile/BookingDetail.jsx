@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useUserContext } from "../ContextHooks/UserContext";
-
-const BookingDetails = ({ user }) => {
+import { useUserContext } from "../ContextHooks/UserContext"; 
+import './bookingDetail.css';
+const BookingDetails = () => {
   const [bookings, setBookings] = useState([]);
   const { userId } = useUserContext();
-
+  const [selectReason, setSelectReason] = useState(false);
   function formatDateToISO(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-based, so we add 1
@@ -26,6 +26,12 @@ const BookingDetails = ({ user }) => {
     return str;
   };
 
+  const handleReject = () =>{
+    setSelectReason(true);
+  }
+  const closeReason = () =>{
+    setSelectReason(false);
+  }
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`)
       .then((res) => res.json())
@@ -95,11 +101,26 @@ const BookingDetails = ({ user }) => {
                   <td>{booking.bookingDate}</td>
                   <td>{`${booking.checkIn} / ${booking.checkOut}`}</td>
                   <td>{booking.status}</td>
+                  <td> 
+                  {booking.status === 'rejected' && 
+                    <div className = "btn btn-primary" onClick = {handleReject}>
+                      Reason
+                    </div>
+                  }{selectReason && (  
+                      <div className="popup" style = {{width : '200px'}}>
+                        <div className="popup-content"> 
+                          <button onClick={closeReason} style = {{position: 'relative', right: '-50%', border : 'none', marginBottom: '20px', background : 'transparent'}}>  &#10005;</button>
+                          <div >Reason of Rejectation</div>
+                        </div>
+                      </div> 
+                  )}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        
       ) : (
         <div
           style={{
@@ -120,6 +141,7 @@ const BookingDetails = ({ user }) => {
           {/* <p>You currently have no upcoming bookings.</p> */}
         </div>
       )}
+      
     </>
   );
 };

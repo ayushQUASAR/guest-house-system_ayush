@@ -50,7 +50,7 @@ function createData(
   };
 }
 
-const BookingCancellationReport = () => {
+const PastBooking = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [rows, setRows] = useState([]);
@@ -138,4 +138,4 @@ const BookingCancellationReport = () => {
   );
 };
 
-export default BookingCancellationReport;
+export default PastBooking;

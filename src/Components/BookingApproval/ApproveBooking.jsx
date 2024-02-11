@@ -1,5 +1,3 @@
-
-
 import React, {useState} from "react";
 import Table from "./ApproveTable";
 // import "../style/middle.css";

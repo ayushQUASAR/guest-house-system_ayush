@@ -20,7 +20,9 @@ import ForgetPassword from "./FORGETPASS/ForgetPassword";
 import ResetPassword from "./FORGETPASS/ResetPassword";
 import Receipt from "./Receipt/Receipt";
 import TestGate from "./Receipt/TestGate";
-
+import UpcomingBookingTable from './AdminReports/UpcomingBookingTable';
+import PastBooking from "./AdminReports/PastBookings";
+import BookingCancellationReport from "./AdminReports/BookingCancellationReport";
 
 function App() {
   return (
@@ -69,7 +71,12 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/receipt" element={<Receipt />} />
                 <Route path="/testgate" element={<TestGate />} />
-
+                <Route path="/upcomingReport"       element={
+                <UpcomingBookingTable/>
+                }               
+                />
+                <Route path = "/pastReport" element = {<PastBooking/>}/>
+                <Route path = "/cancelledReport" element = {<BookingCancellationReport/>}/>
               </Routes>
             </FormProvider>
           </UserContextProvider>

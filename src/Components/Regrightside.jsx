@@ -510,6 +510,18 @@ export default function Regrightside() {
                       className="college-official-username"
                     />
                   </div>
+                    <div className="form-group regform-group-custom">
+                    <label>Roll Number</label>
+                    <input
+                      required
+                      type="text"
+                      value={studrollNumber}
+                      onChange={(e) => {
+                        setSrollNumber(e.target.value);
+                      }}
+                      className="college-official-username"
+                    />
+                  </div>
 
                   <div className="form-group regform-group-custom">
                     <label>Department:</label>

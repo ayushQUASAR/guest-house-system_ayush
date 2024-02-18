@@ -10,75 +10,76 @@ import { FormProvider, FormContext } from '../ContextHooks/FormContext';
 import BookingComponent1 from "../BOOKING1/BookingComponent1";
 import { useUserContext } from "../ContextHooks/UserContext";
 import BookingPopup from "./BookingPopup";
-import { NavLink, useLoaderData, useRouteLoaderData } from "react-router-dom";
+import { NavLink, Navigate, useLoaderData, useNavigate, useRouteLoaderData } from "react-router-dom";
 import Booking from "./BookingDetails";
 
-const Container = ({isAdmin, adminId}) => {
+const Container = ({ isAdmin, adminId }) => {
   const [userDetails, setUserDetails] = useState(null);
   const [adminDetails, setAdminDetails] = useState(null);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [dateDetails, setDateDetails] = useState(null);
   const [isFormValid, setFormValid] = useState(false); // Form validation state
 
+  const navigate = useNavigate();
 
- 
   const openPopup = () => {
     setPopupOpen(true);
   };
 
   const closePopup = () => {
+    
     setPopupOpen(false);
+
   };
   const { formData } = useContext(FormContext);
   const { userId } = useUserContext();
   useEffect(() => {
-console.log("admin Id in container.jsx", adminId);
-console.log("user id from user context: ", userId);
-  } ,[]);
+    console.log("admin Id in container.jsx", adminId);
+    console.log("user id from user context: ", userId);
+  }, []);
 
-  
+
 
   // on initial render, Person Booking Details get saved
   useEffect(() => {
-    let URL = isAdmin ? `${import.meta.env.VITE_API_URL}/login/admin/${userId}` :  `${import.meta.env.VITE_API_URL}/users/${userId}`;
-    if(formData) {
+    let URL = isAdmin ? `${import.meta.env.VITE_API_URL}/login/admin/${userId}` : `${import.meta.env.VITE_API_URL}/users/${userId}`;
+    if (formData) {
       fetch(`${URL}`)
-      .then((res) => res.json())
-      .then((data) =>
-      {
-        console.log(data);
-        if(isAdmin) {
-         setAdminDetails({
-          ...formData,
-          isAdmin: true,
-          AdminEmail: data[0].email
-         })
-        }
-        else if(!isAdmin) {
-          let registerOptionSpecificFields = {};
-if(data.userDetails) {
-  const details = data.userDetails;
-   registerOptionSpecificFields =  {
-        isStudent : details.registerOption === 2,
-        PersonDept: JSON.parse(details.isNitUser) ? details.nitUserDept : ""
-  }
-}
-          
-          setUserDetails({
-            ...formData,
-            isAdmin: false,
-            ...registerOptionSpecificFields,
-            PersonID: data.userDetails.idProof.data,
-            PersonName: data.userDetails.name,
-            PersonEmail: data.userDetails.email,
-            PersonPhone: data.userDetails.phone,
-            PersonAddress: data.userDetails.address,
-          })
-        }
-      })
-      .catch((err) => console.log(err.message));
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (isAdmin) {
+            setAdminDetails({
+              ...formData,
+              isAdmin: true,
+              AdminEmail: data[0].email
+            })
+          }
+          else if (!isAdmin) {
+            let registerOptionSpecificFields = {};
+            if (data.userDetails) {
+              const details = data.userDetails;
+              registerOptionSpecificFields = {
+                isStudent: details.registerOption === 2,
+                PersonDept: JSON.parse(details.isNitUser) ? details.nitUserDept : ""
+              }
+            }
+
+            setUserDetails({
+              ...formData,
+              isAdmin: false,
+              ...registerOptionSpecificFields,
+              PersonID: data.userDetails.idProof.data,
+              PersonName: data.userDetails.name,
+              PersonEmail: data.userDetails.email,
+              PersonPhone: data.userDetails.phone,
+              PersonAddress: data.userDetails.address,
+            })
+          }
+        })
+        .catch((err) => console.log(err.message));
     }
-   
+
   }, [formData]);
 
   const handleDateDetails = (data) => {
@@ -105,7 +106,7 @@ if(data.userDetails) {
     console.log(userDetails);
 
     // console.log(userDetails);
-    if(isAdmin) {
+    if (isAdmin) {
       console.log(adminDetails);
     }
 
@@ -119,12 +120,13 @@ if(data.userDetails) {
       headers: {
         "Content-Type": "application/json",
       },
-    })
+     })
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.log(err.message));
-
+      navigate('/login');
     openPopup();
+
   };
 
   return (

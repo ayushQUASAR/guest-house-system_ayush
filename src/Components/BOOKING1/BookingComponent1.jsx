@@ -112,9 +112,9 @@ const BookingComponent1 = ({onBookNowClick}) => {
         <p className="para64">Select Guest House</p>
       </div>
       <div className="flex-container56">
-        <div id="gh11" onClick={handleDivClick11}>Guest House 1</div>
-        <div id="gh21" onClick={handleDivClick21}>Guest House 2</div>
-        <div id="gh31" onClick={handleDivClick31}>Guest House 3 (A.C.)</div>
+        <div id="gh11" onClick={handleDivClick11}>Institute Guest House</div>
+        <div id="gh21" onClick={handleDivClick21}>Mega Guest House</div>
+        <div id="gh31" onClick={handleDivClick31}>SAC Guest House</div>
       </div>
       <div>
         <form className="form134">

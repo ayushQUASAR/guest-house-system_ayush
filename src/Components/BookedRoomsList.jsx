@@ -5,7 +5,7 @@ import  "../style/BookedRoomsList.css";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
+function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
   const [roomStatus, setRoomStatus] = useState([]);
   const [selectedRooms, setSelectedRooms] = useState([]);
   const [bookingDetails, setBookingDetails] = useState(null);
@@ -14,13 +14,13 @@ function BookedRoomsList({ guestHouse = "MAIN GUEST HOUSE" }) {
   const selectedGuestHouse = guestHouse;
 
   const noOfRooms = {
-    "MAIN GUEST HOUSE": 10,
+    "INSTITUTE GUEST HOUSE": 10,
     "MEGA GUEST HOUSE": 12,
     "SAC GUEST HOUSE": 8
   };
 
   let index = 0;
-  if (guestHouse === "MAIN GUEST HOUSE") {
+  if (guestHouse === "INSTITUTE GUEST HOUSE") {
     index = 0;
   } else if (guestHouse === "MEGA GUEST HOUSE") {
     index = 1;

@@ -11,7 +11,7 @@ const inputStyle = {
 };
 
 const guestHouseOptions = [
-  "Main Guest House",
+  "Institute Guest House",
   "Mega Guest House",
   "SAC Guest House",
 ];
@@ -51,7 +51,7 @@ const BookingDetails = ({ setDateDetails }) => {
 
   const [durationOfStay, setDurationOfStay] = useState(1); // Default to 1 day.
   const [selectedGuestHouse, setSelectedGuestHouse] =
-    useState("Main Guest House");
+    useState("Institute Guest House");
   const [roomsSelected, setRoomsSelected] = useState(1);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const BookingDetails = ({ setDateDetails }) => {
     updateFormData("departureDate", checkoutDate);
     updateFormData("roomsSelected", roomsSelected);
     const finalGuestHouse =
-      selectedGuestHouse === "Main Guest House"
+      selectedGuestHouse === "Institute Guest House"
         ? 1
         : selectedGuestHouse === "Mega Guest House"
         ? 2
@@ -133,7 +133,7 @@ const handleRoomsChange = (e) => {
     setCheckinDate(todayDateString);
     setCheckoutDate(tomorrowDateString);
     setDurationOfStay(1);
-    setSelectedGuestHouse("Main Guest House");
+    setSelectedGuestHouse("Institute Guest House");
     setRoomsSelected(1);
   };
 

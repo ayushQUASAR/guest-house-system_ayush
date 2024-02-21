@@ -74,6 +74,7 @@ const BookingDetails = () => {
                 <th>Booking Date</th>
                 <th>Check In / Out</th>
                 <th>Status</th>
+                <th>Remarks</th>
               </tr>
             </thead>
             <tbody>
@@ -101,16 +102,33 @@ const BookingDetails = () => {
                   <td>{booking.bookingDate}</td>
                   <td>{`${booking.checkIn} / ${booking.checkOut}`}</td>
                   <td>{booking.status}</td>
-                  <td> 
+                  <td>
+                  <td>
+                  {booking.status === 'hodPending' && 
+                    <div className = "btn btn-primary" onClick = {handleReject}>
+                      View
+                    </div>}
                   {booking.status === 'rejected' && 
                     <div className = "btn btn-primary" onClick = {handleReject}>
                       Reason
-                    </div>
-                  }{selectReason && (  
-                      <div className="popup" style = {{width : '200px'}}>
+                    </div>}
+                  {booking.status === 'pending' && 
+                    <div className = "btn btn-primary" onClick = {handleReject}>
+                      View
+                    </div>}
+                  {booking.status === 'approved' && 
+                    <div className = "btn btn-primary" onClick = {handleReject}>
+                      View
+                    </div>}
+                  </td> 
+                  {selectReason && (  
+                      <div className="popup" style = {{width : '200px', background : 'transparent'}}>
                         <div className="popup-content"> 
                           <button onClick={closeReason} style = {{position: 'relative', right: '-50%', border : 'none', marginBottom: '20px', background : 'transparent'}}>  &#10005;</button>
-                          <div >Reason of Rejectation</div>
+                          {booking.status === 'hodPending' && <div > HOD approval Pending</div>}
+                          {booking.status === 'rejected' && <div >Reason of Rejectation</div>}
+                          {booking.status === 'pending' && <div >AMDIN approval Pending</div>}
+                          {booking.status === 'approved' && <div >Your  Booking is Approved!. Please pay within next 24 hours.</div>}
                         </div>
                       </div> 
                   )}

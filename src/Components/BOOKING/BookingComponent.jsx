@@ -137,7 +137,7 @@ const BookingComponent = (pram) => {
         </div>
 
         <div className="flex-containerTY">
-          <div id="gh1">Main Guest House </div>
+          <div id="gh1">Institute Guest House </div>
           <div id="gh2">Mega Guest House </div>
           <div id="gh3"> SAC Guest House</div>
         </div>
@@ -156,7 +156,7 @@ const BookingComponent = (pram) => {
 
         {selectedGuestHouse === 1 ? (
           <div style={{ marginTop: "20px" }} id="sacg1">
-            Main Guest House
+            Institute Guest House
             <MyComponent
               onDataChange={handleDataChange}
               setRooms={handleRooms}

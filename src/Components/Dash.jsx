@@ -127,14 +127,14 @@ const Dash = ({ admin, isMainAdmin }) => {
     adminRoomBooking: (
       <Container adminId={userId} isAdmin={isAdm} />
     ),
-    bookedRooms: <BookedRooms />,
-    registeredUsers: <RegisteredUsers />,
     adminuserProfile: <AdminUserProfile />,
     settings: <DashboardSettings />,
     approve: <Approve />,
     approvebooking: <ApproveBooking />,
-    manageAdmins: <ManageAdmin />,
-    adminReports: <AdminReport />
+    bookedRooms: <BookedRooms />,
+    registeredUsers: <RegisteredUsers />,
+    adminReports: <AdminReport />,
+    manageAdmins: <ManageAdmin />
   };
 
   const selectedContent = contentComponents[contentType];

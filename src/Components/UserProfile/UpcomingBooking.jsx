@@ -15,7 +15,7 @@ const UpcomingBooking = () => {
     fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory/upcoming`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("upcoming booking data : ",data);
+        // console.log("upcoming booking data : ",data);
         setBookings(data); // Update the state with fetched data
       })
       .catch((err) => console.log("Error while retrieving booking data of user :", err.message));
@@ -63,20 +63,20 @@ const UpcomingBooking = () => {
 };
 
   const handleBookingDeletion = (id) => {
-    // Assuming you have an API endpoint to delete the booking on the server
+    // API for cancelling booking
     fetch(`${import.meta.env.VITE_API_URL}/booking/${id}`, {
-      method: 'DELETE',
+      method: 'POST',
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('Booking deleted:', data);
+        console.log('Booking cancelled:', data);
 
         // If the booking deletion is successful, update the state
         setBookings((prevBookings) =>
           prevBookings.filter((booking) => booking.id !== id)
         );
       })
-      .catch((err) => console.log("Error while deleting booking from database :",err.message ));
+      .catch((err) => console.log("Error while cancelling booking from database :",err.message ));
   };
 
 

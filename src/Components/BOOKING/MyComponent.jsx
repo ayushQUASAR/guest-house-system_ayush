@@ -142,7 +142,7 @@ function MyComponent({ onDataChange, n, maxRooms, guesthouseid, setRooms, userSt
           className={div.cn + `${roomStatus[div.id - 1] ? 'bookedRoom' : (selectedDivs.includes(div.id) ? 'highlightedyy' : '')}`}
         // className={div.cn + `${(selectedDivs.includes(div.id)&& !roomStatus[div.id-1]) ? 'highlightedyy' : ''}`}
         >
-          {/* {div.content} */}
+          {div.id}88
         </div>
       ))}
     </div>

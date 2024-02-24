@@ -22,7 +22,8 @@ const BookingApprovalPopup = ({
           className="btn btn-primary btn-sm rounded"
           onClick={() => {
             setPopup(false)
-            navigate("/Dashboard")
+            // navigate("/Dashboard")
+            navigate('/login')
           }}
         >
           Close

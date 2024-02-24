@@ -57,9 +57,12 @@ const PastBooking = () => {
 
   useEffect(() => {
     // Fetch data from your API endpoint
-    fetch("https://api.example.com/booking-cancellations")
+    fetch(`${import.meta.env.VITE_API_URL}/booking`)
       .then((response) => response.json())
-      .then((data) => setRows(data))
+      .then((data) => {
+        setRows(data);
+        console.log(data);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 

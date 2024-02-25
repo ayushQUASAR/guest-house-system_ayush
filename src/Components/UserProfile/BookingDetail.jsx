@@ -63,7 +63,7 @@ const BookingDetails = () => {
       {bookings != null && bookings.length > 0 ? (
         <div>
           <div style={{ color: "#0275d8", backgroundColor: "#d8f4ff" }}>
-            <h2>Booking History</h2>
+            <h2 style = {{padding: '4px'}}>Booking History</h2>
           </div>
           <table>
             <thead>

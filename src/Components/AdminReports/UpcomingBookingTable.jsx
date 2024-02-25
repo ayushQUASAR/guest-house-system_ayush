@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,46 +7,39 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const columns = [
-  { id: "SNO", label: "SNO.", minWidth: 50 },
-  { id: "NAME", label: "NAME", minWidth: 150 },
-  { id: "BRANCH", label: "BRANCH", minWidth: 150 },
-  { id: "GUESTHOUSE", label: "GUEST HOUSE", minWidth: 170 },
-  { id: "ACCOUNTNUMBER", label: "ACCOUNT NUMBER", minWidth: 190 },
-  { id: "IFSC", label: "IFSC CODE", minWidth: 120 },
-  { id: "DATEOFARRIVAL", label: "DATE OF ARRIVAL", minWidth: 190 },
-  { id: "DATEOFCANCELLATION", label: "DATE OF CANCELLATION", minWidth: 220 },
-  { id: "NOOFDAYS", label: "NO. OF DAYS", minWidth: 130 },
-  { id: "AMOUNTDEDUCTED", label: "AMOUNT DEDUCTED", minWidth: 190 },
-  { id: "AMOUNTTOBEREFUNDED", label: "AMOUNT TO BE REFUNDED", minWidth: 250 },
+  { id: "BOOKING_ID", label: "Booking ID", minWidth: 50 },
+  { id: "NAME", label: "Name", minWidth: 150 },
+  { id: "ROOMNO", label: "Room Number", minWidth: 100 },
+  { id: "DESIGNATION", label: "Designation", minWidth: 150 },
+  { id: "GUESTHOUSE", label: "Guest House", minWidth: 170 },
+  { id: "PHONENUMBER", label: "Phone Number", minWidth: 150 },
+  { id: "EMAIL", label: "Email", minWidth: 150 },
+  { id: "DATEOFARRIVAL", label: "Date of Arrival", minWidth: 190 },
+  { id: "NOOFDAYS", label: "Number of Days", minWidth: 130 },
 ];
-
-function createData(
-  SNO,
-  NAME,
-  BRANCH,
-  GUESTHOUSE,
-  ACCOUNTNUMBER,
-  IFSC,
-  DATEOFARRIVAL,
-  DATEOFCANCELLATION,
-  NOOFDAYS,
-  AMOUNTDEDUCTED,
-  AMOUNTTOBEREFUNDED
-) {
+function noDays(startDate, endDate){
+  let differenceInMilliseconds = endDate - startDate;
+let differenceInSeconds = differenceInMilliseconds / 1000;
+let differenceInMinutes = differenceInSeconds / 60;
+let differenceInHours = differenceInMinutes / 60;
+let leftDays = differenceInHours / 24;
+  return leftDays;
+}
+function createData(data) {
   return {
-    SNO,
-    NAME,
-    BRANCH,
-    GUESTHOUSE,
-    ACCOUNTNUMBER,
-    IFSC,
-    DATEOFARRIVAL,
-    DATEOFCANCELLATION,
-    NOOFDAYS,
-    AMOUNTDEDUCTED,
-    AMOUNTTOBEREFUNDED,
+    BOOKING_ID: data._id,
+    NAME: data.name,
+    ROOMNO: null,
+    DESIGNATION: data.designation,
+    GUESTHOUSE: data.guestHouseAllotted,
+    PHONENUMBER: data.phone,
+    EMAIL: data.email,
+    DATEOFARRIVAL: data.startDate,
+    NOOFDAYS: noDays(new Date(data.startDate), new Date(data.endDate)),
   };
 }
 
@@ -54,17 +47,49 @@ const UpcomingBookingTable = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [rows, setRows] = useState([]);
+  const tableRef = useRef(null);
+
+  const handleDownloadPDF = () => {
+    const input = tableRef.current;
+
+    if (!input) {
+      console.error("Table element is null.");
+      return;
+    }
+
+    html2canvas(input)
+      .then((canvas) => {
+        const pdf = new jsPDF("p", "mm", "a4");
+        const imgWidth = 210;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        const scaleFactor = 1;
+        pdf.addImage(
+          canvas.toDataURL("image/png"),
+          "PNG",
+          0,
+          0,
+          imgWidth * scaleFactor,
+          imgHeight * scaleFactor
+        );
+        pdf.save("table.pdf");
+      })
+      .catch((error) => {
+        console.error("Error converting table to PDF:", error);
+      });
+  };
 
   useEffect(() => {
-    // Fetch data from your API endpoint
-    fetch("https://api.example.com/booking-cancellations")
+    fetch(`${import.meta.env.VITE_API_URL}/booking`)
       .then((response) => response.json())
-      .then((data) => setRows(data))
+      .then((data) => {
+        const formattedData = data.map(createData);
+        setRows(formattedData);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   const handleChangePage = (event, newPage) => {
-    
     setPage(newPage);
   };
 
@@ -75,9 +100,9 @@ const UpcomingBookingTable = () => {
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <h1 style={{ color: "black", fontWeight: 550 }}>PAST BOOKING(s)</h1>
+      <h1 style={{ color: "black", fontWeight: 550 }}>PAST BOOKINGS</h1>
       <TableContainer sx={{ maxHeight: "calc(100vh - 200px)", overflowY: "auto" }}>
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader aria-label="sticky table" ref={tableRef}>
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -89,6 +114,7 @@ const UpcomingBookingTable = () => {
                     backgroundColor: "#0275d8",
                     fontWeight: 600,
                     color: "white",
+                    fontSize: "1.2rem",
                   }}
                 >
                   {column.label}
@@ -101,17 +127,14 @@ const UpcomingBookingTable = () => {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
                 return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={index}
-                  >
+                  <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
+                          {column.id === "DATEOFARRIVAL"
+                            ? new Date(value).toLocaleDateString()
+                            : column.format && typeof value === "number"
                             ? column.format(value)
                             : value}
                         </TableCell>
@@ -135,6 +158,7 @@ const UpcomingBookingTable = () => {
           fontWeight: 600,
         }}
       />
+      <button style = {{backgroundColor : '#0275d8', color : 'white', margin : '0px 0px 10px 30px', padding : '5px', border : 'None'}} onClick={handleDownloadPDF}>Download PDF</button>
     </Paper>
   );
 };

@@ -42,6 +42,7 @@ const Approvaltable = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        console.log("User id proof: ", data.user?.idProof)
         window.alert(data.message);
       //  navigate(0);
       setPendingUsers((prev) => {
@@ -97,9 +98,10 @@ const Approvaltable = () => {
                                 >
                                   &#10005;
                                 </button>
+                                
                                 <img
                                   className="popup-image"
-                                  src={user.roomBooker?.idProof}
+                                  src={user.user?.idProof}
                                   alt="Popup Image"
                                 />
                               </div>
@@ -111,7 +113,7 @@ const Approvaltable = () => {
                     <td>
                       <button
                         type="button"
-                        class="btn btn-success btn-sm mr-3"
+                        className="btn btn-success btn-sm mr-3"
                         onClick={() => {
                           handleApproval(user.user?._id, "accept");
                           console.log(user.user?._id);
@@ -121,7 +123,7 @@ const Approvaltable = () => {
                       </button>{" "}
                       <button
                         type="button"
-                        class="btn btn-danger btn-sm"
+                        className="btn btn-danger btn-sm"
                         onClick={() => handleApproval(user.user?._id, "reject")}
                       >
                         Reject

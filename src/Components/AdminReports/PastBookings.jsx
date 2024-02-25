@@ -21,22 +21,21 @@ const columns = [
   { id: "DATEOFARRIVAL", label: "Date of Arrival", minWidth: 190 },
   { id: "NOOFDAYS", label: "Number of Days", minWidth: 130 },
 ];
-
-function noDays(startDate, endDate){
-  let differenceInMilliseconds = endDate - startDate;
-let differenceInSeconds = differenceInMilliseconds / 1000;
-let differenceInMinutes = differenceInSeconds / 60;
-let differenceInHours = differenceInMinutes / 60;
-let leftDays = differenceInHours / 24;
-  return leftDays;
+const guestHouse = ['Institute Guest House', 'Mega Guest House', 'SAC Guest House']
+function noDays(startDate, endDate){ 
+  const startDateTime = startDate.getTime();
+  const endDateTime = endDate.getTime();
+  const differenceInMilliseconds = endDateTime - startDateTime;
+  const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+  return Math.round(differenceInDays);
 }
 function createData(data) {
   return {
     BOOKING_ID: data._id,
     NAME: data.name,
-    ROOMNO: null,
+    ROOMNO: data.roomsSelected,
     DESIGNATION: data.designation,
-    GUESTHOUSE: data.guestHouseAllotted,
+    GUESTHOUSE: guestHouse[data.guestHouseAllotted],
     PHONENUMBER: data.phone,
     EMAIL: data.email,
     DATEOFARRIVAL: data.startDate,

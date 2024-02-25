@@ -24,6 +24,7 @@ const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
     validateForm();
   };
 
+
   const handleNumCompanionsChange = (event) => {
 handleInputChange(event);  
 
@@ -112,7 +113,7 @@ handleInputChange(event);
             <label htmlFor="phNumber" className="form-label">
               Phone Number<span className="asterisk">*</span>
             </label>
-            <input type="text" className="form-control" id="phNumber" name="phNumber" onChange={handleInputChange} required />
+            <input type="text" className="form-control" id="phNumber" name="phNumber" onChange={handleInputChange}  required />
           </div>
           <div className="col-md-6">
             <label htmlFor="designation" className="form-label">

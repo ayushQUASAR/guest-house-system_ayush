@@ -1,5 +1,5 @@
 /* Popup Styles */
-.popup-overlay {
+.popup-overlay-registration {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@
     z-index: 1000;
   }
   
-  .popup {
+  .popup-registration {
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -22,20 +22,20 @@
   }
   
   
-  .popup-heading {
+  .popup-heading-registration {
     color: #333;
   }
   
-  .popup-para {
+  .popup-para-registration {
     color: #666;
     font-size: medium;
   }
   
-  .sucessIcon{
+  .sucessIcon-registration{
     height: 50px;
   width: 50px;
   position: absolute;
-  top: -57px;
+  top: -5px;
   left: 42%;
   padding: 2px;
   border: 4px solid #2cff0e;

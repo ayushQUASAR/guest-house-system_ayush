@@ -20,6 +20,8 @@ const columns = [
   { id: "DATEOFARRIVAL", label: "DATE OF ARRIVAL", minWidth: 190 },
   { id: "DATEOFCANCELLATION", label: "DATE OF CANCELLATION", minWidth: 220 },
   { id: "NOOFDAYS", label: "NO. OF DAYS", minWidth: 130 },
+  { id: "NOOFROOMS", label: "NO. OF ROOMS", minWidth: 130 },
+  { id: "AMOUNTTOTAL", label: "TOTAL AMOUNT", minWidth: 190 },
   { id: "AMOUNTDEDUCTED", label: "AMOUNT DEDUCTED", minWidth: 190 },
   { id: "AMOUNTTOBEREFUNDED", label: "AMOUNT TO BE REFUNDED", minWidth: 250 },
 ];
@@ -29,68 +31,45 @@ function noDays(startDate, endDate) {
   return Math.round(differenceInDays);
 }
 
-function amtDeducted(numberOfDays, guestHouse, leftDays, noOfRoom) {
-  let Amount; 
-  if(guestHouse === 1){
-    Amount = 1000; // Replace with the actual amount 
-  }
-  else{
-    Amount = 600;
-  }
-  const originalAmount = Amount * numberOfDays;
+function amtDeducted( originalAmount, leftDays) {
+   
   let amountDeducted; 
   if(leftDays >= 3) {
     amountDeducted = 0.25 * originalAmount;
   }else{
     amountDeducted = 0.50 * originalAmount;
   } 
-  return amountDeducted * noOfRoom;
+  return amountDeducted;
 }
-function amtRefund(numberOfDays, guestHouse, leftDays, noOfRoom) {
-  let Amount; 
-  if(guestHouse === 1){
-    Amount = 1000; // Replace with the actual amount 
-  }
-  else{
-    Amount = 600;
-  }
-  const originalAmount = Amount * numberOfDays;
-  let amountReturned; 
-  if(leftDays >= 3) {
-    amountReturned = 0.75 * originalAmount;
-  }else{
-    amountReturned = 0.50 * originalAmount;
-  } 
-  return amountReturned * noOfRoom;
-
-}
-const guestHouse = ['', 'Institute Guest House', 'Mega Guest House', 'SAC Guest House']
+const cost = [1000, 600, 600]
+const guestHouse = ['Institute Guest House', 'Mega Guest House', 'SAC Guest House']
 function createData(data) {
+  const guestHouseNumber = data.booking?data.booking.guestHouseSelected -1: '';
   const startDate = data.booking ? new Date(data.booking.startDate) : null;
   const endDate = data.booking ? new Date(data.booking.endDate) : null;
+  const noOfDays = startDate && endDate ? noDays(startDate, endDate) : 0;
+  const originalAmount = data.booking ? 
+  (noOfDays*cost[guestHouseNumber]* (data.booking?data.booking.roomsAllotted :0 )): 0;
+  const deductedAmount = data.booking ? amtDeducted(
+    originalAmount,
+    new Date(data.createdAt),
+    data.booking?data.booking.roomsAllotted:0 
+  ) : 0;
 
   return {
     SNO: data._id,
     NAME: data.name,
     BRANCH: data.booking ? data.booking.roomBooker.dept : '-',
-    GUESTHOUSE: data.booking ? guestHouse[data.booking.guestHouseSelected] : '-',
+    GUESTHOUSE: data.booking ? guestHouse[guestHouseNumber] : '-',
     ACCOUNTNUMBER: data.accountNumber,
     IFSC: data.IFSC,
     DATEOFARRIVAL:data.booking ? startDate.toLocaleDateString() : '-',
     DATEOFCANCELLATION: data.createdAt ? new Date(data.createdAt).toLocaleDateString() : '',
-    NOOFDAYS: startDate && endDate ? noDays(startDate, endDate) : 0,
-    AMOUNTDEDUCTED: data.booking ? amtDeducted(
-      startDate && endDate ? noDays(startDate, endDate) : 0,
-      data.booking.guestHouseAllotted,
-      new Date(data.createdAt),
-      data.booking.roomsAllotted
-    ) : 0,
-    AMOUNTTOBEREFUNDED: data.booking ? amtRefund(
-      startDate && endDate ? noDays(startDate, endDate) : 0,
-      data.booking.guestHouseAllotted,
-      new Date(data.createdAt),
-      data.booking.roomsAllotted
-    ) : 0
+    NOOFROOMS : data.booking?data.booking.roomsAllotted:0,
+    NOOFDAYS: noOfDays,
+    AMOUNTTOTAL : originalAmount,
+    AMOUNTDEDUCTED: deductedAmount,
+    AMOUNTTOBEREFUNDED: originalAmount - deductedAmount 
   };
 } 
 

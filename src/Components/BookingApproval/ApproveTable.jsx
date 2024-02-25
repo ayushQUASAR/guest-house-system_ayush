@@ -110,7 +110,7 @@ const Approvaltable = ({ onSecondPage }) => {
       }
     }
   };
-
+  const guestHouse = ['Institute Guest House', 'Mega Guest House', 'SAC Guest House'];
   return (
     <>
       {isFirstPage ? (
@@ -139,7 +139,7 @@ const Approvaltable = ({ onSecondPage }) => {
                     <tr key={user._id}>
                       <td>{index + 1}</td>
                       <td>{user.name}</td>
-                      <td>{user.guestHouseSelected}</td>
+                      <td>{guestHouse[user.guestHouseSelected-1]}</td>
                       <td>{user.roomsSelected}</td>
                       <td>{user.email}</td>
                       <td>{user.phone}</td>

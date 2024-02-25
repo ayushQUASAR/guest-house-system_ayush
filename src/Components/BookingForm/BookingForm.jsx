@@ -24,6 +24,30 @@ const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
     validateForm();
   };
 
+  // const handlePhoneInputBlur = (event) => {
+  //   const { name, value } = event.target;
+  
+  //   // Custom validation for phone number
+  //   if (name === "phNumber") {
+  //     // Check if the value is a valid number and has at most 10 digits
+  //     const isValidPhoneNumber = /^\d{10}$/.test(value);
+  
+  //     if (!isValidPhoneNumber) {
+  //       // If not valid, show an alert and return
+  //       alert("Invalid phone number. Please enter a valid 10-digit phone number.");
+  //       event.target.value = "";
+  //       return;
+  //     }
+  //   }
+  
+  //   // Allow the update if validation passed
+  //   updateFormData(name, value);
+  //   validateForm();
+  // };
+  
+  
+
+
   const handleNumCompanionsChange = (event) => {
 handleInputChange(event);  
 
@@ -112,7 +136,9 @@ handleInputChange(event);
             <label htmlFor="phNumber" className="form-label">
               Phone Number<span className="asterisk">*</span>
             </label>
-            <input type="text" className="form-control" id="phNumber" name="phNumber" onChange={handleInputChange} required />
+            <input type="text" className="form-control" id="phNumber" name="phNumber" onChange={handleInputChange}
+            //  onBlur={handlePhoneInputBlur}
+             required />
           </div>
           <div className="col-md-6">
             <label htmlFor="designation" className="form-label">

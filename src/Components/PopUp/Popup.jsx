@@ -12,13 +12,13 @@ const Popup = ({
   const navigate = useNavigate();
   console.log(setPopup);
   return (
-    <div className="popup-overlay" onClick={() => setPopup(false)}>
-      <div className="popup" onClick={(e) => e.stopPropagation()}>
-        <img className="sucessIcon" src={sucessIcon} alt="Success Icon" />
+    <div className="popup-overlay-registration" onClick={() => setPopup(false)}>
+      <div className="popup-registration" onClick={(e) => e.stopPropagation()}>
+        {/* <img className="sucessIcon-registration" src={sucessIcon} alt="Success Icon" /> */}
 
-        <h2 className="popup-heading">{messageHead}</h2>
-      {para1!="" && <p className="popup-para">{para1}</p>}
-      {para2!="" && <p className="popup-para">{para2}</p>}
+        <h2 className="popup-heading-registration">{messageHead}</h2>
+      {para1!="" && <p className="popup-para-registration">{para1}</p>}
+      {para2!="" && <p className="popup-para-registration">{para2}</p>}
 
         <button
           className="btn btn-primary btn-lg rounded"

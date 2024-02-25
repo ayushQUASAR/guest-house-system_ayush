@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,6 +7,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const columns = [
   { id: "SNO", label: "SNO.", minWidth: 50 },
@@ -128,7 +130,11 @@ const BookingCancellationReport = () => {
     // Fetch data from your API endpoint
     fetch(`${import.meta.env.VITE_API_URL}/refund`)
       .then((response) => response.json())
-      .then((data) => setRows(data))
+      .then((data) => {
+        // Assuming data is an array of objects
+        const formattedData = data.map(createData);
+        setRows(formattedData);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
   

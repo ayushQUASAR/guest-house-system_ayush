@@ -77,7 +77,7 @@ const UpcomingBookingTable = () => {
 
   useEffect(() => {
     // Fetch data from your API endpoint
-    fetch(`${import.meta.env.VITE_API_URL}/booking`)
+    fetch(`${import.meta.env.VITE_API_URL}/booking/approved/upcoming`)
       .then((response) => response.json())
       .then((data) => {
         // Assuming data is an array of objects

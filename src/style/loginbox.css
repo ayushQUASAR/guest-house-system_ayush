@@ -81,15 +81,19 @@
     flex-direction: column;
     background-color: #c6c6c6;
     overflow: hidden;
+    background-image: url('src/images/login.png');
+    background-repeat: no-repeat;
+   background-size: cover;
   }
   .lleft-box {
     width: 100vw;
     padding: 0;
     height: 100vh;
     display: block;
-    clip-path: polygon(100% 0, 0 0, 0 100%);
+    /* clip-path: polygon(100% 0, 0 0, 0 100%); */
     z-index: 1;
     position: absolute;
+    background-color: transparent;
   }
   .lright-box {
     width: 100vw;

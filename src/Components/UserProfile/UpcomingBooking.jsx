@@ -122,7 +122,7 @@ const UpcomingBooking = () => {
             {booking.status === 'paid' && (<td> < button className='btn' style = {{backgroundColor : 'red', color : 'white'}} onClick={() => handleCancel(booking._id)} disabled>Pay now</button>
           </td>)}
     
-          {booking.status === 'approved' && <td><Link to="/testGate"><button className='btn' style = {{backgroundColor : 'green', color : 'white'}} disabled>Pay Now</button></Link> 
+          {booking.status === 'approved' && <td><Link to="/testGate" state={{bookingId: booking._id}}><button className='btn' style = {{backgroundColor : 'green', color : 'white'}} disabled>Pay Now</button></Link> 
          
           </td>}
           

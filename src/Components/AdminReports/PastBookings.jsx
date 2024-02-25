@@ -80,7 +80,7 @@ const PastBooking = () => {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/booking`)
+    fetch(`${import.meta.env.VITE_API_URL}/booking/approved/past`)
       .then((response) => response.json())
       .then((data) => {
         const formattedData = data.map(createData);

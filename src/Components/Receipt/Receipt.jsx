@@ -10,50 +10,50 @@ const Receipt = () => {
   const [bookingData, setBookingData] = useState(null);
   const { userId } = useUserContext();
   // fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`);
-//   useEffect(() => {
-//     if (userId) {
-//       fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
-//         .then((response) => response.json())
-//         .then((data) => {
-//           console.log('Fetched data:', data);
-//           setInvoiceData(data);
-          
-//           // Chain the next fetch for booking history here
-//           return fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`);
-//         })
-//         .then((response) => response.json())
-//         .then((data2) => {
-//             if (data2) {
-//               console.log('Booking data:', data2);
-//               setBookingData(data2);
-//             } else {
-//               console.log('Booking data is undefined or empty.');
-//             }
-//           })
-          
-//         .catch((error) => console.error('Error fetching data:', error));
-//     } else {
-//       console.error('Invalid ObjectId:', userId);
-//     }
-//   }, [userId]);
-  
-useEffect(() => {
-        if (userId) {
-            fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`)
-            .then((response) => response.json())
-            .then((data) => {
-              console.log('Fetched data:', data);
-              setInvoiceData(data);
-              
-              // Chain the next fetch for booking history here
-             
-            }) .catch((error) => console.error('Error fetching data:', error));
-                } else {
-                  console.error('Invalid ObjectId:', userId);
-                }
-              }, [userId]);
+  //   useEffect(() => {
+  //     if (userId) {
+  //       fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
+  //         .then((response) => response.json())
+  //         .then((data) => {
+  //           console.log('Fetched data:', data);
+  //           setInvoiceData(data);
 
-   console.log(invoiceData)
+  //           // Chain the next fetch for booking history here
+  //           return fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`);
+  //         })
+  //         .then((response) => response.json())
+  //         .then((data2) => {
+  //             if (data2) {
+  //               console.log('Booking data:', data2);
+  //               setBookingData(data2);
+  //             } else {
+  //               console.log('Booking data is undefined or empty.');
+  //             }
+  //           })
+
+  //         .catch((error) => console.error('Error fetching data:', error));
+  //     } else {
+  //       console.error('Invalid ObjectId:', userId);
+  //     }
+  //   }, [userId]);
+
+  useEffect(() => {
+    if (userId) {
+      fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Fetched data:', data);
+          setInvoiceData(data);
+
+          // Chain the next fetch for booking history here
+
+        }).catch((error) => console.error('Error fetching data:', error));
+    } else {
+      console.error('Invalid ObjectId:', userId);
+    }
+  }, [userId]);
+
+  console.log(invoiceData)
   const handlePrint = () => {
     window.print();
   };
@@ -62,7 +62,15 @@ useEffect(() => {
     // Loading state, you can customize this part as per your needs
     return <p>Loading...</p>;
   }
-
+  const noOfDays = (startDate, endDate) => {
+    const startDateTime = new Date(startDate).getTime();
+    const endDateTime = new Date(endDate).getTime();
+    const differenceInMilliseconds = endDateTime - startDateTime;
+    const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
+    return Math.round(differenceInDays);
+  };
+  const guestHouse = ["Institute Guest House", "Mega Guest House", "SAC Guest House"];
+  const guestHouseCost = [1000, 600, 600]
   return (
     <div className="container">
       <div className="card">
@@ -71,30 +79,30 @@ useEffect(() => {
           <strong>PAYMENT RECEIPT</strong>
         </div>
         <div className="card-body">
-        <div className="row mb-4">
-  <div className="col-sm-6">
-    <h6 className="mb-3">From:</h6>
-    <div>
-      <strong>Director</strong><br/>
-      <strong> NIT JALANDHAR</strong>
-    </div>
-    <div>{invoiceData.senderAddressLine1}</div>
-    <div>{invoiceData.senderAddressLine2}</div>
-    {/* <div>Email: {invoiceData.userDetails.email}</div> */}
-    {/* <div>Phone: {invoiceData.senderPhone}</div> */}
-  </div>
+          <div className="row mb-4">
+            <div className="col-sm-6">
+              <h6 className="mb-3">From:</h6>
+              <div>
+                <strong>Director</strong><br />
+                <strong> NIT JALANDHAR</strong>
+              </div>
+              <div>{invoiceData.senderAddressLine1}</div>
+              <div>{invoiceData.senderAddressLine2}</div>
+              {/* <div>Email: {invoiceData.userDetails.email}</div> */}
+              {/* <div>Phone: {invoiceData.senderPhone}</div> */}
+            </div>
 
-  <div className="col-sm-6">
-    <h6 className="mb-3">To:</h6>
-    <div>
-      <strong>{invoiceData.userDetails.name}</strong>
-    </div>
-    <div>{invoiceData.recipientAddressLine1}</div>
-    <div>{invoiceData.recipientAddressLine2}</div>
-    <div>Email: {invoiceData.userDetails.email}</div>
-    <div>Phone: {invoiceData.userDetails.phone}</div>
-  </div>
-</div>
+            <div className="col-sm-6">
+              <h6 className="mb-3">To:</h6>
+              <div>
+                <strong>{invoiceData.userDetails.name}</strong>
+              </div>
+              <div>{invoiceData.recipientAddressLine1}</div>
+              <div>{invoiceData.recipientAddressLine2}</div>
+              <div>Email: {invoiceData.userDetails.email}</div>
+              <div>Phone: {invoiceData.userDetails.phone}</div>
+            </div>
+          </div>
 
 
           <div className="table-responsive-sm">
@@ -102,25 +110,30 @@ useEffect(() => {
               <thead>
                 <tr>
                   <th className="center">#</th>
-                  <th>Mbh guestHouse</th>
+                  <th>Guest House</th>
+                  <th>Arrival Date</th>
+                  <th>Departure Date</th>
                   <th>Duration of stay</th>
-                  <th className="right">{invoiceData.roomsSelected}</th>
+                  <th>No of Rooms</th> 
                   <th className="center">Charges of 1 Room</th>
                   <th className="right">Total</th>
                 </tr>
               </thead>
               <tbody>
-  {invoiceData.items && invoiceData.items.map((item) => (
-    <tr key={item.id}>
-      <td className="center">{item.id}</td>
-      <td className="left strong">{item.itemName}</td>
-      <td className="left">{item.description}</td>
-      <td className="right">{`$${item.unitCost}`}</td>
-      <td className="center">{item.quantity}</td>
-      <td className="right">{`$${item.total}`}</td>
-    </tr>
-  ))}
-</tbody>
+            {invoiceData.bookingHistory &&
+              invoiceData.bookingHistory.map((item, index) => (
+                <tr key={index}>
+                  <td className="center">{index + 1}</td>
+                  <td className="left strong">{guestHouse[item.guestHouseSelected-1]}</td>
+                  <td className="left">{new Date(item.startDate).toLocaleDateString()}</td>
+                  <td className="left">{new Date(item.endDate).toLocaleDateString()}</td>
+                  <td>{noOfDays(item.startDate, item.endDate)}</td>
+                  <td className="left">{item.roomsSelected}</td>
+                  <td className="center">{guestHouseCost[item.guestHouseSelected-1]}</td>
+                  <td className="right">&#8377;{guestHouseCost[item.guestHouseSelected-1] * item.roomsSelected * noOfDays(item.startDate, item.endDate)}</td>
+                </tr>
+              ))}
+          </tbody>
 
             </table>
           </div>
@@ -131,24 +144,7 @@ useEffect(() => {
             <div className="col-lg-4 col-sm-5 ml-auto">
               <table className="table table-clear">
                 <tbody>
-                  <tr>
-                    <td className="left">
-                      <strong>Subtotal</strong>
-                    </td>
-                    <td className="right">{`$${invoiceData.subtotal}`}</td>
-                  </tr>
-                  <tr>
-                    <td className="left">
-                      <strong>Discount (20%)</strong>
-                    </td>
-                    <td className="right">{`$${invoiceData.discount}`}</td>
-                  </tr>
-                  <tr>
-                    <td className="left">
-                      <strong>VAT (10%)</strong>
-                    </td>
-                    <td className="right">{`$${invoiceData.vat}`}</td>
-                  </tr>
+
                   <tr>
                     <td className="left">
                       <strong>Total</strong>

@@ -42,8 +42,8 @@ function MyComponent({ onDataChange, n, maxRooms, guesthouseid, setRooms, userSt
 
         const response = await fetch(import.meta.env.VITE_API_URL + "/guestHouse");
         const data = await response.json();
-
-        let rooms = new Array(noOfRooms[guesthouseid]).fill(false);
+        console.log("response",response);
+        let rooms = new Array(noOfRooms[guesthouseid-1]).fill(false);
         console.log(rooms);
         const bookingResponse = await fetch(import.meta.env.VITE_API_URL + '/admin/bookingApproval');
         const bookingData = await bookingResponse.json();
@@ -62,10 +62,6 @@ function MyComponent({ onDataChange, n, maxRooms, guesthouseid, setRooms, userSt
             console.log("rooms allotted: ", bookingApproval.roomsAllotted)
             bookingApproval.roomsAllotted.forEach((roomId) => {
 
-              // setRoomStatus((prev) => {
-              //   const new_state = prev;
-              //   new_state[roomId-1] = true;
-              // })
               rooms[roomId - 1] = true;
             });
           }

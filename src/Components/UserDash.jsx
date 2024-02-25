@@ -100,6 +100,8 @@ useEffect(() => {
     if (data.message === 'Logged out successfully') {
       setIsLogged(false);
       navigate('/login');
+       // Reload the page after navigating to /login
+       window.location.reload();
     } else {
       console.error('Error logging out');
     }

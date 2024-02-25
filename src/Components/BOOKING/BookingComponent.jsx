@@ -5,8 +5,10 @@ import Popup from "../PopUp/Popup";
 import BookingApprovalPopup from "./BookingApprovalPopup.jsx"
 import "./MyComponent.css";
 import ApproveBooking from "../BookingApproval/ApproveBooking.jsx";
+import { useNavigate } from "react-router-dom";
 
 const BookingComponent = (pram) => {
+  const navigate=useNavigate();
   const [messageHead_m, setMessagehead] = useState("");
 
   const [para1_m, setPara1] = useState("");
@@ -95,6 +97,7 @@ const BookingComponent = (pram) => {
         .then((data) => {
           setMessagehead("Booking Successfully Approved");
           console.log();
+         
           setPopup(true);
           console.log(data);
         })

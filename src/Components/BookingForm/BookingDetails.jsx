@@ -3,6 +3,7 @@ import "./BookingDetails.css";
 import { NavLink } from "react-router-dom";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { FormContext } from "../ContextHooks/FormContext";
+import { useLoginContext } from "../ContextHooks/LoginContext";
 
 const inputStyle = {
   backgroundColor: "#f8f9fa",
@@ -28,12 +29,25 @@ const BookingDetails = ({ setDateDetails }) => {
   const todayDay = String(todayDate.getDate()).padStart(2, "0");
   const todayDateString = `${todayYear}-${todayMonth}-${todayDay}`;
 
-  const [checkinDate, setCheckinDate] = useState(todayDateString);
+  const { isAdm } = useLoginContext();
+  console.log("is admin : ",isAdm);
+  const initialCheckinDate = isAdm
+    ? todayDateString
+    : (() => {
+        const oneWeekLater = new Date(todayDate);
+        oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+        const year = oneWeekLater.getFullYear();
+        const month = String(oneWeekLater.getMonth() + 1).padStart(2, "0");
+        const day = String(oneWeekLater.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      })();
+    
+  const [checkinDate, setCheckinDate] = useState(initialCheckinDate);
 
   const { updateFormData } = useContext(FormContext);
 
   // Calculate tomorrow's date based on the selected check-in date.
-  const tomorrowDate = new Date(todayDate);
+  const tomorrowDate = new Date(initialCheckinDate);
   tomorrowDate.setDate(tomorrowDate.getDate() + 1);
   const tomorrowYear = tomorrowDate.getFullYear();
   const tomorrowMonth = String(tomorrowDate.getMonth() + 1).padStart(2, "0");
@@ -41,7 +55,8 @@ const BookingDetails = ({ setDateDetails }) => {
   const tomorrowDateString = `${tomorrowYear}-${tomorrowMonth}-${tomorrowDay}`;
 
   //adding limitation to the checkin and checkout date
-  const maxAllowedCheckInDate = new Date(todayDate);
+  const maxAllowedCheckInDate = new Date(initialCheckinDate);
+ 
   maxAllowedCheckInDate.setDate(maxAllowedCheckInDate.getDate() + 21);
   const maxAllowedCheckoutDate = new Date(checkinDate);
   maxAllowedCheckoutDate.setDate(maxAllowedCheckoutDate.getDate() + 3);

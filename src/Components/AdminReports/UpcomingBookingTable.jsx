@@ -49,45 +49,44 @@ const UpcomingBookingTable = () => {
   const [rows, setRows] = useState([]);
   const tableRef = useRef(null);
 
+
   const handleDownloadPDF = () => {
     const input = tableRef.current;
-
+  
     if (!input) {
       console.error("Table element is null.");
       return;
     }
-
+  
     html2canvas(input)
       .then((canvas) => {
         const pdf = new jsPDF("p", "mm", "a4");
         const imgWidth = 210;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-        const scaleFactor = 1;
-        pdf.addImage(
-          canvas.toDataURL("image/png"),
-          "PNG",
-          0,
-          0,
-          imgWidth * scaleFactor,
-          imgHeight * scaleFactor
-        );
+  
+        // Adjust the scale factor for better readability
+        const scaleFactor = 1; // You can adjust this value
+        pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, imgWidth * scaleFactor, imgHeight * scaleFactor);
         pdf.save("table.pdf");
       })
       .catch((error) => {
         console.error("Error converting table to PDF:", error);
       });
   };
+  
 
   useEffect(() => {
+    // Fetch data from your API endpoint
     fetch(`${import.meta.env.VITE_API_URL}/booking`)
       .then((response) => response.json())
       .then((data) => {
+        // Assuming data is an array of objects
         const formattedData = data.map(createData);
         setRows(formattedData);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+  
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -160,6 +159,7 @@ const UpcomingBookingTable = () => {
       />
       <button style = {{backgroundColor : '#0275d8', color : 'white', margin : '0px 0px 10px 30px', padding : '5px', border : 'None'}} onClick={handleDownloadPDF}>Download PDF</button>
     </Paper>
+    
   );
 };
 

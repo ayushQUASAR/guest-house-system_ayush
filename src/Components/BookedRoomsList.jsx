@@ -12,6 +12,11 @@ function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
   const [roomID, setRoomID] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const selectedGuestHouse = guestHouse;
+  const [roomNo, setRoomNo] = useState([]);
+  const roomNoForIgh = [1,2,7,8,9,10,11,12,13,14];
+  const roomNoForMgh  = [201,202,203,204,205,206,301,302,303,304,305,306];
+  const roomNoForSacgh = [302,303,304,401,402,403,404,405,406];
+  
 
   const noOfRooms = {
     "INSTITUTE GUEST HOUSE": 10,
@@ -30,7 +35,14 @@ function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
 
   useEffect(() => {
 
+
     const fetchGuestHouseData = async (index) => {
+      
+      if(index==0){setRoomNo(roomNoForIgh); }
+      if(index==1){setRoomNo(roomNoForMgh); }
+      if(index==2){setRoomNo(roomNoForSacgh); }
+      
+      
       try {
         const response = await fetch( 
           import.meta.env.VITE_API_URL +
@@ -111,8 +123,10 @@ function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
             ? "isBooked" :
             selectedRooms.includes(i) ? "isSelected" : "isAvailable"
           }`}
-          onClick={() => handleRoomClick(i)}
-        ></div>
+          onClick={() => handleRoomClick(i)} style={{
+          textAlign: 'center',
+          padding:'10px'}}
+        >{roomNo[i]} </div>
       );
     }
   );

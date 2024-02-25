@@ -197,7 +197,7 @@ const UpcomingBooking = () => {
 
                     {booking.status === "approved" && (
                       <td>
-                        <Link to="/testGate">
+                        <Link to="/testGate" state={{bookingId: booking._id}}>
                           <button
                             className="btn"
                             style={{ backgroundColor: "green", color: "white" }}

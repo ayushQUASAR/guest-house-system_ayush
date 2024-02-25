@@ -21,7 +21,7 @@ const columns = [
   { id: "DATEOFARRIVAL", label: "Date of Arrival", minWidth: 190 },
   { id: "NOOFDAYS", label: "Number of Days", minWidth: 130 },
 ];
-const guestHouse = ['Institute Guest House', 'Mega Guest House', 'SAC Guest House']
+const guestHouse = ['', 'Institute Guest House', 'Mega Guest House', 'SAC Guest House']
 function noDays(startDate, endDate){ 
   const startDateTime = startDate.getTime();
   const endDateTime = endDate.getTime();

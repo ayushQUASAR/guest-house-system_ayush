@@ -28,7 +28,7 @@ function noDays(startDate, endDate) {
   const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24);
   return Math.round(differenceInDays);
 }
-const guestHouse = ['Institute Guest House', 'Mega Guest House', 'SAC Guest House']
+const guestHouse = [' ','Institute Guest House', 'Mega Guest House', 'SAC Guest House']
 function createData(data) {
   return {
     BOOKING_ID: data._id,

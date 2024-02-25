@@ -64,7 +64,7 @@ function amtRefund(numberOfDays, guestHouse, leftDays, noOfRoom) {
   return amountReturned * noOfRoom;
 
 }
-const guestHouse = ['Institute Guest House', 'Mega Guest House', 'SAC Guest House']
+const guestHouse = ['', 'Institute Guest House', 'Mega Guest House', 'SAC Guest House']
 function createData(data) {
   const startDate = data.booking ? new Date(data.booking.startDate) : null;
   const endDate = data.booking ? new Date(data.booking.endDate) : null;

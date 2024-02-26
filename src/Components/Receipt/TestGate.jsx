@@ -20,7 +20,11 @@ export default function TestGate() {
                     method: "PATCH"
                   })
                   .then((res) => res.json())
-                  .then((data) => console.log("response success: ", data))
+                  .then((data) => {
+                     console.log("response success: ", data);
+                     // Navigate to the /receipt route with bookingId as state
+                     navigate('/receipt', { state: { bookingId } });
+                   })
                   .catch((error) => console.error("response error: ", error.message));
               }
        }
@@ -39,4 +43,3 @@ export default function TestGate() {
    </div>
   )
 }
-

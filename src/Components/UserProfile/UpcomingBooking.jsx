@@ -3,9 +3,13 @@ import { useUserContext } from "../ContextHooks/UserContext";
 import CancelPopUp from "./CancelPopUp";
 import CancelForm from "./CancelForm";
 import { Link } from "react-router-dom";
+import sucessIcon from "../../images/check2.png";
 import TestGate from "../Receipt/TestGate";
+import './upcomingBooking.css';
 const UpcomingBooking = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [showPaidPopup, setShowPaidPopup] = useState(false);
+
   const [bookingId, setBookingId] = useState("");
   const { userId } = useUserContext();
   const [bookings, setBookings] = useState([]);
@@ -82,7 +86,7 @@ const UpcomingBooking = () => {
           prevBookings.filter((booking) => booking.id !== id)
         );
       })
-      .catch((err) =>{
+      .catch((err) => {
         alert("Due to some internal error your booking cannot be cancelled at the moment.Try again later!")
         console.log(
           "Error while cancelling booking from database :",
@@ -131,8 +135,8 @@ const UpcomingBooking = () => {
                         ? booking.guestHouseSelected === 1
                           ? "INSTITUTE GUEST HOUSE"
                           : booking.guestHouseSelected === 2
-                          ? "MEGA GUEST HOUSE"
-                          : "SAC GUEST HOUSE"
+                            ? "MEGA GUEST HOUSE"
+                            : "SAC GUEST HOUSE"
                         : "NOT ALLOTTED"}
                     </td>
                     <td>{formatDateToISO(booking.createdAt)}</td>
@@ -185,20 +189,20 @@ const UpcomingBooking = () => {
                     )}
                     {booking.status === "paid" && (
                       <td>
-                        {" "}
                         <button
                           className="btn"
                           style={{ backgroundColor: "red", color: "white" }}
-                          disabled
+                          onClick={() => setShowPaidPopup(true)}
                         >
-                          Pay now
+                          Pay Now
                         </button>
                       </td>
                     )}
 
+
                     {booking.status === "approved" && (
                       <td>
-                        <Link to="/testGate" state={{bookingId: booking._id}}>
+                        <Link to="/testGate" state={{ bookingId: booking._id }}>
                           <button
                             className="btn"
                             style={{ backgroundColor: "green", color: "white" }}
@@ -248,6 +252,18 @@ const UpcomingBooking = () => {
         </div>
       )}
 
+      {showPaidPopup && (
+        <div className="popup-overlay-booking">
+          <div className="popup-booking" onClick={() => setShowPaidPopup(false)}>
+            <img className="sucessIcon-booking" src={sucessIcon} alt="Success Icon" />
+
+            <p className="popup-para-booking">Payment is already Paid..</p>
+            <button className="btn btn-primary btn-sm popupClose-booking" onClick={() => setShowPaidPopup(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       {showPopup && (
         <CancelPopUp isOpen={showPopup} closePopup={() => setShowPopup(false)}>
           <CancelForm

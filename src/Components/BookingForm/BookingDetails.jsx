@@ -89,10 +89,35 @@ const BookingDetails = ({ setDateDetails }) => {
     updateFormData("guestHouseSelected", finalGuestHouse);
   }, [checkinDate, checkoutDate, selectedGuestHouse, roomsSelected]);
 
+  // const handleCheckinChange = (e) => {
+  //   const selectedDate = e.target.value;
+  //   if (selectedDate < todayDateString) {
+  //     alert("Check-in date cannot be earlier than today.");
+  //   } else if(selectedDate > maxAllowedCheckInDate){
+  //     alert("Check-in date cannot be later than 21 days.");
+  //   } else {
+  //     setCheckinDate(selectedDate);
+
+  //     // Calculate tomorrow's date based on the selected check-in date and update check-out date.
+  //     const nextDay = new Date(selectedDate);
+  //     nextDay.setDate(nextDay.getDate() + 1);
+  //     const nextDayYear = nextDay.getFullYear();
+  //     const nextDayMonth = String(nextDay.getMonth() + 1).padStart(2, "0");
+  //     const nextDayDay = String(nextDay.getDate()).padStart(2, "0");
+  //     const nextDayString = `${nextDayYear}-${nextDayMonth}-${nextDayDay}`;
+  //     setCheckoutDate(nextDayString);
+  //   }
+  // };
+
   const handleCheckinChange = (e) => {
     const selectedDate = e.target.value;
     if (selectedDate < todayDateString) {
       alert("Check-in date cannot be earlier than today.");
+    } else if (!isAdm && selectedDate < initialCheckinDate) {
+      const oneWeekLater = new Date(todayDate);
+      oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+      const validDate = oneWeekLater.toISOString().split("T")[0];
+      alert(`You can only book a room 1 week from now. Earliest allowed date: ${validDate}`);
     } else if(selectedDate > maxAllowedCheckInDate){
       alert("Check-in date cannot be later than 21 days.");
     } else {
@@ -109,16 +134,37 @@ const BookingDetails = ({ setDateDetails }) => {
     }
   };
 
+  // const handleCheckoutChange = (e) => {
+  //   const selectedDate = e.target.value;
+  //   if (selectedDate <= checkinDate) {
+  //     alert(
+  //       "Check-out date cannot be equal to or earlier than the check-in date."
+  //     );
+  //   } else if(selectedDate > maxAllowedCheckoutDate){
+  //     alert("Maximum stay can be 3 days only !")
+  //   } else {
+  //     setCheckoutDate(selectedDate);
+  //   }
+  // };
+
   const handleCheckoutChange = (e) => {
     const selectedDate = e.target.value;
     if (selectedDate <= checkinDate) {
       alert(
         "Check-out date cannot be equal to or earlier than the check-in date."
       );
-    } else if(selectedDate > maxAllowedCheckoutDate){
-      alert("Maximum stay can be 3 days only !")
     } else {
-      setCheckoutDate(selectedDate);
+      const selectedCheckoutDate = new Date(selectedDate);
+      const selectedCheckinDate = new Date(checkinDate);
+      const selectedDurationOfStay =
+        (selectedCheckoutDate.getTime() - selectedCheckinDate.getTime()) /
+        (1000 * 3600 * 24);
+
+      if (!isAdm && selectedDurationOfStay > 3) {
+        alert("Maximum stay can be 3 days only!");
+      } else {
+        setCheckoutDate(selectedDate);
+      }
     }
   };
 
@@ -189,8 +235,8 @@ const handleRoomsChange = (e) => {
           placeholder="Check In"
           value={checkinDate}
           onChange={handleCheckinChange}
-          min={todayDateString} // Set the minimum date to today
-          max={maxAllowedCheckInDate.toISOString().split('T')[0]}
+          // min={isAdm ? todayDateString : initialCheckinDate} // Set the minimum date to today
+          max={isAdm ? null : maxAllowedCheckInDate.toISOString().split("T")[0]}
         />
       </div>
       <div className="form-group">
@@ -205,8 +251,8 @@ const handleRoomsChange = (e) => {
           placeholder="Check Out"
           value={checkoutDate}
           onChange={handleCheckoutChange}
-          min={checkinDate} // Set the minimum date to the check-in date
-          max={maxAllowedCheckoutDate.toISOString().split("T")[0]}
+          // min={checkinDate} // Set the minimum date to the check-in date
+          // max={isAdm ? null : maxAllowedCheckoutDate.toISOString().split("T")[0]}
         />
       </div>
       <div className="form-group">

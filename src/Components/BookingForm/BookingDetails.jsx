@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./BookingDetails.css";
 import { NavLink } from "react-router-dom";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
@@ -11,12 +13,22 @@ const inputStyle = {
   fontWeight: 500,
 };
 
+const toastStyle = {
+  position: "top-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
+
 const guestHouseOptions = [
   "Institute Guest House",
   "Mega Guest House",
   "SAC Guest House",
 ];
-const maxRooms = [2, 2, 2];
+const maxRooms = [10, 12, 8];
 
 const BookingDetails = ({ setDateDetails }) => {
   // Get today's date in India's time zone.
@@ -30,7 +42,7 @@ const BookingDetails = ({ setDateDetails }) => {
   const todayDateString = `${todayYear}-${todayMonth}-${todayDay}`;
 
   const { isAdm } = useLoginContext();
-  console.log("is admin : ",isAdm);
+  console.log("is admin : ", isAdm);
   const initialCheckinDate = isAdm
     ? todayDateString
     : (() => {
@@ -41,7 +53,7 @@ const BookingDetails = ({ setDateDetails }) => {
         const day = String(oneWeekLater.getDate()).padStart(2, "0");
         return `${year}-${month}-${day}`;
       })();
-    
+
   const [checkinDate, setCheckinDate] = useState(initialCheckinDate);
 
   const { updateFormData } = useContext(FormContext);
@@ -56,17 +68,17 @@ const BookingDetails = ({ setDateDetails }) => {
 
   //adding limitation to the checkin and checkout date
   const maxAllowedCheckInDate = new Date(initialCheckinDate);
- 
+
   maxAllowedCheckInDate.setDate(maxAllowedCheckInDate.getDate() + 21);
   const maxAllowedCheckoutDate = new Date(checkinDate);
   maxAllowedCheckoutDate.setDate(maxAllowedCheckoutDate.getDate() + 3);
 
-
   const [checkoutDate, setCheckoutDate] = useState(tomorrowDateString);
 
   const [durationOfStay, setDurationOfStay] = useState(1); // Default to 1 day.
-  const [selectedGuestHouse, setSelectedGuestHouse] =
-    useState("Institute Guest House");
+  const [selectedGuestHouse, setSelectedGuestHouse] = useState(
+    "Institute Guest House"
+  );
   const [roomsSelected, setRoomsSelected] = useState(1);
 
   useEffect(() => {
@@ -89,37 +101,23 @@ const BookingDetails = ({ setDateDetails }) => {
     updateFormData("guestHouseSelected", finalGuestHouse);
   }, [checkinDate, checkoutDate, selectedGuestHouse, roomsSelected]);
 
-  // const handleCheckinChange = (e) => {
-  //   const selectedDate = e.target.value;
-  //   if (selectedDate < todayDateString) {
-  //     alert("Check-in date cannot be earlier than today.");
-  //   } else if(selectedDate > maxAllowedCheckInDate){
-  //     alert("Check-in date cannot be later than 21 days.");
-  //   } else {
-  //     setCheckinDate(selectedDate);
 
-  //     // Calculate tomorrow's date based on the selected check-in date and update check-out date.
-  //     const nextDay = new Date(selectedDate);
-  //     nextDay.setDate(nextDay.getDate() + 1);
-  //     const nextDayYear = nextDay.getFullYear();
-  //     const nextDayMonth = String(nextDay.getMonth() + 1).padStart(2, "0");
-  //     const nextDayDay = String(nextDay.getDate()).padStart(2, "0");
-  //     const nextDayString = `${nextDayYear}-${nextDayMonth}-${nextDayDay}`;
-  //     setCheckoutDate(nextDayString);
-  //   }
-  // };
 
   const handleCheckinChange = (e) => {
     const selectedDate = e.target.value;
-    if (selectedDate < todayDateString) {
-      alert("Check-in date cannot be earlier than today.");
+    console.log("handle check in function called ");
+    if ( isAdm && selectedDate < todayDateString) {
+      toast.error("Check-in date cannot be earlier than today.", toastStyle);
     } else if (!isAdm && selectedDate < initialCheckinDate) {
       const oneWeekLater = new Date(todayDate);
       oneWeekLater.setDate(oneWeekLater.getDate() + 7);
       const validDate = oneWeekLater.toISOString().split("T")[0];
-      alert(`You can only book a room 1 week from now. Earliest allowed date: ${validDate}`);
-    } else if(selectedDate > maxAllowedCheckInDate){
-      alert("Check-in date cannot be later than 21 days.");
+      toast.error(
+        `You can only book a room 1 week from now. Earliest allowed date: ${validDate}`,
+        toastStyle
+      );
+    } else if (selectedDate > maxAllowedCheckInDate) {
+      toast.error("Check-in date cannot be later than 21 days.", toastStyle);
     } else {
       setCheckinDate(selectedDate);
 
@@ -134,24 +132,13 @@ const BookingDetails = ({ setDateDetails }) => {
     }
   };
 
-  // const handleCheckoutChange = (e) => {
-  //   const selectedDate = e.target.value;
-  //   if (selectedDate <= checkinDate) {
-  //     alert(
-  //       "Check-out date cannot be equal to or earlier than the check-in date."
-  //     );
-  //   } else if(selectedDate > maxAllowedCheckoutDate){
-  //     alert("Maximum stay can be 3 days only !")
-  //   } else {
-  //     setCheckoutDate(selectedDate);
-  //   }
-  // };
 
   const handleCheckoutChange = (e) => {
     const selectedDate = e.target.value;
     if (selectedDate <= checkinDate) {
-      alert(
-        "Check-out date cannot be equal to or earlier than the check-in date."
+      toast.error(
+        "Check-out date cannot be equal to or earlier than the check-in date.",
+        toastStyle
       );
     } else {
       const selectedCheckoutDate = new Date(selectedDate);
@@ -161,7 +148,7 @@ const BookingDetails = ({ setDateDetails }) => {
         (1000 * 3600 * 24);
 
       if (!isAdm && selectedDurationOfStay > 3) {
-        alert("Maximum stay can be 3 days only!");
+        toast.error("Maximum stay can be 3 days only!", toastStyle);
       } else {
         setCheckoutDate(selectedDate);
       }
@@ -174,25 +161,45 @@ const BookingDetails = ({ setDateDetails }) => {
     setRoomsSelected(1); // Reset the number of rooms selected when the guest house changes.
   };
 
-  // Generate room options based on the selected guest house's maximum limit
-  // Generate room options with a maximum limit of 3
-const roomOptions = Array.from({ length: 3 }, (_, i) => i + 1);
+  const maxGuestHouseRooms =
+    maxRooms[guestHouseOptions.indexOf(selectedGuestHouse)];
+  const roomOptions = Array.from(
+    { length: maxGuestHouseRooms },
+    (_, i) => i + 1
+  );
+  
 
+  const handleRoomsChange = (e) => {
+    const selectedRooms = parseInt(e.target.value, 10);
 
-const handleRoomsChange = (e) => {
-  const selectedRooms = parseInt(e.target.value, 10);
-  if (selectedRooms < 1) {
-    alert("Minimum 1 room should be selected.");
-  } else if (selectedRooms > 3) {
-    alert("Maximum 3 rooms are allowed.");
-  } else {
-    setRoomsSelected(selectedRooms);
-  }
-};
+    if (selectedRooms < 1) {
+      toast.error("Minimum 1 room should be selected.", toastStyle);
+    } else if (!isAdm && selectedRooms > 3) {
+      toast.error("You can book maximum of 3 rooms only.", toastStyle);
+    } else {
+      // For admin, check if the selected rooms exceed the maximum rooms for the guesthouse
+      if (isAdm) {
+        if (selectedRooms > maxGuestHouseRooms) {
+          toast.error(
+            `Admin can book a maximum of ${maxGuestHouseRooms} rooms for ${selectedGuestHouse}.`,
+            toastStyle
+          );
+          return;
+        }
+      }
+
+      setRoomsSelected(selectedRooms);
+    }
+  };
 
   const handleReset = () => {
-    setCheckinDate(todayDateString);
+    if(isAdm){
+      setCheckinDate(todayDateString);
+    } else {
+      setCheckinDate(initialCheckinDate)
+    }
     setCheckoutDate(tomorrowDateString);
+    
     setDurationOfStay(1);
     setSelectedGuestHouse("Institute Guest House");
     setRoomsSelected(1);
@@ -285,7 +292,6 @@ const handleRoomsChange = (e) => {
               {option}
             </option>
           ))}
-
         </select>
       </div>
       <button
@@ -295,6 +301,17 @@ const handleRoomsChange = (e) => {
       >
         CLEAR
       </button>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

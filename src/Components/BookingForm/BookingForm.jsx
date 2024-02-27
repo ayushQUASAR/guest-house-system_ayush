@@ -1,6 +1,18 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./BookingForm.css";
 import { FormContext } from "../ContextHooks/FormContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const toastStyle = {
+  position: "top-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
 
 const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
   const { updateFormData } = useContext(FormContext);
@@ -24,26 +36,26 @@ const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
     validateForm();
   };
 
-  // const handlePhoneInputBlur = (event) => {
-  //   const { name, value } = event.target;
+  const handlePhoneInputBlur = (event) => {
+    const { name, value } = event.target;
   
-  //   // Custom validation for phone number
-  //   if (name === "phNumber") {
-  //     // Check if the value is a valid number and has at most 10 digits
-  //     const isValidPhoneNumber = /^\d{10}$/.test(value);
+    // Custom validation for phone number
+    if (name === "phNumber") {
+      // Check if the value is a valid number and has at most 10 digits
+      const isValidPhoneNumber = /^\d{10}$/.test(value);
   
-  //     if (!isValidPhoneNumber) {
-  //       // If not valid, show an alert and return
-  //       alert("Invalid phone number. Please enter a valid 10-digit phone number.");
-  //       event.target.value = "";
-  //       return;
-  //     }
-  //   }
+      if (!isValidPhoneNumber) {
+        // If not valid, show an alert and return
+        toast.error("Invalid phone number. Please enter a valid 10-digit phone number.",toastStyle);
+        event.target.value = "";
+        return;
+      }
+    }
   
-  //   // Allow the update if validation passed
-  //   updateFormData(name, value);
-  //   validateForm();
-  // };
+    // Allow the update if validation passed
+    updateFormData(name, value);
+    validateForm();
+  };
   
   
 
@@ -137,7 +149,7 @@ handleInputChange(event);
               Phone Number<span className="asterisk">*</span>
             </label>
             <input type="text" className="form-control" id="phNumber" name="phNumber" onChange={handleInputChange}
-            //  onBlur={handlePhoneInputBlur}
+             onBlur={handlePhoneInputBlur}
              required />
           </div>
           <div className="col-md-6">

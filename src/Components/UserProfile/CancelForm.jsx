@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
-const CancelForm = ({ bookingId, onDeleteSuccess }) => {
+const CancelForm = ({ bookingId: id, onDeleteSuccess }) => {
+  const [bookingId, setBookingId] = useState('');
+
+
+  useEffect(()=>{
+
+     setBookingId(id);
+  }, [id])
   const [formData, setFormData] = useState({
     name: '',
     bankname : '',
@@ -12,8 +19,11 @@ const CancelForm = ({ bookingId, onDeleteSuccess }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
   };
 
+
+  console.log("Booking ID: ", bookingId);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setForm(false);
@@ -25,15 +35,15 @@ const CancelForm = ({ bookingId, onDeleteSuccess }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          // Include the necessary form data in the request body
           booking:bookingId,
           name: formData.name,
           bankName: formData.bankname,
           accountNumber: formData.accountNumber,
           IFSC: formData.ifscCode,
-        }),
+        })
       });
       console.log("response : ",response);
+      
       if (!response.ok) {
         throw new Error('Failed to save form data');
       }

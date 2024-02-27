@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './cancelpopup.css'; 
 import CancelForm from './CancelForm';
 
-const Popup = ({ isOpen, closePopup }) => {
+const Popup = ({ isOpen, closePopup, children}) => {
   return (
     <div>
       {isOpen && (
@@ -11,7 +11,7 @@ const Popup = ({ isOpen, closePopup }) => {
             <span className="close-btn-cancel" onClick={closePopup}>
               &times;
             </span>
-            <CancelForm />
+            {children}
           </div>
         </div>
       )}

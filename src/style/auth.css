@@ -56,13 +56,21 @@
 }
 .email h3 {
   margin: 8px 0;
-  font-weight: 600;
+  /* font-weight: 600; */
   /* letter-spacing: 0.3rem; */
+}
+.email :nth-child(3)
+{
+  margin-top: 25px !important;
+
+}
+.inputf:focus{
+  border:4px solid #346BD4;
 }
 .email
 { padding: 20px;
   font-family: 'Poppins', sans-serif;
-  width: 90%;
+  /* width: 90%; */
 
 }
 
@@ -72,24 +80,25 @@
     border-radius: 9px;
     height: 30px;
     width: 300px;
-    background-color: rgb(235, 235, 235);
+    background-color: transparent;
     outline: none;
 }
+
 .inputf
 {
     display: inline-block;
     border-radius: 9px;
     padding:5px 10px;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(193, 196, 200);
 }
-.inputf:hover
+/* .inputf:hover
 {
     background-color:  rgb(218, 218, 218);
 }
 .inputf:hover input
 {
     background-color:  rgb(218, 218, 218);
-}
+} */
 .sign-btn{
     width: 320px;
     height: 38px;
@@ -102,13 +111,22 @@
     padding: 5px 0;
 }
 .details {
-    background-color: #fff;
+    background-color: #e3e3e3;
     padding: 10px 10px;
     display: flex;
     width: fit-content;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 229px;
     justify-content: center;
     border-radius: 17px;
  
+}
+@media screen and (max-width:1000px) {
+  .details{
+    background-color: #bcbbbbad;
+    backdrop-filter: blur(10px);
+  }
+  .inputf{
+    background-color: rgb(253, 253, 253) !important;
+  }
 }

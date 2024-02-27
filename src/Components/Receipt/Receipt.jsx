@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Receipt.css';
 import { useUserContext } from '../ContextHooks/UserContext';
 import TestGate from './TestGate';
@@ -7,7 +8,9 @@ import TestGate from './TestGate';
 // import { useUserContext } from './ContextHooks/UserContext';
 const Receipt = () => {
   const [invoiceData, setInvoiceData] = useState(null);
-  const [bookingData, setBookingData] = useState(null);
+  const location = useLocation();
+  const bookingId = location.state?.bookingId;
+  console.log(bookingId);
   const { userId } = useUserContext();
   // fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`);
   //   useEffect(() => {
@@ -39,7 +42,7 @@ const Receipt = () => {
 
   useEffect(() => {
     if (userId) {
-      fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`)
+      fetch(`${import.meta.env.VITE_API_URL}/booking/${bookingId}`)
         .then((response) => response.json())
         .then((data) => {
           console.log('Fetched data:', data);
@@ -83,8 +86,8 @@ const Receipt = () => {
                 <strong>Director</strong><br />
                 <strong> NIT JALANDHAR</strong>
               </div>
-              <div>{invoiceData.senderAddressLine1}</div>
-              <div>{invoiceData.senderAddressLine2}</div>
+              <div>{invoiceData.address}</div>
+              
               {/* <div>Email: {invoiceData.userDetails.email}</div> */}
               {/* <div>Phone: {invoiceData.senderPhone}</div> */}
             </div>
@@ -92,12 +95,11 @@ const Receipt = () => {
             <div className="col-sm-6">
               <h6 className="mb-3">To:</h6>
               <div>
-                <strong>{invoiceData.userDetails.name}</strong>
+                <strong>{invoiceData[0].name}</strong>
               </div>
-              <div>{invoiceData.recipientAddressLine1}</div>
-              <div>{invoiceData.recipientAddressLine2}</div>
-              <div>Email: {invoiceData.userDetails.email}</div>
-              <div>Phone: {invoiceData.userDetails.phone}</div>
+              <div>{invoiceData[0].address}</div>
+              <div>Email: {invoiceData[0].email}</div>
+              <div>Phone: {invoiceData[0].phone}</div>
             </div>
           </div>
 
@@ -117,8 +119,8 @@ const Receipt = () => {
                 </tr>
               </thead>
               <tbody>
-            {invoiceData.bookingHistory &&
-              invoiceData.bookingHistory.map((item, index) => (
+            {invoiceData &&
+              invoiceData.map((item, index) => (
                 <tr key={index}>
                   <td className="center">{index + 1}</td>
                   <td className="left strong">{guestHouse[item.guestHouseSelected-1]}</td>
@@ -147,7 +149,7 @@ const Receipt = () => {
                       <strong>Total</strong>
                     </td>
                     <td className="right">
-                      <strong>{`$${invoiceData.total}`}</strong>
+                      <strong>{guestHouseCost[invoiceData[0].guestHouseSelected-1] * invoiceData[0].roomsSelected * noOfDays(invoiceData[0].startDate, invoiceData[0].endDate)}</strong>
                     </td>
                   </tr>
                 </tbody>

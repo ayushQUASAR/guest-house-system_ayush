@@ -67,7 +67,7 @@ const Approvaltable = ({ onSecondPage }) => {
     console.log("clicked");
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => { };
   const handleApproval = (id, status, reason) => {
     const confirm = window.confirm(
       `Are you sure you want to ${status} this booking?`
@@ -110,6 +110,7 @@ const Approvaltable = ({ onSecondPage }) => {
       }
     }
   };
+  
   const guestHouse = ['Institute Guest House', 'Mega Guest House', 'SAC Guest House'];
   return (
     <>
@@ -139,7 +140,7 @@ const Approvaltable = ({ onSecondPage }) => {
                     <tr key={user._id}>
                       <td>{index + 1}</td>
                       <td>{user.name}</td>
-                      <td>{guestHouse[user.guestHouseSelected-1]}</td>
+                      <td>{guestHouse[user.guestHouseSelected - 1]}</td>
                       <td>{user.roomsSelected}</td>
                       <td>{user.email}</td>
                       <td>{user.phone}</td>
@@ -165,11 +166,25 @@ const Approvaltable = ({ onSecondPage }) => {
                                 >
                                   &#10005;
                                 </button>
-                                <img
-                                  className="popup-image"
-                                  src={user.roomBooker.idProof}
-                                  alt="Popup Image"
-                                />
+
+                                {user.roomBooker.idProof && (
+                                  user.roomBooker.idProof.endsWith(".jpeg") ||
+                                  user.roomBooker.idProof.endsWith(".jpg") ||
+                                  user.roomBooker.idProof.endsWith(".png")
+                                ) ? (
+                                  <img
+                                    className="popup-image"
+                                    src={user.roomBooker.idProof}
+                                    alt="Popup Image"
+                                  />
+                                )
+                                  : ""}
+
+                                {user.roomBooker.idProof && user.roomBooker.idProof.endsWith(".pdf") ? (
+                                  <a href={user.roomBooker.idProof} target="_blank" rel="noreferrer">
+                                    <img className="popup-image" src={user.roomBooker.idProof} alt="Pdf" />
+                                  </a>
+                                ) : ""}
                               </div>
                             </div>
                           )}

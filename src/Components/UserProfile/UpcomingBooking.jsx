@@ -3,6 +3,7 @@ import { useUserContext } from "../ContextHooks/UserContext";
 import CancelPopUp from "./CancelPopUp";
 import CancelForm from "./CancelForm";
 import { Link } from "react-router-dom";
+import TestGate from "../Receipt/TestGate";
 const UpcomingBooking = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [bookingId, setBookingId] = useState("");

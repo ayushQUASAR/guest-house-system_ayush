@@ -47,9 +47,7 @@ export default function RegisteredUsers() {
       const searchLowerCase = search.toLowerCase();
       filteredList = filteredList.filter(
         (user) =>
-          user.user?.name.toLowerCase().includes(searchLowerCase) ||
-          user.user?.phone.includes(searchLowerCase) ||
-          user.user?.email.toLowerCase().includes(searchLowerCase)
+          user.user?.name.toLowerCase().includes(searchLowerCase) 
       );
     }
 

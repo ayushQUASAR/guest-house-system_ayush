@@ -44,9 +44,6 @@ const Receipt = () => {
         .then((data) => {
           console.log('Fetched data:', data);
           setInvoiceData(data);
-
-          // Chain the next fetch for booking history here
-
         }).catch((error) => console.error('Error fetching data:', error));
     } else {
       console.error('Invalid ObjectId:', userId);

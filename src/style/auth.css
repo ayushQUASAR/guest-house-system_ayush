@@ -116,15 +116,27 @@
     display: flex;
     width: fit-content;
     align-items: center;
-    margin-top: 229px;
+    margin-top: 85px;
     justify-content: center;
     border-radius: 17px;
  
+}
+@media screen and (max-width:500px) {
+  .email h3{
+    margin: 5px 0;
+
+  }
+  .email :nth-child(3)
+{
+  margin-top: 14px !important;
+}
+  
 }
 @media screen and (max-width:1000px) {
   .details{
     background-color: #bcbbbbad;
     backdrop-filter: blur(10px);
+    margin-top: 229px;
   }
   .inputf{
     background-color: rgb(253, 253, 253) !important;

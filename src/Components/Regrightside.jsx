@@ -448,7 +448,7 @@ export default function Regrightside() {
                       <label>Email:</label>
                       <input
                         required
-                        type="text"
+                        type="email"
                         value={Email}
                         onChange={handleEmailChange}
                         placeholder="example@nitj.ac.in"

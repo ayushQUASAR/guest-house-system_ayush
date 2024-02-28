@@ -154,6 +154,8 @@
     .dash-sidebar {
         width: 52vw;
         z-index: 200;
+        position: absolute;
+        top: unset;
     }
     .dash-area{
         width: 100vw;

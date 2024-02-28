@@ -24,6 +24,7 @@ import UpcomingBookingTable from './AdminReports/UpcomingBookingTable';
 import PastBooking from "./AdminReports/PastBookings";
 import BookingCancellationReport from "./AdminReports/BookingCancellationReport";
 
+import SideBar from "./SideBar";
 function App() {
   return (
     <>
@@ -77,6 +78,7 @@ function App() {
                 />
                 <Route path = "/pastReport" element = {<PastBooking/>}/>
                 <Route path = "/cancelledReport" element = {<BookingCancellationReport/>}/>
+                <Route path = "/profile/:userId" element = {<SideBar/>}/>
               </Routes>
             </FormProvider>
           </UserContextProvider>

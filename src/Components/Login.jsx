@@ -15,10 +15,10 @@ import UserDash from './UserDash'
 const Login = () => {
 
   const navigate = useNavigate();
-  
+
   const [activeDiv, setActiveDiv] = useState(null);
 
-  
+
   const handleborderClick1 = () => {
     setActiveDiv(1); // Set div 1 as active
   };
@@ -31,7 +31,7 @@ const Login = () => {
   const [Password, setPassword] = useState("");
   const [loginData, setLoginData] = useState(null);
   // const [isLogged, setIsLogged] = useState(false);
-  const { isLogged, setIsLogged,  setIsAdm } = useLoginContext();
+  const { isLogged, setIsLogged, setIsAdm } = useLoginContext();
   const [isAdmin, setIsAdmin] = useState();
   const [isMainAdmin, setIsMainAdmin] = useState(false);
   // console.log(loginData);
@@ -95,6 +95,7 @@ const Login = () => {
         if (data.isAdmin) {
           setIsAdmin(true);
           setIsAdm(true);
+          sessionStorage.setItem('email',`${Email}`);
           console.log("islog ADMIN", isLogged)
 
 
@@ -124,9 +125,9 @@ const Login = () => {
                 <img src={Logo} alt="NIT logo" />
               </div>
               {/* <div>NIT Jalandhar </div> */}
-              <div style={{color: '#ffffff', fontSize: '30px',fontWeight:'900'}}>Welcome to NITJ </div>
-              <div style={{color: '#ffffff', fontSize: '30px',fontWeight:'900'}}> Guest House</div>
-              <div style={{color: '#ffffff', fontSize: '30px',fontWeight:'900'}}> Booking System
+              <div style={{ color: '#ffffff', fontSize: '30px', fontWeight: '900' }}>Welcome to NITJ </div>
+              <div style={{ color: '#ffffff', fontSize: '30px', fontWeight: '900' }}> Guest House</div>
+              <div style={{ color: '#ffffff', fontSize: '30px', fontWeight: '900' }}> Booking System
               </div>
 
             </div>
@@ -140,13 +141,13 @@ const Login = () => {
 
                     <div className="email">
                       <h3>Email address</h3>
-                      <div  style={{ border: activeDiv === 1 ? '2px solid #346BD4' : 'none' }}       onClick={handleborderClick1}tabIndex="0" className='inputf'>
+                      <div style={{ border: activeDiv === 1 ? '2px solid #346BD4' : 'none' }} onClick={handleborderClick1} tabIndex="0" className='inputf'>
                         <input required onChange={(e) => setEmail(e.target.value)} type="email" value={Email} name="email" id="" />
                       </div>
 
                       <h3>Password</h3>
                       <div style={{ border: activeDiv === 2 ? '2px solid #346BD4' : 'none' }}
-        onClick={handleborderClick2} tabIndex="0" className="inputf">
+                        onClick={handleborderClick2} tabIndex="0" className="inputf">
                         <input required onChange={(e) => setPassword(e.target.value)} type="password" value={Password} name="password" id="" />
                       </div>
                       <div className="reg-optn">

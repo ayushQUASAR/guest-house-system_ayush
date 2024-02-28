@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/dash.css";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
@@ -36,6 +37,7 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import AdminReport from "./AdminReports/AdminReport";
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
+import AdminBookingHistory from "./adminBookingHistory";
 const Dash = ({ admin, isMainAdmin }) => {
   // console.log(admin);
   const { isAdm } = useLoginContext();
@@ -134,6 +136,7 @@ const Dash = ({ admin, isMainAdmin }) => {
     bookedRooms: <BookedRooms />,
     registeredUsers: <RegisteredUsers />,
     adminReports: <AdminReport />,
+    adminbooking : <AdminBookingHistory/>,
     manageAdmins: <ManageAdmin />
   };
 
@@ -235,6 +238,15 @@ const Dash = ({ admin, isMainAdmin }) => {
                   <span>
                     <AssessmentIcon />
                     Report
+                  </span>
+                </div>
+                <div
+                  onClick={() => selectContent("adminbooking")}
+                  className="dash-optn"
+                >
+                  <span>
+                    <AssignmentTurnedInIcon/>
+                    Booking History
                   </span>
                 </div>
 

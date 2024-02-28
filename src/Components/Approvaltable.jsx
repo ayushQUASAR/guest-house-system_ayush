@@ -22,7 +22,15 @@ const Approvaltable = () => {
       })
       .then((err) => console.log(err));
   }, []);
-
+  // const getImage = (url) => {
+  //     const res = fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       <a href={`${data.image.data}`}></a>
+  //     })
+    
+  // }
   const handleApproval = (id, status) => {
 
     const confirm = window.confirm(`Are you sure you want to ${status} this user?`);
@@ -109,7 +117,12 @@ const Approvaltable = () => {
                             )}
                           </div>
                         ) : ""} */}
-                          <button className="popup-button button-outline-dark"><a style = {{color : 'white', border : 'None'}}target = "_blank" href={user.user?.idProof}>View</a></button>
+                          <button className="popup-button button-outline-dark" 
+                          // onclick = {() => getImage(`${import.meta.env.VITE_API_URL}/images/${user.user?.idProof}`)}
+
+                          >
+                            <a target = "_blank" style = {{color : 'white'}} href={`${import.meta.env.VITE_API_URL}/images/${user.user?.idProof}`}>View</a>
+                          </button>
                       </td>
                     )}
                     <td>{user.user?.refInfo}</td>

@@ -11,9 +11,9 @@ import { useNavigate } from "react-router-dom";
 export default function RegisteredUsers() {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [filter, setFilter] = useState(false);
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("");
+  const [search, setSearch] = useState(""); 
   const usersPerPage = 6; // Number of users to display per page
   const [filteredUsers, setFilteredUsers] = useState([]);
   // const [newUser, setNewUser] = useState({
@@ -23,10 +23,13 @@ export default function RegisteredUsers() {
   // });
   const [view, setProfileview] = useState(null);
   const [isConfirmationPopupOpen, setConfirmationPopup] = useState(false);
+  // const viewUserProfile = (user) => {
+  //   setProfileview(user);
+  // };
   const viewUserProfile = (user) => {
-    setProfileview(user);
+    // setProfileview(user);
+    window.open(`/profile/${user._id}`, '_blank');
   };
-
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + "/users/approved/registered")
       .then((res) => res.json())

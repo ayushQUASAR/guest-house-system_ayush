@@ -44,12 +44,12 @@ const PersonalDetail = () => {
     return (
         <div className='container-fluid'>
             <div>
-                <div className = "user-profile"> 
+                <div className="user-profile">
                     <div>
-                        <UserIcon username = {user?.userDetails?.name}/>
+                        <UserIcon username={user?.userDetails?.name} />
                     </div>
                     <div>
-                        <h2 style = {{fontSize : '40px', paddingLeft : '10px', justifyContent: 'center', alignItems : 'center'}}>User Profile</h2>
+                        <h2 style={{ fontSize: '40px', paddingLeft: '10px', justifyContent: 'center', alignItems: 'center' }}>User Profile</h2>
                     </div>
                 </div>
                 <div className='row mx-4' style={{ borderBottom: '1px solid #ccc' }}>
@@ -85,7 +85,7 @@ const PersonalDetail = () => {
                     <div className='col-6'> Govt approved proof attached</div>
                     <div className='col-6'>
                         {/* <img src={user?.userDetails?.idProof?.data} alt="" /> */}
-                        <button className="popup-button button-outline-dark"><a style = {{color : 'white'}} target = "_blank" href={user?.userDetails?.idProof?.data}>View</a></button>
+                        <button className="popup-button button-outline-dark"><a style={{ color: 'white' }} target="_blank" href={user?.userDetails?.idProof?.data}>View</a></button>
                         {/* {dialog && (
                             <div className="dialog">
                                 <div className="dialog-content">

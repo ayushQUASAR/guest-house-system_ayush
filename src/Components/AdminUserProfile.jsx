@@ -5,17 +5,7 @@ export default function AdminUserProfile() {
     const { userId } = useUserContext();
     const [user, setUserDetails] = useState([]);
 
-    const handlePhotoChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                setNewPhoto(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
-        setSaveButton(true);
-    };
+    
     useEffect(() => {
         let url = `${import.meta.env.VITE_API_URL}/login/admin/${userId}`;
         fetch(`${url}`)

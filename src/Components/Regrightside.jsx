@@ -124,6 +124,11 @@ export default function Regrightside() {
   const handleback = () => {
     window.back();
   }
+
+  const navigateBack = () => {
+    navigate(-1);
+  };
+
   useEffect(() => {
     if (ConfirmPassword.length != 0) {
       if (ConfirmPassword != Password) {
@@ -244,9 +249,7 @@ export default function Regrightside() {
       <div className="reg-rightside">
         {" "}
 
-        <NavLink className="nav-tohome" to="/login">
-          <span><button className="btn btn-primary "> Back</button></span>
-        </NavLink>
+        <button className="btn btn-primary" onClick={navigateBack}>Back</button>
         {/* </div> */}
         {popup && <Popup isRegPopup={true} setPopup={setPopup} messageHead={messageHead_m} para1={para1_m} para2={para2_m} />}
         <form action="/register" onSubmit={setSubmit}>

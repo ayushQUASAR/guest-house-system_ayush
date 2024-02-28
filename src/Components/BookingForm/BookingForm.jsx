@@ -48,20 +48,46 @@ const BookingForm = ({ startDate, endDate, onFormValidChange, formData }) => {
         // If not valid, show an alert and return
         toast.error("Invalid phone number. Please enter a valid 10-digit phone number.",toastStyle);
         event.target.value = "";
+        handleInputChange(event)
+        // console.log("phNumber : ",event.target.value);
+        // updateFormData(name, value);      
+        // validateForm()
         return;
       }
     }
   
     // Allow the update if validation passed
-    updateFormData(name, value);
-    validateForm();
+    // updateFormData(name, value);
+    // validateForm();
+    handleInputChange(event)
   };
   
+
+  const handleEmailInputBlur = (event) => {
+    const { name, value } = event.target;
   
-
-
+    // Custom validation for email
+    if (name === "email") {
+      // Check if the value is a valid email address
+      const isValidEmail = /\S+@\S+\.\S+/.test(value);
+  
+      if (!isValidEmail) {
+        // If not valid, show an alert and return
+        toast.error("Invalid email address. Please enter a valid email.", toastStyle);
+        event.target.value = "";
+        handleInputChange(event)
+        return;
+      }
+    }
+  
+    // Update the form data and validate the form
+    // updateFormData(name, value);
+    // validateForm();
+    handleInputChange(event)
+  };
+  
   const handleNumCompanionsChange = (event) => {
-handleInputChange(event);  
+    handleInputChange(event);  
 
     const num = Math.max(0, Math.min(10, parseInt(event.target.value, 10))) || 0;
     setNumCompanions(num);
@@ -74,6 +100,7 @@ handleInputChange(event);
     setCompanionInputs(companions);
     validateForm();
   };
+
   useEffect(() => {
     // Validate the form when it mounts
     validateForm();
@@ -104,7 +131,7 @@ handleInputChange(event);
 
     // Check if all required fields are filled
     const isValid = requiredFields.every((field) => !!formData[field]);
-
+    console.log("is valid form ",isValid);
     // Check if all companion names are filled, but only if there are companions
     const isCompanionsValid =
       numCompanions === 0 || companionInputs.every((companion) => !!formData[companion.name]);
@@ -136,7 +163,10 @@ handleInputChange(event);
             <label htmlFor="inputEmail4" className="form-label">
               Email<span className="asterisk">*</span>
             </label>
-            <input type="email" className="form-control" id="inputEmail4" name="email" onChange={handleInputChange} required />
+            <input type="email" className="form-control" id="inputEmail4" name="email" 
+            onChange={handleInputChange}
+            onBlur={handleEmailInputBlur} 
+            required />
           </div>
           <div className="col-12">
             <label htmlFor="inputAddress" className="form-label">

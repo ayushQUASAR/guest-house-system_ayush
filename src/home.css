@@ -5,7 +5,13 @@ html {
     scroll-behavior: smooth;
     font-family: 'Poppins' !important;
 }
-
+::-webkit-scrollbar{
+    width: 12px;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 6px;
+    background: linear-gradient(transparent,#3273d6);
+}
 html, body {
     margin: 0;
     padding: 0;
@@ -151,7 +157,7 @@ li.houseCardBackface {
     background-image: url("./images/ImageGallery/guest-house-front.jpeg");
     position: relative; 
     height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
     margin: 0;
     padding: 0;
     background-size: cover;

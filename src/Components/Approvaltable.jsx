@@ -9,7 +9,7 @@ const Approvaltable = () => {
   const navigate = useNavigate();
 
   const [dialog, setDialog] = useState(false);
-  
+
   const toggleDialog = () => {
     setDialog((prev) => !prev);
   };
@@ -25,35 +25,32 @@ const Approvaltable = () => {
 
   const handleApproval = (id, status) => {
 
-   const confirm =  window.confirm(`Are you sure you want to ${status} this user?`);
-
+    const confirm = window.confirm(`Are you sure you want to ${status} this user?`);
     if (confirm === true) {
-    fetch(import.meta.env.VITE_API_URL + "/admin/approveRegistration", {
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify({
-        user: id,
-        status: `${status}`,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      }, 
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        console.log("User id proof: ", data.user?.idProof)
-        window.alert(data.message);
-      //  navigate(0);
-      setPendingUsers((prev) => {
-        return  prev.filter((user) => user.user._id !== id);
+      fetch(import.meta.env.VITE_API_URL + "/admin/approveRegistration", {
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify({
+          user: id,
+          status: `${status}`,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      })
-      .catch((err) => console.log(err));  
-  };
-}
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          console.log("User id proof: ", data.user?.idProof)
+          window.alert(data.message);
+          setPendingUsers((prev) => {
+            return prev.filter((user) => user.user._id !== id);
+          })
+        })
+        .catch((err) => console.log(err));
+    };
+  }
 
-  
   return (
     <>
       <div>
@@ -79,36 +76,42 @@ const Approvaltable = () => {
                     <td>{user.user?.name}</td>
                     <td>{user.user?.email}</td>
                     <td>{user.user?.phone}</td>
-                    {user.roomBooker?.isAdmin ? (
-                        <td>-</td>
-                      ) : (
-                        <td>
-                          <button
-                            className="popup-button"
-                            onClick={toggleDialog}
-                          >
-                            View
-                          </button>
-                          {dialog && (
-                            <div className="dialog">
-                              <div className="dialog-content">
-                                <button
-                                  className="close-icon"
-                                  onClick={toggleDialog}
-                                >
-                                  &#10005;
+                    {user.user?.isAdmin ? (
+                      <td>-</td>
+                    ) : (
+                      <td>
+                        {/* {user.user.idProof ? (
+                          <div>
+                            {user.user.idProof.endsWith(".pdf") ? (
+                              <a href={user.user.idProof} target="_blank" rel="noreferrer">
+                                View PDF
+                              </a>
+                            ) : (
+                              <div>
+                                <button className="popup-button" onClick={toggleDialog}>
+                                  View Image
                                 </button>
-                                
-                                <img
-                                  className="popup-image"
-                                  src={user.user?.idProof}
-                                  alt="Popup Image"
-                                />
+                                {dialog && (
+                                  <div className="dialog">
+                                    <div className="dialog-content">
+                                      <button className="close-icon" onClick={toggleDialog}>
+                                        &#10005;
+                                      </button>
+                                      <img
+                                        className="popup-image"
+                                        src={user.user.idProof}
+                                        alt="Popup Image"
+                                      />
+                                    </div>
+                                  </div>
+                                )}
                               </div>
-                            </div>
-                          )}
-                        </td>
-                      )}
+                            )}
+                          </div>
+                        ) : ""} */}
+                          <button className="popup-button button-outline-dark"><a style = {{color : 'white', border : 'None'}}target = "_blank" href={user.user?.idProof}>View</a></button>
+                      </td>
+                    )}
                     <td>{user.user?.refInfo}</td>
                     <td>
                       <button

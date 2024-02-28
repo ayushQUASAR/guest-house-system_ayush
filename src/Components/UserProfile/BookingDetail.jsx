@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useUserContext } from "../ContextHooks/UserContext"; 
+import sucessIcon from "../../images/check2.png";
 import './bookingDetail.css';
 const BookingDetails = () => {
   const [bookings, setBookings] = useState([]);
@@ -115,20 +116,27 @@ const BookingDetails = () => {
                   {booking.status === 'pending' && 
                     <div className = "btn btn-primary" onClick = {handleReject}>
                       View
-                    </div>}
+                    </div>} 
                   {booking.status === 'approved' && 
                     <div className = "btn btn-primary" onClick = {handleReject}>
                       View
                     </div>}
                   </td> 
                   {selectReason && (  
-                      <div className="popup" style = {{width : '200px', background : 'transparent'}}>
-                        <div className="popup-content"> 
-                          <button onClick={closeReason} style = {{position: 'relative', right: '-50%', border : 'none', marginBottom: '20px', background : 'transparent'}}>  &#10005;</button>
+                      <div className="popup-overlay-booking" style = {{ background : 'transparent'}}>
+                        <div className="popup-booking"> 
+                          <img className="sucessIcon-booking" src={sucessIcon} alt="Success Icon" />
+                          <p>
                           {booking.status === 'hodPending' && <div > HOD approval Pending</div>}
                           {booking.status === 'rejected' && <div >Reason of Rejectation</div>}
+                          {/* {booking.status === 'autoReject' && <div >booking has been automatically canceled as payment was not completed within 24 hours</div>} */}
                           {booking.status === 'pending' && <div >AMDIN approval Pending</div>}
                           {booking.status === 'approved' && <div >Your  Booking is Approved!. Please pay within next 24 hours.</div>}
+                          
+                        </p>
+                        <button className="btn btn-primary btn-sm popupClose-booking" onClick={closeReason}>
+              Close
+            </button>
                         </div>
                       </div> 
                   )}

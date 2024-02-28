@@ -140,7 +140,7 @@ export default function Regrightside() {
 
   }
 
-  const setSubmit = (e) => {
+  const   setSubmit = (e) => {
     e.preventDefault();
     const newEntry = {
       Email: Email,

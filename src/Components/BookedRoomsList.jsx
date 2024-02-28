@@ -85,16 +85,19 @@ function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
           import.meta.env.VITE_API_URL +
             `/booking/approved/approved?guestHouse=${index + 1}`
         );
-        const data = await response.json();
+        let data = await response.json();
+
+        // Filter data based on selected date and room id
+        data = data.filter(item => 
+          new Date(item?.checkInDate).toDateString() === new Date(selectedDate).toDateString() && 
+          item.roomId === roomIndex + 1
+        );
+
         console.log(data);
-        data.forEach((element) => {
-          if (element.roomId == roomIndex + 1) {
-            console.log(element);
-            setRoomID(element);
-          }
-        });
-        setBookingDetails(data);
-        // setRoomID(data[roomIndex]);
+        if (data.length > 0) {
+          setRoomID(data[0]);
+          setBookingDetails(data);
+        }
       } catch (error) {
         console.error("Error fetching booking details:", error.message);
       }
@@ -125,7 +128,7 @@ function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
           }`}
           onClick={() => handleRoomClick(i)} style={{
           textAlign: 'center',
-          padding:'10px'}}
+          padding:'8px', fontSize : '20px'}}
         >{roomNo[i]} </div>
       );
     }

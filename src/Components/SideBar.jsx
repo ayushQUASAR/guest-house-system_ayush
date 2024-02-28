@@ -49,9 +49,9 @@ const SideBar = ({ view }) => {
       <div className="tables-container">
 
         {/* ## COMMENTED BY MRIDUL:   IMAGE WILL NOT WORK WITH RENDER, WILL HAVE TO WAIT FOR API TO HOSTED TO ANOTHER SERVICE */}
-        <div  >
+        {/* <div  >
           {renderIdProofContent(userdata)}
-        </div>
+        </div> */}
         <hr style={{ border: '1px rgb(44, 42, 42) dotted' }} />
      <div>{userdata && <><table className="table">
 

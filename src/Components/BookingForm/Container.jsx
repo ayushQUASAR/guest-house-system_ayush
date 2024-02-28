@@ -12,6 +12,18 @@ import { useUserContext } from "../ContextHooks/UserContext";
 import BookingPopup from "./BookingPopup";
 import { NavLink, Navigate, useLoaderData, useNavigate, useRouteLoaderData } from "react-router-dom";
 import Booking from "./BookingDetails";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const toastStyle = {
+  position: "top-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
 
 const Container = ({ isAdmin, adminId }) => {
   const [userDetails, setUserDetails] = useState(null);
@@ -99,10 +111,10 @@ const Container = ({ isAdmin, adminId }) => {
 
     // Validate the form before submitting
     if (!isFormValid) {
-      alert("Please fill in all required fields before submitting.");
+      toast.error("Please fill in all required fields before submitting.",toastStyle);
       return;
     }
-
+    // console.log("blah blah");
     console.log(userDetails);
 
     // console.log(userDetails);

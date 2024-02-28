@@ -67,7 +67,7 @@ const Approvaltable = ({ onSecondPage }) => {
     console.log("clicked");
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => { };
   const handleApproval = (id, status, reason) => {
     const confirm = window.confirm(
       `Are you sure you want to ${status} this booking?`
@@ -110,6 +110,7 @@ const Approvaltable = ({ onSecondPage }) => {
       }
     }
   };
+  
   const guestHouse = ['Institute Guest House', 'Mega Guest House', 'SAC Guest House'];
   return (
     <>
@@ -139,7 +140,7 @@ const Approvaltable = ({ onSecondPage }) => {
                     <tr key={user._id}>
                       <td>{index + 1}</td>
                       <td>{user.name}</td>
-                      <td>{guestHouse[user.guestHouseSelected-1]}</td>
+                      <td>{guestHouse[user.guestHouseSelected - 1]}</td>
                       <td>{user.roomsSelected}</td>
                       <td>{user.email}</td>
                       <td>{user.phone}</td>
@@ -150,29 +151,8 @@ const Approvaltable = ({ onSecondPage }) => {
                         <td>-</td>
                       ) : (
                         <td>
-                          <button
-                            className="popup-button"
-                            onClick={toggleDialog}
-                          >
-                            View
-                          </button>
-                          {dialog && (
-                            <div className="dialog">
-                              <div className="dialog-content">
-                                <button
-                                  className="close-icon"
-                                  onClick={toggleDialog}
-                                >
-                                  &#10005;
-                                </button>
-                                <img
-                                  className="popup-image"
-                                  src={user.roomBooker.idProof}
-                                  alt="Popup Image"
-                                />
-                              </div>
-                            </div>
-                          )}
+                          <button style = {{height:'35px'}}className="popup-button button-outline-dark"><a style = {{color : 'white'}} target = "_blank" href={user.roomBooker?.idProof}>View</a></button>
+                          
                         </td>
                       )}
                       <td>

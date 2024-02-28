@@ -12,17 +12,17 @@ const Receipt = () => {
   const bookingId = location.state?.bookingId;
   console.log(bookingId);
   const { userId } = useUserContext();
-  // fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`);
+  // fetch(${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory);
   //   useEffect(() => {
   //     if (userId) {
-  //       fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`)
+  //       fetch(${import.meta.env.VITE_API_URL}/users/${userId})
   //         .then((response) => response.json())
   //         .then((data) => {
   //           console.log('Fetched data:', data);
   //           setInvoiceData(data);
 
   //           // Chain the next fetch for booking history here
-  //           return fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`);
+  //           return fetch(${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory);
   //         })
   //         .then((response) => response.json())
   //         .then((data2) => {
@@ -47,6 +47,9 @@ const Receipt = () => {
         .then((data) => {
           console.log('Fetched data:', data);
           setInvoiceData(data);
+
+          // Chain the next fetch for booking history here
+
         }).catch((error) => console.error('Error fetching data:', error));
     } else {
       console.error('Invalid ObjectId:', userId);

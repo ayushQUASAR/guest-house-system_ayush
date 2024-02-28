@@ -151,43 +151,8 @@ const Approvaltable = ({ onSecondPage }) => {
                         <td>-</td>
                       ) : (
                         <td>
-                          <button
-                            className="popup-button"
-                            onClick={toggleDialog}
-                          >
-                            View
-                          </button>
-                          {dialog && (
-                            <div className="dialog">
-                              <div className="dialog-content">
-                                <button
-                                  className="close-icon"
-                                  onClick={toggleDialog}
-                                >
-                                  &#10005;
-                                </button>
-
-                                {user.roomBooker.idProof && (
-                                  user.roomBooker.idProof.endsWith(".jpeg") ||
-                                  user.roomBooker.idProof.endsWith(".jpg") ||
-                                  user.roomBooker.idProof.endsWith(".png")
-                                ) ? (
-                                  <img
-                                    className="popup-image"
-                                    src={user.roomBooker.idProof}
-                                    alt="Popup Image"
-                                  />
-                                )
-                                  : ""}
-
-                                {user.roomBooker.idProof && user.roomBooker.idProof.endsWith(".pdf") ? (
-                                  <a href={user.roomBooker.idProof} target="_blank" rel="noreferrer">
-                                    <img className="popup-image" src={user.roomBooker.idProof} alt="Pdf" />
-                                  </a>
-                                ) : ""}
-                              </div>
-                            </div>
-                          )}
+                          <button style = {{height:'35px'}}className="popup-button button-outline-dark"><a style = {{color : 'white'}} target = "_blank" href={user.roomBooker?.idProof}>View</a></button>
+                          
                         </td>
                       )}
                       <td>

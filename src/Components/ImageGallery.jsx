@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../style/imagegallery.css';
 
-import image1 from "../images/ImageGallery/DSC_4084.jpg";
+// import image1 from "../images/ImageGallery/DSC_4084.jpg";
 import image2 from "../images/ImageGallery/DSC_4085.jpg";
 import image3 from "../images/ImageGallery/DSC_4086.jpg";
 import image4 from "../images/ImageGallery/DSC_4087.jpg";
@@ -22,11 +22,11 @@ const ImageGallery = () => {
     setSelectedImage(null);
   };
   const images = [
-    { url : image1},
+    // { url : image1},
+    { url : image5},
     { url : image2},
     { url : image3},
     { url : image4},
-    { url : image5},
     { url : image6},
     { url : image7},
     { url : image8},

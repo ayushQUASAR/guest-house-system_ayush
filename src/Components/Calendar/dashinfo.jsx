@@ -78,9 +78,9 @@ const DashInfo = () => {
             <HomeIcon />
           </div>
           <div className="Dashtext">
-            <h5>3</h5>
-            <p>Total</p>
-            <p>Guest Houses</p>
+            <h5 style = {{color : 'blue'}}>3</h5>
+            <p >Total
+            Guest Houses</p>
           </div>
         </div>
         <div className="DashCard">
@@ -88,10 +88,10 @@ const DashInfo = () => {
             <PendingActionsIcon />
           </div>
           <div className="Dashtext">
-            <h5>{pendingBooking}</h5>
-            <p>Pending</p>
-            <p>Booking </p>
-            <p>Approvals</p>
+            <h5 style = {{color : 'blue'}}>{pendingBooking}</h5>
+            <p>Pending
+            Booking 
+            Approvals</p>
           </div>
         </div>
         <div className="DashCard">
@@ -99,10 +99,10 @@ const DashInfo = () => {
             <PendingActionsIcon />
           </div>
           <div className="Dashtext">
-            <h5>{pendingUser}</h5>
-            <p>Pending</p>
-            <p>Registration </p>
-            <p>Approvals</p>
+            <h5 style = {{color : 'blue'}}>{pendingUser}</h5>
+            <p>Pending
+            Registration 
+            Approvals</p>
           </div>
         </div>
         <div className="DashCard">
@@ -110,9 +110,9 @@ const DashInfo = () => {
             <PersonIcon />
           </div>
           <div className="Dashtext">
-            <h5>{registeredUsers}</h5>
-            <p>Registered</p>
-            <p>Users</p>
+            <h5 style = {{color : 'blue'}}>{registeredUsers}</h5>
+            <p>Registered
+            Users</p>
           </div>
         </div>
       </div>
@@ -120,9 +120,9 @@ const DashInfo = () => {
         <div className="DashCard2">
           <div className="Dashtext2">
             <h3 >INSTITUTE GUEST HOUSE</h3>
-            <p>Total Capacity : 10</p>
-            <p>Available Rooms : {availableRooms[0]}</p>
-            <p>Booked Rooms</p>
+            <p>Total Capacity : 10 <br />
+            Available Rooms : {availableRooms[0]} <br />
+           Booked Rooms</p>
             <div className="Dashcircle">
               <h2>{bookedRooms[0]}</h2>
             </div>
@@ -131,9 +131,9 @@ const DashInfo = () => {
         <div className="DashCard2">
           <div className="Dashtext2">
             <h3>MEGA GUEST HOUSE</h3>
-            <p>Total Capacity : 12</p>
-            <p>Available Rooms : {availableRooms[1]}</p>
-            <p>Booked Rooms</p>
+            <p>Total Capacity : 12 <br/>
+           Available Rooms : {availableRooms[1]} <br/>
+            Booked Rooms</p>
             <div className="Dashcircle">
               <h2>{bookedRooms[1]}</h2>
             </div>
@@ -142,9 +142,9 @@ const DashInfo = () => {
         <div className="DashCard2">
           <div className="Dashtext2">
             <h3>SAC GUEST HOUSE</h3>
-            <p>Total Capacity : 8</p>
-            <p>Available Rooms : {availableRooms[2]}</p>
-            <p>Booked Rooms</p>
+            <p>Total Capacity : 8 <br/>
+           Available Rooms : {availableRooms[2]}<br/>
+            Booked Rooms</p>
             <div className="Dashcircle">
               <h2>{bookedRooms[2]}</h2>
             </div>

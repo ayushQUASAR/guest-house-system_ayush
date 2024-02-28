@@ -84,19 +84,18 @@ const PersonalDetail = () => {
                 <div className='row mx-4' style={{ borderBottom: '1px solid #ccc' }}>
                     <div className='col-6'> Govt approved proof attached</div>
                     <div className='col-6'>
-
-                        <button className="popup-button button-outline-dark" onClick={toggleDialog}>View</button>
-                        {dialog && (
+                        {/* <img src={user?.userDetails?.idProof?.data} alt="" /> */}
+                        <button className="popup-button button-outline-dark"><a style = {{color : 'white'}} target = "_blank" href={user?.userDetails?.idProof?.data}>View</a></button>
+                        {/* {dialog && (
                             <div className="dialog">
                                 <div className="dialog-content">
                                     <button className="close-icon" onClick={toggleDialog}>&#10005;</button>
                                     <div className = "popup" style ={{background : 'transparent'}} onClick={toggleDialog}>
-
                                     <img className="popup-image" src={user?.userDetails?.idProof?.data} alt="Popup Image" />
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        )} */}
                     </div>
                 </div>
             </div>

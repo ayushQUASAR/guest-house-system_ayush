@@ -125,7 +125,7 @@ function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
           }`}
           onClick={() => handleRoomClick(i)} style={{
           textAlign: 'center',
-          padding:'10px'}}
+          padding:'8px', fontSize : '20px'}}
         >{roomNo[i]} </div>
       );
     }

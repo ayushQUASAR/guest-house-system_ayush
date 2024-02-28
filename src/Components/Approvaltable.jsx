@@ -80,7 +80,7 @@ const Approvaltable = () => {
                       <td>-</td>
                     ) : (
                       <td>
-                        {user.user.idProof ? (
+                        {/* {user.user.idProof ? (
                           <div>
                             {user.user.idProof.endsWith(".pdf") ? (
                               <a href={user.user.idProof} target="_blank" rel="noreferrer">
@@ -108,8 +108,8 @@ const Approvaltable = () => {
                               </div>
                             )}
                           </div>
-                        ) : ""}
-
+                        ) : ""} */}
+                          <button className="popup-button button-outline-dark"><a style = {{color : 'white', border : 'None'}}target = "_blank" href={user.user?.idProof}>View</a></button>
                       </td>
                     )}
                     <td>{user.user?.refInfo}</td>

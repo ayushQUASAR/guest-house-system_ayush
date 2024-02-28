@@ -257,7 +257,7 @@ const UpcomingBooking = () => {
           <div className="popup-booking" onClick={() => setShowPaidPopup(false)}>
             <img className="sucessIcon-booking" src={sucessIcon} alt="Success Icon" />
 
-            <p className="popup-para-booking">Payment is already Paid..</p>
+            <p className="popup-para-booking">Payment is already done..</p>
             <button className="btn btn-primary btn-sm popupClose-booking" onClick={() => setShowPaidPopup(false)}>
               Close
             </button>

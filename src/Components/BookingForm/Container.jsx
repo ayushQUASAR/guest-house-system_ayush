@@ -114,7 +114,7 @@ const Container = ({ isAdmin, adminId }) => {
       toast.error("Please fill in all required fields before submitting.",toastStyle);
       return;
     }
-    console.log("blah blah");
+    // console.log("blah blah");
     console.log(userDetails);
 
     // console.log(userDetails);

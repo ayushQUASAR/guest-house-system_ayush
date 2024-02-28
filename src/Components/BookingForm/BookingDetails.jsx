@@ -174,8 +174,8 @@ const BookingDetails = ({ setDateDetails }) => {
 
     if (selectedRooms < 1) {
       toast.error("Minimum 1 room should be selected.", toastStyle);
-    } else if (!isAdm && selectedRooms > 3) {
-      toast.error("You can book maximum of 3 rooms only.", toastStyle);
+    } else if (!isAdm && selectedRooms > 2) {
+      toast.error("You can book maximum of 2 rooms only.", toastStyle);
     } else {
       // For admin, check if the selected rooms exceed the maximum rooms for the guesthouse
       if (isAdm) {

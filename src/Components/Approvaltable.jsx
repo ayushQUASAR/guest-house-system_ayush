@@ -119,7 +119,6 @@ const Approvaltable = () => {
                         ) : ""} */}
                           <button className="popup-button button-outline-dark" 
                           // onclick = {() => getImage(`${import.meta.env.VITE_API_URL}/images/${user.user?.idProof}`)}
-
                           >
                             <a target = "_blank" style = {{color : 'white'}} href={`${import.meta.env.VITE_API_URL}/images/${user.user?.idProof}`}>View</a>
                           </button>

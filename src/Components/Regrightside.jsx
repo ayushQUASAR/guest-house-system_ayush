@@ -221,7 +221,7 @@ export default function Regrightside() {
 
     if (message === 'success') {
       setMessagehead("Registered Successfully.");
-      setPara1("verification link has been sent to you on your email and you will be able to login after verification");
+      setPara1("A verification link has been sent to you on your email and you will be able to login after verification");
       setPara2("");
     }
     if (message === "accepted") {
@@ -236,7 +236,8 @@ export default function Regrightside() {
       setPara2("");
       setPopup(val);
     } else if (message === "pending") {
-      setMessagehead("Please Wait for Approval from the Institute");
+      if(registerOptn == 3)
+        setMessagehead("Please Wait for Approval from the Institute");
       setPopup(val);
     } else if (error) {
       setPopup(false);
@@ -383,7 +384,7 @@ export default function Regrightside() {
                     <div className="form-group regform-group-custom">
                       <label>Department:</label>
 
-                      <Dropdown names={['Computer Science and Engineering', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Technology', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics and Computing', 'Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
+                      <Dropdown names={['Computer Science and Engineering', 'Instrumentation and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Technology', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics and Computing', 'Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
                     </div>
 
 
@@ -528,7 +529,7 @@ export default function Regrightside() {
                     <div className="form-group regform-group-custom">
                       <label>Department:</label>
 
-                      <Dropdown names={['Computer Science and Engineering', 'Instrumental and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Technology', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics and Computing', 'Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
+                      <Dropdown names={['Computer Science and Engineering', 'Instrumentation and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Technology', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics and Computing', 'Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
                     </div>
 
                     <div className="form-group regform-group-custom">

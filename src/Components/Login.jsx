@@ -136,7 +136,7 @@ const Login = () => {
 
 
 
-                <div className="details">
+                <div className="details" style = {{marginTop : '0px'}}>
                   <form action="" onSubmit={setSubmit}>
 
                     <div className="email">

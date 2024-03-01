@@ -24,10 +24,10 @@ const BookingPopup = ({ isOpen, onClose, isAdmin }) => {
     <div className="popup-overlay-booking">
       <div className="popup-booking" onClick={(e) => e.stopPropagation()}>
         <img className="sucessIcon-booking" src={sucessIcon} alt="Success Icon" />
-        <h2 className="popup-heading-booking">Booking sent for Admin approval</h2>
+        <h2 className="popup-heading-booking">Booking sent for HOD approval</h2>
         {!isAdmin && (
           <>
-            <p className="popup-para-booking">Please wait for your Approval from Institute.</p>
+            <p className="popup-para-booking">Contact your HOD for approval. Post approval guest house admin will allocate a room on basis of availability.</p>
             <NavLink to="/UserDetails">
               <button className="btn btn-primary btn-sm popupClose-booking" onClick={onClose}>
                 Close

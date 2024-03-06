@@ -58,13 +58,13 @@ const ResetPassword = () => {
 
       <div>
         <form className="resetform1">
-          <label htmlFor="registeredemail">Enter Registered Email:&nbsp;&nbsp;</label>
+          <label htmlFor="registeredemail" className='registeredemail'>Enter Registered Email:&nbsp;&nbsp;</label>
           <br className="resetbreaker" />
           <input type="text" id="registeredemail" value={user[0]?.email} name="emailid" className="forgetinputbox" onChange={(e) => { setEmail(e.target.value) }} /><br></br>
-          <label htmlFor="newpassword">Enter New Password :</label>
+          <label htmlFor="newpassword" className='registeredemail'>Enter New Password :</label>
           <br className="resetbreaker" />
           <input type="password" id="newpass" name="newpass" className="resetinputbox" onChange={(e) => { setPass(e.target.value) }} /><br /><br />
-          <label htmlFor="cnfrmpassword">Confirm New Password:</label>
+          <label htmlFor="cnfrmpassword" className='registeredemail'>Confirm New Password:</label>
           <br className="resetbreaker" />
           <input type="password" id="cnfpass" name="confirmpass" className="resetinputbox1" onChange={(e) => { setConfirmPass(e.target.value) }} />
           <br />

@@ -4,6 +4,9 @@ import { format, set } from "date-fns"; // Import format from date-fns for date 
 import  "../style/BookedRoomsList.css";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+// import DatePicker from 'react-datepicker';
+// import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment'; 
 
 function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
   const [roomStatus, setRoomStatus] = useState([]);
@@ -66,7 +69,7 @@ function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
     fetchGuestHouseData(index);
   }, [index, selectedDate]);
 
- 
+ /*
   const handleRoomClick = async (roomIndex) => {
     if (!roomStatus[roomIndex]) {
       setSelectedRooms((prevSelectedRooms) => {
@@ -102,12 +105,16 @@ function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
         console.error("Error fetching booking details:", error.message);
       }
     }
-  };
+  };*/
 
-  const handleDateChange = (date) => {
+  // const [selectedDate, setSelectedDate] = React.useState(new Date());
+
+  const handleDateChange = date => {
     setSelectedDate(date);
-
   };
+
+  // Format the selected date to "ddmmyyyy"
+  const formattedDate = moment(selectedDate).format('DDMMYYYY');
 
   const roomBoxes = Array.from(
     { length: noOfRooms[selectedGuestHouse] },
@@ -137,14 +144,22 @@ function BookedRoomsList({ guestHouse = "INSTITUTE GUEST HOUSE" }) {
   return (
     <>
       <div className="roomsHeading">
-        SELECT ROOM (s)
+         ROOMS
         <div className="statusOfRooms">
           <span className="available">Available</span>
           <span className="booked">Booked</span>
-          <span className="selected">Selected</span>
+          {/* <span className="selected">Selected</span> */}
         </div>
       </div>
-      <DatePicker className="DATECSS" selected={selectedDate} onChange={handleDateChange} />
+      <h4 style={{margin:'10px'}}>Date</h4>
+      {/* <DatePicker className="DATECSS" selected={selectedDate} onChange={handleDateChange} /> */}
+      <DatePicker
+      className="DATECSS"
+      selected={selectedDate}
+      onChange={handleDateChange}
+      dateFormat="dd/MM/yyyy" // Set the display format
+      // value={formattedDate} // Pass the formatted date to the value prop
+    />
       <div className="guestHouseBoxes">{roomBoxes}</div>
   
       {bookingDetails && (

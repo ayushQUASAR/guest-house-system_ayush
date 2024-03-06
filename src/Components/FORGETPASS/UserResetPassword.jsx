@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import './ResetPassword.css';
 import { useUserContext } from "../ContextHooks/UserContext";
+import { useNavigate } from "react-router-dom";
 
 
 const UserResetPassword = () => {
+  const [refresh, setRefresh] = useState(false);
+  const navigate = useNavigate();
   const [pass, setPass] = useState("");
   const [oldpass, setOldpass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
@@ -27,7 +30,7 @@ const UserResetPassword = () => {
       .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
       });
-  }, [userId]);
+  }, [userId,refresh]);
 
   useEffect(() => {
 
@@ -45,7 +48,6 @@ const UserResetPassword = () => {
     fetch(`${import.meta.env.VITE_API_URL}/login/update-password`, {
       method: "POST",
       mode: "cors",
-      
       body: JSON.stringify({
         email,
         password: pass,
@@ -54,24 +56,32 @@ const UserResetPassword = () => {
       headers: {
         "Content-Type": "application/json"
       }
-
     })
-      .then((res) => res.json())
-      .then((data) => window.alert(data.message))
-      .catch((err) => console.log(err.message));
+    .then((res) => res.json())
+    .then((data) => {
+     
+
+      
+        navigate("/login"); // -1 means go back one step in history
+      
+      window.alert(data.message);
+      // Check if the password change was successful
+     
+    })
+    .catch((err) => console.log(err.message));
   }
+  
 
   return (
     <div className="resetmain1">
+
       <div className="resethead1">Reset Password</div>
 
       <div>
         <form className="resetform1">
           <label htmlFor="registeredemail">Enter Registered Email:</label>
-          {/* <br className="resetbreaker" /> */}
           &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="registeredemail" name="emailid" className="" onChange={(e) => { setEmail(e.target.value) }} value={email} disabled /><br /><br />
           <label htmlFor="oldpassword">Enter Old Password :</label>
-          {/* <br className="resetbreaker" /> */}
           &nbsp;<input type="password" id="oldpass" name="oldpass" className="resetinputbox" onChange={(e) => { setOldpass(e.target.value) }} /><br /><br />
 
           <label htmlFor="newpassword">Enter New Password :</label>

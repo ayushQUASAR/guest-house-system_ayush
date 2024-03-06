@@ -109,7 +109,7 @@ const UpcomingBooking = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Room(s)</th>
+                <th>Alloted Room(s)</th>
                 <th>Guest House</th>
                 <th>Booking Date</th>
                 <th>Check-In</th>

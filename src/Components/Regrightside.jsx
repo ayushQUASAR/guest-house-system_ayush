@@ -375,8 +375,28 @@ export default function Regrightside() {
 
                     <div className="form-group regform-group-custom">
                       <label>Department:</label>
-
-                      <Dropdown names={['Computer Science and Engineering', 'Instrumentation and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Technology', 'Chemical Engineering', 'Physics', 'Chemistry', 'Mathematics and Computing', 'Humanities and Management']} placeholder={'Department'} Branch={department} setBranch={setDepartment} />
+                      <Dropdown
+  names={[
+    'Biotechnology',
+    'Chemical Engineering',
+    'Chemistry',
+    'Civil Engineering',
+    'Computer Science and Engineering',
+    'Electrical Engineering',
+    'Electronics and Communication Engineering',
+    'Humanities and Management',
+    'Industrial and Production Engineering',
+    'Information Technology',
+    'Instrumentation and Control Engineering',
+    'Mathematics',
+    'Mechanical Engineering',
+    'Physics',
+    'Textile Engineering',
+  ]}
+  placeholder={'Branch'}
+  Branch={department}
+  setBranch={setDepartment}
+/>
                     </div>
 
 

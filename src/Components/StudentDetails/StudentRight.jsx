@@ -27,7 +27,7 @@ export default function StudentRight({ prop }) {
       {/* <form onSubmit={handleSubmit}> */}
       {/* <div className="row input" > */}
       <div className="form-group regform-group-custom" >
-        <label>First-Name:</label>
+        <label>First Name:</label>
         <input
           type="text"
           className="form-control mb-3"
@@ -37,7 +37,7 @@ export default function StudentRight({ prop }) {
         />
       </div>
       <div className="form-group regform-group-custom">
-        <label>Last-Name:</label>
+        <label>Last Name:</label>
         <input
           type="text"
           className="form-control mb-3"
@@ -65,7 +65,7 @@ export default function StudentRight({ prop }) {
       </div> */}
       {/* <div className="row input"> */}
       <div className="form-group regform-group-custom">
-        <label>Roll-Number:</label>
+        <label>Roll Number:</label>
         <input
           type="text"
           className="form-control"

@@ -9,7 +9,9 @@ import Student from "./StudentDetails/StudentRight";
 import Dropdown from "./Dropdown/Dropdown";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css" 
 import { Icon } from '@iconify/react';
-
+import teacher_img from '../images/reference-formimgs/teacher.png'
+import stud_img from '../images/reference-formimgs/student.png'
+import alumni_img from '../images/reference-formimgs/alumni.png'
 import Popup from "./PopUp/Popup";
 import usePasswordToggle from "./Passwordvisible/usePasswordToggle";
 
@@ -43,7 +45,7 @@ export default function Regrightside() {
 
   // Alumni
   const [batch, setBatch] = useState("");
-  const [registerOptn, setRegisteroptn] = useState(null);
+  const [registerOptn, setRegisteroptn] = useState(1);
   const [registeractiveclass, setRegisterclass] = useState(false);
 
   const [jobProfile, setJobProfile] = useState("");
@@ -262,37 +264,27 @@ export default function Regrightside() {
             </div> */}
               <div className="registration-optn" style={{ left: `${registerrightval}px`, height: '500px' }}>
                 <div style={{ display: 'flex' }} >
-                  {/* <div
-                onClick={() => {
-                  setRegisteroptn(1), setRegisterclass(true);
-                }}
-                className={`college-official-optn ${registeractiveclass && registerOptn == 1
-                    ? "registerclass"
-                    : ""
-                  }`}
-              >
-                Student/Faculty
-              </div> */}
+                
 
                   <div tabIndex="0" onClick={() => {
-                    setRegisteroptn(1), setRegisterclass(true);
+                    setRegisteroptn(1), setRegisterclass(true),onView(),regOnview();
                   }} className="college-official-optn" >
                     <Icon icon="fluent-emoji-high-contrast:teacher" width={'80'} height={'80'} color="#007bff" /> <p>Faculty</p>
                   </div>     <div tabIndex="0" onClick={() => {
-                    setRegisteroptn(2), setRegisterclass(true);
+                    setRegisteroptn(2), setRegisterclass(true),onView(),regOnview();
                   }} className="college-official-optn" >
                     <Icon icon="ph:student-bold" width={'80'} height={'80'} color="#007bff" /> <p>Student</p>
                   </div>
 
                   <div tabIndex="0" onClick={() => {
-                    setRegisteroptn(3), setRegisterclass(true);
+                    setRegisteroptn(3), setRegisterclass(true),onView(), regOnview();
                   }} className="college-official-optn">
                     <Icon icon="iconamoon:profile" width={'80'} height={'80'} color="#007bff" />  <p>Others</p>
                   </div>
 
-                  {registerOptn && <div onClick={() => { onView(), regOnview() }} className="form-next-btn" >
+                  {/* {registerOptn && <div onClick={() => { onView(), regOnview() }} className="form-next-btn" >
                     <Icon width="30" icon="material-symbols:arrow-forward-ios-rounded" color="blue" />
-                  </div>}
+                  </div>} */}
                   {/*                     
               <div
                 onClick={() => {
@@ -357,7 +349,7 @@ export default function Regrightside() {
 
 
                     <div className="form-group regform-group-custom">
-                      <label>Firstname:</label>
+                      <label>First Name:</label>
                       <input
                         required
                         type="text"
@@ -369,7 +361,7 @@ export default function Regrightside() {
 
 
                     <div className="form-group regform-group-custom">
-                      <label>Lastname:</label>
+                      <label>Last Name:</label>
                       <input
                         required
                         type="text"
@@ -492,7 +484,7 @@ export default function Regrightside() {
                     </div>
 
                     <div className="form-group regform-group-custom">
-                      <label>Firstname:</label>
+                      <label>First Name:</label>
                       <input
                         required
                         type="text"
@@ -502,7 +494,7 @@ export default function Regrightside() {
                       />
                     </div>{" "}
                     <div className="form-group regform-group-custom">
-                      <label>Lastname:</label>
+                      <label>Last Name:</label>
                       <input
                         required
                         type="text"
@@ -591,7 +583,7 @@ export default function Regrightside() {
 
 
                     <div className="form-group regform-group-custom">
-                      <label>Firstname:</label>
+                      <label>First Name:</label>
                       <input
                         required
                         type="text"
@@ -603,7 +595,7 @@ export default function Regrightside() {
                     </div>
 
                     <div className="form-group regform-group-custom">
-                      <label>Lastname:</label>
+                      <label>Last Name:</label>
                       <input
                         required
                         type="text"
@@ -735,11 +727,13 @@ export default function Regrightside() {
                               } `}
                           >
                             <img
-                              src="student-icon.png"
+                              src={stud_img}
                               alt="Icon"
-                              style={{ marginRight: "10px" }}
+                              className="reference-img"
+                              
                             />
-                            Student
+                            <p className="reference-tag"> Student</p>
+                           
                           </button>
                         </label>
                       </div>
@@ -755,11 +749,12 @@ export default function Regrightside() {
                               } `}
                           >
                             <img
-                              src="faculty-icon.png"
+                              src={teacher_img}
                               alt="Icon"
-                              style={{ marginRight: "10px" }}
+                              className="reference-img"
+                            
                             />
-                            Faculty
+                            <p className="reference-tag">Faculty</p>
                           </button>
                         </label>
                       </div>
@@ -779,11 +774,12 @@ export default function Regrightside() {
                               } `}
                           >
                             <img
-                              src="alumni-icon.png"
+                              src={alumni_img}
+                              className="reference-img"
                               alt="Icon"
-                              style={{ marginRight: "10px" }}
+                             
                             />
-                            Alumni
+                            <p className="reference-tag">Alumni</p>
                           </button>
                         </label>
                       </div>

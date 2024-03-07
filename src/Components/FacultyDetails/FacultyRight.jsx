@@ -47,7 +47,7 @@ export default function FacultyRight({ prop }) {
       </div>
       {/* <div className="row input"> */}
       <div className="form-group regform-group-custom">
-        <label>First-Name:</label>
+        <label>First Name:</label>
         <input
           type="text"
           className="form-control mb-3"
@@ -57,7 +57,7 @@ export default function FacultyRight({ prop }) {
         />
       </div>
       <div className="form-group regform-group-custom">
-        <label>Last-Name:</label>
+        <label>Last Name:</label>
         <input
           type="text"
           className="form-control mb-3"
@@ -69,7 +69,7 @@ export default function FacultyRight({ prop }) {
       {/* </div> */}
       {/* <div className="row input"> */}
       <div className="form-group regform-group-custom">
-        <label>Faculty-Email:</label>
+        <label>Faculty Email:</label>
         <input
           type="email"
           className="form-control"

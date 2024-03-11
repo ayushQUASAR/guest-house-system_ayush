@@ -3,7 +3,7 @@ import "./DashInfo.css";
 import HomeIcon from "@mui/icons-material/Home";
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import PersonIcon from "@mui/icons-material/Person";
-
+import {Link} from "react-router-dom";
 const DashInfo = () => {
   const [pendingUser, setPendingUser] = useState(0);
   const [pendingBooking, setPendingBooking] = useState(0);
@@ -89,9 +89,9 @@ const DashInfo = () => {
           </div>
           <div className="Dashtext">
             <h5 style = {{color : 'blue'}}>{pendingBooking}</h5>
-            <p>Pending
+           <Link to="/bookingapproval"><p>Pending
             Booking 
-            Approvals</p>
+            Approvals</p></Link> 
           </div>
         </div>
         <div className="DashCard">
@@ -100,9 +100,9 @@ const DashInfo = () => {
           </div>
           <div className="Dashtext">
             <h5 style = {{color : 'blue'}}>{pendingUser}</h5>
-            <p>Pending
+           <Link to="/registrationapproval"><p>Pending
             Registration 
-            Approvals</p>
+            Approvals</p></Link> 
           </div>
         </div>
         <div className="DashCard">
@@ -111,8 +111,8 @@ const DashInfo = () => {
           </div>
           <div className="Dashtext">
             <h5 style = {{color : 'blue'}}>{registeredUsers}</h5>
-            <p>Registered
-            Users</p>
+          <Link to="/registeredusers"> <p>Registered
+            Users</p></Link> 
           </div>
         </div>
       </div>

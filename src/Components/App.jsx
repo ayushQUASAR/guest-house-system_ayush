@@ -23,6 +23,9 @@ import TestGate from "./Receipt/TestGate";
 import UpcomingBookingTable from './AdminReports/UpcomingBookingTable';
 import PastBooking from "./AdminReports/PastBookings";
 import BookingCancellationReport from "./AdminReports/BookingCancellationReport";
+import BookingApproval from "../Components/BookingApproval/ApproveBooking";
+import RegistrationApproval from "../Components/Approve";
+import RegisteredUsers from "../Components/RegisteredUsers";
 
 import SideBar from "./SideBar";
 function App() {
@@ -52,6 +55,10 @@ function App() {
                 <Route path="/Faculty" element={<Faculty />} />
                 <Route path="/Student" element={<Student />} />
                 <Route path="/Alumni" element={<Alumni />} />
+                <Route path="/bookingapproval" element={<BookingApproval />} />
+                <Route path="/registrationapproval" element={<RegistrationApproval />} />
+                <Route path="/registeredusers" element={<RegisteredUsers />} />
+
                 <Route
                   path="/Dashboard"
                   

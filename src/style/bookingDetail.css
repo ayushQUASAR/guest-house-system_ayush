@@ -35,3 +35,32 @@
 .popupClose-booking{
   margin-top: 5px;
 }
+
+.filter-box{
+  display : flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #0275d8;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px; 
+  margin: 20px 0px; 
+}
+.inputs {
+  font-size: 18px;
+  margin-left : 10px;
+  font-weight: 400 !important;
+  text-align: center !important;
+}
+.labels{
+  margin : 10px;
+}
+.inputs option{
+  font-weight: 300;
+}
+.table-data{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

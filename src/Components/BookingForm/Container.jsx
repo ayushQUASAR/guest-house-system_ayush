@@ -31,7 +31,7 @@ const Container = ({ isAdmin, adminId }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [dateDetails, setDateDetails] = useState(null);
   const [isFormValid, setFormValid] = useState(false); // Form validation state
-
+  const [isStudent, setIsStudent] = useState(false);
   const navigate = useNavigate();
 
   const openPopup = () => {
@@ -59,6 +59,7 @@ const Container = ({ isAdmin, adminId }) => {
       fetch(`${URL}`)
         .then((res) => res.json())
         .then((data) => {
+          console.log("The data is : ")
           console.log(data);
           if (isAdmin) {
             setAdminDetails({
@@ -75,7 +76,8 @@ const Container = ({ isAdmin, adminId }) => {
                 isStudent: details.registerOption === 2,
                 PersonDept: JSON.parse(details.isNitUser) ? details.nitUserDept : ""
               }
-            }
+            } 
+            setIsStudent((data.userDetails.registerOption === 2)? true : false); 
 
             setUserDetails({
               ...formData,
@@ -87,6 +89,7 @@ const Container = ({ isAdmin, adminId }) => {
               PersonPhone: data.userDetails.phone,
               PersonAddress: data.userDetails.address,
             })
+            console.log(userDetails);
           }
         })
         .catch((err) => console.log(err.message));
@@ -104,7 +107,7 @@ const Container = ({ isAdmin, adminId }) => {
 
 
   console.log("body details: ", userDetails);
-  console.log("admin details: ", adminDetails)
+  console.log("admin details: ", adminDetails);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -178,7 +181,7 @@ const Container = ({ isAdmin, adminId }) => {
         </div>
       </div>
 
-      <BookingPopup isAdmin={isAdmin} isOpen={isPopupOpen} onClose={closePopup} />
+      <BookingPopup isAdmin={isAdmin} isOpen={isPopupOpen} onClose={closePopup} isStudent = {isStudent} />
     </>
   );
 };

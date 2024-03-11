@@ -169,7 +169,7 @@ function Login() {
         <div className="description">
           <h1 id="Welcome">
             <br />
-            Welcome to <br />Dr. B R Ambedkar <br /> National Institute of Technology Jalandhar <br />Guest Room Booking System
+            Welcome to <br />Dr B R Ambedkar <br /> National Institute of Technology Jalandhar <br />Guest Room Booking System
           </h1>
         </div>
 

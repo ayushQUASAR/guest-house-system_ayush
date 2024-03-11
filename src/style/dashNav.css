@@ -10,10 +10,14 @@
     font-weight: 700;
 } 
 .colg-name{
+    display: flex;
+    justify-content: left;
+    align-items: left;
     z-index: 10001;
     position: absolute;
     left: 200px;
     font-size: 2rem; 
+    width: 600px;
 }
 .menu-icon {
     display: none;
@@ -49,7 +53,7 @@
   }
 
   
-  @media (max-width: 1350px) {
+  @media (max-width: 1480px) {
     .menu-icon {
       display: block;
       cursor: pointer;
@@ -160,6 +164,7 @@
     .colg-name{
         font-size: 1.5rem;
         left: 175px;
+        width:fit-content;
     }
     .optn-name{
         font-size: 1rem;
@@ -172,6 +177,7 @@
         font-size: 1.1rem;
         left: 120px; 
         bottom : 30px;
+        width:fit-content;
     }
     .h-navlogo{
         height: 60px;
@@ -194,6 +200,7 @@
         left: 80px; 
         bottom : 20px;
         text-align: center;
+        width:fit-content;
     }
     .h-navlogo{
         height: 60px;

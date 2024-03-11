@@ -16,10 +16,13 @@ const CustomPrompt = ({ isOpen, onClose, onSubmit }) => {
       onClose();
     }
   };
-
+  const handleClose = () => {
+    onClose();
+  }
   return (
     <div className={`custom-prompt ${isOpen ? 'open' : 'closed'}`}>
       <div className="prompt-content">
+      <button className="RejectPromptBtn"onClick={handleClose}>Close</button>
         <div className="RejectPromptHeader">
             <h3>Reason for rejection:</h3>
             </div>

@@ -14,20 +14,12 @@ export default function RegisteredUsers() {
   const [filter, setFilter] = useState(false);
   const navigate = useNavigate();
   const [search, setSearch] = useState(""); 
-  const usersPerPage = 6; // Number of users to display per page
+  const usersPerPage = 6;
   const [filteredUsers, setFilteredUsers] = useState([]);
-  // const [newUser, setNewUser] = useState({
-  //   name: "",
-  //   contactNumber: "",
-  //   email: "",
-  // });
   const [view, setProfileview] = useState(null);
   const [isConfirmationPopupOpen, setConfirmationPopup] = useState(false);
-  // const viewUserProfile = (user) => {
-  //   setProfileview(user);
-  // };
   const viewUserProfile = (user) => {
-    // setProfileview(user);
+
     window.open(`/profile/${user._id}`, '_blank');
   };
   useEffect(() => {

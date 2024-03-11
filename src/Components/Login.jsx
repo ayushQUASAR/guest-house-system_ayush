@@ -86,19 +86,15 @@ const Login = () => {
         updateUserId(data.id);
         console.log(data);
         if (data.id !== undefined) {
-
+          
           setIsLogged(true);
           console.log("islog ID NULL", isLogged)
-
 
         }
         if (data.isAdmin) {
           setIsAdmin(true);
           setIsAdm(true);
-          sessionStorage.setItem('email',`${Email}`);
           console.log("islog ADMIN", isLogged)
-
-
         }
 
         if (data.isMainAdmin) {
@@ -106,7 +102,7 @@ const Login = () => {
 
           console.log("islog MAINADMIN", isLogged)
         }
-
+         
         window.alert(data.message);
         console.log("islog", isLogged)
       }

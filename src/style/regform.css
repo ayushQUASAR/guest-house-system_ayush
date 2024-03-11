@@ -63,6 +63,11 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
   /* bottom: 0; */
   justify-content: center;
 }
+.reference-img{
+  width: 30px;
+  margin-top: 10px ;
+  
+}
 .college-official-optn {
   width: 130px;
   height: 130px;
@@ -119,6 +124,7 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
   padding: 10px;
   border-radius: 5px;
   margin: 5px;
+  transition: all 1s;
 }
 
 .btnClicked {
@@ -126,9 +132,10 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
   color: white;
   border: none;
   cursor: pointer;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 5px;
+  padding: 2px 20px;
+  border-radius: 15px;
+  transition: all 0.5s;
+  margin: 5px 20px;
 }
 
 .reg-rightside {
@@ -139,24 +146,19 @@ box-shadow: 2px 3px 10px rgb(171, 171, 171),-3px -3px 10px rgb(190, 190, 190);
 }
 
 .btnDefault {
-  background-color: #007bff;
+  background-color: #466a9f;
   color: white;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  padding: 2px 20px;
   border-radius: 5px;
-  margin: 5px;
+  margin: 5px 20px;
+}
+.reference-tag
+{
+  padding: 2px;
 }
 
-.btnClicked {
-  background-color: #ff0000; /* Red background color when clicked */
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 5px;
-}
 
 .Parent {
   padding: 20px;

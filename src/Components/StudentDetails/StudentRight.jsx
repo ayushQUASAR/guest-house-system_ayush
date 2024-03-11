@@ -27,7 +27,7 @@ export default function StudentRight({ prop }) {
       {/* <form onSubmit={handleSubmit}> */}
       {/* <div className="row input" > */}
       <div className="form-group regform-group-custom" >
-        <label>First-Name:</label>
+        <label>First Name:</label>
         <input
           type="text"
           className="form-control mb-3"
@@ -37,7 +37,7 @@ export default function StudentRight({ prop }) {
         />
       </div>
       <div className="form-group regform-group-custom">
-        <label>Last-Name:</label>
+        <label>Last Name:</label>
         <input
           type="text"
           className="form-control mb-3"
@@ -65,7 +65,7 @@ export default function StudentRight({ prop }) {
       </div> */}
       {/* <div className="row input"> */}
       <div className="form-group regform-group-custom">
-        <label>Roll-Number:</label>
+        <label>Roll Number:</label>
         <input
           type="text"
           className="form-control"
@@ -85,7 +85,28 @@ export default function StudentRight({ prop }) {
               onChange={(e) => handleInputChange(e, setSbranch)}
             /> */}
         <label>Branch:</label>
-        <Dropdown names={['Computer Science and Engineering', 'Instrumentation and Control Engineering', 'Electrical Engineering', 'Industrial and Production Engineering', 'Textile Technology', 'Mechanical Engineering', 'Biotechonology', 'Electronics and Communication Engineering', 'Civil Engineering', 'Information Engineering','Chemical Engineering','Physics','Chemistry','Mathematics','Humanities and Management']} placeholder={'Branch'} Branch={department} setBranch={setDepartment} />
+        <Dropdown
+  names={[
+    'Biotechnology',
+    'Chemical Engineering',
+    'Chemistry',
+    'Civil Engineering',
+    'Computer Science and Engineering',
+    'Electrical Engineering',
+    'Electronics and Communication Engineering',
+    'Humanities and Management',
+    'Industrial and Production Engineering',
+    'Information Technology',
+    'Instrumentation and Control Engineering',
+    'Mathematics',
+    'Mechanical Engineering',
+    'Physics',
+    'Textile Engineering',
+  ]}
+  placeholder={'Branch'}
+  Branch={department}
+  setBranch={setDepartment}
+/>
       </div>
       {/* </div> */}
       <button type="submit" className="btn btn-primary ">

@@ -132,7 +132,7 @@ const Login = () => {
 
 
 
-                <div className="details" style = {{marginTop : '0px'}}>
+                <div className="details" >
                   <form action="" onSubmit={setSubmit}>
 
                     <div className="email">

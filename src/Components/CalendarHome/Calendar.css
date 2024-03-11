@@ -61,6 +61,7 @@ th {
   flex-direction: column;
   justify-content: space-evenly;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -96,20 +97,52 @@ th {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  
+
 }
 
 .acCount {
-  color: #f38a12;
-  background-color: #f38a1220;
-  border: 1px solid #f38a12;
+
+  /* Updated styles based on className changes */
+  &.red {
+    color: #ff0000;
+    background-color: #ff000020;
+    border: 1px solid #ff0000;
+  }
+
+  &.green {
+    color: #008000;
+    background-color: #00800020;
+    border: 1px solid #008000;
+  }
+
+  &.amber {
+    color: #ffa500;
+    background-color: #ffa50020;
+    border: 1px solid #ffa500;
+  }
+
   text-align: center;
   border-radius: 10px;
   font-size: medium;
 }
 
+.book-now-calendar {
+  color: white;
+  text-align: right;
+  display: inline-block; /* Change display to inline-block */
+  font-size: larger;
+  padding: 5px 10px; /* Add padding to create space around the text */
+  background-color:#0072cfe4;
+  border-radius: 4px;
+}
+
+.navlink-booknow-calendar {
+  display: block;
+  text-decoration: none; /* Remove default underline from Link */
+}
+
 td {
-  
+
   height: 40px;
   padding: 2px;
 }
@@ -137,9 +170,11 @@ td:hover {
     flex-direction: row;
     align-items: center;
   }
+
   .hiddenTxt {
     display: none;
   }
+
   .buttonControlMonth {
     margin: 2px;
     font-size: 10px;
@@ -175,7 +210,8 @@ td:hover {
   }
 }
 
-.acCount, .nonCount {
+.acCount,
+.nonCount {
   cursor: pointer;
 }
 
@@ -184,19 +220,23 @@ td:hover {
   font-size: large;
 }
 
-.nonCount, .acCount {
-    margin: 3px;
+.nonCount,
+.acCount {
+  margin: 3px;
 }
+
 td {
   border: 1px solid #ccc;
   height: 40px;
   padding: 2px;
 }
- .calendar-cell {
+
+.calendar-cell {
   width: 1000px;
   height: 100px;
   border: 1px solid #ccc;
- }
- .calendar-cell:hover {
+}
+
+.calendar-cell:hover {
   background-color: rgba(172, 172, 172, 0.184);
 }

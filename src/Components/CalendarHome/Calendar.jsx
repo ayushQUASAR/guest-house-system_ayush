@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Calendar.css";
 import RoomDetailsModalAC from "./Modal";
 import "./ModalAC.css";
@@ -18,7 +20,7 @@ const Calendar = () => {
   useEffect(() => {
     const fetchRoomDetails = async () => {
       try {
-        const response = await fetch("https://guest-house-backend.onrender.com/calendar");
+        const response = await fetch("http://localhost:3000/calendar");
         const data = await response.json();
 
         const filteredData = data.filter((detail) => {
@@ -136,8 +138,9 @@ const Calendar = () => {
               );
             }
 
-            const formattedDate = `${currentYear}-${currentMonth < 10 ? "0" : ""
-              }${currentMonth}-${day < 10 ? "0" : ""}${day}T00:00:00.000Z`;
+            const formattedDate = `${currentYear}-${
+              currentMonth < 10 ? "0" : ""
+            }${currentMonth}-${day < 10 ? "0" : ""}${day}T00:00:00.000Z`;
 
             console.log(formattedDate);
 
@@ -173,31 +176,30 @@ const Calendar = () => {
               <td
                 key={index}
                 id={formattedDate}
-                className={`calendar-cell ${day === currentDay && isCurrentMonth() ? "current-day" : ""
-                  } ${isBooked && day < currentDay && isCurrentMonth()
+                className={`calendar-cell ${
+                  day === currentDay && isCurrentMonth() ? "current-day" : ""
+                } ${
+                  isBooked && day < currentDay && isCurrentMonth()
                     ? "calendar-cell-booked"
                     : ""
-                  }`}
+                }`}
               >
                 <div className="div-td">
                   {day !== null && (
                     <>
                       <h3 className="curdate-calendar">{day}</h3>
                       <span
-                        className="acCount"
+                        className={`acCount ${
+                          totalCount < 10
+                            ? "red"
+                            : totalCount > 20
+                            ? "green"
+                            : "amber"
+                        }`}
                         onClick={() => handleACClick(day, acCount)}
                       >
-                        <span className="hiddenTxt"> Available :</span>{" "}
-                        {totalCount}
+                        Available: {totalCount}
                       </span>
-                      {/* <span
-                        className="nonCount"
-                        onClick={() =>
-                          handlenonACClick(day, nonAcCCCCount1, nonAcCCCCount2)
-                        }
-                      >
-                        Standard : {nonAcCount}
-                      </span> */}
                     </>
                   )}
                 </div>
@@ -212,53 +214,60 @@ const Calendar = () => {
   };
 
   return (
-    <div id="calendar-root">
-      <div className="header">
-        <div
-          className={`btn ${isCurrentMonth() ? "disabled" : ""}`}
-          onClick={() => prevMonth()}
-        >
-          Previous Month
+    <div>
+      <Link className="navlink-booknow-calendar" to="/login">
+        <div>
+          <div className="book-now-calendar">Book Now</div>
         </div>
-        <h2 className="month-year">
-          {displayedMonth.toLocaleString("default", {
-            month: "long",
-            year: "numeric",
-          })}
-        </h2>
-        <div
-          className={`btn ${!isWithinAllowedRange() ? "disabled" : ""}`}
-          onClick={() => nextMonth()}
-        >
-          Next Month
+      </Link>
+      <div id="calendar-root">
+        <div className="header">
+          <div
+            className={`btn ${isCurrentMonth() ? "disabled" : ""}`}
+            onClick={() => prevMonth()}
+          >
+            Previous Month
+          </div>
+          <h2 className="month-year">
+            {displayedMonth.toLocaleString("default", {
+              month: "long",
+              year: "numeric",
+            })}
+          </h2>
+          <div
+            className={`btn ${!isWithinAllowedRange() ? "disabled" : ""}`}
+            onClick={() => nextMonth()}
+          >
+            Next Month
+          </div>
         </div>
-      </div>
-      <table className="calendar-table">
-        <thead>
-          <tr>
-            {daysOfWeek.map((day) => (
-              <th key={day} className="day-of-week">
-                {day}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>{renderCalendarRows()}</tbody>
-      </table>
 
-      <RoomDetailsModalAC
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        acCount={modalACCount}
-        nonAcCount1={modalnonACCount1}
-        nonAcCount2={modalnonACCount2}
-      />
-      {/* <RoomDetailsNonAc
-        isOpen={isModalOpenNonAc}
-        onClose={() => setIsModalOpenNonAc(false)}
-        nonAcCount1={modalnonACCount1}
-        nonAcCount2={modalnonACCount2}
-      /> */}
+        <table className="calendar-table">
+          <thead>
+            <tr>
+              {daysOfWeek.map((day) => (
+                <th key={day} className="day-of-week">
+                  {day}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>{renderCalendarRows()}</tbody>
+        </table>
+        <RoomDetailsModalAC
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          acCount={modalACCount}
+          nonAcCount1={modalnonACCount1}
+          nonAcCount2={modalnonACCount2}
+        />
+        {/* <RoomDetailsNonAc
+          isOpen={isModalOpenNonAc}
+          onClose={() => setIsModalOpenNonAc(false)}
+          nonAcCount1={modalnonACCount1}
+          nonAcCount2={modalnonACCount2}
+        /> */}
+      </div>
     </div>
   );
 };

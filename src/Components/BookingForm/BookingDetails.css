@@ -19,14 +19,14 @@
 }
 
 .inputs {
-  font-size: 18px;
+  font-size: 15px;
   margin: auto;
   font-weight: 400 !important;
   text-align: center !important;
 }
 .inputs option{
-  font-weight: 300;
- 
+  /* width: 1000px; */
+  /* font-weight: 300; */
 }
 
 .changeSelection {
@@ -49,6 +49,7 @@
 .back-button:hover {
   background-color: rgb(45, 44, 44);
 }
+
 
 
 /* Responsive Styles */
@@ -100,10 +101,12 @@
     margin-left: 15px;
     /* padding: 0; */
   }
+
   .selectguesthouse{
     width: 220px;
     margin-left: 0;
   }
+
   .inputs{
     width: 180px;
     /* font-size: 10px; */

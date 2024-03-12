@@ -87,41 +87,7 @@ const Approvaltable = () => {
                     {user.user?.isAdmin ? (
                       <td>-</td>
                     ) : (
-                      <td>
-                        {/* {user.user.idProof ? (
-                          <div>
-                            {user.user.idProof.endsWith(".pdf") ? (
-                              <a href={user.user.idProof} target="_blank" rel="noreferrer">
-                                View PDF
-                              </a>
-                            ) : (
-                              <div>
-                                <button className="popup-button" onClick={toggleDialog}>
-                                  View Image
-                                </button>
-                                {dialog && (
-                                  <div className="dialog">
-                                    <div className="dialog-content">
-                                      <button className="close-icon" onClick={toggleDialog}>
-                                        &#10005;
-                                      </button>
-                                      <img
-                                        className="popup-image"
-                                        src={user.user.idProof}
-                                        alt="Popup Image"
-                                      />
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            )}
-                          </div>
-                        ) : ""} */}
-                          {/* <button className="popup-button button-outline-dark" > */}
-                          
-                            <GovtID url = {`${import.meta.env.VITE_API_URL}/images/${user.user?.idProof}`}/>
-                            {/* <a target = "_blank" style = {{color : 'white'}} href={}>View</a> */}
-                          {/* </button> */}
+                      <td>                            <GovtID url = {`${import.meta.env.VITE_API_URL}/images/${user.user?.idProof}`}/>        
                       </td>
                     )}
                     <td>{user.user?.refInfo}</td>

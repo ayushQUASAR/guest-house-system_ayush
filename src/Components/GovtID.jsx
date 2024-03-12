@@ -11,8 +11,7 @@ const GovtID = ({url}) =>{
           .then((err) => console.log(err));
       }, []);
     return (
-        <>
-        {/* { console.log(imageData?.image?.data) */}
+        <> 
          {imageData &&
              (<button style = {{backgroundColor : '#007BFF', color : 'white', border : 'none'  }} ><a style = {{color : 'white'}} target = '_blank' href={imageData?.image?.data}>View</a></button>)
         } 

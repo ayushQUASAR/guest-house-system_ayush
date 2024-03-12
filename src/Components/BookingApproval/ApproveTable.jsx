@@ -120,6 +120,7 @@ const Approvaltable = ({ onSecondPage }) => {
             <table className="book-approval-table">
               <thead>
                 <tr>
+                <th>Approval</th>
                   <th>S.No</th>
                   <th>Name</th>
                   <th>Guest House</th>
@@ -130,32 +131,15 @@ const Approvaltable = ({ onSecondPage }) => {
                   <th>End Date</th>
                   <th>Reason of Booking</th>
                   <th>Govt/College ID</th>
-                  <th>Approval</th>
+                  
                 </tr>
               </thead>
               <tbody>
                 {pendingBooking &&
                   pendingBooking.length > 0 &&
                   pendingBooking.map((user, index) => (
-                    <tr key={user._id}>
-                      <td>{index + 1}</td>
-                      <td>{user.name}</td>
-                      <td>{guestHouse[user.guestHouseSelected - 1]}</td>
-                      <td>{user.roomsSelected}</td>
-                      <td>{user.email}</td>
-                      <td>{user.phone}</td>
-                      <td>{new Date(user.startDate).toLocaleDateString()}</td>
-                      <td>{new Date(user.endDate).toLocaleDateString()}</td>
-                      <td>{user.purpose}</td>
-                      {user.roomBooker.isAdmin ? (
-                        <td>-</td>
-                      ) : (
-                        <td>
-                          <button style = {{height:'35px'}}className="popup-button button-outline-dark"><a style = {{color : 'white'}} target = "_blank" href={user.roomBooker?.idProof}>View</a></button>
-                          
-                        </td>
-                      )}
-                      <td>
+                    <tr key={user._id} >
+                       <td style={{borderRight:"1px solid #ffff"}}>
                         <button
                           type="button"
                           className="btn btn-success btn-sm mr-3"
@@ -174,6 +158,24 @@ const Approvaltable = ({ onSecondPage }) => {
                           Reject
                         </button>
                       </td>
+                      <td style={{borderRight:"1px solid #ffff"}}>{index + 1}</td>
+                      <td style={{borderRight:"1px solid #ffff"}}>{user.name}</td>
+                      <td style={{borderRight:"1px solid #ffff"}}>{guestHouse[user.guestHouseSelected - 1]}</td>
+                      <td style={{borderRight:"1px solid #ffff"}}>{user.roomsSelected}</td>
+                      <td style={{borderRight:"1px solid #ffff"}}>{user.email}</td>
+                      <td style={{borderRight:"1px solid #ffff"}}>{user.phone}</td>
+                      <td style={{borderRight:"1px solid #ffff"}}>{new Date(user.startDate).toLocaleDateString()}</td>
+                      <td style={{borderRight:"1px solid #ffff"}}>{new Date(user.endDate).toLocaleDateString()}</td>
+                      <td style={{borderRight:"1px solid #ffff"}}>{user.purpose}</td>
+                      {user.roomBooker.isAdmin ? (
+                        <td>-</td>
+                      ) : (
+                        <td style={{borderRight:"1px solid #ffff"}}> 
+                          <button style = {{height:'35px'}}className="popup-button button-outline-dark"><a style = {{color : 'white'}} target = "_blank" href={user.roomBooker?.idProof}>View</a></button>
+                          
+                        </td>
+                      )}
+                     
                     </tr>
                   ))}
               </tbody>

@@ -11,11 +11,12 @@ const inputStyle = {
   backgroundColor: "#f8f9fa",
   color: "black",
   fontWeight: 500,
+  // width:"280px"
 };
 
 const toastStyle = {
   position: "top-center",
-  autoClose: 5000,
+  autoClose: 10000,
   hideProgressBar: false,
   closeOnClick: true,
   pauseOnHover: true,
@@ -102,7 +103,11 @@ const BookingDetails = ({ setDateDetails }) => {
   }, [checkinDate, checkoutDate, selectedGuestHouse, roomsSelected]);
 
 
-
+  const formatDate = (date) => {
+    const formattedDate = new Date(date).toLocaleDateString('en-GB'); // Change the locale to match your desired format
+    return formattedDate;
+  };
+  
   const handleCheckinChange = (e) => {
     const selectedDate = e.target.value;
     console.log("handle check in function called ");
@@ -217,14 +222,16 @@ const BookingDetails = ({ setDateDetails }) => {
           SELECT GUEST HOUSE
         </label>
         <select
-          className="form-control inputs"
-          style={inputStyle}
+          
+          className="form-select inputs"
+          // style={{ ...inputStyle, width: "250px" }} 
+          style={inputStyle} 
           id="guestHouse"
           value={selectedGuestHouse}
           onChange={handleGuestHouseChange}
         >
           {guestHouseOptions.map((option, index) => (
-            <option key={index} value={option}>
+            <option  key={index} value={option}>
               {option}
             </option>
           ))}
@@ -303,7 +310,7 @@ const BookingDetails = ({ setDateDetails }) => {
       </button>
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={10000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

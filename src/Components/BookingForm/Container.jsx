@@ -78,7 +78,6 @@ const Container = ({ isAdmin, adminId }) => {
               }
             } 
             setIsStudent((data.userDetails.registerOption === 2)? true : false); 
-
             setUserDetails({
               ...formData,
               isAdmin: false,

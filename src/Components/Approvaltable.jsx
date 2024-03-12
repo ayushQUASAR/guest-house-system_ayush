@@ -3,7 +3,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "../style/Approvaltable.css";
 import { useNavigate } from "react-router-dom";
-
+import GovtID from "./GovtID";
 const Approvaltable = () => {
   const [pendingUsers, setPendingUsers] = useState("");
   const navigate = useNavigate();
@@ -117,11 +117,11 @@ const Approvaltable = () => {
                             )}
                           </div>
                         ) : ""} */}
-                          <button className="popup-button button-outline-dark" 
-                          // onclick = {() => getImage(`${import.meta.env.VITE_API_URL}/images/${user.user?.idProof}`)}
-                          >
-                            <a target = "_blank" style = {{color : 'white'}} href={`${import.meta.env.VITE_API_URL}/images/${user.user?.idProof}`}>View</a>
-                          </button>
+                          {/* <button className="popup-button button-outline-dark" > */}
+                          
+                            <GovtID url = {`${import.meta.env.VITE_API_URL}/images/${user.user?.idProof}`}/>
+                            {/* <a target = "_blank" style = {{color : 'white'}} href={}>View</a> */}
+                          {/* </button> */}
                       </td>
                     )}
                     <td>{user.user?.refInfo}</td>

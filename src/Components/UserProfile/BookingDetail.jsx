@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useUserContext } from "../ContextHooks/UserContext";
 import sucessIcon from "../../images/check2.png";
 import './bookingDetail.css';
+import ReceiptDownload from "./ReceiptDownlaod";
+import CancelReceipt from "./CancelReceipt";
+// import {useLocation} from 'react-router-dom';
 const BookingDetails = () => {
+  // const location = useLocation();
+  // const bookingId = location.state?.bookingId;
   const [bookings, setBookings] = useState([]);
   const { userId } = useUserContext();
   const [selectReason, setSelectReason] = useState(false); 
@@ -63,6 +68,10 @@ const BookingDetails = () => {
   const closeReason = () => {
     setSelectReason(false);
   }
+  const handleDownload = () => {
+    
+  };
+  
   useEffect(() => {
     if (searchButtonClicked) {
       fetch(`${import.meta.env.VITE_API_URL}/users/${userId}/bookingHistory`)
@@ -201,6 +210,7 @@ useEffect(() => {
                 <th>Check In / Out</th>
                 <th>Status</th>
                 <th>Remarks</th>
+                <th>Download Receipt</th>
               </tr>
             </thead>
             <tbody>
@@ -265,6 +275,10 @@ useEffect(() => {
                         </div>
                       </div>
                     )}
+                  </td>
+                  <td>
+                    {booking.status === 'checkedOut' && <ReceiptDownload bookingId = {booking.id}/>}
+                    {booking.status === 'cancelled' && <CancelReceipt bookingId = {booking.id}/>}
                   </td>
                 </tr>
               ))}

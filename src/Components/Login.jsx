@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import "../style/loginbox.css"
 import Logo from "../images/logo_250.png.png"
 import "../style/auth.css"
-import { NavLink, useFetcher } from 'react-router-dom'
-import userDetail from './UserDetail'
+import { NavLink, useFetcher } from 'react-router-dom' 
 import Dash from './Dash'
 import Home from '../../src/Home'
 import { useUserContext } from './ContextHooks/UserContext'

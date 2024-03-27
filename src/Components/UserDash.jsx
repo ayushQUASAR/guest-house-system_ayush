@@ -25,9 +25,7 @@ import DashboardSettings from './DashboardSettings'
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import RegisteredUsers from './RegisteredUsers'
 import { Settings } from '@mui/icons-material';
-import { useLoginContext } from './ContextHooks/LoginContext';
-import UserDetail from './UserDetail';
-import CancelledBooking from './UserProfile/CancelledBooking';
+import { useLoginContext } from './ContextHooks/LoginContext'; 
 import BookingDetail from './UserProfile/BookingDetail';
 import BookingDetails from './BookingForm/BookingDetails';
 import BookingComponent from './BOOKING/BookingComponent';
@@ -112,8 +110,7 @@ useEffect(() => {
     dashboard: <UserDashboardContent user ={user} />,
     Booking: <Container />,
     UpcomingBooking : <UpcomingBooking user ={user}/>,
-    bookingHistory: <BookingDetail user={user}/>,
-    bookingCancellationTab: <CancelledBooking />,
+    bookingHistory: <BookingDetail user={user}/>, 
     UserProfile: <PersonalDetail user={user} />,
     settings: <UserResetPassword />,
   };
